@@ -1,260 +1,492 @@
+/* =========================================
+   AHBA LANGUAGE SYSTEM
+   JA / KO / EN / ZH
+========================================= */
+
+const AHBA_LANGUAGE_KEY = "asiaHCBBLanguage";
+
+
 const translations = {
 
+  /* =========================
+     JAPANESE
+  ========================== */
+
   ja: {
-    "hero.eyebrow": "ASIA HCBB BASEBALL ALLIANCE",
-    "hero.title": "アジアをつなぐ。<br>野球でつながる。",
-    "hero.description":
-      "AHBAは、アジア地域のHCBBコミュニティをつなぎ、リーグ・大会・交流試合などを支援する野球コミュニティ・アライアンスです。",
 
-    "about.title": "AHBAとは",
-    "about.text1":
-      "Asia HCBB Baseball Alliance（AHBA）は、アジアのHCBBプレイヤー・リーグ・コミュニティをつなぐことを目的としたアライアンスです。",
-    "about.text2":
-      "各地域・各リーグの活動を尊重しながら、国際交流試合、親善試合、大会などの様々なイベントを通じて、アジアのHCBBコミュニティの交流を促進します。",
-    "about.highlight": "HCBB COMMUNITY",
-    "about.highlightText":
-      "Japan / Korea / Taiwan / China<br>and more communities across Asia",
+    nav: {
+      home: "ホーム",
+      games: "試合",
+      standings: "順位表",
+      schedule: "時間表",
+      leagues: "リーグ",
+      about: "AHBA紹介"
+    },
 
-    "activities.title": "活動内容",
+    hero: {
+      title: "アジアのHCBBを、<br><span>ひとつにつなぐ。</span>",
+      description:
+        "Asia HCBB Baseball Alliance（AHBA）は、アジア各地域のHCBBコミュニティをつなぎ、試合・リーグ・大会・交流の情報を共有するためのAllianceです。",
+      games: "試合を見る",
+      leagues: "リーグを見る"
+    },
 
-    "activities.international.title": "国際交流試合",
-    "activities.international.text":
-      "国・地域を越えた国際交流試合を開催・掲載します。",
+    about: {
+      title: "AHBAについて",
+      text1:
+        "AHBAは、特定のリーグだけを管理するのではなく、国際試合、AHBA主催のフレンドリーマッチや大会、各地域リーグの情報などを横断して発信するアジアのHCBBネットワークです。",
+      text2:
+        "このポータルでは、公式に掲載する試合結果、順位表、試合時間、リーグ情報をひとつの場所から確認できます。"
+    },
 
-    "activities.leagues.title": "リーグ支援",
-    "activities.leagues.text":
-      "アジア各地域で活動するHCBBリーグを紹介し、リーグ間の交流をサポートします。",
+    activities: {
 
-    "activities.tournaments.title": "大会・イベント",
-    "activities.tournaments.text":
-      "AHBA主催・協力による大会やイベントを展開します。",
+      title: "主な活動",
 
-    "activities.community.title": "コミュニティ",
-    "activities.community.text":
-      "Discordを中心に、プレイヤー・リーグ・運営者同士の情報交換や交流の場を提供します。",
+      international: {
+        title: "国際試合",
+        text:
+          "地域を越えた国際試合・交流試合の情報を掲載します。"
+      },
 
-    "leagues.title": "参加・掲載リーグ",
-    "leagues.description":
-      "AHBAでは、アジア各地域で活動するHCBBリーグを紹介しています。",
+      league: {
+        title: "リーグサポート",
+        text:
+          "参加リーグの紹介や基本情報を整理し、各リーグへの入口を提供します。"
+      },
 
-    "leagues.japan": "Japan",
-    "leagues.korea": "Korea",
-    "leagues.taiwan": "Taiwan",
-    "leagues.china": "China",
+      tournament: {
+        title: "大会・イベント",
+        text:
+          "AHBAが主催・公式掲載する大会やイベントを発信します。"
+      },
 
-    "discord.eyebrow": "OFFICIAL COMMUNITY",
-    "discord.title": "AHBA Discordに参加",
-    "discord.description":
-      "AHBAの最新情報、試合情報、リーグ情報、イベント情報などをDiscordで発信しています。アジアのHCBBプレイヤー・運営者との交流にも利用できます。",
-    "discord.codeLabel": "SERVER CODE",
-    "discord.button": "Discordサーバーに参加",
+      community: {
+        title: "コミュニティ",
+        text:
+          "日本・韓国・台湾など、アジアのHCBBコミュニティをつなぎます。"
+      }
 
-    "principles.title": "AHBAの考え方",
+    },
 
-    "principles.p1.title": "Connect",
-    "principles.p1.text": "国や地域を越えてHCBBコミュニティをつなぐ。",
+    regions: {
 
-    "principles.p2.title": "Respect",
-    "principles.p2.text": "各リーグ・コミュニティの独自性を尊重する。",
+      title: "アジアのHCBBネットワーク",
 
-    "principles.p3.title": "Create",
-    "principles.p3.text": "新しい交流・大会・コミュニティを生み出す。"
+      japan: "日本",
+      korea: "韓国",
+      taiwan: "台湾",
+      other: "その他"
+
+    },
+
+    discord: {
+
+      title: "AHBA Discord",
+
+      description:
+        "試合調整、リーグ情報、交流、運営連絡などを行うAHBA公式コミュニティです。",
+
+      server: "SERVER",
+
+      button: "Discordに参加 →"
+
+    },
+
+    principles: {
+
+      title: "3つの理念",
+
+      connect:
+        "アジアのHCBBをつなぐ。",
+
+      respect:
+        "地域・リーグ・プレイヤーを尊重する。",
+
+      create:
+        "新しいHCBBの交流と競技の場をつくる。"
+
+    },
+
+    back:
+      "← メインページへ戻る",
+
+    footer: {
+      tagline:
+        "Community · Competition · Connection"
+    }
+
   },
 
+
+  /* =========================
+     KOREAN
+  ========================== */
 
   ko: {
-    "hero.eyebrow": "ASIA HCBB BASEBALL ALLIANCE",
-    "hero.title": "아시아를 연결하다.<br>야구로 하나가 되다.",
-    "hero.description":
-      "AHBA는 아시아 HCBB 커뮤니티를 연결하고 리그, 대회, 교류 경기를 지원하는 야구 커뮤니티 얼라이언스입니다.",
 
-    "about.title": "AHBA란?",
-    "about.text1":
-      "Asia HCBB Baseball Alliance(AHBA)는 아시아의 HCBB 플레이어, 리그 및 커뮤니티를 연결하기 위한 얼라이언스입니다.",
-    "about.text2":
-      "각 지역과 리그의 독립성을 존중하면서 국제 교류 경기, 친선 경기 및 대회를 통해 아시아 HCBB 커뮤니티의 교류를 촉진합니다.",
-    "about.highlight": "HCBB COMMUNITY",
-    "about.highlightText":
-      "Japan / Korea / Taiwan / China<br>and more communities across Asia",
+    nav: {
+      home: "홈",
+      games: "경기",
+      standings: "순위표",
+      schedule: "일정",
+      leagues: "리그",
+      about: "AHBA 소개"
+    },
 
-    "activities.title": "활동 내용",
+    hero: {
+      title: "아시아 HCBB를,<br><span>하나로 연결합니다.</span>",
+      description:
+        "Asia HCBB Baseball Alliance（AHBA）는 아시아 각 지역의 HCBB 커뮤니티를 연결하고 경기・리그・대회・교류 정보를 공유합니다.",
+      games: "경기 보기",
+      leagues: "리그 보기"
+    },
 
-    "activities.international.title": "국제 교류 경기",
-    "activities.international.text":
-      "국가와 지역을 넘어 국제 교류 경기를 개최하고 소개합니다.",
+    about: {
+      title: "AHBA 소개",
+      text1:
+        "AHBA는 특정 리그만 관리하는 것이 아니라 국제 경기, AHBA가 주최하는 친선 경기와 대회, 각 지역 리그의 정보를 연결하여 제공하는 아시아 HCBB 네트워크입니다.",
+      text2:
+        "이 포털에서는 공식 경기 결과, 순위표, 경기 시간 및 리그 정보를 한 곳에서 확인할 수 있습니다."
+    },
 
-    "activities.leagues.title": "리그 지원",
-    "activities.leagues.text":
-      "아시아 각 지역에서 활동하는 HCBB 리그를 소개하고 리그 간 교류를 지원합니다.",
+    activities: {
 
-    "activities.tournaments.title": "대회 및 이벤트",
-    "activities.tournaments.text":
-      "AHBA가 주최하거나 협력하는 대회 및 이벤트를 진행합니다.",
+      title: "주요 활동",
 
-    "activities.community.title": "커뮤니티",
-    "activities.community.text":
-      "Discord를 중심으로 플레이어, 리그 및 운영자 간의 정보 교류와 커뮤니티 활동을 지원합니다.",
+      international: {
+        title: "국제 경기",
+        text:
+          "지역을 넘어선 국제 경기와 교류 경기 정보를 제공합니다."
+      },
 
-    "leagues.title": "참여 및 소개 리그",
-    "leagues.description":
-      "AHBA에서는 아시아 각 지역에서 활동하는 HCBB 리그를 소개합니다.",
+      league: {
+        title: "리그 지원",
+        text:
+          "참여 리그를 소개하고 각 리그로 연결되는 정보를 제공합니다."
+      },
 
-    "leagues.japan": "Japan",
-    "leagues.korea": "Korea",
-    "leagues.taiwan": "Taiwan",
-    "leagues.china": "China",
+      tournament: {
+        title: "대회・이벤트",
+        text:
+          "AHBA가 주최하거나 공식적으로 소개하는 대회와 이벤트를 제공합니다."
+      },
 
-    "discord.eyebrow": "OFFICIAL COMMUNITY",
-    "discord.title": "AHBA Discord 참가",
-    "discord.description":
-      "AHBA의 최신 정보, 경기 정보, 리그 정보 및 이벤트 정보를 Discord에서 확인할 수 있습니다.",
-    "discord.codeLabel": "SERVER CODE",
-    "discord.button": "Discord 서버 참가",
+      community: {
+        title: "커뮤니티",
+        text:
+          "일본・한국・대만 등 아시아의 HCBB 커뮤니티를 연결합니다."
+      }
 
-    "principles.title": "AHBA의 방향",
+    },
 
-    "principles.p1.title": "Connect",
-    "principles.p1.text": "국가와 지역을 넘어 HCBB 커뮤니티를 연결합니다.",
+    regions: {
 
-    "principles.p2.title": "Respect",
-    "principles.p2.text": "각 리그와 커뮤니티의 독립성과 문화를 존중합니다.",
+      title: "아시아 HCBB 네트워크",
 
-    "principles.p3.title": "Create",
-    "principles.p3.text": "새로운 교류, 대회 및 커뮤니티를 만들어갑니다."
+      japan: "일본",
+      korea: "한국",
+      taiwan: "대만",
+      other: "기타"
+
+    },
+
+    discord: {
+
+      title: "AHBA Discord",
+
+      description:
+        "경기 조정, 리그 정보, 교류 및 운영 연락을 위한 AHBA 공식 커뮤니티입니다.",
+
+      server: "SERVER",
+
+      button: "Discord 참가 →"
+
+    },
+
+    principles: {
+
+      title: "3가지 원칙",
+
+      connect:
+        "아시아 HCBB를 연결합니다.",
+
+      respect:
+        "지역・리그・플레이어를 존중합니다.",
+
+      create:
+        "새로운 HCBB 교류와 경쟁의 장을 만듭니다."
+
+    },
+
+    back:
+      "← 메인 페이지로 돌아가기",
+
+    footer: {
+      tagline:
+        "Community · Competition · Connection"
+    }
+
   },
 
+
+  /* =========================
+     ENGLISH
+  ========================== */
 
   en: {
-    "hero.eyebrow": "ASIA HCBB BASEBALL ALLIANCE",
-    "hero.title": "Connecting Asia.<br>Through Baseball.",
-    "hero.description":
-      "AHBA is a baseball community alliance connecting HCBB players, leagues and communities across Asia.",
 
-    "about.title": "About AHBA",
-    "about.text1":
-      "Asia HCBB Baseball Alliance (AHBA) is an alliance created to connect HCBB players, leagues and communities across Asia.",
-    "about.text2":
-      "While respecting the independence of each region and league, AHBA promotes international matches, friendly games, tournaments and community activities.",
-    "about.highlight": "HCBB COMMUNITY",
-    "about.highlightText":
-      "Japan / Korea / Taiwan / China<br>and more communities across Asia",
+    nav: {
+      home: "Home",
+      games: "Games",
+      standings: "Standings",
+      schedule: "Schedule",
+      leagues: "Leagues",
+      about: "ABOUT AHBA"
+    },
 
-    "activities.title": "Activities",
+    hero: {
+      title: "Connecting Asia's HCBB,<br><span>as one.</span>",
+      description:
+        "Asia HCBB Baseball Alliance（AHBA）connects HCBB communities across Asia and shares information about games, leagues, tournaments and community events.",
+      games: "VIEW GAMES",
+      leagues: "VIEW LEAGUES"
+    },
 
-    "activities.international.title": "International Matches",
-    "activities.international.text":
-      "Supporting and publishing international matches between regions and countries.",
+    about: {
+      title: "About AHBA",
+      text1:
+        "AHBA is an Asia-wide HCBB network connecting international matches, AHBA-hosted friendlies and tournaments, and information from regional leagues.",
+      text2:
+        "This portal brings official game results, standings, schedules and league information together in one place."
+    },
 
-    "activities.leagues.title": "League Support",
-    "activities.leagues.text":
-      "Introducing HCBB leagues across Asia and supporting communication between leagues.",
+    activities: {
 
-    "activities.tournaments.title": "Tournaments & Events",
-    "activities.tournaments.text":
-      "Organizing and supporting tournaments and events under AHBA.",
+      title: "Activities",
 
-    "activities.community.title": "Community",
-    "activities.community.text":
-      "Providing a Discord-based community for players, leagues and organizers.",
+      international: {
+        title: "International Matches",
+        text:
+          "Information about international and community matches across regions."
+      },
 
-    "leagues.title": "Leagues",
-    "leagues.description":
-      "AHBA introduces HCBB leagues operating across different regions of Asia.",
+      league: {
+        title: "League Support",
+        text:
+          "We introduce participating leagues and provide an entry point to each league."
+      },
 
-    "leagues.japan": "Japan",
-    "leagues.korea": "Korea",
-    "leagues.taiwan": "Taiwan",
-    "leagues.china": "China",
+      tournament: {
+        title: "Tournaments & Events",
+        text:
+          "We publish tournaments and events hosted or officially supported by AHBA."
+      },
 
-    "discord.eyebrow": "OFFICIAL COMMUNITY",
-    "discord.title": "Join the AHBA Discord",
-    "discord.description":
-      "Get the latest AHBA news, match information, league updates and event announcements through our Discord community.",
-    "discord.codeLabel": "SERVER CODE",
-    "discord.button": "Join Discord Server",
+      community: {
+        title: "Community",
+        text:
+          "We connect HCBB communities across Japan, Korea, Taiwan and other parts of Asia."
+      }
 
-    "principles.title": "Our Principles",
+    },
 
-    "principles.p1.title": "Connect",
-    "principles.p1.text":
-      "Connecting HCBB communities across countries and regions.",
+    regions: {
 
-    "principles.p2.title": "Respect",
-    "principles.p2.text":
-      "Respecting the identity and independence of every league and community.",
+      title: "Asia HCBB Network",
 
-    "principles.p3.title": "Create",
-    "principles.p3.text":
-      "Creating new opportunities for games, tournaments and community."
+      japan: "Japan",
+      korea: "Korea",
+      taiwan: "Taiwan",
+      other: "Other"
+
+    },
+
+    discord: {
+
+      title: "AHBA Discord",
+
+      description:
+        "The official AHBA community for match coordination, league information, communication and operations.",
+
+      server: "SERVER",
+
+      button: "JOIN DISCORD →"
+
+    },
+
+    principles: {
+
+      title: "Our Principles",
+
+      connect:
+        "Connect HCBB communities across Asia.",
+
+      respect:
+        "Respect regions, leagues and players.",
+
+      create:
+        "Create new opportunities for HCBB competition and community."
+
+    },
+
+    back:
+      "← Back to Main Page",
+
+    footer: {
+      tagline:
+        "Community · Competition · Connection"
+    }
+
   },
 
 
+  /* =========================
+     CHINESE
+  ========================== */
+
   zh: {
-    "hero.eyebrow": "ASIA HCBB BASEBALL ALLIANCE",
-    "hero.title": "连接亚洲。<br>因棒球而相遇。",
-    "hero.description":
-      "AHBA是连接亚洲HCBB玩家、联赛和社区，并支持比赛、赛事及交流活动的棒球社区联盟。",
 
-    "about.title": "关于AHBA",
-    "about.text1":
-      "Asia HCBB Baseball Alliance（AHBA）旨在连接亚洲各地的HCBB玩家、联赛和社区。",
-    "about.text2":
-      "在尊重各地区及联赛独立性的基础上，通过国际交流赛、友谊赛和赛事促进亚洲HCBB社区之间的交流。",
-    "about.highlight": "HCBB COMMUNITY",
-    "about.highlightText":
-      "Japan / Korea / Taiwan / China<br>and more communities across Asia",
+    nav: {
+      home: "首页",
+      games: "比赛",
+      standings: "排名",
+      schedule: "赛程",
+      leagues: "联赛",
+      about: "关于 AHBA"
+    },
 
-    "activities.title": "活动内容",
+    hero: {
+      title: "连接亚洲 HCBB，<br><span>汇聚于一个联盟。</span>",
+      description:
+        "Asia HCBB Baseball Alliance（AHBA）连接亚洲各地区的 HCBB 社区，并共享比赛、联赛、赛事和交流活动信息。",
+      games: "查看比赛",
+      leagues: "查看联赛"
+    },
 
-    "activities.international.title": "国际交流赛",
-    "activities.international.text":
-      "举办并发布跨国、跨地区的国际交流比赛。",
+    about: {
+      title: "关于 AHBA",
+      text1:
+        "AHBA 是一个连接亚洲 HCBB 社区的网络，涵盖国际比赛、AHBA 主办的友谊赛与赛事，以及各地区联赛的信息。",
+      text2:
+        "通过本门户，可以在一个网站中查看官方比赛结果、排名、赛程和联赛信息。"
+    },
 
-    "activities.leagues.title": "联赛支持",
-    "activities.leagues.text":
-      "介绍亚洲各地区的HCBB联赛，并促进联赛之间的交流。",
+    activities: {
 
-    "activities.tournaments.title": "赛事与活动",
-    "activities.tournaments.text":
-      "举办或协助AHBA相关的赛事与活动。",
+      title: "主要活动",
 
-    "activities.community.title": "社区",
-    "activities.community.text":
-      "以Discord为中心，为玩家、联赛和运营者提供交流平台。",
+      international: {
+        title: "国际比赛",
+        text:
+          "提供跨地区国际比赛和交流比赛的信息。"
+      },
 
-    "leagues.title": "联赛",
-    "leagues.description":
-      "AHBA介绍在亚洲各地区运营的HCBB联赛。",
+      league: {
+        title: "联赛支持",
+        text:
+          "介绍参与联赛，并提供进入各联赛页面的入口。"
+      },
 
-    "leagues.japan": "Japan",
-    "leagues.korea": "Korea",
-    "leagues.taiwan": "Taiwan",
-    "leagues.china": "China",
+      tournament: {
+        title: "赛事与活动",
+        text:
+          "发布由 AHBA 主办或官方介绍的赛事和活动。"
+      },
 
-    "discord.eyebrow": "OFFICIAL COMMUNITY",
-    "discord.title": "加入AHBA Discord",
-    "discord.description":
-      "通过Discord获取AHBA最新消息、比赛信息、联赛信息以及活动公告。",
-    "discord.codeLabel": "SERVER CODE",
-    "discord.button": "加入Discord服务器",
+      community: {
+        title: "社区",
+        text:
+          "连接日本、韩国、台湾以及亚洲其他地区的 HCBB 社区。"
+      }
 
-    "principles.title": "AHBA理念",
+    },
 
-    "principles.p1.title": "Connect",
-    "principles.p1.text":
-      "连接不同国家和地区的HCBB社区。",
+    regions: {
 
-    "principles.p2.title": "Respect",
-    "principles.p2.text":
-      "尊重每个联赛和社区的独立性与特色。",
+      title: "亚洲 HCBB 网络",
 
-    "principles.p3.title": "Create",
-    "principles.p3.text":
-      "创造新的交流、赛事和社区活动。"
+      japan: "日本",
+      korea: "韩国",
+      taiwan: "台湾",
+      other: "其他"
+
+    },
+
+    discord: {
+
+      title: "AHBA Discord",
+
+      description:
+        "用于比赛协调、联赛信息、交流和运营联系的 AHBA 官方社区。",
+
+      server: "SERVER",
+
+      button: "加入 Discord →"
+
+    },
+
+    principles: {
+
+      title: "三项理念",
+
+      connect:
+        "连接亚洲 HCBB。",
+
+      respect:
+        "尊重地区、联赛和玩家。",
+
+      create:
+        "创造新的 HCBB 交流与竞技机会。"
+
+    },
+
+    back:
+      "← 返回主页",
+
+    footer: {
+      tagline:
+        "Community · Competition · Connection"
+    }
+
   }
 
 };
 
+
+
+/* =========================================
+   GET TRANSLATION
+========================================= */
+
+function getTranslation(lang, path) {
+
+  const parts = path.split(".");
+
+  let value = translations[lang];
+
+  for (const part of parts) {
+
+    if (
+      value === undefined ||
+      value === null
+    ) {
+      return "";
+    }
+
+    value = value[part];
+
+  }
+
+  return value ?? "";
+
+}
+
+
+
+/* =========================================
+   APPLY LANGUAGE
+========================================= */
 
 function applyLanguage(lang) {
 
@@ -262,40 +494,145 @@ function applyLanguage(lang) {
     lang = "ja";
   }
 
-  localStorage.setItem("asiaHCBBLanguage", lang);
 
   document.documentElement.lang = lang;
 
-  document.querySelectorAll("[data-i18n]").forEach(element => {
 
-    const key = element.dataset.i18n;
-    const value = translations[lang][key];
+  /*
+    Normal text
+  */
 
-    if (value !== undefined) {
-      element.innerHTML = value;
-    }
+  document
+    .querySelectorAll("[data-i18n]")
+    .forEach(element => {
 
-  });
+      const key =
+        element.dataset.i18n;
 
-  document.querySelectorAll(".language-switcher button").forEach(button => {
-    button.classList.toggle(
-      "active",
-      button.dataset.lang === lang
-    );
-  });
+      const value =
+        getTranslation(lang, key);
+
+      if (value !== "") {
+        element.textContent = value;
+      }
+
+    });
+
+
+  /*
+    HTML text
+    Used for <br> and span
+  */
+
+  document
+    .querySelectorAll("[data-i18n-html]")
+    .forEach(element => {
+
+      const key =
+        element.dataset.i18nHtml;
+
+      const value =
+        getTranslation(lang, key);
+
+      if (value !== "") {
+        element.innerHTML = value;
+      }
+
+    });
+
+
+  /*
+    Active language button
+  */
+
+  document
+    .querySelectorAll(".language-switcher button")
+    .forEach(button => {
+
+      button.classList.toggle(
+        "active",
+        button.dataset.lang === lang
+      );
+
+    });
+
+
+  /*
+    Save language
+  */
+
+  localStorage.setItem(
+    AHBA_LANGUAGE_KEY,
+    lang
+  );
+
 }
 
 
-document.querySelectorAll(".language-switcher button").forEach(button => {
 
-  button.addEventListener("click", () => {
-    applyLanguage(button.dataset.lang);
+/* =========================================
+   LANGUAGE BUTTONS
+========================================= */
+
+document
+  .querySelectorAll(
+    ".language-switcher button"
+  )
+  .forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        const lang =
+          button.dataset.lang;
+
+        applyLanguage(lang);
+
+      }
+    );
+
   });
 
-});
 
+
+/* =========================================
+   DISCORD
+=========================================
+
+   ↓↓↓ 本物の招待URLに変更してください ↓↓↓
+
+========================================= */
+
+const AHBA_DISCORD_URL =
+  "https://discord.gg/REPLACE_AHBA";
+
+
+const discordLink =
+  document.getElementById(
+    "discordLink"
+  );
+
+
+if (discordLink) {
+
+  discordLink.href =
+    AHBA_DISCORD_URL;
+
+}
+
+
+
+/* =========================================
+   INITIAL LANGUAGE
+========================================= */
 
 const savedLanguage =
-  localStorage.getItem("asiaHCBBLanguage") || "ja";
+  localStorage.getItem(
+    AHBA_LANGUAGE_KEY
+  );
 
-applyLanguage(savedLanguage);
+
+applyLanguage(
+  savedLanguage || "ja"
+);
