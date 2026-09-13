@@ -1,622 +1,376 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>AHBA | Asia HCBB Baseball Alliance</title>
-
-  <meta
-    name="description"
-    content="Asia HCBB Baseball Alliance - Connecting Asia through HCBB."
-  >
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ABOUT AHBA | Asia HCBB Baseball Alliance</title>
   <link rel="stylesheet" href="ahba.css">
 </head>
 
 <body>
 
-  <!-- =========================
-       HEADER
-  ========================== -->
+<header class="topbar">
+  <div class="topbar-inner">
 
-  <header class="site-header">
+    <a href="index.html" class="brand">
+      <img
+        src="assets/ahba-logo.jpeg"
+        class="brand-logo"
+        alt="Asia HCBB Baseball Alliance logo"
+      >
 
-    <div class="header-inner">
+      <span class="brand-text">
+        <span class="brand-main">ASIA HCBB</span>
+        <span class="brand-sub">BASEBALL ALLIANCE</span>
+      </span>
+    </a>
 
-      <a href="index.html" class="brand">
-
-        <span class="brand-main">
-          ASIA HCBB
-        </span>
-
-        <span class="brand-sub">
-          BASEBALL ALLIANCE
-        </span>
-
+    <nav class="nav">
+      <a href="index.html" data-i18n="nav.home">ホーム</a>
+      <a href="index.html#games" data-i18n="nav.games">試合</a>
+      <a href="index.html#standings" data-i18n="nav.standings">順位表</a>
+      <a href="index.html#schedule" data-i18n="nav.schedule">時間表</a>
+      <a href="index.html#leagues" data-i18n="nav.leagues">リーグ</a>
+      <a href="ahba.html" class="active" data-i18n="nav.about">
+        AHBA紹介
       </a>
+    </nav>
+
+    <div class="language-switcher" aria-label="Language">
+      <button data-lang="ja">🇯🇵</button>
+      <button data-lang="ko">🇰🇷</button>
+      <button data-lang="en">🇺🇸</button>
+      <button data-lang="zh">🇨🇳</button>
+    </div>
+
+  </div>
+</header>
 
 
-      <nav class="main-nav">
+<main>
 
-        <a href="index.html" data-i18n="nav.home">
-          ホーム
-        </a>
+  <!-- HERO -->
+  <section class="hero">
 
-        <a href="index.html#games" data-i18n="nav.games">
-          試合
-        </a>
+    <div class="hero-logo-wrap">
+      <img
+        src="assets/ahba-logo.jpeg"
+        class="hero-logo"
+        alt="Asia HCBB Baseball Alliance logo"
+      >
+    </div>
 
-        <a href="index.html#standings" data-i18n="nav.standings">
-          順位表
-        </a>
+    <div class="hero-copy">
 
-        <a href="index.html#schedule" data-i18n="nav.schedule">
-          時間表
-        </a>
-
-        <a href="index.html#leagues" data-i18n="nav.leagues">
-          リーグ
-        </a>
-
-        <a
-          href="ahba.html"
-          class="active"
-          data-i18n="nav.about"
-        >
-          AHBA紹介
-        </a>
-
-      </nav>
-
-
-      <!-- LANGUAGE -->
-
-      <div class="language-switcher">
-
-        <button
-          type="button"
-          data-lang="ja"
-          aria-label="日本語"
-        >
-          🇯🇵
-        </button>
-
-        <button
-          type="button"
-          data-lang="ko"
-          aria-label="한국어"
-        >
-          🇰🇷
-        </button>
-
-        <button
-          type="button"
-          data-lang="en"
-          aria-label="English"
-        >
-          🇺🇸
-        </button>
-
-        <button
-          type="button"
-          data-lang="zh"
-          aria-label="中文"
-        >
-          🇨🇳
-        </button>
-
+      <div
+        class="eyebrow"
+        data-i18n="hero.eyebrow"
+      >
+        ASIA HCBB BASEBALL ALLIANCE
       </div>
+
+      <h1
+        data-i18n-html="hero.title"
+      >
+        アジアのHCBBを、<br>
+        <span>ひとつにつなぐ。</span>
+      </h1>
+
+      <p
+        class="lead"
+        data-i18n="hero.lead"
+      >
+        Asia HCBB Baseball Alliance（AHBA）は、
+        アジア各地域のHCBBコミュニティをつなぎ、
+        試合・リーグ・大会・交流の情報を共有するためのAllianceです。
+      </p>
 
     </div>
 
-  </header>
+  </section>
 
 
+  <!-- ABOUT -->
+  <section class="section">
 
-  <main>
+    <div
+      class="eyebrow"
+      data-i18n="about.eyebrow"
+    >
+      WHAT IS AHBA?
+    </div>
 
-    <!-- =========================
-         HERO
-    ========================== -->
+    <h2 data-i18n="about.title">
+      AHBAについて
+    </h2>
 
-    <section class="ahba-hero">
+    <div class="about-layout">
 
-      <div class="hero-inner">
+      <div class="about-logo-card">
 
-        <div class="hero-label">
-          ASIA HCBB BASEBALL ALLIANCE
+        <img
+          src="assets/ahba-logo.jpeg"
+          alt="AHBA logo"
+        >
+
+        <div class="logo-caption">
+          ASIA HCBB<br>
+          BASEBALL ALLIANCE
         </div>
 
-
-        <h1
-          id="heroTitle"
-          data-i18n-html="hero.title"
-        >
-          アジアのHCBBを、<br>
-          <span>ひとつにつなぐ。</span>
-        </h1>
+      </div>
 
 
-        <p
-          id="heroDescription"
-          class="hero-description"
-          data-i18n="hero.description"
-        >
-          Asia HCBB Baseball Alliance（AHBA）は、
-          アジア各地域のHCBBコミュニティをつなぎ、
-          試合・リーグ・大会・交流の情報を共有するためのAllianceです。
+      <div class="card about-text">
+
+        <p data-i18n="about.p1">
+          AHBAは、特定のリーグだけを管理するのではなく、
+          国際試合、AHBA主催のフレンドリーマッチや大会、
+          各地域リーグの情報などを横断して発信するネットワークを目指しています。
         </p>
 
-
-        <div class="hero-buttons">
-
-          <a
-            href="index.html#games"
-            class="button primary"
-            data-i18n="hero.games"
-          >
-            試合を見る
-          </a>
-
-          <a
-            href="index.html#leagues"
-            class="button secondary"
-            data-i18n="hero.leagues"
-          >
-            リーグを見る
-          </a>
-
-        </div>
+        <p data-i18n="about.p2">
+          このポータルでは、公式に掲載する試合結果、
+          順位表、試合時間、リーグ情報をひとつの場所から確認できます。
+        </p>
 
       </div>
 
-    </section>
+    </div>
+
+  </section>
 
 
+  <!-- ACTIVITIES -->
+  <section class="section">
 
-    <!-- =========================
-         ABOUT
-    ========================== -->
+    <div
+      class="eyebrow"
+      data-i18n="activities.eyebrow"
+    >
+      ACTIVITIES
+    </div>
 
-    <section class="section">
+    <h2 data-i18n="activities.title">
+      主な活動
+    </h2>
 
-      <div class="section-label">
-        ABOUT AHBA
-      </div>
+    <div class="grid">
 
-      <h2 data-i18n="about.title">
-        AHBAについて
-      </h2>
+      <article class="card">
 
+        <div class="eyebrow">01</div>
 
-      <div class="about-grid">
+        <h3 data-i18n="activities.a1.title">
+          International Matches
+        </h3>
 
-        <div class="about-main">
+        <p data-i18n="activities.a1.text">
+          地域を越えた国際試合・交流試合の情報を掲載します。
+        </p>
 
-          <p data-i18n="about.text1">
-            AHBAは、特定のリーグだけを管理するのではなく、
-            国際試合、AHBA主催のフレンドリーマッチや大会、
-            各地域リーグの情報などを横断して発信する
-            アジアのHCBBネットワークです。
-          </p>
-
-
-          <p data-i18n="about.text2">
-            このポータルでは、公式に掲載する試合結果、
-            順位表、試合時間、リーグ情報をひとつの場所から
-            確認できます。
-          </p>
-
-        </div>
+      </article>
 
 
-        <div class="about-card">
+      <article class="card">
 
-          <div class="card-number">
-            AHBA
-          </div>
+        <div class="eyebrow">02</div>
 
-          <div class="card-title">
-            ASIA HCBB
-          </div>
+        <h3 data-i18n="activities.a2.title">
+          League Support
+        </h3>
 
-          <div class="card-subtitle">
-            BASEBALL ALLIANCE
-          </div>
+        <p data-i18n="activities.a2.text">
+          参加リーグの紹介や基本情報を整理し、
+          各リーグへの入口を提供します。
+        </p>
 
-
-          <div class="card-line"></div>
+      </article>
 
 
-          <div class="card-meta">
-            <span>COMMUNITY</span>
-            <span>COMPETITION</span>
-            <span>CONNECTION</span>
-          </div>
+      <article class="card">
 
-        </div>
+        <div class="eyebrow">03</div>
 
-      </div>
+        <h3 data-i18n="activities.a3.title">
+          Tournaments & Events
+        </h3>
 
-    </section>
+        <p data-i18n="activities.a3.text">
+          AHBAが主催・公式掲載する大会やイベントを発信します。
+        </p>
 
-
-
-    <!-- =========================
-         ACTIVITIES
-    ========================== -->
-
-    <section class="section">
-
-      <div class="section-label">
-        ACTIVITIES
-      </div>
-
-      <h2 data-i18n="activities.title">
-        主な活動
-      </h2>
+      </article>
 
 
-      <div class="activity-grid">
+      <article class="card">
+
+        <div class="eyebrow">04</div>
+
+        <h3 data-i18n="activities.a4.title">
+          Community
+        </h3>
+
+        <p data-i18n="activities.a4.text">
+          日本・韓国・台湾など、
+          アジアのHCBBコミュニティをつなぎます。
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
 
 
-        <article class="activity-card">
+  <!-- DISCORD -->
+  <section class="section">
 
-          <div class="activity-number">
-            01
-          </div>
+    <div
+      class="eyebrow"
+      data-i18n="discord.eyebrow"
+    >
+      OFFICIAL COMMUNITY
+    </div>
 
-          <h3 data-i18n="activities.international.title">
-            国際試合
-          </h3>
-
-          <p data-i18n="activities.international.text">
-            地域を越えた国際試合・交流試合の情報を掲載します。
-          </p>
-
-        </article>
+    <h2 data-i18n="discord.title">
+      AHBA Discord
+    </h2>
 
 
-        <article class="activity-card">
+    <div class="card discord">
 
-          <div class="activity-number">
-            02
-          </div>
+      <div class="discord-logo-small">
 
-          <h3 data-i18n="activities.league.title">
-            リーグサポート
-          </h3>
-
-          <p data-i18n="activities.league.text">
-            参加リーグの紹介や基本情報を整理し、
-            各リーグへの入口を提供します。
-          </p>
-
-        </article>
-
-
-        <article class="activity-card">
-
-          <div class="activity-number">
-            03
-          </div>
-
-          <h3 data-i18n="activities.tournament.title">
-            大会・イベント
-          </h3>
-
-          <p data-i18n="activities.tournament.text">
-            AHBAが主催・公式掲載する大会やイベントを発信します。
-          </p>
-
-        </article>
-
-
-        <article class="activity-card">
-
-          <div class="activity-number">
-            04
-          </div>
-
-          <h3 data-i18n="activities.community.title">
-            コミュニティ
-          </h3>
-
-          <p data-i18n="activities.community.text">
-            日本・韓国・台湾など、
-            アジアのHCBBコミュニティをつなぎます。
-          </p>
-
-        </article>
+        <img
+          src="assets/ahba-logo.jpeg"
+          alt="AHBA"
+        >
 
       </div>
 
-    </section>
 
+      <div class="discord-copy">
 
-
-    <!-- =========================
-         REGIONS
-    ========================== -->
-
-    <section class="section regions-section">
-
-      <div class="section-label">
-        ASIA NETWORK
-      </div>
-
-      <h2 data-i18n="regions.title">
-        アジアのHCBBネットワーク
-      </h2>
-
-
-      <div class="region-grid">
-
-        <div class="region-card">
-
-          <span class="region-flag">
-            🇯🇵
-          </span>
-
-          <strong data-i18n="regions.japan">
-            日本
-          </strong>
-
-          <span>
-            JAPAN
-          </span>
-
+        <div class="code">
+          AHBA
         </div>
 
-
-        <div class="region-card">
-
-          <span class="region-flag">
-            🇰🇷
-          </span>
-
-          <strong data-i18n="regions.korea">
-            韓国
-          </strong>
-
-          <span>
-            KOREA
-          </span>
-
-        </div>
-
-
-        <div class="region-card">
-
-          <span class="region-flag">
-            🇹🇼
-          </span>
-
-          <strong data-i18n="regions.taiwan">
-            台湾
-          </strong>
-
-          <span>
-            TAIWAN
-          </span>
-
-        </div>
-
-
-        <div class="region-card">
-
-          <span class="region-flag">
-            🌏
-          </span>
-
-          <strong data-i18n="regions.other">
-            その他
-          </strong>
-
-          <span>
-            ASIA
-          </span>
-
-        </div>
+        <p data-i18n="discord.text">
+          試合調整、リーグ情報、交流、
+          運営連絡などを行う公式コミュニティです。
+        </p>
 
       </div>
 
-    </section>
-
-
-
-    <!-- =========================
-         DISCORD
-    ========================== -->
-
-    <section class="discord-section">
-
-      <div class="discord-inner">
-
-
-        <div class="discord-content">
-
-          <div class="section-label">
-            OFFICIAL COMMUNITY
-          </div>
-
-
-          <h2 data-i18n="discord.title">
-            AHBA Discord
-          </h2>
-
-
-          <p data-i18n="discord.description">
-            試合調整、リーグ情報、交流、運営連絡などを行う
-            AHBA公式コミュニティです。
-          </p>
-
-
-          <div class="discord-code">
-
-            <span data-i18n="discord.server">
-              SERVER
-            </span>
-
-            <strong id="discordCode">
-              AHBA
-            </strong>
-
-          </div>
-
-
-          <a
-            id="discordLink"
-            class="discord-button"
-            href="https://discord.gg/REPLACE_AHBA"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-i18n="discord.button"
-          >
-            Discordに参加 →
-          </a>
-
-        </div>
-
-
-        <div class="discord-mark">
-
-          <div class="discord-ring">
-            AHBA
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         PRINCIPLES
-    ========================== -->
-
-    <section class="section">
-
-      <div class="section-label">
-        OUR PRINCIPLES
-      </div>
-
-      <h2 data-i18n="principles.title">
-        3つの理念
-      </h2>
-
-
-      <div class="principle-grid">
-
-
-        <div class="principle">
-
-          <span class="principle-number">
-            01
-          </span>
-
-          <h3>
-            Connect
-          </h3>
-
-          <p data-i18n="principles.connect">
-            アジアのHCBBをつなぐ。
-          </p>
-
-        </div>
-
-
-        <div class="principle">
-
-          <span class="principle-number">
-            02
-          </span>
-
-          <h3>
-            Respect
-          </h3>
-
-          <p data-i18n="principles.respect">
-            地域・リーグ・プレイヤーを尊重する。
-          </p>
-
-        </div>
-
-
-        <div class="principle">
-
-          <span class="principle-number">
-            03
-          </span>
-
-          <h3>
-            Create
-          </h3>
-
-          <p data-i18n="principles.create">
-            新しいHCBBの交流と競技の場をつくる。
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         BACK HOME
-    ========================== -->
-
-    <section class="back-section">
 
       <a
-        href="index.html"
-        class="back-button"
-        data-i18n="back"
+        class="button"
+        href="https://discord.gg/REPLACE_AHBA"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-i18n="discord.button"
       >
-        ← メインページへ戻る
+        Discordに参加 →
       </a>
 
-    </section>
+    </div>
 
-  </main>
+  </section>
 
 
+  <!-- PRINCIPLES -->
+  <section class="section">
 
-  <!-- =========================
-       FOOTER
-  ========================== -->
+    <div
+      class="eyebrow"
+      data-i18n="principles.eyebrow"
+    >
+      OUR PRINCIPLES
+    </div>
 
-  <footer class="site-footer">
+    <h2 data-i18n="principles.title">
+      3つの理念
+    </h2>
 
-    <div>
 
-      <strong>
-        ASIA HCBB BASEBALL ALLIANCE
-      </strong>
+    <div class="grid principles">
 
-      <span data-i18n="footer.tagline">
-        Community · Competition · Connection
-      </span>
+      <article class="card">
+
+        <h3>
+          Connect
+        </h3>
+
+        <p data-i18n="principles.connect">
+          アジアのHCBBをつなぐ。
+        </p>
+
+      </article>
+
+
+      <article class="card">
+
+        <h3>
+          Respect
+        </h3>
+
+        <p data-i18n="principles.respect">
+          地域・リーグ・プレイヤーを尊重する。
+        </p>
+
+      </article>
+
+
+      <article class="card">
+
+        <h3>
+          Create
+        </h3>
+
+        <p data-i18n="principles.create">
+          新しいHCBBの交流と競技の場をつくる。
+        </p>
+
+      </article>
 
     </div>
 
-
-    <div>
-      © 2026 Asia HCBB Baseball Alliance
-    </div>
-
-  </footer>
+  </section>
 
 
+  <!-- BACK -->
+  <div class="back-home">
 
-  <script src="ahba.js"></script>
+    <a
+      href="index.html"
+      class="button secondary"
+      data-i18n="back"
+    >
+      ← ホームへ戻る
+    </a>
+
+  </div>
+
+</main>
+
+
+<footer>
+
+  <strong>
+    ASIA HCBB BASEBALL ALLIANCE
+  </strong>
+
+  <br>
+
+  <span data-i18n="footer">
+    Community • Competition • Connection
+  </span>
+
+</footer>
+
+
+<script src="ahba.js"></script>
 
 </body>
 </html>
