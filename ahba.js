@@ -1,5 +1,5 @@
 const AHBA_DISCORD_URL =
-  "https://discord.gg/REPLACE_AHBA";
+  "https://discord.gg/rCmEV2EjTP";
 
 
 const translations = {
