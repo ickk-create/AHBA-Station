@@ -483,48 +483,51 @@
 
   <div class="schedule-status-tabs">
 
-    <button
-      id="scheduleUpcomingTab"
-      class="active"
-      data-schedule-status="upcoming"
+  <button
+    id="scheduleUpcomingTab"
+    class="active"
+    data-schedule-status="upcoming"
+    type="button"
+  >
+
+    <span class="status-dot upcoming-dot"></span>
+
+    <span data-i18n="scheduleStatus.upcoming">
+      予定
+    </span>
+
+    <span
+      id="scheduleUpcomingCount"
+      class="schedule-count"
     >
-      <span class="status-dot upcoming-dot"></span>
+      0
+    </span>
 
-      <span data-i18n="scheduleStatus.upcoming">
-        予定
-      </span>
+  </button>
 
-      <span
-        id="scheduleUpcomingCount"
-        class="schedule-count"
-      >
-        0
-      </span>
 
-    </button>
+  <button
+    id="scheduleFinishedTab"
+    data-schedule-status="finished"
+    type="button"
+  >
 
-    
-    <button>
-      id="scheduleFinishedTab"
-      data-schedule-status="finished"
+    <span class="status-dot finished-dot"></span>
+
+    <span data-i18n="scheduleStatus.finished">
+      終了
+    </span>
+
+    <span
+      id="scheduleFinishedCount"
+      class="schedule-count"
     >
+      0
+    </span>
 
-      <span class="statis-dot finished-dot"></span>
+  </button>
 
-      <span data-i18n="scheduleStatus.finished">
-        終了
-      </span>
-
-      <span>
-        id="scheduleFinishedCount"
-        class="schedule-count"
-      >
-        0
-      </span>
-      
-    </button>
-
-  </div>
+</div>
 
       
   <div id="scheduleList" class="schedule-list"></div>
