@@ -1362,35 +1362,101 @@ function renderStandings() {
    SCHEDULE
 ================================================== */
 
+let currentScheduleStatus = "upcoming";
+
+
 function renderSchedule() {
 
-  if (!$("#scheduleList")) {
-    return;
+  if (!$("#scheduleList")) return;
+
+
+  /*
+   * 全ゲームを取得
+   */
+  const allGames = [...(D.games || [])];
+
+
+  /*
+   * 予定 / 終了 に分類
+   */
+  const upcomingGames = allGames
+    .filter(game => game.status !== "finished")
+    .sort(
+      (a, b) =>
+        new Date(a.time) - new Date(b.time)
+    );
+
+
+  const finishedGames = allGames
+    .filter(game => game.status === "finished")
+    .sort(
+      (a, b) =>
+        new Date(b.time) - new Date(a.time)
+    );
+
+
+  /*
+   * 件数表示
+   */
+
+  if ($("#scheduleUpcomingCount")) {
+
+    $("#scheduleUpcomingCount").textContent =
+      upcomingGames.length;
+
   }
 
 
-  const games =
-    [...(D.games || [])]
-      .sort(
-        (a, b) =>
-          new Date(a.time) -
-          new Date(b.time)
-      );
+  if ($("#scheduleFinishedCount")) {
 
+    $("#scheduleFinishedCount").textContent =
+      finishedGames.length;
+
+  }
+
+
+  /*
+   * 現在選択されているリスト
+   */
+
+  const games =
+    currentScheduleStatus === "finished"
+      ? finishedGames
+      : upcomingGames;
+
+
+  /*
+   * 該当なし
+   */
 
   if (!games.length) {
 
-    $("#scheduleList").innerHTML =
-      `<p>${t("game.noGames")}</p>`;
+    $("#scheduleList").innerHTML = `
+      <div class="schedule-empty">
 
-  } else {
+        <div class="schedule-empty-icon">
+          ${currentScheduleStatus === "finished" ? "✓" : "○"}
+        </div>
+
+        <p>
+          ${t("game.noGames")}
+        </p>
+
+      </div>
+    `;
+
+  }
+
+  else {
 
     $("#scheduleList").innerHTML =
       games.map(game => `
 
         <div class="schedule-item">
 
-          <div>
+          <!-- TIME -->
+
+          <div class="schedule-time">
 
             <div class="sched-time">
               ${escapeHtml(
@@ -1407,43 +1473,57 @@ function renderSchedule() {
           </div>
 
 
-          <div>
+          <!-- MATCH -->
+
+          <div class="schedule-match">
 
             <div class="sched-league">
+
               ${escapeHtml(
                 gameLabel(game)
               )}
+
             </div>
 
-            <div class="sched-match">
 
-              ${escapeHtml(
-                displayText(game.home)
-              )}
+            <div class="sched-match-teams">
 
-              <span class="dash">
-                vs
+              <strong>
+                ${escapeHtml(
+                  displayText(game.home)
+                )}
+              </strong>
+
+              <span class="schedule-vs">
+                VS
               </span>
 
-              ${escapeHtml(
-                displayText(game.away)
-              )}
+              <strong>
+                ${escapeHtml(
+                  displayText(game.away)
+                )}
+              </strong>
 
             </div>
 
           </div>
 
 
-          <div class="sched-status">
+          <!-- STATUS -->
+
+          <div
+            class="
+              sched-status
+              ${currentScheduleStatus}
+            "
+          >
+
+            <span class="status-dot"></span>
 
             ${
-              game.status === "finished"
-                ? t(
-                    "scheduleStatus.finished"
-                  )
-                : t(
-                    "scheduleStatus.upcoming"
-                  )
+              currentScheduleStatus === "finished"
+                ? t("scheduleStatus.finished")
+                : t("scheduleStatus.upcoming")
             }
 
           </div>
@@ -1451,20 +1531,71 @@ function renderSchedule() {
         </div>
 
       `).join("");
+
   }
 
+
+  /*
+   * TIMEZONE LABEL
+   */
 
   if ($("#zoneLabel")) {
 
     const zone =
       zoneNames[currentZone];
 
-
     $("#zoneLabel").textContent =
-      zone?.[currentLanguage] ||
-      zone?.ja ||
+      zone?.[currentLanguage]
+      ||
+      zone?.ja
+      ||
       currentZone;
+
   }
+
+}
+
+
+/* ==================================================
+   SCHEDULE STATUS TABS
+================================================== */
+
+function setupScheduleTabs() {
+
+  $$("[data-schedule-status]")
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          currentScheduleStatus =
+            button.dataset.scheduleStatus;
+
+
+          /*
+           * active切り替え
+           */
+
+          $$("[data-schedule-status]")
+            .forEach(tab => {
+
+              tab.classList.toggle(
+                "active",
+                tab.dataset.scheduleStatus ===
+                currentScheduleStatus
+              );
+
+            });
+
+
+          renderSchedule();
+
+        }
+      );
+
+    });
+
 }
 
 
@@ -1669,6 +1800,9 @@ function init() {
   );
 
   updateClock();
+
+  setupScheduleTabs();
+   
 }
 
 
