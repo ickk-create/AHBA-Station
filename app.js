@@ -555,12 +555,16 @@ function applyLanguage(lang) {
   });
 
 
-  $$(".language-switcher button").forEach(button => {
-    button.classList.toggle(
-      "active",
-      button.dataset.lang === lang
-    );
-  });
+  $$(
+  '.language-switcher button, .header-language button'
+).forEach(button => {
+
+  button.classList.toggle(
+    "active",
+    button.dataset.lang === lang
+  );
+
+});
 
 
   updateFilterTexts();
@@ -1370,15 +1374,15 @@ function renderSchedule() {
   if (!$("#scheduleList")) return;
 
 
-  /*
-   * 全ゲームを取得
-   */
-  const allGames = [...(D.games || [])];
+  const allGames = Array.isArray(D.games)
+    ? [...D.games]
+    : [];
 
 
-  /*
-   * 予定 / 終了 に分類
-   */
+  /* ------------------------------
+     予定
+  ------------------------------ */
+
   const upcomingGames = allGames
     .filter(game => game.status !== "finished")
     .sort(
@@ -1386,6 +1390,10 @@ function renderSchedule() {
         new Date(a.time) - new Date(b.time)
     );
 
+
+  /* ------------------------------
+     終了
+  ------------------------------ */
 
   const finishedGames = allGames
     .filter(game => game.status === "finished")
@@ -1395,9 +1403,9 @@ function renderSchedule() {
     );
 
 
-  /*
-   * 件数表示
-   */
+  /* ------------------------------
+     件数
+  ------------------------------ */
 
   if ($("#scheduleUpcomingCount")) {
 
@@ -1415,9 +1423,9 @@ function renderSchedule() {
   }
 
 
-  /*
-   * 現在選択されているリスト
-   */
+  /* ------------------------------
+     現在表示する試合
+  ------------------------------ */
 
   const games =
     currentScheduleStatus === "finished"
@@ -1425,17 +1433,24 @@ function renderSchedule() {
       : upcomingGames;
 
 
-  /*
-   * 該当なし
-   */
+  /* ------------------------------
+     試合なし
+  ------------------------------ */
 
   if (!games.length) {
 
     $("#scheduleList").innerHTML = `
+
       <div class="schedule-empty">
 
         <div class="schedule-empty-icon">
-          ${currentScheduleStatus === "finished" ? "✓" : "○"}
+
+          ${
+            currentScheduleStatus === "finished"
+              ? "✓"
+              : "○"
+          }
+
         </div>
 
         <p>
@@ -1443,6 +1458,7 @@ function renderSchedule() {
         </p>
 
       </div>
+
     `;
 
   }
@@ -1450,6 +1466,7 @@ function renderSchedule() {
   else {
 
     $("#scheduleList").innerHTML =
+
       games.map(game => `
 
         <div class="schedule-item">
@@ -1459,15 +1476,19 @@ function renderSchedule() {
           <div class="schedule-time">
 
             <div class="sched-time">
+
               ${escapeHtml(
                 fmtTime(game.time)
               )}
+
             </div>
 
             <div class="sched-date">
+
               ${escapeHtml(
                 fmtDate(game.time)
               )}
+
             </div>
 
           </div>
@@ -1475,7 +1496,7 @@ function renderSchedule() {
 
           <!-- MATCH -->
 
-          <div class="schedule-match">
+          <div class="schedule-match-info">
 
             <div class="sched-league">
 
@@ -1489,19 +1510,31 @@ function renderSchedule() {
             <div class="sched-match-teams">
 
               <strong>
+
                 ${escapeHtml(
-                  displayText(game.home)
+                  getLocalized(
+                    game.home,
+                    "—"
+                  )
                 )}
+
               </strong>
+
 
               <span class="schedule-vs">
                 VS
               </span>
 
+
               <strong>
+
                 ${escapeHtml(
-                  displayText(game.away)
+                  getLocalized(
+                    game.away,
+                    "—"
+                  )
                 )}
+
               </strong>
 
             </div>
@@ -1512,10 +1545,7 @@ function renderSchedule() {
           <!-- STATUS -->
 
           <div
-            class="
-              sched-status
-              ${currentScheduleStatus}
-            "
+            class="sched-status ${currentScheduleStatus}"
           >
 
             <span class="status-dot"></span>
@@ -1535,9 +1565,9 @@ function renderSchedule() {
   }
 
 
-  /*
-   * TIMEZONE LABEL
-   */
+  /* ------------------------------
+     TIMEZONE
+  ------------------------------ */
 
   if ($("#zoneLabel")) {
 
@@ -1708,34 +1738,84 @@ $$(
    EVENTS
 ================================================== */
 
-$("#leagueFilter")
-  ?.addEventListener(
-    "change",
-    renderGames
+
+/* LANGUAGE */
+
+$$(
+  '.language-switcher button, .header-language button'
+).forEach(button => {
+
+  button.addEventListener(
+    "click",
+    () => {
+
+      applyLanguage(
+        button.dataset.lang
+      );
+
+    }
   );
 
-
-$("#statusFilter")
-  ?.addEventListener(
-    "change",
-    renderGames
-  );
+});
 
 
-$("#standingsLeague")
-  ?.addEventListener(
-    "change",
-    renderStandings
-  );
+/* MATCH CENTER */
+
+$("#leagueFilter")?.addEventListener(
+  "change",
+  renderGames
+);
+
+$("#statusFilter")?.addEventListener(
+  "change",
+  renderGames
+);
+
+$("#standingsLeague")?.addEventListener(
+  "change",
+  renderStandings
+);
 
 
 /* ==================================================
-   TIMEZONE BUTTONS
+   SCHEDULE STATUS TABS
 ================================================== */
 
-$$(
-  ".timezone-tabs button"
-).forEach(button => {
+$$("[data-schedule-status]").forEach(button => {
+
+  button.addEventListener(
+    "click",
+    () => {
+
+      currentScheduleStatus =
+        button.dataset.scheduleStatus;
+
+
+      $$("[data-schedule-status]")
+        .forEach(tab => {
+
+          tab.classList.toggle(
+            "active",
+            tab.dataset.scheduleStatus ===
+              currentScheduleStatus
+          );
+
+        });
+
+
+      renderSchedule();
+
+    }
+  );
+
+});
+
+
+/* ==================================================
+   TIMEZONE
+================================================== */
+
+$$(".timezone-tabs button").forEach(button => {
 
   button.addEventListener(
     "click",
@@ -1754,21 +1834,22 @@ $$(
         selectedZone;
 
 
-      $$(
-        ".timezone-tabs button"
-      ).forEach(btn => {
+      $$(".timezone-tabs button")
+        .forEach(btn => {
 
-        btn.classList.toggle(
-          "active",
-          btn.dataset.zone ===
-            currentZone
-        );
+          btn.classList.toggle(
+            "active",
+            btn.dataset.zone ===
+              currentZone
+          );
 
-      });
+        });
 
 
       updateClock();
+
       renderSchedule();
+
       renderNextGame();
 
     }
