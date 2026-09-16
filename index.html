@@ -105,56 +105,110 @@
 
 <header class="site-header">
 
-  <div class="brand">
-    <span>ASIA HCBB</span>
-    <strong>BASEBALL ALLIANCE</strong>
-  </div>
+  <div class="header-inner">
 
-<nav>
-  <a href="#games" data-i18n="nav.games">試合</a>
-  <a href="#standings" data-i18n="nav.standings">順位表</a>
-  <a href="#schedule" data-i18n="nav.schedule">時間表</a>
-  <a href="#leagues" data-i18n="nav.leagues">リーグ</a>
+    <!-- BRAND -->
+    <a href="index.html" class="site-brand">
 
-  <a href="ahba.html" data-i18n="nav.about">
-    AHBA紹介
-  </a>
+      <img
+        src="assets/ahba-logo.jpeg"
+        class="site-logo"
+        alt="Asia HCBB Baseball Alliance"
+      >
 
-  <a href="admin.html" data-i18n="nav.admin">
-    管理
-  </a>
-</nav>
+      <div class="site-brand-text">
+        <div class="site-brand-main">
+          ASIA HCBB
+        </div>
 
-  <!-- 言語切替 -->
-  <div class="language-switcher">
+        <div class="site-brand-sub">
+          BASEBALL ALLIANCE
+        </div>
+      </div>
 
-    <button data-lang="ja" class="active">
-      🇯🇵
-    </button>
+    </a>
 
-    <button data-lang="ko">
-      🇰🇷
-    </button>
 
-    <button data-lang="en">
-      🇺🇸
-    </button>
+    <!-- NAVIGATION -->
+    <nav class="main-nav">
 
-    <button data-lang="zh">
-      🇹🇼
-    </button>
+      <a href="#games" data-i18n="nav.games">
+        試合
+      </a>
 
-  </div>
+      <a href="#standings" data-i18n="nav.standings">
+        順位表
+      </a>
 
-  <div class="clock">
+      <a href="#schedule" data-i18n="nav.schedule">
+        時間表
+      </a>
 
-    <b id="clock">
-      --:--:--
-    </b>
+      <a href="#leagues" data-i18n="nav.leagues">
+        リーグ
+      </a>
 
-    <span id="tz">
-      日本
-    </span>
+      <a
+        href="ahba.html"
+        data-i18n="nav.about"
+      >
+        AHBA紹介
+      </a>
+
+    </nav>
+
+
+    <!-- RIGHT SIDE -->
+    <div class="header-right">
+
+      <!-- CLOCK -->
+      <div class="header-clock">
+
+        <span id="clock">
+          --:--:--
+        </span>
+
+        <small id="tz">
+          JST
+        </small>
+
+      </div>
+
+
+      <!-- LANGUAGE -->
+      <div class="header-language">
+
+        <button
+          data-lang="ja"
+          title="日本語"
+        >
+          JP
+        </button>
+
+        <button
+          data-lang="ko"
+          title="한국어"
+        >
+          KR
+        </button>
+
+        <button
+          data-lang="en"
+          title="English"
+        >
+          EN
+        </button>
+
+        <button
+          data-lang="zh"
+          title="中文"
+        >
+          中文
+        </button>
+
+      </div>
+
+    </div>
 
   </div>
 
@@ -427,6 +481,52 @@
   </div>
 
 
+  <div class="schedule-status-tabs">
+
+    <button
+      id="scheduleUpcomingTab"
+      class="active"
+      data-schedule-status="upcoming"
+    >
+      <span class="status-dot upcoming-dot"></span>
+
+      <span data-i18n="scheduleStatus.upcoming">
+        予定
+      </span>
+
+      <span
+        id="scheduleUpcomingCount"
+        class="schedule-count"
+      >
+        0
+      </span>
+
+    </button>
+
+    
+    <button>
+      id="scheduleFinishedTab"
+      data-schedule-status="finished"
+    >
+
+      <span class="statis-dot finished-dot"></span>
+
+      <span data-i18n="scheduleStatus.finished">
+        終了
+      </span>
+
+      <span>
+        id="scheduleFinishedCount"
+        class="schedule-count"
+      >
+        0
+      </span>
+      
+    </button>
+
+  </div>
+
+      
   <div id="scheduleList" class="schedule-list"></div>
 
 </section>
