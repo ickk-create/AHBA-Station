@@ -1426,3 +1426,933 @@ footer {
   }
 
 }
+
+
+/* ==================================================
+   OFFICIAL SITE HEADER
+================================================== */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(4, 8, 15, .97),
+      rgba(5, 10, 18, .92)
+    );
+
+  border-bottom:
+    1px solid
+    rgba(111, 220, 255, .16);
+
+  backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 8px 30px
+    rgba(0, 0, 0, .25);
+}
+
+
+.header-inner {
+
+  max-width: 1280px;
+
+  min-height: 76px;
+
+  margin: 0 auto;
+
+  padding:
+    0 24px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 28px;
+
+}
+
+
+/* ==================================================
+   BRAND
+================================================== */
+
+.site-brand {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  flex-shrink: 0;
+
+}
+
+
+.site-logo {
+
+  width: 50px;
+
+  height: 50px;
+
+  object-fit: cover;
+
+  border-radius: 10px;
+
+  border:
+    1px solid
+    rgba(215, 168, 60, .45);
+
+  box-shadow:
+    0 0 18px
+    rgba(111, 220, 255, .08);
+
+}
+
+
+.site-brand-text {
+
+  display: flex;
+
+  flex-direction: column;
+
+  line-height: 1.1;
+
+}
+
+
+.site-brand-main {
+
+  font-family:
+    Orbitron,
+    sans-serif;
+
+  font-size: 1.02rem;
+
+  font-weight: 800;
+
+  letter-spacing: .09em;
+
+  color: #f3f7ff;
+
+}
+
+
+.site-brand-sub {
+
+  margin-top: 5px;
+
+  font-family:
+    Orbitron,
+    sans-serif;
+
+  font-size: .54rem;
+
+  font-weight: 500;
+
+  letter-spacing: .16em;
+
+  color: #8192a8;
+
+}
+
+
+/* ==================================================
+   NAVIGATION
+================================================== */
+
+.main-nav {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 4px;
+
+  margin-left: auto;
+
+}
+
+
+.main-nav a {
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  min-height: 42px;
+
+  padding:
+    0 14px;
+
+  border-radius: 9px;
+
+  color: #b8c5d6;
+
+  font-size: .82rem;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  transition:
+    color .2s ease,
+    background .2s ease;
+
+}
+
+
+.main-nav a::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: 14px;
+
+  right: 14px;
+
+  bottom: 5px;
+
+  height: 2px;
+
+  border-radius: 2px;
+
+  background:
+    #6fdcff;
+
+  transform:
+    scaleX(0);
+
+  transition:
+    transform .2s ease;
+
+}
+
+
+.main-nav a:hover {
+
+  color: #ffffff;
+
+  background:
+    rgba(111, 220, 255, .07);
+
+}
+
+
+.main-nav a:hover::after {
+
+  transform:
+    scaleX(1);
+
+}
+
+
+/* ==================================================
+   HEADER RIGHT
+================================================== */
+
+.header-right {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  flex-shrink: 0;
+
+}
+
+
+.header-clock {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  min-width: 86px;
+
+}
+
+
+.header-clock span {
+
+  font-family:
+    Orbitron,
+    monospace;
+
+  font-size: .78rem;
+
+  font-weight: 700;
+
+  color: #e8f5ff;
+
+  letter-spacing: .05em;
+
+}
+
+
+.header-clock small {
+
+  margin-top: 2px;
+
+  font-size: .55rem;
+
+  color: #71849b;
+
+  letter-spacing: .12em;
+
+}
+
+
+/* ==================================================
+   LANGUAGE
+================================================== */
+
+.header-language {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 3px;
+
+  padding: 3px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, .09);
+
+  border-radius: 9px;
+
+  background:
+    rgba(255, 255, 255, .025);
+
+}
+
+
+.header-language button {
+
+  border: 0;
+
+  background: transparent;
+
+  color: #7f90a6;
+
+  padding:
+    6px 7px;
+
+  border-radius: 6px;
+
+  font-size: .65rem;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    .2s ease;
+
+}
+
+
+.header-language button:hover {
+
+  color: #ffffff;
+
+  background:
+    rgba(255, 255, 255, .06);
+
+}
+
+
+.header-language button.active {
+
+  color: #06111a;
+
+  background:
+    #6fdcff;
+
+}
+
+
+/* ==================================================
+   MOBILE HEADER
+================================================== */
+
+@media (max-width: 900px) {
+
+  .header-inner {
+
+    min-height: auto;
+
+    padding:
+      10px 16px;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+  }
+
+
+  .site-brand {
+
+    margin-right: auto;
+
+  }
+
+
+  .header-right {
+
+    margin-left: auto;
+
+  }
+
+
+  .main-nav {
+
+    order: 3;
+
+    width: 100%;
+
+    overflow-x: auto;
+
+    margin-left: 0;
+
+    padding-bottom: 2px;
+
+    scrollbar-width: none;
+
+  }
+
+
+  .main-nav::-webkit-scrollbar {
+
+    display: none;
+
+  }
+
+
+  .main-nav a {
+
+    min-height: 38px;
+
+    padding:
+      0 11px;
+
+    font-size: .74rem;
+
+  }
+
+}
+
+
+@media (max-width: 520px) {
+
+  .site-logo {
+
+    width: 42px;
+
+    height: 42px;
+
+  }
+
+
+  .site-brand-main {
+
+    font-size: .82rem;
+
+  }
+
+
+  .site-brand-sub {
+
+    font-size: .47rem;
+
+  }
+
+
+  .header-clock {
+
+    display: none;
+
+  }
+
+}
+
+
+/* ==================================================
+   SCHEDULE STATUS TABS
+================================================== */
+
+.schedule-status-tabs {
+
+  display: flex;
+
+  gap: 8px;
+
+  margin:
+    20px 0 16px;
+
+  padding: 4px;
+
+  width: fit-content;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, .08);
+
+  border-radius: 12px;
+
+  background:
+    rgba(255, 255, 255, .025);
+
+}
+
+
+.schedule-status-tabs button {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  border: 0;
+
+  padding:
+    10px 17px;
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: #78899d;
+
+  font-size: .78rem;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    .2s ease;
+
+}
+
+
+.schedule-status-tabs button:hover {
+
+  color: #eaf5ff;
+
+  background:
+    rgba(255, 255, 255, .05);
+
+}
+
+
+.schedule-status-tabs button.active {
+
+  color: #ffffff;
+
+  background:
+    rgba(111, 220, 255, .12);
+
+  box-shadow:
+    inset 0 0 0 1px
+    rgba(111, 220, 255, .15);
+
+}
+
+
+.schedule-count {
+
+  min-width: 22px;
+
+  padding:
+    2px 6px;
+
+  border-radius: 20px;
+
+  background:
+    rgba(255, 255, 255, .08);
+
+  color: #8ea1b6;
+
+  font-size: .65rem;
+
+  text-align: center;
+
+}
+
+
+.schedule-status-tabs button.active
+.schedule-count {
+
+  background:
+    rgba(111, 220, 255, .18);
+
+  color: #8de4ff;
+
+}
+
+
+/* ==================================================
+   STATUS DOT
+================================================== */
+
+.status-dot {
+
+  display: inline-block;
+
+  width: 7px;
+
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #65778b;
+
+}
+
+
+.upcoming-dot {
+
+  background: #6fdcff;
+
+  box-shadow:
+    0 0 8px
+    rgba(111, 220, 255, .55);
+
+}
+
+
+.finished-dot {
+
+  background: #718092;
+
+}
+
+
+/* ==================================================
+   SCHEDULE ITEMS
+================================================== */
+
+.schedule-list {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+}
+
+
+.schedule-item {
+
+  display: grid;
+
+  grid-template-columns:
+    125px 1fr 90px;
+
+  align-items: center;
+
+  gap: 18px;
+
+  min-height: 78px;
+
+  padding:
+    14px 18px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, .07);
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(14, 28, 46, .72),
+      rgba(7, 14, 24, .78)
+    );
+
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    background .2s ease;
+
+}
+
+
+.schedule-item:hover {
+
+  transform:
+    translateY(-1px);
+
+  border-color:
+    rgba(111, 220, 255, .2);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(17, 34, 55, .82),
+      rgba(8, 17, 29, .85)
+    );
+
+}
+
+
+/* TIME */
+
+.schedule-time {
+
+  text-align: left;
+
+}
+
+
+.sched-time {
+
+  font-family:
+    Orbitron,
+    monospace;
+
+  font-size: 1.05rem;
+
+  font-weight: 800;
+
+  letter-spacing: .04em;
+
+  color: #edf7ff;
+
+}
+
+
+.sched-date {
+
+  margin-top: 2px;
+
+  color: #73869b;
+
+  font-size: .68rem;
+
+}
+
+
+/* MATCH */
+
+.sched-league {
+
+  margin-bottom: 4px;
+
+  color: #6fdcff;
+
+  font-size: .65rem;
+
+  font-weight: 700;
+
+  letter-spacing: .08em;
+
+  text-transform: uppercase;
+
+}
+
+
+.sched-match-teams {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+}
+
+
+.sched-match-teams strong {
+
+  color: #e5edf7;
+
+  font-size: .88rem;
+
+}
+
+
+.schedule-vs {
+
+  color: #596b7e;
+
+  font-family:
+    Orbitron,
+    sans-serif;
+
+  font-size: .58rem;
+
+  font-weight: 700;
+
+  letter-spacing: .1em;
+
+}
+
+
+/* STATUS */
+
+.sched-status {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 7px;
+
+  color: #7f91a5;
+
+  font-size: .68rem;
+
+  font-weight: 700;
+
+  letter-spacing: .05em;
+
+}
+
+
+.sched-status.upcoming {
+
+  color: #75dfff;
+
+}
+
+
+.sched-status.finished {
+
+  color: #78899a;
+
+}
+
+
+/* EMPTY */
+
+.schedule-empty {
+
+  padding:
+    42px 20px;
+
+  text-align: center;
+
+  border:
+    1px dashed
+    rgba(255, 255, 255, .12);
+
+  border-radius: 12px;
+
+  color: #738499;
+
+}
+
+
+.schedule-empty-icon {
+
+  margin-bottom: 8px;
+
+  font-size: 1.5rem;
+
+  opacity: .55;
+
+}
+
+
+/* ==================================================
+   SCHEDULE MOBILE
+================================================== */
+
+@media (max-width: 700px) {
+
+  .schedule-item {
+
+    grid-template-columns:
+      85px 1fr;
+
+    gap: 12px;
+
+  }
+
+
+  .sched-status {
+
+    grid-column: 2;
+
+    justify-content: flex-start;
+
+  }
+
+
+  .sched-match-teams {
+
+    flex-wrap: wrap;
+
+    gap: 5px 9px;
+
+  }
+
+
+  .schedule-status-tabs {
+
+    width: 100%;
+
+  }
+
+
+  .schedule-status-tabs button {
+
+    flex: 1;
+
+    justify-content: center;
+
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .schedule-item {
+
+    grid-template-columns: 1fr;
+
+  }
+
+
+  .schedule-time {
+
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 8px;
+
+  }
+
+
+  .sched-status {
+
+    grid-column: auto;
+
+  }
+
+}
