@@ -9,13 +9,7 @@ const $$ = selector => document.querySelectorAll(selector);
 ================================================== */
 
 const translations = {
-
-  /* ==================================================
-     JAPANESE
-  ================================================== */
-
   ja: {
-
     nav: {
       games: "試合",
       standings: "順位表",
@@ -27,8 +21,7 @@ const translations = {
 
     hero: {
       title: "アジアのHCBBを、<br><span>ひとつのスコアボードへ。</span>",
-      description:
-        "試合結果、順位、各リーグの試合時間をひとつのサイトで確認できる Asia HCBB Baseball Alliance 公式ポータル。",
+      description: "試合結果、順位、各リーグの試合時間をひとつのサイトで確認できる Asia HCBB Baseball Alliance 公式ポータル。",
       games: "試合を見る",
       schedule: "時間表"
     },
@@ -63,8 +56,7 @@ const translations = {
     about: {
       eyebrow: "ABOUT AHBA",
       title: "アジアのHCBBを、<br><span>ひとつにつなぐ。</span>",
-      description:
-        "Asia HCBB Baseball Alliance（AHBA）は、アジア各地域のHCBBコミュニティをつなぎ、試合・リーグ・大会・交流の情報を共有するためのAllianceです。",
+      description: "Asia HCBB Baseball Alliance（AHBA）は、アジア各地域のHCBBコミュニティをつなぎ、試合・リーグ・大会・交流の情報を共有するためのAllianceです。",
       button: "AHBAについて詳しく見る →"
     },
 
@@ -92,15 +84,12 @@ const translations = {
       upcoming: "UPCOMING",
       finished: "試合終了",
       scheduled: "試合予定",
-
       international: "国際試合",
       friendly: "親善試合",
       tournament: "大会",
       ahba: "AHBA主催",
-
       noGames: "該当する試合がありません。",
       detail: "試合詳細 →",
-
       win: "勝利投手",
       loss: "敗戦投手",
       save: "セーブ",
@@ -124,13 +113,7 @@ const translations = {
     }
   },
 
-
-  /* ==================================================
-     KOREAN
-  ================================================== */
-
   ko: {
-
     nav: {
       games: "경기",
       standings: "순위표",
@@ -142,8 +125,7 @@ const translations = {
 
     hero: {
       title: "아시아 HCBB를,<br><span>하나의 스코어보드로.</span>",
-      description:
-        "경기 결과, 순위, 각 리그의 경기 일정을 한 곳에서 확인할 수 있는 Asia HCBB Baseball Alliance 공식 포털입니다.",
+      description: "경기 결과, 순위, 각 리그의 경기 일정을 한 곳에서 확인할 수 있는 Asia HCBB Baseball Alliance 공식 포털입니다.",
       games: "경기 보기",
       schedule: "경기 일정"
     },
@@ -178,8 +160,7 @@ const translations = {
     about: {
       eyebrow: "ABOUT AHBA",
       title: "아시아 HCBB를,<br><span>하나로 연결합니다.</span>",
-      description:
-        "Asia HCBB Baseball Alliance（AHBA）는 아시아 각 지역의 HCBB 커뮤니티를 연결하고 경기・리그・대회・교류 정보를 공유하는 Alliance입니다.",
+      description: "Asia HCBB Baseball Alliance（AHBA）는 아시아 각 지역의 HCBB 커뮤니티를 연결하고 경기・리그・대회・교류 정보를 공유하는 Alliance입니다.",
       button: "AHBA 자세히 보기 →"
     },
 
@@ -207,15 +188,12 @@ const translations = {
       upcoming: "UPCOMING",
       finished: "경기 종료",
       scheduled: "경기 예정",
-
       international: "국제 경기",
       friendly: "친선 경기",
       tournament: "대회",
       ahba: "AHBA 주최",
-
       noGames: "해당 경기가 없습니다.",
       detail: "경기 상세 →",
-
       win: "승리 투수",
       loss: "패전 투수",
       save: "세이브",
@@ -239,13 +217,7 @@ const translations = {
     }
   },
 
-
-  /* ==================================================
-     ENGLISH
-  ================================================== */
-
   en: {
-
     nav: {
       games: "Games",
       standings: "Standings",
@@ -257,8 +229,7 @@ const translations = {
 
     hero: {
       title: "Asia's HCBB,<br><span>one scoreboard.</span>",
-      description:
-        "The official Asia HCBB Baseball Alliance portal for game results, standings and league schedules.",
+      description: "The official Asia HCBB Baseball Alliance portal for game results, standings and league schedules.",
       games: "View Games",
       schedule: "Schedule"
     },
@@ -292,9 +263,8 @@ const translations = {
 
     about: {
       eyebrow: "ABOUT AHBA",
-      title: "Connecting Asia's HCBB,<br><span>as one.</span>",
-      description:
-        "Asia HCBB Baseball Alliance（AHBA）connects HCBB communities across Asia and shares information about games, leagues, tournaments and community events.",
+      title: "Connecting Asia's HCBB,<br><span>as one community.</span>",
+      description: "Asia HCBB Baseball Alliance (AHBA) connects HCBB communities across Asia and provides a shared place for games, leagues, tournaments and community exchange.",
       button: "LEARN MORE ABOUT AHBA →"
     },
 
@@ -322,15 +292,12 @@ const translations = {
       upcoming: "UPCOMING",
       finished: "Final",
       scheduled: "Scheduled",
-
       international: "International",
       friendly: "Friendly",
       tournament: "Tournament",
       ahba: "AHBA Hosted",
-
       noGames: "No games found.",
       detail: "GAME DETAILS →",
-
       win: "Win",
       loss: "Loss",
       save: "Save",
@@ -354,13 +321,7 @@ const translations = {
     }
   },
 
-
-  /* ==================================================
-     CHINESE
-  ================================================== */
-
   zh: {
-
     nav: {
       games: "比赛",
       standings: "排名",
@@ -372,8 +333,7 @@ const translations = {
 
     hero: {
       title: "亚洲 HCBB，<br><span>汇聚于一个记分板。</span>",
-      description:
-        "Asia HCBB Baseball Alliance 官方门户，提供比赛结果、排名和各联赛赛程。",
+      description: "Asia HCBB Baseball Alliance 官方门户，提供比赛结果、排名和各联赛赛程。",
       games: "查看比赛",
       schedule: "赛程"
     },
@@ -407,10 +367,9 @@ const translations = {
 
     about: {
       eyebrow: "ABOUT AHBA",
-      title: "连接亚洲 HCBB，<br><span>汇聚于一个联盟。</span>",
-      description:
-        "Asia HCBB Baseball Alliance（AHBA）连接亚洲各地区的 HCBB 社区，并共享比赛、联赛、赛事与交流活动信息。",
-      button: "了解 AHBA →"
+      title: "连接亚洲 HCBB，<br><span>让社区汇聚一处。</span>",
+      description: "Asia HCBB Baseball Alliance（AHBA）连接亚洲各地区的 HCBB 社区，为比赛、联赛、赛事和交流提供统一的信息平台。",
+      button: "了解更多关于 AHBA →"
     },
 
     filter: {
@@ -437,15 +396,12 @@ const translations = {
       upcoming: "UPCOMING",
       finished: "比赛结束",
       scheduled: "比赛预定",
-
       international: "国际比赛",
       friendly: "友谊赛",
       tournament: "赛事",
       ahba: "AHBA主办",
-
       noGames: "暂无比赛。",
       detail: "比赛详情 →",
-
       win: "胜投",
       loss: "败投",
       save: "救援",
@@ -460,15 +416,14 @@ const translations = {
     },
 
     scheduleStatus: {
-      finished: "结束",
-      upcoming: "预定"
+      finished: "已结束",
+      upcoming: "即将进行"
     },
 
     footer: {
       subtitle: "Community・Competition・Connection"
     }
   }
-
 };
 
 
@@ -480,16 +435,9 @@ let currentLanguage =
   localStorage.getItem("asiaHCBBLanguage") || "ja";
 
 
-/* ==================================================
-   TRANSLATION
-================================================== */
-
 function t(path) {
-
   const parts = path.split(".");
-
-  let value =
-    translations[currentLanguage];
+  let value = translations[currentLanguage];
 
   for (const part of parts) {
     value = value?.[part];
@@ -501,11 +449,9 @@ function t(path) {
 
 /* ==================================================
    MULTILINGUAL DATA
-   [object Object] 対策
 ================================================== */
 
 function getLocalized(value, fallback = "") {
-
   if (value == null) {
     return fallback;
   }
@@ -526,7 +472,6 @@ function getLocalized(value, fallback = "") {
 
 
 function displayText(value, fallback = "—") {
-
   if (value == null) {
     return fallback;
   }
@@ -544,7 +489,6 @@ function displayText(value, fallback = "—") {
 ================================================== */
 
 function applyLanguage(lang) {
-
   if (!translations[lang]) {
     lang = "ja";
   }
@@ -559,64 +503,33 @@ function applyLanguage(lang) {
   document.documentElement.lang = lang;
 
 
-  /* ------------------------------
-     TEXT
-  ------------------------------ */
-
   $$("[data-i18n]").forEach(el => {
-
-    el.textContent =
-      t(el.dataset.i18n);
-
+    el.textContent = t(el.dataset.i18n);
   });
 
-
-  /* ------------------------------
-     HTML
-  ------------------------------ */
 
   $$("[data-i18n-html]").forEach(el => {
-
-    el.innerHTML =
-      t(el.dataset.i18nHtml);
-
+    el.innerHTML = t(el.dataset.i18nHtml);
   });
 
-
-  /* ------------------------------
-     LANGUAGE BUTTON
-  ------------------------------ */
 
   $(
     '.language-switcher button, .header-language button'
   ).forEach(button => {
-
     button.classList.toggle(
       "active",
       button.dataset.lang === lang
     );
-
   });
 
 
-  /* ------------------------------
-     RENDER
-  ------------------------------ */
-
   updateFilterTexts();
-
   renderGames();
-
   renderStandings();
-
   renderSchedule();
-
   renderNextGame();
-
   renderLeagues();
-
   updateClock();
-
 }
 
 
@@ -625,14 +538,12 @@ function applyLanguage(lang) {
 ================================================== */
 
 function escapeHtml(value) {
-
   return String(value ?? "")
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
-
 }
 
 
@@ -641,7 +552,6 @@ function escapeHtml(value) {
 ================================================== */
 
 function leagueName(id) {
-
   const league =
     D.leagues?.find(
       x => x.id === id
@@ -655,7 +565,6 @@ function leagueName(id) {
     league.name,
     league.id
   );
-
 }
 
 
@@ -666,38 +575,26 @@ function leagueName(id) {
 function gameLabel(game) {
 
   if (game.title) {
-
     return getLocalized(
       game.title,
       game.id || ""
     );
-
   }
-
 
   if (game.league) {
-
-    return leagueName(
-      game.league
-    );
-
+    return leagueName(game.league);
   }
-
 
   if (
     game.type &&
     translations[currentLanguage]?.gameType?.[game.type]
   ) {
-
     return t(
       `gameType.${game.type}`
     );
-
   }
 
-
   return t("gameType.ahba");
-
 }
 
 
@@ -706,46 +603,37 @@ function gameLabel(game) {
 ================================================== */
 
 function getDetail(game) {
-
   return (
     game?.detail ||
     game?.details ||
     null
   );
-
 }
 
 
 function getPitching(game) {
-
-  const detail =
-    getDetail(game);
+  const detail = getDetail(game);
 
   return (
     detail?.pitching ||
     game?.pitching ||
     {}
   );
-
 }
 
 
 function getHomeRuns(game) {
-
-  const detail =
-    getDetail(game);
+  const detail = getDetail(game);
 
   return (
     detail?.homeRuns ||
     game?.homeRuns ||
     []
   );
-
 }
 
 
 function hasGameDetail(game) {
-
   return !!(
     game?.id ||
     getDetail(game) ||
@@ -755,12 +643,10 @@ function hasGameDetail(game) {
     getPitching(game)?.holds?.length ||
     getHomeRuns(game).length
   );
-
 }
 
 
 function gameDetailUrl(game) {
-
   if (!game?.id) {
     return "game.html";
   }
@@ -768,7 +654,6 @@ function gameDetailUrl(game) {
   return (
     `game.html?id=${encodeURIComponent(game.id)}`
   );
-
 }
 
 
@@ -785,55 +670,44 @@ function formatPitcherSummary(game) {
 
 
   if (p.win) {
-
     parts.push(
       `${t("game.win")} ${escapeHtml(
         displayText(p.win)
       )}`
     );
-
   }
 
 
   if (p.loss) {
-
     parts.push(
       `${t("game.loss")} ${escapeHtml(
         displayText(p.loss)
       )}`
     );
-
   }
 
 
   if (p.save) {
-
     parts.push(
       `${t("game.save")} ${escapeHtml(
         displayText(p.save)
       )}`
     );
-
   }
 
 
-  if (p.holds?.length) {
-
+  if (Array.isArray(p.holds)) {
     p.holds.forEach(hold => {
-
       parts.push(
         `${t("game.hold")} ${escapeHtml(
           displayText(hold)
         )}`
       );
-
     });
-
   }
 
 
   return parts;
-
 }
 
 
@@ -846,6 +720,9 @@ function updateFilterTexts() {
   const currentStatus =
     $("#statusFilter")?.value || "all";
 
+  const currentLeague =
+    $("#leagueFilter")?.value || "all";
+
 
   /* ------------------------------
      LEAGUE FILTER
@@ -853,23 +730,46 @@ function updateFilterTexts() {
 
   if ($("#leagueFilter")) {
 
-    const previousValue =
-      $("#leagueFilter").value;
+    const leagues =
+      Array.isArray(D.leagues)
+        ? D.leagues
+        : [];
+
 
     $("#leagueFilter").innerHTML = `
+
       <option value="all">
         ${t("filter.allLeagues")}
       </option>
+
+      ${leagues.map(league => `
+        <option value="${escapeHtml(
+          league.id
+        )}">
+          ${escapeHtml(
+            getLocalized(
+              league.name,
+              league.id
+            )
+          )}
+        </option>
+      `).join("")}
+
     `;
 
+
     if (
-      previousValue &&
-      previousValue !== "all"
+      currentLeague === "all" ||
+      leagues.some(
+        league =>
+          league.id === currentLeague
+      )
     ) {
-
       $("#leagueFilter").value =
-        previousValue;
-
+        currentLeague;
+    } else {
+      $("#leagueFilter").value =
+        "all";
     }
 
   }
@@ -904,25 +804,27 @@ function updateFilterTexts() {
 
 
   /* ------------------------------
-     STANDINGS
+     STANDINGS SELECT
   ------------------------------ */
 
   if ($("#standingsLeague")) {
 
-    const previousValue =
-      $("#standingsLeague").value;
+    const currentStandings =
+      $("#standingsLeague").value ||
+      "ahba";
 
     $("#standingsLeague").innerHTML = `
+
       <option value="ahba">
         ${t("nav.standings")}
       </option>
+
     `;
 
     $("#standingsLeague").value =
-      previousValue || "ahba";
+      currentStandings;
 
   }
-
 }
 
 
@@ -993,7 +895,6 @@ function localeName() {
   }
 
   return "en-US";
-
 }
 
 
@@ -1018,9 +919,7 @@ function fmtDate(
       date.getTime()
     )
   ) {
-
     return "—";
-
   }
 
   return new Intl.DateTimeFormat(
@@ -1032,7 +931,6 @@ function fmtDate(
       weekday: "short"
     }
   ).format(date);
-
 }
 
 
@@ -1057,9 +955,7 @@ function fmtTime(
       date.getTime()
     )
   ) {
-
     return "—";
-
   }
 
   return new Intl.DateTimeFormat(
@@ -1071,7 +967,6 @@ function fmtTime(
       hour12: false
     }
   ).format(date);
-
 }
 
 
@@ -1113,12 +1008,8 @@ function updateClock() {
 
 
   if ($("#tz")) {
-
-    $("#tz").textContent =
-      name;
-
+    $("#tz").textContent = name;
   }
-
 }
 
 
@@ -1157,21 +1048,16 @@ function renderNextGame() {
   if (!game) {
 
     if ($("#nextGame")) {
-
       $("#nextGame").innerHTML =
         t("next.none");
-
     }
 
     if ($("#tickerText")) {
-
       $("#tickerText").textContent =
         t("next.none");
-
     }
 
     return;
-
   }
 
 
@@ -1218,7 +1104,6 @@ function renderNextGame() {
       </div>
 
     `;
-
   }
 
 
@@ -1232,7 +1117,6 @@ function renderNextGame() {
       `${fmtTime(game.time)}`;
 
   }
-
 }
 
 
@@ -1281,18 +1165,14 @@ function renderGames() {
           a.status === "finished" &&
           b.status !== "finished"
         ) {
-
           return 1;
-
         }
 
         if (
           a.status !== "finished" &&
           b.status === "finished"
         ) {
-
           return -1;
-
         }
 
         return (
@@ -1309,7 +1189,6 @@ function renderGames() {
       `<p>${t("game.noGames")}</p>`;
 
     return;
-
   }
 
 
@@ -1435,6 +1314,7 @@ function renderGames() {
           <div class="game-foot">
 
             <span>
+
               ${escapeHtml(
                 fmtDate(game.time)
               )}
@@ -1442,7 +1322,9 @@ function renderGames() {
               ${escapeHtml(
                 fmtTime(game.time)
               )}
+
             </span>
+
 
             <span>
 
@@ -1464,7 +1346,6 @@ function renderGames() {
       `;
 
     }).join("");
-
 }
 
 
@@ -1481,7 +1362,6 @@ function buildStandings() {
   return Array.isArray(standings)
     ? standings
     : [];
-
 }
 
 
@@ -1542,6 +1422,7 @@ function renderStandings() {
                 </td>
 
                 <td>
+
                   ${
                     row.g
                       ? pct
@@ -1552,6 +1433,7 @@ function renderStandings() {
                           )
                       : "—"
                   }
+
                 </td>
 
                 <td>
@@ -1563,11 +1445,13 @@ function renderStandings() {
                 </td>
 
                 <td>
+
                   ${
                     diff > 0
                       ? "+"
                       : ""
                   }${diff}
+
                 </td>
 
               </tr>
@@ -1588,7 +1472,6 @@ function renderStandings() {
           </tr>
 
         `;
-
 }
 
 
@@ -1614,7 +1497,7 @@ function renderSchedule() {
 
 
   /* ------------------------------
-     予定
+     UPCOMING
   ------------------------------ */
 
   const upcomingGames =
@@ -1638,7 +1521,7 @@ function renderSchedule() {
 
 
   /* ------------------------------
-     終了
+     FINISHED
   ------------------------------ */
 
   const finishedGames =
@@ -1662,27 +1545,23 @@ function renderSchedule() {
 
 
   /* ------------------------------
-     件数
+     COUNTS
   ------------------------------ */
 
   if ($("#scheduleUpcomingCount")) {
-
     $("#scheduleUpcomingCount").textContent =
       upcomingGames.length;
-
   }
 
 
   if ($("#scheduleFinishedCount")) {
-
     $("#scheduleFinishedCount").textContent =
       finishedGames.length;
-
   }
 
 
   /* ------------------------------
-     現在表示する試合
+     ACTIVE LIST
   ------------------------------ */
 
   const games =
@@ -1692,7 +1571,7 @@ function renderSchedule() {
 
 
   /* ------------------------------
-     試合なし
+     EMPTY
   ------------------------------ */
 
   if (!games.length) {
@@ -1723,7 +1602,7 @@ function renderSchedule() {
 
 
   /* ------------------------------
-     試合一覧
+     LIST
   ------------------------------ */
 
   else {
@@ -1733,8 +1612,6 @@ function renderSchedule() {
       games.map(game => `
 
         <div class="schedule-item">
-
-          <!-- TIME -->
 
           <div class="schedule-time">
 
@@ -1757,8 +1634,6 @@ function renderSchedule() {
           </div>
 
 
-          <!-- MATCH -->
-
           <div class="schedule-match-info">
 
             <div class="sched-league">
@@ -1775,9 +1650,8 @@ function renderSchedule() {
               <strong>
 
                 ${escapeHtml(
-                  getLocalized(
-                    game.home,
-                    "—"
+                  displayText(
+                    game.home
                   )
                 )}
 
@@ -1792,9 +1666,8 @@ function renderSchedule() {
               <strong>
 
                 ${escapeHtml(
-                  getLocalized(
-                    game.away,
-                    "—"
+                  displayText(
+                    game.away
                   )
                 )}
 
@@ -1804,8 +1677,6 @@ function renderSchedule() {
 
           </div>
 
-
-          <!-- STATUS -->
 
           <div
             class="sched-status ${currentScheduleStatus}"
@@ -1853,55 +1724,47 @@ function renderSchedule() {
 
 function setupScheduleTabs() {
 
-  const buttons =
-    $$("[data-schedule-status]");
+  $$("[data-schedule-status]")
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          const status =
+            button.dataset.scheduleStatus;
 
 
-  buttons.forEach(button => {
-
-    button.addEventListener(
-      "click",
-      () => {
-
-        const selectedStatus =
-          button.dataset.scheduleStatus;
+          if (
+            status !== "upcoming" &&
+            status !== "finished"
+          ) {
+            return;
+          }
 
 
-        if (
-          selectedStatus !== "upcoming" &&
-          selectedStatus !== "finished"
-        ) {
+          currentScheduleStatus =
+            status;
 
-          return;
+
+          $$("[data-schedule-status]")
+            .forEach(tab => {
+
+              tab.classList.toggle(
+                "active",
+                tab.dataset.scheduleStatus ===
+                  currentScheduleStatus
+              );
+
+            });
+
+
+          renderSchedule();
 
         }
+      );
 
-
-        currentScheduleStatus =
-          selectedStatus;
-
-
-        /* ------------------------------
-           ACTIVE
-        ------------------------------ */
-
-        buttons.forEach(tab => {
-
-          tab.classList.toggle(
-            "active",
-            tab.dataset.scheduleStatus ===
-              currentScheduleStatus
-          );
-
-        });
-
-
-        renderSchedule();
-
-      }
-    );
-
-  });
+    });
 
 }
 
@@ -1924,7 +1787,6 @@ function renderLeagues() {
 
 
   $("#leagueCards").innerHTML =
-
     leagues.map(league => {
 
       const name =
@@ -2007,12 +1869,11 @@ function renderLeagues() {
       `;
 
     }).join("");
-
 }
 
 
 /* ==================================================
-   LANGUAGE BUTTONS
+   LANGUAGE EVENTS
 ================================================== */
 
 function setupLanguageButtons() {
@@ -2083,9 +1944,7 @@ function setupTimezoneTabs() {
           if (
             !zoneNames[selectedZone]
           ) {
-
             return;
-
           }
 
 
@@ -2106,9 +1965,7 @@ function setupTimezoneTabs() {
 
 
           updateClock();
-
           renderSchedule();
-
           renderNextGame();
 
         }
@@ -2120,14 +1977,12 @@ function setupTimezoneTabs() {
 
 
 /* ==================================================
-   START
+   INITIALIZE
 ================================================== */
 
 function init() {
 
-  /* ------------------------------
-     EVENTS
-  ------------------------------ */
+  /* EVENTS */
 
   setupLanguageButtons();
 
@@ -2138,9 +1993,21 @@ function init() {
   setupTimezoneTabs();
 
 
-  /* ------------------------------
-     INITIAL RENDER
-  ------------------------------ */
+  /* INITIAL STATE */
+
+  $$("[data-schedule-status]")
+    .forEach(tab => {
+
+      tab.classList.toggle(
+        "active",
+        tab.dataset.scheduleStatus ===
+          currentScheduleStatus
+      );
+
+    });
+
+
+  /* RENDER */
 
   updateFilterTexts();
 
@@ -2155,18 +2022,14 @@ function init() {
   renderLeagues();
 
 
-  /* ------------------------------
-     LANGUAGE
-  ------------------------------ */
+  /* LANGUAGE */
 
   applyLanguage(
     currentLanguage
   );
 
 
-  /* ------------------------------
-     CLOCK
-  ------------------------------ */
+  /* CLOCK */
 
   updateClock();
 
@@ -2178,8 +2041,7 @@ function init() {
 ================================================== */
 
 if (
-  document.readyState ===
-  "loading"
+  document.readyState === "loading"
 ) {
 
   document.addEventListener(
@@ -2195,7 +2057,7 @@ if (
 
 
 /* ==================================================
-   CLOCK UPDATE
+   CLOCK
 ================================================== */
 
 setInterval(
