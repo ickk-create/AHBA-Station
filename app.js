@@ -3,12 +3,19 @@ const D = ALLIANCE_DATA;
 const $ = selector => document.querySelector(selector);
 const $$ = selector => document.querySelectorAll(selector);
 
+
 /* ==================================================
    LANGUAGE
 ================================================== */
 
 const translations = {
+
+  /* ==================================================
+     JAPANESE
+  ================================================== */
+
   ja: {
+
     nav: {
       games: "試合",
       standings: "順位表",
@@ -123,6 +130,7 @@ const translations = {
   ================================================== */
 
   ko: {
+
     nav: {
       games: "경기",
       standings: "순위표",
@@ -237,6 +245,7 @@ const translations = {
   ================================================== */
 
   en: {
+
     nav: {
       games: "Games",
       standings: "Standings",
@@ -351,6 +360,7 @@ const translations = {
   ================================================== */
 
   zh: {
+
     nav: {
       games: "比赛",
       standings: "排名",
@@ -458,6 +468,7 @@ const translations = {
       subtitle: "Community・Competition・Connection"
     }
   }
+
 };
 
 
@@ -469,9 +480,16 @@ let currentLanguage =
   localStorage.getItem("asiaHCBBLanguage") || "ja";
 
 
+/* ==================================================
+   TRANSLATION
+================================================== */
+
 function t(path) {
+
   const parts = path.split(".");
-  let value = translations[currentLanguage];
+
+  let value =
+    translations[currentLanguage];
 
   for (const part of parts) {
     value = value?.[part];
@@ -487,7 +505,10 @@ function t(path) {
 ================================================== */
 
 function getLocalized(value, fallback = "") {
-  if (value == null) return fallback;
+
+  if (value == null) {
+    return fallback;
+  }
 
   if (typeof value !== "object") {
     return String(value);
@@ -497,26 +518,18 @@ function getLocalized(value, fallback = "") {
     value[currentLanguage] ||
     value.en ||
     value.ja ||
+    value.ko ||
+    value.zh ||
     fallback
   );
 }
 
 
-/*
-  チーム名などが
-
-  {
-    ja: "日本",
-    ko: "일본",
-    en: "Japan",
-    zh: "日本"
-  }
-
-  の場合でも安全に表示する。
-*/
-
 function displayText(value, fallback = "—") {
-  if (value == null) return fallback;
+
+  if (value == null) {
+    return fallback;
+  }
 
   if (typeof value === "object") {
     return getLocalized(value, fallback);
@@ -531,6 +544,7 @@ function displayText(value, fallback = "—") {
 ================================================== */
 
 function applyLanguage(lang) {
+
   if (!translations[lang]) {
     lang = "ja";
   }
@@ -545,35 +559,64 @@ function applyLanguage(lang) {
   document.documentElement.lang = lang;
 
 
+  /* ------------------------------
+     TEXT
+  ------------------------------ */
+
   $$("[data-i18n]").forEach(el => {
-    el.textContent = t(el.dataset.i18n);
+
+    el.textContent =
+      t(el.dataset.i18n);
+
   });
 
+
+  /* ------------------------------
+     HTML
+  ------------------------------ */
 
   $$("[data-i18n-html]").forEach(el => {
-    el.innerHTML = t(el.dataset.i18nHtml);
+
+    el.innerHTML =
+      t(el.dataset.i18nHtml);
+
   });
 
 
-  $$(
-  '.language-switcher button, .header-language button'
-).forEach(button => {
+  /* ------------------------------
+     LANGUAGE BUTTON
+  ------------------------------ */
 
-  button.classList.toggle(
-    "active",
-    button.dataset.lang === lang
-  );
+  $(
+    '.language-switcher button, .header-language button'
+  ).forEach(button => {
 
-});
+    button.classList.toggle(
+      "active",
+      button.dataset.lang === lang
+    );
 
+  });
+
+
+  /* ------------------------------
+     RENDER
+  ------------------------------ */
 
   updateFilterTexts();
+
   renderGames();
+
   renderStandings();
+
   renderSchedule();
+
   renderNextGame();
+
   renderLeagues();
+
   updateClock();
+
 }
 
 
@@ -582,12 +625,14 @@ function applyLanguage(lang) {
 ================================================== */
 
 function escapeHtml(value) {
+
   return String(value ?? "")
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
+
 }
 
 
@@ -596,8 +641,11 @@ function escapeHtml(value) {
 ================================================== */
 
 function leagueName(id) {
+
   const league =
-    D.leagues?.find(x => x.id === id);
+    D.leagues?.find(
+      x => x.id === id
+    );
 
   if (!league) {
     return id || "";
@@ -607,6 +655,7 @@ function leagueName(id) {
     league.name,
     league.id
   );
+
 }
 
 
@@ -617,24 +666,38 @@ function leagueName(id) {
 function gameLabel(game) {
 
   if (game.title) {
+
     return getLocalized(
       game.title,
       game.id || ""
     );
+
   }
 
+
   if (game.league) {
-    return leagueName(game.league);
+
+    return leagueName(
+      game.league
+    );
+
   }
+
 
   if (
     game.type &&
     translations[currentLanguage]?.gameType?.[game.type]
   ) {
-    return t(`gameType.${game.type}`);
+
+    return t(
+      `gameType.${game.type}`
+    );
+
   }
 
+
   return t("gameType.ahba");
+
 }
 
 
@@ -643,37 +706,46 @@ function gameLabel(game) {
 ================================================== */
 
 function getDetail(game) {
+
   return (
     game?.detail ||
     game?.details ||
     null
   );
+
 }
 
 
 function getPitching(game) {
-  const detail = getDetail(game);
+
+  const detail =
+    getDetail(game);
 
   return (
     detail?.pitching ||
     game?.pitching ||
     {}
   );
+
 }
 
 
 function getHomeRuns(game) {
-  const detail = getDetail(game);
+
+  const detail =
+    getDetail(game);
 
   return (
     detail?.homeRuns ||
     game?.homeRuns ||
     []
   );
+
 }
 
 
 function hasGameDetail(game) {
+
   return !!(
     game?.id ||
     getDetail(game) ||
@@ -683,15 +755,20 @@ function hasGameDetail(game) {
     getPitching(game)?.holds?.length ||
     getHomeRuns(game).length
   );
+
 }
 
 
 function gameDetailUrl(game) {
+
   if (!game?.id) {
     return "game.html";
   }
 
-  return `game.html?id=${encodeURIComponent(game.id)}`;
+  return (
+    `game.html?id=${encodeURIComponent(game.id)}`
+  );
+
 }
 
 
@@ -701,35 +778,62 @@ function gameDetailUrl(game) {
 
 function formatPitcherSummary(game) {
 
-  const p = getPitching(game);
+  const p =
+    getPitching(game);
 
   const parts = [];
 
+
   if (p.win) {
+
     parts.push(
       `${t("game.win")} ${escapeHtml(
         displayText(p.win)
       )}`
     );
+
   }
 
+
   if (p.loss) {
+
     parts.push(
       `${t("game.loss")} ${escapeHtml(
         displayText(p.loss)
       )}`
     );
+
   }
 
+
   if (p.save) {
+
     parts.push(
       `${t("game.save")} ${escapeHtml(
         displayText(p.save)
       )}`
     );
+
   }
 
+
+  if (p.holds?.length) {
+
+    p.holds.forEach(hold => {
+
+      parts.push(
+        `${t("game.hold")} ${escapeHtml(
+          displayText(hold)
+        )}`
+      );
+
+    });
+
+  }
+
+
   return parts;
+
 }
 
 
@@ -743,7 +847,14 @@ function updateFilterTexts() {
     $("#statusFilter")?.value || "all";
 
 
+  /* ------------------------------
+     LEAGUE FILTER
+  ------------------------------ */
+
   if ($("#leagueFilter")) {
+
+    const previousValue =
+      $("#leagueFilter").value;
 
     $("#leagueFilter").innerHTML = `
       <option value="all">
@@ -751,35 +862,55 @@ function updateFilterTexts() {
       </option>
     `;
 
-    $("#leagueFilter").value = "all";
+    if (
+      previousValue &&
+      previousValue !== "all"
+    ) {
+
+      $("#leagueFilter").value =
+        previousValue;
+
+    }
+
   }
 
+
+  /* ------------------------------
+     STATUS FILTER
+  ------------------------------ */
 
   if ($("#statusFilter")) {
 
     $("#statusFilter").innerHTML = `
+
       <option value="all">
         ${t("filter.all")}
-
       </option>
 
       <option value="upcoming">
         ${t("filter.upcoming")}
-
       </option>
 
       <option value="finished">
         ${t("filter.finished")}
-
       </option>
+
     `;
 
     $("#statusFilter").value =
       currentStatus;
+
   }
 
 
+  /* ------------------------------
+     STANDINGS
+  ------------------------------ */
+
   if ($("#standingsLeague")) {
+
+    const previousValue =
+      $("#standingsLeague").value;
 
     $("#standingsLeague").innerHTML = `
       <option value="ahba">
@@ -787,8 +918,11 @@ function updateFilterTexts() {
       </option>
     `;
 
-    $("#standingsLeague").value = "ahba";
+    $("#standingsLeague").value =
+      previousValue || "ahba";
+
   }
+
 }
 
 
@@ -796,7 +930,8 @@ function updateFilterTexts() {
    TIMEZONE
 ================================================== */
 
-let currentZone = "Asia/Tokyo";
+let currentZone =
+  "Asia/Tokyo";
 
 
 const zoneNames = {
@@ -839,6 +974,10 @@ const zoneNames = {
 };
 
 
+/* ==================================================
+   LOCALE
+================================================== */
+
 function localeName() {
 
   if (currentLanguage === "ja") {
@@ -854,20 +993,34 @@ function localeName() {
   }
 
   return "en-US";
+
 }
 
+
+/* ==================================================
+   DATE
+================================================== */
 
 function fmtDate(
   iso,
   zone = currentZone
 ) {
 
-  if (!iso) return "—";
-
-  const date = new Date(iso);
-
-  if (Number.isNaN(date.getTime())) {
+  if (!iso) {
     return "—";
+  }
+
+  const date =
+    new Date(iso);
+
+  if (
+    Number.isNaN(
+      date.getTime()
+    )
+  ) {
+
+    return "—";
+
   }
 
   return new Intl.DateTimeFormat(
@@ -879,20 +1032,34 @@ function fmtDate(
       weekday: "short"
     }
   ).format(date);
+
 }
 
+
+/* ==================================================
+   TIME
+================================================== */
 
 function fmtTime(
   iso,
   zone = currentZone
 ) {
 
-  if (!iso) return "—";
-
-  const date = new Date(iso);
-
-  if (Number.isNaN(date.getTime())) {
+  if (!iso) {
     return "—";
+  }
+
+  const date =
+    new Date(iso);
+
+  if (
+    Number.isNaN(
+      date.getTime()
+    )
+  ) {
+
+    return "—";
+
   }
 
   return new Intl.DateTimeFormat(
@@ -904,6 +1071,7 @@ function fmtTime(
       hour12: false
     }
   ).format(date);
+
 }
 
 
@@ -937,13 +1105,20 @@ function updateClock() {
           second: "2-digit",
           hour12: false
         }
-      ).format(new Date());
+      ).format(
+        new Date()
+      );
+
   }
 
 
   if ($("#tz")) {
-    $("#tz").textContent = name;
+
+    $("#tz").textContent =
+      name;
+
   }
+
 }
 
 
@@ -962,7 +1137,15 @@ function renderNextGame() {
   const game =
     [...games]
       .filter(
-        g => g.status === "upcoming"
+        g =>
+          g.status !== "finished"
+      )
+      .filter(
+        g =>
+          g.time &&
+          !Number.isNaN(
+            new Date(g.time).getTime()
+          )
       )
       .sort(
         (a, b) =>
@@ -974,16 +1157,21 @@ function renderNextGame() {
   if (!game) {
 
     if ($("#nextGame")) {
+
       $("#nextGame").innerHTML =
         t("next.none");
+
     }
 
     if ($("#tickerText")) {
+
       $("#tickerText").textContent =
         t("next.none");
+
     }
 
     return;
+
   }
 
 
@@ -1028,7 +1216,9 @@ function renderNextGame() {
         </div>
 
       </div>
+
     `;
+
   }
 
 
@@ -1040,7 +1230,9 @@ function renderNextGame() {
       `${displayText(game.away)} / ` +
       `${fmtDate(game.time)} ` +
       `${fmtTime(game.time)}`;
+
   }
+
 }
 
 
@@ -1060,33 +1252,54 @@ function renderGames() {
     "all";
 
 
+  const league =
+    $("#leagueFilter")?.value ||
+    "all";
+
+
   const games =
     [...(D.games || [])]
-      .filter(
-        game =>
+      .filter(game => {
+
+        const statusMatch =
           status === "all" ||
-          game.status === status
-      )
+          game.status === status;
+
+        const leagueMatch =
+          league === "all" ||
+          game.league === league;
+
+        return (
+          statusMatch &&
+          leagueMatch
+        );
+
+      })
       .sort((a, b) => {
 
         if (
           a.status === "finished" &&
           b.status !== "finished"
         ) {
+
           return 1;
+
         }
 
         if (
           a.status !== "finished" &&
           b.status === "finished"
         ) {
+
           return -1;
+
         }
 
         return (
           new Date(a.time) -
           new Date(b.time)
         );
+
       });
 
 
@@ -1096,6 +1309,7 @@ function renderGames() {
       `<p>${t("game.noGames")}</p>`;
 
     return;
+
   }
 
 
@@ -1145,16 +1359,17 @@ function renderGames() {
 
 
             <span
-              class="game-status
-              ${escapeHtml(
+              class="game-status ${escapeHtml(
                 game.status || ""
               )}"
             >
+
               ${
                 game.status === "finished"
                   ? t("game.final")
                   : t("game.upcoming")
               }
+
             </span>
 
           </div>
@@ -1203,12 +1418,14 @@ function renderGames() {
             pitching.length
               ? `
                 <div class="game-pitching">
+
                   ${pitching
                     .map(
                       x =>
                         `<div>${x}</div>`
                     )
                     .join("")}
+
                 </div>
               `
               : ""
@@ -1221,17 +1438,20 @@ function renderGames() {
               ${escapeHtml(
                 fmtDate(game.time)
               )}
+
               ${escapeHtml(
                 fmtTime(game.time)
               )}
             </span>
 
             <span>
+
               ${
                 game.status === "finished"
                   ? t("game.finished")
                   : t("game.scheduled")
               }
+
             </span>
 
           </div>
@@ -1240,9 +1460,11 @@ function renderGames() {
           ${detailLink}
 
         </article>
+
       `;
 
     }).join("");
+
 }
 
 
@@ -1259,6 +1481,7 @@ function buildStandings() {
   return Array.isArray(standings)
     ? standings
     : [];
+
 }
 
 
@@ -1348,17 +1571,24 @@ function renderStandings() {
                 </td>
 
               </tr>
+
             `;
+
           }
         ).join("")
 
       : `
+
           <tr>
+
             <td colspan="9">
               ${t("game.noGames")}
             </td>
+
           </tr>
+
         `;
+
 }
 
 
@@ -1366,41 +1596,69 @@ function renderStandings() {
    SCHEDULE
 ================================================== */
 
-let currentScheduleStatus = "upcoming";
+let currentScheduleStatus =
+  "upcoming";
 
 
 function renderSchedule() {
 
-  if (!$("#scheduleList")) return;
+  if (!$("#scheduleList")) {
+    return;
+  }
 
 
-  const allGames = Array.isArray(D.games)
-    ? [...D.games]
-    : [];
+  const allGames =
+    Array.isArray(D.games)
+      ? [...D.games]
+      : [];
 
 
   /* ------------------------------
      予定
   ------------------------------ */
 
-  const upcomingGames = allGames
-    .filter(game => game.status !== "finished")
-    .sort(
-      (a, b) =>
-        new Date(a.time) - new Date(b.time)
-    );
+  const upcomingGames =
+    allGames
+      .filter(
+        game =>
+          game.status !== "finished"
+      )
+      .filter(
+        game =>
+          game.time &&
+          !Number.isNaN(
+            new Date(game.time).getTime()
+          )
+      )
+      .sort(
+        (a, b) =>
+          new Date(a.time) -
+          new Date(b.time)
+      );
 
 
   /* ------------------------------
      終了
   ------------------------------ */
 
-  const finishedGames = allGames
-    .filter(game => game.status === "finished")
-    .sort(
-      (a, b) =>
-        new Date(b.time) - new Date(a.time)
-    );
+  const finishedGames =
+    allGames
+      .filter(
+        game =>
+          game.status === "finished"
+      )
+      .filter(
+        game =>
+          game.time &&
+          !Number.isNaN(
+            new Date(game.time).getTime()
+          )
+      )
+      .sort(
+        (a, b) =>
+          new Date(b.time) -
+          new Date(a.time)
+      );
 
 
   /* ------------------------------
@@ -1462,6 +1720,11 @@ function renderSchedule() {
     `;
 
   }
+
+
+  /* ------------------------------
+     試合一覧
+  ------------------------------ */
 
   else {
 
@@ -1566,7 +1829,7 @@ function renderSchedule() {
 
 
   /* ------------------------------
-     TIMEZONE
+     TIMEZONE LABEL
   ------------------------------ */
 
   if ($("#zoneLabel")) {
@@ -1575,10 +1838,8 @@ function renderSchedule() {
       zoneNames[currentZone];
 
     $("#zoneLabel").textContent =
-      zone?.[currentLanguage]
-      ||
-      zone?.ja
-      ||
+      zone?.[currentLanguage] ||
+      zone?.ja ||
       currentZone;
 
   }
@@ -1592,39 +1853,55 @@ function renderSchedule() {
 
 function setupScheduleTabs() {
 
-  $$("[data-schedule-status]")
-    .forEach(button => {
-
-      button.addEventListener(
-        "click",
-        () => {
-
-          currentScheduleStatus =
-            button.dataset.scheduleStatus;
+  const buttons =
+    $$("[data-schedule-status]");
 
 
-          /*
-           * active切り替え
-           */
+  buttons.forEach(button => {
 
-          $$("[data-schedule-status]")
-            .forEach(tab => {
+    button.addEventListener(
+      "click",
+      () => {
 
-              tab.classList.toggle(
-                "active",
-                tab.dataset.scheduleStatus ===
-                currentScheduleStatus
-              );
-
-            });
+        const selectedStatus =
+          button.dataset.scheduleStatus;
 
 
-          renderSchedule();
+        if (
+          selectedStatus !== "upcoming" &&
+          selectedStatus !== "finished"
+        ) {
+
+          return;
 
         }
-      );
 
-    });
+
+        currentScheduleStatus =
+          selectedStatus;
+
+
+        /* ------------------------------
+           ACTIVE
+        ------------------------------ */
+
+        buttons.forEach(tab => {
+
+          tab.classList.toggle(
+            "active",
+            tab.dataset.scheduleStatus ===
+              currentScheduleStatus
+          );
+
+        });
+
+
+        renderSchedule();
+
+      }
+    );
+
+  });
 
 }
 
@@ -1647,6 +1924,7 @@ function renderLeagues() {
 
 
   $("#leagueCards").innerHTML =
+
     leagues.map(league => {
 
       const name =
@@ -1680,20 +1958,37 @@ function renderLeagues() {
         >
 
           <div class="league-code">
+
             ${escapeHtml(
               league.id
             )}
+
           </div>
 
+
           <h3>
-            ${escapeHtml(name)}
+
+            ${escapeHtml(
+              name
+            )}
+
           </h3>
 
+
           <p>
-            ${escapeHtml(country)}
+
+            ${escapeHtml(
+              country
+            )}
+
             <br>
-            ${escapeHtml(description)}
+
+            ${escapeHtml(
+              description
+            )}
+
           </p>
+
 
           <div class="league-view">
 
@@ -1708,9 +2003,11 @@ function renderLeagues() {
           </div>
 
         </a>
+
       `;
 
     }).join("");
+
 }
 
 
@@ -1718,144 +2015,108 @@ function renderLeagues() {
    LANGUAGE BUTTONS
 ================================================== */
 
-$$(
-  ".language-switcher button"
-).forEach(button => {
+function setupLanguageButtons() {
 
-  button.addEventListener(
-    "click",
-    () => {
-      applyLanguage(
-        button.dataset.lang
-      );
-    }
-  );
+  $(
+    '.language-switcher button, .header-language button'
+  ).forEach(button => {
 
-});
+    button.addEventListener(
+      "click",
+      () => {
 
+        applyLanguage(
+          button.dataset.lang
+        );
 
-/* ==================================================
-   EVENTS
-================================================== */
-
-
-/* LANGUAGE */
-
-$$(
-  '.language-switcher button, .header-language button'
-).forEach(button => {
-
-  button.addEventListener(
-    "click",
-    () => {
-
-      applyLanguage(
-        button.dataset.lang
-      );
-
-    }
-  );
-
-});
-
-
-/* MATCH CENTER */
-
-$("#leagueFilter")?.addEventListener(
-  "change",
-  renderGames
-);
-
-$("#statusFilter")?.addEventListener(
-  "change",
-  renderGames
-);
-
-$("#standingsLeague")?.addEventListener(
-  "change",
-  renderStandings
-);
-
-
-/* ==================================================
-   SCHEDULE STATUS TABS
-================================================== */
-
-$$("[data-schedule-status]").forEach(button => {
-
-  button.addEventListener(
-    "click",
-    () => {
-
-      currentScheduleStatus =
-        button.dataset.scheduleStatus;
-
-
-      $$("[data-schedule-status]")
-        .forEach(tab => {
-
-          tab.classList.toggle(
-            "active",
-            tab.dataset.scheduleStatus ===
-              currentScheduleStatus
-          );
-
-        });
-
-
-      renderSchedule();
-
-    }
-  );
-
-});
-
-
-/* ==================================================
-   TIMEZONE
-================================================== */
-
-$$(".timezone-tabs button").forEach(button => {
-
-  button.addEventListener(
-    "click",
-    () => {
-
-      const selectedZone =
-        button.dataset.zone;
-
-
-      if (!zoneNames[selectedZone]) {
-        return;
       }
+    );
+
+  });
+
+}
 
 
-      currentZone =
-        selectedZone;
+/* ==================================================
+   MATCH CENTER EVENTS
+================================================== */
 
+function setupMatchCenterEvents() {
 
-      $$(".timezone-tabs button")
-        .forEach(btn => {
-
-          btn.classList.toggle(
-            "active",
-            btn.dataset.zone ===
-              currentZone
-          );
-
-        });
-
-
-      updateClock();
-
-      renderSchedule();
-
-      renderNextGame();
-
-    }
+  $("#leagueFilter")?.addEventListener(
+    "change",
+    renderGames
   );
 
-});
+
+  $("#statusFilter")?.addEventListener(
+    "change",
+    renderGames
+  );
+
+
+  $("#standingsLeague")?.addEventListener(
+    "change",
+    renderStandings
+  );
+
+}
+
+
+/* ==================================================
+   TIMEZONE EVENTS
+================================================== */
+
+function setupTimezoneTabs() {
+
+  $$(".timezone-tabs button")
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          const selectedZone =
+            button.dataset.zone;
+
+
+          if (
+            !zoneNames[selectedZone]
+          ) {
+
+            return;
+
+          }
+
+
+          currentZone =
+            selectedZone;
+
+
+          $$(".timezone-tabs button")
+            .forEach(btn => {
+
+              btn.classList.toggle(
+                "active",
+                btn.dataset.zone ===
+                  currentZone
+              );
+
+            });
+
+
+          updateClock();
+
+          renderSchedule();
+
+          renderNextGame();
+
+        }
+      );
+
+    });
+
+}
 
 
 /* ==================================================
@@ -1863,6 +2124,23 @@ $$(".timezone-tabs button").forEach(button => {
 ================================================== */
 
 function init() {
+
+  /* ------------------------------
+     EVENTS
+  ------------------------------ */
+
+  setupLanguageButtons();
+
+  setupMatchCenterEvents();
+
+  setupScheduleTabs();
+
+  setupTimezoneTabs();
+
+
+  /* ------------------------------
+     INITIAL RENDER
+  ------------------------------ */
 
   updateFilterTexts();
 
@@ -1876,16 +2154,28 @@ function init() {
 
   renderLeagues();
 
+
+  /* ------------------------------
+     LANGUAGE
+  ------------------------------ */
+
   applyLanguage(
     currentLanguage
   );
 
+
+  /* ------------------------------
+     CLOCK
+  ------------------------------ */
+
   updateClock();
 
-  setupScheduleTabs();
-   
 }
 
+
+/* ==================================================
+   DOM READY
+================================================== */
 
 if (
   document.readyState ===
@@ -1903,6 +2193,10 @@ if (
 
 }
 
+
+/* ==================================================
+   CLOCK UPDATE
+================================================== */
 
 setInterval(
   updateClock,
