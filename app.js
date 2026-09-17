@@ -1,734 +1,2100 @@
-const D = ALLIANCE_DATA;
+/* =========================================================
+   Asia HCBB Baseball Alliance
+   app.js
+   ========================================================= */
 
-const $ = selector => document.querySelector(selector);
-const $$ = selector => document.querySelectorAll(selector);
+(() => {
+  "use strict";
+
+  /* ---------------------------------------------------------
+     DATA
+     --------------------------------------------------------- */
+
+  const D =
+    typeof ALLIANCE_DATA !== "undefined"
+      ? ALLIANCE_DATA
+      : {
+          leagues: [],
+          games: [],
+          standings: {}
+        };
+
+  /* ---------------------------------------------------------
+     STATE
+     --------------------------------------------------------- */
+
+  let currentLang =
+    localStorage.getItem("asiaHCBBLanguage") || "ja";
+
+  let currentZone = "Asia/Tokyo";
+
+  let currentScheduleStatus = "upcoming";
 
 
-/* ==================================================
-   LANGUAGE
-================================================== */
+  /* ---------------------------------------------------------
+     TRANSLATIONS
+     --------------------------------------------------------- */
 
-const translations = {
-  ja: {
-    nav: {
-      games: "試合",
-      standings: "順位表",
-      schedule: "時間表",
-      leagues: "リーグ",
-      about: "AHBA紹介",
-      admin: "管理"
+  const translations = {
+
+    ja: {
+
+      nav: {
+        games: "試合情報",
+        standings: "順位表",
+        schedule: "日程",
+        leagues: "リーグ紹介",
+        about: "AHBAについて"
+      },
+
+      hero: {
+        eyebrow: "ASIA HCBB BASEBALL ALLIANCE",
+        title: "アジアのHCBBを、<br><span>ひとつにつなぐ。</span>",
+        description:
+          "アジア各地域のHCBBコミュニティをつなぎ、試合・リーグ・大会・交流の情報を共有します。",
+        button: "リーグ・試合情報を見る →"
+      },
+
+      nextGame: {
+        eyebrow: "NEXT GAME",
+        noGame: "現在予定されている試合はありません",
+        tbd: "対戦カード未定"
+      },
+
+      matchCenter: {
+        eyebrow: "MATCH CENTER",
+        title: "試合情報",
+        allLeagues: "すべてのリーグ",
+        allStatus: "すべて",
+        upcoming: "予定",
+        finished: "終了",
+        noGames: "表示できる試合がありません"
+      },
+
+      standings: {
+        eyebrow: "STANDINGS",
+        title: "順位表",
+        team: "チーム",
+        games: "試合",
+        wins: "勝",
+        losses: "敗",
+        draws: "分",
+        winRate: "勝率",
+        points: "勝点",
+        noData: "順位表のデータがありません"
+      },
+
+      schedule: {
+        eyebrow: "TIME TABLE",
+        title: "日程",
+        upcoming: "予定",
+        finished: "終了",
+        noGames: "表示できる日程がありません",
+        timezone: "表示タイムゾーン"
+      },
+
+      scheduleStatus: {
+        upcoming: "予定",
+        finished: "終了"
+      },
+
+      leagues: {
+        eyebrow: "LEAGUES",
+        title: "リーグ紹介",
+        region: "地域",
+        matchTime: "基本試合時間",
+        teams: "参加チーム",
+        view: "リーグ詳細を見る →",
+        noLeagues: "リーグ情報がありません"
+      },
+
+      about: {
+        eyebrow: "ABOUT AHBA",
+        title: "アジアのHCBBを、<br><span>ひとつにつなぐ。</span>",
+        description:
+          "Asia HCBB Baseball Alliance（AHBA）は、アジア各地域のHCBBコミュニティをつなぎ、試合・リーグ・大会・交流の情報を共有するためのAllianceです。",
+        button: "AHBAについて詳しく見る →"
+      },
+
+      footer: {
+        subtitle: "Asia HCBB Baseball Alliance",
+        rights: "All Rights Reserved."
+      },
+
+      common: {
+        home: "ホーム",
+        away: "ビジター",
+        vs: "VS",
+        at: "@"
+      }
+
     },
 
-    hero: {
-      title: "アジアのHCBBを、<br><span>ひとつのスコアボードへ。</span>",
-      description: "試合結果、順位、各リーグの試合時間をひとつのサイトで確認できる Asia HCBB Baseball Alliance 公式ポータル。",
-      games: "試合を見る",
-      schedule: "時間表"
+
+    ko: {
+
+      nav: {
+        games: "경기 정보",
+        standings: "순위표",
+        schedule: "일정",
+        leagues: "리그 소개",
+        about: "AHBA 소개"
+      },
+
+      hero: {
+        eyebrow: "ASIA HCBB BASEBALL ALLIANCE",
+        title: "아시아의 HCBB를,<br><span>하나로 연결합니다.</span>",
+        description:
+          "아시아 각 지역의 HCBB 커뮤니티를 연결하고 경기·리그·대회·교류 정보를 공유합니다.",
+        button: "리그 및 경기 정보 보기 →"
+      },
+
+      nextGame: {
+        eyebrow: "NEXT GAME",
+        noGame: "현재 예정된 경기가 없습니다",
+        tbd: "대진 미정"
+      },
+
+      matchCenter: {
+        eyebrow: "MATCH CENTER",
+        title: "경기 정보",
+        allLeagues: "모든 리그",
+        allStatus: "전체",
+        upcoming: "예정",
+        finished: "종료",
+        noGames: "표시할 경기가 없습니다"
+      },
+
+      standings: {
+        eyebrow: "STANDINGS",
+        title: "순위표",
+        team: "팀",
+        games: "경기",
+        wins: "승",
+        losses: "패",
+        draws: "무",
+        winRate: "승률",
+        points: "승점",
+        noData: "순위표 데이터가 없습니다"
+      },
+
+      schedule: {
+        eyebrow: "TIME TABLE",
+        title: "일정",
+        upcoming: "예정",
+        finished: "종료",
+        noGames: "표시할 일정이 없습니다",
+        timezone: "표시 시간대"
+      },
+
+      scheduleStatus: {
+        upcoming: "예정",
+        finished: "종료"
+      },
+
+      leagues: {
+        eyebrow: "LEAGUES",
+        title: "리그 소개",
+        region: "지역",
+        matchTime: "기본 경기 시간",
+        teams: "참가 팀",
+        view: "리그 상세 보기 →",
+        noLeagues: "리그 정보가 없습니다"
+      },
+
+      about: {
+        eyebrow: "ABOUT AHBA",
+        title: "아시아의 HCBB를,<br><span>하나로 연결합니다.</span>",
+        description:
+          "Asia HCBB Baseball Alliance（AHBA）는 아시아 각 지역의 HCBB 커뮤니티를 연결하고 경기·리그·대회·교류 정보를 공유하는 Alliance입니다.",
+        button: "AHBA 자세히 보기 →"
+      },
+
+      footer: {
+        subtitle: "Asia HCBB Baseball Alliance",
+        rights: "All Rights Reserved."
+      },
+
+      common: {
+        home: "홈",
+        away: "원정",
+        vs: "VS",
+        at: "@"
+      }
+
     },
 
-    next: {
-      title: "NEXT GAME",
-      none: "次の試合はありません。"
+
+    en: {
+
+      nav: {
+        games: "GAMES",
+        standings: "STANDINGS",
+        schedule: "SCHEDULE",
+        leagues: "LEAGUES",
+        about: "ABOUT AHBA"
+      },
+
+      hero: {
+        eyebrow: "ASIA HCBB BASEBALL ALLIANCE",
+        title: "Connecting Asia's HCBB,<br><span>as one community.</span>",
+        description:
+          "Connecting HCBB communities across Asia and sharing information about games, leagues, tournaments and community exchange.",
+        button: "VIEW GAMES & LEAGUES →"
+      },
+
+      nextGame: {
+        eyebrow: "NEXT GAME",
+        noGame: "There are currently no scheduled games.",
+        tbd: "TBD"
+      },
+
+      matchCenter: {
+        eyebrow: "MATCH CENTER",
+        title: "Games",
+        allLeagues: "All Leagues",
+        allStatus: "All",
+        upcoming: "Upcoming",
+        finished: "Finished",
+        noGames: "No games to display."
+      },
+
+      standings: {
+        eyebrow: "STANDINGS",
+        title: "Standings",
+        team: "Team",
+        games: "GP",
+        wins: "W",
+        losses: "L",
+        draws: "D",
+        winRate: "PCT",
+        points: "PTS",
+        noData: "No standings data available."
+      },
+
+      schedule: {
+        eyebrow: "TIME TABLE",
+        title: "Schedule",
+        upcoming: "Upcoming",
+        finished: "Finished",
+        noGames: "No games to display.",
+        timezone: "TIME ZONE"
+      },
+
+      scheduleStatus: {
+        upcoming: "Upcoming",
+        finished: "Finished"
+      },
+
+      leagues: {
+        eyebrow: "LEAGUES",
+        title: "League Introduction",
+        region: "Region",
+        matchTime: "Regular Match Time",
+        teams: "Teams",
+        view: "VIEW LEAGUE →",
+        noLeagues: "No league information available."
+      },
+
+      about: {
+        eyebrow: "ABOUT AHBA",
+        title: "Connecting Asia's HCBB,<br><span>as one community.</span>",
+        description:
+          "Asia HCBB Baseball Alliance (AHBA) connects HCBB communities across Asia and provides a shared place for games, leagues, tournaments and community exchange.",
+        button: "LEARN MORE ABOUT AHBA →"
+      },
+
+      footer: {
+        subtitle: "Asia HCBB Baseball Alliance",
+        rights: "All Rights Reserved."
+      },
+
+      common: {
+        home: "Home",
+        away: "Away",
+        vs: "VS",
+        at: "@"
+      }
+
     },
 
-    games: {
-      eyebrow: "MATCH CENTER",
-      title: "試合結果・予定"
-    },
 
-    standings: {
-      eyebrow: "STANDINGS",
-      title: "順位表"
-    },
+    zh: {
 
-    schedule: {
-      eyebrow: "TIME TABLE",
-      title: "リーグ時間表",
-      timezone: "表示タイムゾーン："
-    },
+      nav: {
+        games: "比赛信息",
+        standings: "积分榜",
+        schedule: "赛程",
+        leagues: "联赛介绍",
+        about: "关于 AHBA"
+      },
 
-    leagues: {
-      eyebrow: "LEAGUE INTRODUCTION",
-      title: "リーグ紹介",
-      view: "リーグページを見る"
-    },
+      hero: {
+        eyebrow: "ASIA HCBB BASEBALL ALLIANCE",
+        title: "连接亚洲 HCBB，<br><span>让社区汇聚一处。</span>",
+        description:
+          "连接亚洲各地区的 HCBB 社区，共享比赛、联赛、赛事和交流信息。",
+        button: "查看比赛与联赛 →"
+      },
 
-    about: {
-      eyebrow: "ABOUT AHBA",
-      title: "アジアのHCBBを、<br><span>ひとつにつなぐ。</span>",
-      description: "Asia HCBB Baseball Alliance（AHBA）は、アジア各地域のHCBBコミュニティをつなぎ、試合・リーグ・大会・交流の情報を共有するためのAllianceです。",
-      button: "AHBAについて詳しく見る →"
-    },
+      nextGame: {
+        eyebrow: "NEXT GAME",
+        noGame: "目前没有安排中的比赛",
+        tbd: "待定"
+      },
 
-    filter: {
-      allLeagues: "全リーグ",
-      all: "全試合",
-      upcoming: "予定",
-      finished: "終了"
-    },
+      matchCenter: {
+        eyebrow: "MATCH CENTER",
+        title: "比赛信息",
+        allLeagues: "所有联赛",
+        allStatus: "全部",
+        upcoming: "即将进行",
+        finished: "已结束",
+        noGames: "没有可显示的比赛"
+      },
 
-    table: {
-      team: "TEAM"
-    },
+      standings: {
+        eyebrow: "STANDINGS",
+        title: "积分榜",
+        team: "球队",
+        games: "场",
+        wins: "胜",
+        losses: "负",
+        draws: "平",
+        winRate: "胜率",
+        points: "积分",
+        noData: "暂无积分榜数据"
+      },
 
-    country: {
-      japan: "日本",
-      korea: "韓国",
-      taiwan: "台湾",
-      china: "中国",
-      newYork: "ニューヨーク"
-    },
+      schedule: {
+        eyebrow: "TIME TABLE",
+        title: "赛程",
+        upcoming: "即将进行",
+        finished: "已结束",
+        noGames: "没有可显示的赛程",
+        timezone: "显示时区"
+      },
 
-    game: {
-      final: "FINAL",
-      upcoming: "UPCOMING",
-      finished: "試合終了",
-      scheduled: "試合予定",
-      international: "国際試合",
-      friendly: "親善試合",
-      tournament: "大会",
-      ahba: "AHBA主催",
-      noGames: "該当する試合がありません。",
-      detail: "試合詳細 →",
-      win: "勝利投手",
-      loss: "敗戦投手",
-      save: "セーブ",
-      hold: "ホールド"
-    },
+      scheduleStatus: {
+        upcoming: "即将进行",
+        finished: "已结束"
+      },
 
-    gameType: {
-      international: "国際試合",
-      friendly: "親善試合",
-      tournament: "大会",
-      ahba: "AHBA主催"
-    },
+      leagues: {
+        eyebrow: "LEAGUES",
+        title: "联赛介绍",
+        region: "地区",
+        matchTime: "常规比赛时间",
+        teams: "参赛球队",
+        view: "查看联赛详情 →",
+        noLeagues: "暂无联赛信息"
+      },
 
-    scheduleStatus: {
-      finished: "終了",
-      upcoming: "予定"
-    },
+      about: {
+        eyebrow: "ABOUT AHBA",
+        title: "连接亚洲 HCBB，<br><span>让社区汇聚一处。</span>",
+        description:
+          "Asia HCBB Baseball Alliance（AHBA）连接亚洲各地区的 HCBB 社区，为比赛、联赛、赛事和交流提供统一的信息平台。",
+        button: "了解更多关于 AHBA →"
+      },
 
-    footer: {
-      subtitle: "Community・Competition・Connection"
+      footer: {
+        subtitle: "Asia HCBB Baseball Alliance",
+        rights: "All Rights Reserved."
+      },
+
+      common: {
+        home: "主队",
+        away: "客队",
+        vs: "VS",
+        at: "@"
+      }
+
     }
-  },
 
-  ko: {
-    nav: {
-      games: "경기",
-      standings: "순위표",
-      schedule: "일정",
-      leagues: "리그",
-      about: "AHBA 소개",
-      admin: "관리"
-    },
+  };
 
-    hero: {
-      title: "아시아 HCBB를,<br><span>하나의 스코어보드로.</span>",
-      description: "경기 결과, 순위, 각 리그의 경기 일정을 한 곳에서 확인할 수 있는 Asia HCBB Baseball Alliance 공식 포털입니다.",
-      games: "경기 보기",
-      schedule: "경기 일정"
-    },
 
-    next: {
-      title: "NEXT GAME",
-      none: "예정된 다음 경기가 없습니다."
-    },
+  /* ---------------------------------------------------------
+     HELPERS
+     --------------------------------------------------------- */
 
-    games: {
-      eyebrow: "MATCH CENTER",
-      title: "경기 결과・일정"
-    },
+  const $ = (selector) =>
+    document.querySelector(selector);
 
-    standings: {
-      eyebrow: "STANDINGS",
-      title: "순위표"
-    },
+  const $$ = (selector) =>
+    Array.from(document.querySelectorAll(selector));
 
-    schedule: {
-      eyebrow: "TIME TABLE",
-      title: "리그 일정",
-      timezone: "표시 시간대："
-    },
 
-    leagues: {
-      eyebrow: "LEAGUE INTRODUCTION",
-      title: "리그 소개",
-      view: "리그 페이지 보기"
-    },
+  function t(key) {
 
-    about: {
-      eyebrow: "ABOUT AHBA",
-      title: "아시아 HCBB를,<br><span>하나로 연결합니다.</span>",
-      description: "Asia HCBB Baseball Alliance（AHBA）는 아시아 각 지역의 HCBB 커뮤니티를 연결하고 경기・리그・대회・교류 정보를 공유하는 Alliance입니다.",
-      button: "AHBA 자세히 보기 →"
-    },
+    const parts = key.split(".");
 
-    filter: {
-      allLeagues: "전체 리그",
-      all: "전체 경기",
-      upcoming: "예정",
-      finished: "종료"
-    },
+    let value =
+      translations[currentLang] ||
+      translations.ja;
 
-    table: {
-      team: "TEAM"
-    },
+    for (const part of parts) {
 
-    country: {
-      japan: "일본",
-      korea: "한국",
-      taiwan: "대만",
-      china: "중국",
-      newYork: "뉴욕"
-    },
+      if (
+        value &&
+        Object.prototype.hasOwnProperty.call(value, part)
+      ) {
+        value = value[part];
+      } else {
+        return key;
+      }
 
-    game: {
-      final: "FINAL",
-      upcoming: "UPCOMING",
-      finished: "경기 종료",
-      scheduled: "경기 예정",
-      international: "국제 경기",
-      friendly: "친선 경기",
-      tournament: "대회",
-      ahba: "AHBA 주최",
-      noGames: "해당 경기가 없습니다.",
-      detail: "경기 상세 →",
-      win: "승리 투수",
-      loss: "패전 투수",
-      save: "세이브",
-      hold: "홀드"
-    },
-
-    gameType: {
-      international: "국제 경기",
-      friendly: "친선 경기",
-      tournament: "대회",
-      ahba: "AHBA 주최"
-    },
-
-    scheduleStatus: {
-      finished: "종료",
-      upcoming: "예정"
-    },
-
-    footer: {
-      subtitle: "Community・Competition・Connection"
     }
-  },
 
-  en: {
-    nav: {
-      games: "Games",
-      standings: "Standings",
-      schedule: "Schedule",
-      leagues: "Leagues",
-      about: "ABOUT AHBA",
-      admin: "Admin"
-    },
-
-    hero: {
-      title: "Asia's HCBB,<br><span>one scoreboard.</span>",
-      description: "The official Asia HCBB Baseball Alliance portal for game results, standings and league schedules.",
-      games: "View Games",
-      schedule: "Schedule"
-    },
-
-    next: {
-      title: "NEXT GAME",
-      none: "No upcoming games."
-    },
-
-    games: {
-      eyebrow: "MATCH CENTER",
-      title: "Results & Fixtures"
-    },
-
-    standings: {
-      eyebrow: "STANDINGS",
-      title: "Standings"
-    },
-
-    schedule: {
-      eyebrow: "TIME TABLE",
-      title: "League Schedule",
-      timezone: "Timezone: "
-    },
-
-    leagues: {
-      eyebrow: "LEAGUE INTRODUCTION",
-      title: "League Introduction",
-      view: "VIEW LEAGUE"
-    },
-
-    about: {
-      eyebrow: "ABOUT AHBA",
-      title: "Connecting Asia's HCBB,<br><span>as one community.</span>",
-      description: "Asia HCBB Baseball Alliance (AHBA) connects HCBB communities across Asia and provides a shared place for games, leagues, tournaments and community exchange.",
-      button: "LEARN MORE ABOUT AHBA →"
-    },
-
-    filter: {
-      allLeagues: "All Leagues",
-      all: "All Games",
-      upcoming: "Upcoming",
-      finished: "Finished"
-    },
-
-    table: {
-      team: "TEAM"
-    },
-
-    country: {
-      japan: "Japan",
-      korea: "Korea",
-      taiwan: "Taiwan",
-      china: "China",
-      newYork: "New York"
-    },
-
-    game: {
-      final: "FINAL",
-      upcoming: "UPCOMING",
-      finished: "Final",
-      scheduled: "Scheduled",
-      international: "International",
-      friendly: "Friendly",
-      tournament: "Tournament",
-      ahba: "AHBA Hosted",
-      noGames: "No games found.",
-      detail: "GAME DETAILS →",
-      win: "Win",
-      loss: "Loss",
-      save: "Save",
-      hold: "Hold"
-    },
-
-    gameType: {
-      international: "International",
-      friendly: "Friendly",
-      tournament: "Tournament",
-      ahba: "AHBA Hosted"
-    },
-
-    scheduleStatus: {
-      finished: "Finished",
-      upcoming: "Upcoming"
-    },
-
-    footer: {
-      subtitle: "Community・Competition・Connection"
-    }
-  },
-
-  zh: {
-    nav: {
-      games: "比赛",
-      standings: "排名",
-      schedule: "赛程",
-      leagues: "联赛",
-      about: "关于 AHBA",
-      admin: "管理"
-    },
-
-    hero: {
-      title: "亚洲 HCBB，<br><span>汇聚于一个记分板。</span>",
-      description: "Asia HCBB Baseball Alliance 官方门户，提供比赛结果、排名和各联赛赛程。",
-      games: "查看比赛",
-      schedule: "赛程"
-    },
-
-    next: {
-      title: "NEXT GAME",
-      none: "暂无下一场比赛。"
-    },
-
-    games: {
-      eyebrow: "MATCH CENTER",
-      title: "比赛结果・赛程"
-    },
-
-    standings: {
-      eyebrow: "STANDINGS",
-      title: "排名"
-    },
-
-    schedule: {
-      eyebrow: "TIME TABLE",
-      title: "联赛赛程",
-      timezone: "显示时区："
-    },
-
-    leagues: {
-      eyebrow: "LEAGUE INTRODUCTION",
-      title: "联赛介绍",
-      view: "查看联赛页面"
-    },
-
-    about: {
-      eyebrow: "ABOUT AHBA",
-      title: "连接亚洲 HCBB，<br><span>让社区汇聚一处。</span>",
-      description: "Asia HCBB Baseball Alliance（AHBA）连接亚洲各地区的 HCBB 社区，为比赛、联赛、赛事和交流提供统一的信息平台。",
-      button: "了解更多关于 AHBA →"
-    },
-
-    filter: {
-      allLeagues: "所有联赛",
-      all: "所有比赛",
-      upcoming: "即将进行",
-      finished: "已结束"
-    },
-
-    table: {
-      team: "TEAM"
-    },
-
-    country: {
-      japan: "日本",
-      korea: "韩国",
-      taiwan: "台湾",
-      china: "中国",
-      newYork: "纽约"
-    },
-
-    game: {
-      final: "FINAL",
-      upcoming: "UPCOMING",
-      finished: "比赛结束",
-      scheduled: "比赛预定",
-      international: "国际比赛",
-      friendly: "友谊赛",
-      tournament: "赛事",
-      ahba: "AHBA主办",
-      noGames: "暂无比赛。",
-      detail: "比赛详情 →",
-      win: "胜投",
-      loss: "败投",
-      save: "救援",
-      hold: "中继成功"
-    },
-
-    gameType: {
-      international: "国际比赛",
-      friendly: "友谊赛",
-      tournament: "赛事",
-      ahba: "AHBA主办"
-    },
-
-    scheduleStatus: {
-      finished: "已结束",
-      upcoming: "即将进行"
-    },
-
-    footer: {
-      subtitle: "Community・Competition・Connection"
-    }
-  }
-};
-
-
-/* ==================================================
-   CURRENT LANGUAGE
-================================================== */
-
-let currentLanguage =
-  localStorage.getItem("asiaHCBBLanguage") || "ja";
-
-
-function t(path) {
-  const parts = path.split(".");
-  let value = translations[currentLanguage];
-
-  for (const part of parts) {
-    value = value?.[part];
-  }
-
-  return value || path;
-}
-
-
-/* ==================================================
-   MULTILINGUAL DATA
-================================================== */
-
-function getLocalized(value, fallback = "") {
-  if (value == null) {
-    return fallback;
-  }
-
-  if (typeof value !== "object") {
-    return String(value);
-  }
-
-  return (
-    value[currentLanguage] ||
-    value.en ||
-    value.ja ||
-    value.ko ||
-    value.zh ||
-    fallback
-  );
-}
-
-
-function displayText(value, fallback = "—") {
-  if (value == null) {
-    return fallback;
-  }
-
-  if (typeof value === "object") {
-    return getLocalized(value, fallback);
-  }
-
-  return String(value);
-}
-
-
-/* ==================================================
-   LANGUAGE APPLY
-================================================== */
-
-function applyLanguage(lang) {
-  if (!translations[lang]) {
-    lang = "ja";
-  }
-
-  currentLanguage = lang;
-
-  localStorage.setItem(
-    "asiaHCBBLanguage",
-    lang
-  );
-
-  document.documentElement.lang = lang;
-
-
-  $$("[data-i18n]").forEach(el => {
-    el.textContent = t(el.dataset.i18n);
-  });
-
-
-  $$("[data-i18n-html]").forEach(el => {
-    el.innerHTML = t(el.dataset.i18nHtml);
-  });
-
-
-  $(
-    '.language-switcher button, .header-language button'
-  ).forEach(button => {
-    button.classList.toggle(
-      "active",
-      button.dataset.lang === lang
-    );
-  });
-
-
-  updateFilterTexts();
-  renderGames();
-  renderStandings();
-  renderSchedule();
-  renderNextGame();
-  renderLeagues();
-  updateClock();
-}
-
-
-/* ==================================================
-   HTML ESCAPE
-================================================== */
-
-function escapeHtml(value) {
-  return String(value ?? "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
-
-
-/* ==================================================
-   LEAGUE
-================================================== */
-
-function leagueName(id) {
-  const league =
-    D.leagues?.find(
-      x => x.id === id
-    );
-
-  if (!league) {
-    return id || "";
-  }
-
-  return getLocalized(
-    league.name,
-    league.id
-  );
-}
-
-
-/* ==================================================
-   GAME LABEL
-================================================== */
-
-function gameLabel(game) {
-
-  if (game.title) {
-    return getLocalized(
-      game.title,
-      game.id || ""
-    );
-  }
-
-  if (game.league) {
-    return leagueName(game.league);
-  }
-
-  if (
-    game.type &&
-    translations[currentLanguage]?.gameType?.[game.type]
-  ) {
-    return t(
-      `gameType.${game.type}`
-    );
-  }
-
-  return t("gameType.ahba");
-}
-
-
-/* ==================================================
-   GAME DETAIL
-================================================== */
-
-function getDetail(game) {
-  return (
-    game?.detail ||
-    game?.details ||
-    null
-  );
-}
-
-
-function getPitching(game) {
-  const detail = getDetail(game);
-
-  return (
-    detail?.pitching ||
-    game?.pitching ||
-    {}
-  );
-}
-
-
-function getHomeRuns(game) {
-  const detail = getDetail(game);
-
-  return (
-    detail?.homeRuns ||
-    game?.homeRuns ||
-    []
-  );
-}
-
-
-function hasGameDetail(game) {
-  return !!(
-    game?.id ||
-    getDetail(game) ||
-    getPitching(game)?.win ||
-    getPitching(game)?.loss ||
-    getPitching(game)?.save ||
-    getPitching(game)?.holds?.length ||
-    getHomeRuns(game).length
-  );
-}
-
-
-function gameDetailUrl(game) {
-  if (!game?.id) {
-    return "game.html";
-  }
-
-  return (
-    `game.html?id=${encodeURIComponent(game.id)}`
-  );
-}
-
-
-/* ==================================================
-   PITCHER SUMMARY
-================================================== */
-
-function formatPitcherSummary(game) {
-
-  const p =
-    getPitching(game);
-
-  const parts = [];
-
-
-  if (p.win) {
-    parts.push(
-      `${t("game.win")} ${escapeHtml(
-        displayText(p.win)
-      )}`
-    );
+    return value;
   }
 
 
-  if (p.loss) {
-    parts.push(
-      `${t("game.loss")} ${escapeHtml(
-        displayText(p.loss)
-      )}`
-    );
-  }
+  /*
+   * 多言語オブジェクトを表示用文字列に変換
+   *
+   * 例:
+   * {
+   *   ja: "日本",
+   *   ko: "일본",
+   *   en: "Japan",
+   *   zh: "日本"
+   * }
+   */
+  function getLocalized(value, fallback = "") {
 
+    if (
+      value !== null &&
+      value !== undefined &&
+      typeof value === "object"
+    ) {
 
-  if (p.save) {
-    parts.push(
-      `${t("game.save")} ${escapeHtml(
-        displayText(p.save)
-      )}`
-    );
-  }
-
-
-  if (Array.isArray(p.holds)) {
-    p.holds.forEach(hold => {
-      parts.push(
-        `${t("game.hold")} ${escapeHtml(
-          displayText(hold)
-        )}`
+      return (
+        value[currentLang] ??
+        value.ja ??
+        value.en ??
+        value.ko ??
+        value.zh ??
+        fallback
       );
-    });
+
+    }
+
+    if (
+      value !== null &&
+      value !== undefined &&
+      value !== ""
+    ) {
+      return String(value);
+    }
+
+    return fallback;
   }
 
 
-  return parts;
-}
+  function displayText(value, fallback = "-") {
+
+    const result =
+      getLocalized(value, fallback);
+
+    return result === "" ? fallback : result;
+  }
 
 
-/* ==================================================
-   FILTER
-================================================== */
+  function escapeHTML(value) {
 
-function updateFilterTexts() {
-
-  const currentStatus =
-    $("#statusFilter")?.value || "all";
-
-  const currentLeague =
-    $("#leagueFilter")?.value || "all";
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
 
 
-  /* ------------------------------
-     LEAGUE FILTER
-  ------------------------------ */
+  function getGameTime(game) {
 
-  if ($("#leagueFilter")) {
+    return (
+      game?.time ??
+      game?.startTime ??
+      game?.date ??
+      game?.datetime ??
+      null
+    );
+
+  }
+
+
+  function getGameHome(game) {
+
+    return displayText(
+      game?.home ??
+      game?.homeTeam ??
+      game?.home_team ??
+      game?.homeName,
+      t("nextGame.tbd")
+    );
+
+  }
+
+
+  function getGameAway(game) {
+
+    return displayText(
+      game?.away ??
+      game?.awayTeam ??
+      game?.away_team ??
+      game?.awayName,
+      t("nextGame.tbd")
+    );
+
+  }
+
+
+  function getHomeScore(game) {
+
+    const value =
+      game?.homeScore ??
+      game?.home_score ??
+      game?.homeResult;
+
+    return value === null ||
+           value === undefined ||
+           value === ""
+      ? "-"
+      : value;
+
+  }
+
+
+  function getAwayScore(game) {
+
+    const value =
+      game?.awayScore ??
+      game?.away_score ??
+      game?.awayResult;
+
+    return value === null ||
+           value === undefined ||
+           value === ""
+      ? "-"
+      : value;
+
+  }
+
+
+  function getGameLeague(game) {
+
+    return (
+      game?.league ??
+      game?.leagueId ??
+      game?.league_id ??
+      ""
+    );
+
+  }
+
+
+  function getGameStatus(game) {
+
+    return String(
+      game?.status ?? ""
+    ).toLowerCase();
+
+  }
+
+
+  function isFinished(game) {
+
+    return (
+      getGameStatus(game) === "finished" ||
+      getGameStatus(game) === "completed" ||
+      getGameStatus(game) === "final"
+    );
+
+  }
+
+
+  function getLeagueById(id) {
+
+    return (
+      D.leagues || []
+    ).find(
+      league => String(league.id) === String(id)
+    );
+
+  }
+
+
+  function getLeagueName(id) {
+
+    const league =
+      getLeagueById(id);
+
+    if (!league) {
+      return id || "-";
+    }
+
+    return displayText(
+      league.name,
+      league.id
+    );
+
+  }
+
+
+  function formatDate(
+    value,
+    zone = currentZone
+  ) {
+
+    if (!value) {
+      return "-";
+    }
+
+    const date =
+      new Date(value);
+
+    if (Number.isNaN(date.getTime())) {
+      return displayText(value);
+    }
+
+    const locale =
+      currentLang === "ja"
+        ? "ja-JP"
+        : currentLang === "ko"
+        ? "ko-KR"
+        : currentLang === "zh"
+        ? "zh-CN"
+        : "en-US";
+
+    try {
+
+      return new Intl.DateTimeFormat(
+        locale,
+        {
+          timeZone: zone,
+          month: "numeric",
+          day: "numeric",
+          weekday: "short",
+          hour: "2-digit",
+          minute: "2-digit"
+        }
+      ).format(date);
+
+    } catch {
+
+      return new Intl.DateTimeFormat(
+        locale,
+        {
+          month: "numeric",
+          day: "numeric",
+          weekday: "short",
+          hour: "2-digit",
+          minute: "2-digit"
+        }
+      ).format(date);
+
+    }
+
+  }
+
+
+  function sortByTimeAscending(a, b) {
+
+    const ta =
+      new Date(getGameTime(a) || 0).getTime();
+
+    const tb =
+      new Date(getGameTime(b) || 0).getTime();
+
+    return ta - tb;
+
+  }
+
+
+  function sortByTimeDescending(a, b) {
+
+    return sortByTimeAscending(b, a);
+
+  }
+
+
+  /* ---------------------------------------------------------
+     LANGUAGE
+     --------------------------------------------------------- */
+
+  function applyLanguage() {
+
+    document.documentElement.lang =
+      currentLang;
+
+    /*
+     * 通常テキスト
+     */
+    $$("[data-i18n]")
+      .forEach(el => {
+
+        const key =
+          el.dataset.i18n;
+
+        const value =
+          t(key);
+
+        if (value !== undefined) {
+          el.textContent = value;
+        }
+
+      });
+
+
+    /*
+     * HTMLを含む翻訳
+     *
+     * hero.title
+     * about.title
+     * など
+     */
+    $$("[data-i18n-html]")
+      .forEach(el => {
+
+        const key =
+          el.dataset.i18nHtml;
+
+        const value =
+          t(key);
+
+        if (value !== undefined) {
+          el.innerHTML = value;
+        }
+
+      });
+
+
+    /*
+     * 言語ボタン
+     *
+     * index.html:
+     * .header-language
+     *
+     * 以前の構造:
+     * .language-switcher
+     */
+    $$(
+      ".language-switcher button, " +
+      ".header-language button, " +
+      "[data-lang]"
+    )
+      .forEach(button => {
+
+        button.classList.toggle(
+          "active",
+          button.dataset.lang === currentLang
+        );
+
+      });
+
+
+    updateFilterTexts();
+
+    renderNextGame();
+
+    renderGames();
+
+    renderStandings();
+
+    renderSchedule();
+
+    renderLeagues();
+
+  }
+
+
+  function updateFilterTexts() {
+
+    const leagueFilter =
+      $("#leagueFilter");
+
+    const statusFilter =
+      $("#statusFilter");
+
+
+    /*
+     * リーグフィルター
+     */
+    if (leagueFilter) {
+
+      const previous =
+        leagueFilter.value;
+
+      const options = [
+        `<option value="">${escapeHTML(
+          t("matchCenter.allLeagues")
+        )}</option>`
+      ];
+
+
+      (D.leagues || [])
+        .forEach(league => {
+
+          options.push(`
+            <option value="${escapeHTML(
+              league.id
+            )}">
+              ${escapeHTML(
+                displayText(
+                  league.name,
+                  league.id
+                )
+              )}
+            </option>
+          `);
+
+        });
+
+
+      leagueFilter.innerHTML =
+        options.join("");
+
+
+      if (
+        Array.from(
+          leagueFilter.options
+        ).some(
+          option =>
+            option.value === previous
+        )
+      ) {
+        leagueFilter.value =
+          previous;
+      }
+
+    }
+
+
+    /*
+     * ステータスフィルター
+     */
+    if (statusFilter) {
+
+      const previous =
+        statusFilter.value;
+
+      statusFilter.innerHTML = `
+        <option value="">
+          ${escapeHTML(
+            t("matchCenter.allStatus")
+          )}
+        </option>
+
+        <option value="upcoming">
+          ${escapeHTML(
+            t("matchCenter.upcoming")
+          )}
+        </option>
+
+        <option value="finished">
+          ${escapeHTML(
+            t("matchCenter.finished")
+          )}
+        </option>
+      `;
+
+
+      if (
+        Array.from(
+          statusFilter.options
+        ).some(
+          option =>
+            option.value === previous
+        )
+      ) {
+        statusFilter.value =
+          previous;
+      }
+
+    }
+
+  }
+
+
+  /* ---------------------------------------------------------
+     CLOCK
+     --------------------------------------------------------- */
+
+  function updateClock() {
+
+    const clock =
+      $("#clock");
+
+    const tz =
+      $("#tz");
+
+    if (!clock) {
+      return;
+    }
+
+    const zone =
+      currentZone ||
+      "Asia/Tokyo";
+
+    const now =
+      new Date();
+
+    try {
+
+      clock.textContent =
+        new Intl.DateTimeFormat(
+          "ja-JP",
+          {
+            timeZone: zone,
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: false
+          }
+        ).format(now);
+
+    } catch {
+
+      clock.textContent =
+        now.toLocaleString();
+
+    }
+
+
+    if (tz) {
+
+      const labels = {
+        "Asia/Tokyo": "JST",
+        "Asia/Seoul": "KST",
+        "Asia/Taipei": "CST",
+        "Asia/Shanghai": "CST",
+        "America/New_York": "ET"
+      };
+
+      tz.textContent =
+        labels[zone] || zone;
+
+    }
+
+  }
+
+
+  /* ---------------------------------------------------------
+     NEXT GAME
+     --------------------------------------------------------- */
+
+  function renderNextGame() {
+
+    const container =
+      $("#nextGame");
+
+    if (!container) {
+      return;
+    }
+
+
+    const games =
+      Array.isArray(D.games)
+        ? D.games
+        : [];
+
+
+    const upcoming =
+      games
+        .filter(
+          game => !isFinished(game)
+        )
+        .filter(
+          game => getGameTime(game)
+        )
+        .sort(
+          sortByTimeAscending
+        );
+
+
+    if (!upcoming.length) {
+
+      container.innerHTML = `
+        <div class="next-game-empty">
+          ${escapeHTML(
+            t("nextGame.noGame")
+          )}
+        </div>
+      `;
+
+      updateTicker(null);
+
+      return;
+
+    }
+
+
+    const game =
+      upcoming[0];
+
+    const league =
+      getLeagueName(
+        getGameLeague(game)
+      );
+
+
+    const home =
+      getGameHome(game);
+
+    const away =
+      getGameAway(game);
+
+
+    container.innerHTML = `
+      <div class="next-game-card">
+
+        <div class="next-game-league">
+          ${escapeHTML(league)}
+        </div>
+
+        <div class="next-game-teams">
+
+          <strong>
+            ${escapeHTML(home)}
+          </strong>
+
+          <span class="next-game-vs">
+            VS
+          </span>
+
+          <strong>
+            ${escapeHTML(away)}
+          </strong>
+
+        </div>
+
+        <div class="next-game-time">
+          ${escapeHTML(
+            formatDate(
+              getGameTime(game)
+            )
+          )}
+        </div>
+
+      </div>
+    `;
+
+
+    updateTicker(game);
+
+  }
+
+
+  function updateTicker(game) {
+
+    const ticker =
+      $("#tickerText");
+
+    if (!ticker) {
+      return;
+    }
+
+    if (!game) {
+
+      ticker.textContent =
+        t("nextGame.noGame");
+
+      return;
+
+    }
+
+    ticker.textContent =
+      `${getGameHome(game)}  VS  ${getGameAway(game)}  ·  ` +
+      `${formatDate(getGameTime(game))}`;
+
+  }
+
+
+  /* ---------------------------------------------------------
+     MATCH CENTER
+     --------------------------------------------------------- */
+
+  function renderGames() {
+
+    const container =
+      $("#gamesGrid");
+
+    if (!container) {
+      return;
+    }
+
+
+    const leagueFilter =
+      $("#leagueFilter");
+
+    const statusFilter =
+      $("#statusFilter");
+
+
+    const selectedLeague =
+      leagueFilter?.value || "";
+
+    const selectedStatus =
+      statusFilter?.value || "";
+
+
+    let games =
+      Array.isArray(D.games)
+        ? [...D.games]
+        : [];
+
+
+    /*
+     * リーグ
+     */
+    if (selectedLeague) {
+
+      games =
+        games.filter(
+          game =>
+            String(
+              getGameLeague(game)
+            ) === String(
+              selectedLeague
+            )
+        );
+
+    }
+
+
+    /*
+     * ステータス
+     */
+    if (selectedStatus === "finished") {
+
+      games =
+        games.filter(
+          game => isFinished(game)
+        );
+
+    } else if (
+      selectedStatus === "upcoming"
+    ) {
+
+      games =
+        games.filter(
+          game => !isFinished(game)
+        );
+
+    }
+
+
+    games.sort(
+      sortByTimeAscending
+    );
+
+
+    const count =
+      $("#gamesCount");
+
+    if (count) {
+      count.textContent =
+        String(games.length);
+    }
+
+
+    if (!games.length) {
+
+      container.innerHTML = `
+        <div class="empty-state">
+          ${escapeHTML(
+            t("matchCenter.noGames")
+          )}
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    container.innerHTML =
+      games
+        .map(
+          game =>
+            createGameCard(game)
+        )
+        .join("");
+
+  }
+
+
+  function createGameCard(game) {
+
+    const league =
+      getLeagueName(
+        getGameLeague(game)
+      );
+
+    const home =
+      getGameHome(game);
+
+    const away =
+      getGameAway(game);
+
+    const homeScore =
+      getHomeScore(game);
+
+    const awayScore =
+      getAwayScore(game);
+
+    const finished =
+      isFinished(game);
+
+    const round =
+      displayText(
+        game?.round,
+        ""
+      );
+
+
+    return `
+      <article class="game-card">
+
+        <div class="game-card-top">
+
+          <span class="game-league">
+            ${escapeHTML(league)}
+          </span>
+
+          <span class="game-status ${
+            finished
+              ? "finished"
+              : "upcoming"
+          }">
+            ${
+              finished
+                ? escapeHTML(
+                    t("matchCenter.finished")
+                  )
+                : escapeHTML(
+                    t("matchCenter.upcoming")
+                  )
+            }
+          </span>
+
+        </div>
+
+
+        <div class="game-date">
+          ${escapeHTML(
+            formatDate(
+              getGameTime(game)
+            )
+          )}
+        </div>
+
+
+        <div class="game-teams">
+
+          <div class="game-team home-team">
+            <strong>
+              ${escapeHTML(home)}
+            </strong>
+          </div>
+
+
+          <div class="game-score">
+
+            <span>
+              ${escapeHTML(
+                String(homeScore)
+              )}
+            </span>
+
+            <small>–</small>
+
+            <span>
+              ${escapeHTML(
+                String(awayScore)
+              )}
+            </span>
+
+          </div>
+
+
+          <div class="game-team away-team">
+            <strong>
+              ${escapeHTML(away)}
+            </strong>
+          </div>
+
+        </div>
+
+
+        ${
+          round
+            ? `
+              <div class="game-round">
+                ${escapeHTML(round)}
+              </div>
+            `
+            : ""
+        }
+
+      </article>
+    `;
+
+  }
+
+
+  /* ---------------------------------------------------------
+     STANDINGS
+     --------------------------------------------------------- */
+
+  function getStandingsForLeague(id) {
+
+    const standings =
+      D.standings || {};
+
+
+    /*
+     * 現在の形式:
+     *
+     * standings: {
+     *   A: [...],
+     *   B: [...],
+     *   KOREA: [...]
+     * }
+     */
+    if (
+      Array.isArray(
+        standings[id]
+      )
+    ) {
+
+      return standings[id];
+
+    }
+
+
+    /*
+     * 新しい形式にも対応
+     *
+     * standings: {
+     *   current: [...]
+     * }
+     */
+    if (
+      Array.isArray(
+        standings.current
+      )
+    ) {
+
+      return standings.current;
+
+    }
+
+
+    /*
+     * standings が配列そのものの場合
+     */
+    if (
+      Array.isArray(
+        standings
+      )
+    ) {
+
+      return standings;
+
+    }
+
+
+    return [];
+
+  }
+
+
+  function renderStandings() {
+
+    const body =
+      $("#standingsBody");
+
+    if (!body) {
+      return;
+    }
+
+
+    const select =
+      $("#standingsLeague");
+
+
+    const selectedLeague =
+      select?.value ||
+      (D.leagues?.[0]?.id || "");
+
+
+    /*
+     * セレクトが空なら、存在する最初のリーグ
+     */
+    if (
+      select &&
+      !select.value &&
+      D.leagues?.length
+    ) {
+
+      select.value =
+        D.leagues[0].id;
+
+    }
+
+
+    const rows =
+      getStandingsForLeague(
+        selectedLeague
+      );
+
+
+    if (!rows.length) {
+
+      body.innerHTML = `
+        <tr>
+          <td colspan="8" class="empty-state">
+            ${escapeHTML(
+              t("standings.noData")
+            )}
+          </td>
+        </tr>
+      `;
+
+      return;
+
+    }
+
+
+    body.innerHTML =
+      rows
+        .map(
+          (team, index) =>
+            createStandingRow(
+              team,
+              index
+            )
+        )
+        .join("");
+
+  }
+
+
+  function createStandingRow(
+    team,
+    index
+  ) {
+
+    const name =
+      displayText(
+        team?.team ??
+        team?.name ??
+        team?.teamName,
+        "-"
+      );
+
+
+    const games =
+      team?.games ??
+      team?.gp ??
+      team?.played ??
+      0;
+
+
+    const wins =
+      team?.wins ??
+      team?.w ??
+      0;
+
+
+    const losses =
+      team?.losses ??
+      team?.l ??
+      0;
+
+
+    const draws =
+      team?.draws ??
+      team?.d ??
+      team?.ties ??
+      0;
+
+
+    let winRate =
+      team?.winRate ??
+      team?.pct ??
+      team?.percentage;
+
+
+    if (
+      winRate === undefined &&
+      Number(games) > 0
+    ) {
+
+      winRate =
+        Number(wins) /
+        Number(games);
+
+    }
+
+
+    let winRateText =
+      "-";
+
+
+    if (
+      winRate !== undefined &&
+      winRate !== null &&
+      winRate !== ""
+    ) {
+
+      const n =
+        Number(winRate);
+
+      if (
+        Number.isFinite(n)
+      ) {
+
+        winRateText =
+          n <= 1
+            ? n.toFixed(3).replace(/^0/, "")
+            : n.toFixed(3);
+
+      } else {
+
+        winRateText =
+          String(winRate);
+
+      }
+
+    }
+
+
+    const points =
+      team?.points ??
+      team?.pts ??
+      team?.point ??
+      "-";
+
+
+    return `
+      <tr>
+
+        <td class="standing-rank">
+          ${index + 1}
+        </td>
+
+        <td class="standing-team">
+          ${escapeHTML(name)}
+        </td>
+
+        <td>
+          ${escapeHTML(
+            String(games)
+          )}
+        </td>
+
+        <td>
+          ${escapeHTML(
+            String(wins)
+          )}
+        </td>
+
+        <td>
+          ${escapeHTML(
+            String(losses)
+          )}
+        </td>
+
+        <td>
+          ${escapeHTML(
+            String(draws)
+          )}
+        </td>
+
+        <td>
+          ${escapeHTML(
+            String(winRateText)
+          )}
+        </td>
+
+        <td>
+          ${escapeHTML(
+            String(points)
+          )}
+        </td>
+
+      </tr>
+    `;
+
+  }
+
+
+  function setupStandingsFilter() {
+
+    const select =
+      $("#standingsLeague");
+
+    if (!select) {
+      return;
+    }
+
+
+    const previous =
+      select.value;
+
+
+    select.innerHTML =
+      (D.leagues || [])
+        .map(
+          league => `
+            <option value="${escapeHTML(
+              league.id
+            )}">
+              ${escapeHTML(
+                displayText(
+                  league.name,
+                  league.id
+                )
+              )}
+            </option>
+          `
+        )
+        .join("");
+
+
+    if (
+      Array.from(
+        select.options
+      ).some(
+        option =>
+          option.value === previous
+      )
+    ) {
+
+      select.value =
+        previous;
+
+    } else if (
+      D.leagues?.length
+    ) {
+
+      select.value =
+        D.leagues[0].id;
+
+    }
+
+
+    select.addEventListener(
+      "change",
+      renderStandings
+    );
+
+  }
+
+
+  /* ---------------------------------------------------------
+     SCHEDULE
+     --------------------------------------------------------- */
+
+  function renderSchedule() {
+
+    const container =
+      $("#scheduleList");
+
+    if (!container) {
+      return;
+    }
+
+
+    const games =
+      Array.isArray(D.games)
+        ? [...D.games]
+        : [];
+
+
+    let filtered =
+      games.filter(
+        game =>
+          currentScheduleStatus === "finished"
+            ? isFinished(game)
+            : !isFinished(game)
+      );
+
+
+    if (
+      currentScheduleStatus ===
+      "finished"
+    ) {
+
+      filtered.sort(
+        sortByTimeDescending
+      );
+
+    } else {
+
+      filtered.sort(
+        sortByTimeAscending
+      );
+
+    }
+
+
+    /*
+     * カウント
+     */
+    const upcomingCount =
+      games.filter(
+        game => !isFinished(game)
+      ).length;
+
+
+    const finishedCount =
+      games.filter(
+        game => isFinished(game)
+      ).length;
+
+
+    const upcomingEl =
+      $("#scheduleUpcomingCount");
+
+    const finishedEl =
+      $("#scheduleFinishedCount");
+
+
+    if (upcomingEl) {
+      upcomingEl.textContent =
+        String(upcomingCount);
+    }
+
+
+    if (finishedEl) {
+      finishedEl.textContent =
+        String(finishedCount);
+    }
+
+
+    if (!filtered.length) {
+
+      container.innerHTML = `
+        <div class="empty-state">
+          ${escapeHTML(
+            t("schedule.noGames")
+          )}
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    container.innerHTML =
+      filtered
+        .map(
+          game =>
+            createScheduleItem(game)
+        )
+        .join("");
+
+  }
+
+
+  function createScheduleItem(game) {
+
+    const league =
+      getLeagueName(
+        getGameLeague(game)
+      );
+
+
+    const home =
+      getGameHome(game);
+
+    const away =
+      getGameAway(game);
+
+
+    const finished =
+      isFinished(game);
+
+
+    const round =
+      displayText(
+        game?.round,
+        ""
+      );
+
+
+    const homeScore =
+      getHomeScore(game);
+
+    const awayScore =
+      getAwayScore(game);
+
+
+    return `
+      <article class="schedule-item">
+
+        <div class="schedule-date">
+          ${escapeHTML(
+            formatDate(
+              getGameTime(game),
+              currentZone
+            )
+          )}
+        </div>
+
+
+        <div class="schedule-main">
+
+          <div class="schedule-league">
+            ${escapeHTML(league)}
+          </div>
+
+
+          <div class="schedule-match">
+
+            <strong>
+              ${escapeHTML(home)}
+            </strong>
+
+            <span class="schedule-vs">
+
+              ${
+                finished
+                  ? `${escapeHTML(
+                      String(homeScore)
+                    )} – ${escapeHTML(
+                      String(awayScore)
+                    )}`
+                  : "VS"
+              }
+
+            </span>
+
+            <strong>
+              ${escapeHTML(away)}
+            </strong>
+
+          </div>
+
+
+          ${
+            round
+              ? `
+                <div class="schedule-round">
+                  ${escapeHTML(round)}
+                </div>
+              `
+              : ""
+          }
+
+        </div>
+
+
+        <div class="schedule-status ${
+          finished
+            ? "finished"
+            : "upcoming"
+        }">
+
+          ${
+            finished
+              ? escapeHTML(
+                  t(
+                    "scheduleStatus.finished"
+                  )
+                )
+              : escapeHTML(
+                  t(
+                    "scheduleStatus.upcoming"
+                  )
+                )
+          }
+
+        </div>
+
+      </article>
+    `;
+
+  }
+
+
+  function setupScheduleTabs() {
+
+    const upcoming =
+      $("#scheduleUpcomingTab");
+
+    const finished =
+      $("#scheduleFinishedTab");
+
+
+    const tabs =
+      [
+        upcoming,
+        finished
+      ].filter(Boolean);
+
+
+    tabs.forEach(
+      tab => {
+
+        /*
+         * duplicate listener 防止
+         */
+        if (
+          tab.dataset.scheduleBound ===
+          "true"
+        ) {
+          return;
+        }
+
+        tab.dataset.scheduleBound =
+          "true";
+
+
+        tab.addEventListener(
+          "click",
+          () => {
+
+            currentScheduleStatus =
+              tab.dataset.scheduleStatus ||
+              "upcoming";
+
+
+            tabs.forEach(
+              item => {
+
+                item.classList.toggle(
+                  "active",
+                  item === tab
+                );
+
+              }
+            );
+
+
+            renderSchedule();
+
+          }
+        );
+
+      }
+    );
+
+
+    /*
+     * 初期状態
+     */
+    tabs.forEach(
+      tab => {
+
+        tab.classList.toggle(
+          "active",
+          (
+            tab.dataset.scheduleStatus ||
+            "upcoming"
+          ) ===
+          currentScheduleStatus
+        );
+
+      }
+    );
+
+  }
+
+
+  function setupTimezoneTabs() {
+
+    const tabs =
+      $$("[data-zone]");
+
+
+    tabs.forEach(
+      tab => {
+
+        if (
+          tab.dataset.zoneBound ===
+          "true"
+        ) {
+          return;
+        }
+
+        tab.dataset.zoneBound =
+          "true";
+
+
+        tab.addEventListener(
+          "click",
+          () => {
+
+            currentZone =
+              tab.dataset.zone ||
+              "Asia/Tokyo";
+
+
+            tabs.forEach(
+              item => {
+
+                item.classList.toggle(
+                  "active",
+                  item === tab
+                );
+
+              }
+            );
+
+
+            updateClock();
+
+            renderSchedule();
+
+          }
+        );
+
+      }
+    );
+
+
+    /*
+     * 東京を初期選択
+     */
+    tabs.forEach(
+      tab => {
+
+        tab.classList.toggle(
+          "active",
+          tab.dataset.zone ===
+          currentZone
+        );
+
+      }
+    );
+
+  }
+
+
+  /* ---------------------------------------------------------
+     LEAGUES
+     --------------------------------------------------------- */
+
+  function renderLeagues() {
+
+    const container =
+      $("#leagueCards");
+
+    if (!container) {
+      return;
+    }
+
 
     const leagues =
       Array.isArray(D.leagues)
@@ -736,1331 +2102,358 @@ function updateFilterTexts() {
         : [];
 
 
-    $("#leagueFilter").innerHTML = `
+    if (!leagues.length) {
 
-      <option value="all">
-        ${t("filter.allLeagues")}
-      </option>
-
-      ${leagues.map(league => `
-        <option value="${escapeHtml(
-          league.id
-        )}">
-          ${escapeHtml(
-            getLocalized(
-              league.name,
-              league.id
-            )
+      container.innerHTML = `
+        <div class="empty-state">
+          ${escapeHTML(
+            t("leagues.noLeagues")
           )}
-        </option>
-      `).join("")}
+        </div>
+      `;
 
-    `;
+      return;
 
-
-    if (
-      currentLeague === "all" ||
-      leagues.some(
-        league =>
-          league.id === currentLeague
-      )
-    ) {
-      $("#leagueFilter").value =
-        currentLeague;
-    } else {
-      $("#leagueFilter").value =
-        "all";
     }
 
-  }
 
-
-  /* ------------------------------
-     STATUS FILTER
-  ------------------------------ */
-
-  if ($("#statusFilter")) {
-
-    $("#statusFilter").innerHTML = `
-
-      <option value="all">
-        ${t("filter.all")}
-      </option>
-
-      <option value="upcoming">
-        ${t("filter.upcoming")}
-      </option>
-
-      <option value="finished">
-        ${t("filter.finished")}
-      </option>
-
-    `;
-
-    $("#statusFilter").value =
-      currentStatus;
+    container.innerHTML =
+      leagues
+        .map(
+          league =>
+            createLeagueCard(
+              league
+            )
+        )
+        .join("");
 
   }
 
 
-  /* ------------------------------
-     STANDINGS SELECT
-  ------------------------------ */
-
-  if ($("#standingsLeague")) {
-
-    const currentStandings =
-      $("#standingsLeague").value ||
-      "ahba";
-
-    $("#standingsLeague").innerHTML = `
-
-      <option value="ahba">
-        ${t("nav.standings")}
-      </option>
-
-    `;
-
-    $("#standingsLeague").value =
-      currentStandings;
-
-  }
-}
-
-
-/* ==================================================
-   TIMEZONE
-================================================== */
-
-let currentZone =
-  "Asia/Tokyo";
-
-
-const zoneNames = {
-
-  "Asia/Tokyo": {
-    ja: "日本",
-    ko: "일본",
-    en: "Japan",
-    zh: "日本"
-  },
-
-  "Asia/Seoul": {
-    ja: "韓国",
-    ko: "한국",
-    en: "Korea",
-    zh: "韩国"
-  },
-
-  "Asia/Taipei": {
-    ja: "台湾",
-    ko: "대만",
-    en: "Taiwan",
-    zh: "台湾"
-  },
-
-  "Asia/Shanghai": {
-    ja: "中国",
-    ko: "중국",
-    en: "China",
-    zh: "中国"
-  },
-
-  "America/New_York": {
-    ja: "ニューヨーク",
-    ko: "뉴욕",
-    en: "New York",
-    zh: "纽约"
-  }
-
-};
-
-
-/* ==================================================
-   LOCALE
-================================================== */
-
-function localeName() {
-
-  if (currentLanguage === "ja") {
-    return "ja-JP";
-  }
-
-  if (currentLanguage === "ko") {
-    return "ko-KR";
-  }
-
-  if (currentLanguage === "zh") {
-    return "zh-CN";
-  }
-
-  return "en-US";
-}
-
-
-/* ==================================================
-   DATE
-================================================== */
-
-function fmtDate(
-  iso,
-  zone = currentZone
-) {
-
-  if (!iso) {
-    return "—";
-  }
-
-  const date =
-    new Date(iso);
-
-  if (
-    Number.isNaN(
-      date.getTime()
-    )
+  function createLeagueCard(
+    league
   ) {
-    return "—";
-  }
 
-  return new Intl.DateTimeFormat(
-    localeName(),
-    {
-      timeZone: zone,
-      month: "numeric",
-      day: "numeric",
-      weekday: "short"
-    }
-  ).format(date);
-}
-
-
-/* ==================================================
-   TIME
-================================================== */
-
-function fmtTime(
-  iso,
-  zone = currentZone
-) {
-
-  if (!iso) {
-    return "—";
-  }
-
-  const date =
-    new Date(iso);
-
-  if (
-    Number.isNaN(
-      date.getTime()
-    )
-  ) {
-    return "—";
-  }
-
-  return new Intl.DateTimeFormat(
-    localeName(),
-    {
-      timeZone: zone,
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false
-    }
-  ).format(date);
-}
-
-
-/* ==================================================
-   CLOCK
-================================================== */
-
-function updateClock() {
-
-  const zone =
-    zoneNames[currentZone]
-      ? currentZone
-      : "Asia/Tokyo";
-
-
-  const name =
-    zoneNames[zone]?.[currentLanguage] ||
-    zoneNames[zone]?.ja ||
-    zone;
-
-
-  if ($("#clock")) {
-
-    $("#clock").textContent =
-      new Intl.DateTimeFormat(
-        localeName(),
-        {
-          timeZone: zone,
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-          hour12: false
-        }
-      ).format(
-        new Date()
+    const name =
+      displayText(
+        league.name,
+        league.id
       );
 
-  }
+
+    const region =
+      displayText(
+        league.region,
+        ""
+      );
 
 
-  if ($("#tz")) {
-    $("#tz").textContent = name;
-  }
-}
+    const matchTime =
+      displayText(
+        league.matchTime,
+        "-"
+      );
 
 
-/* ==================================================
-   NEXT GAME
-================================================== */
-
-function renderNextGame() {
-
-  const games =
-    Array.isArray(D.games)
-      ? D.games
-      : [];
-
-
-  const game =
-    [...games]
-      .filter(
-        g =>
-          g.status !== "finished"
+    const teams =
+      Array.isArray(
+        league.teams
       )
-      .filter(
-        g =>
-          g.time &&
-          !Number.isNaN(
-            new Date(g.time).getTime()
-          )
-      )
-      .sort(
-        (a, b) =>
-          new Date(a.time) -
-          new Date(b.time)
-      )[0];
+        ? league.teams.length
+        : 0;
 
 
-  if (!game) {
-
-    if ($("#nextGame")) {
-      $("#nextGame").innerHTML =
-        t("next.none");
-    }
-
-    if ($("#tickerText")) {
-      $("#tickerText").textContent =
-        t("next.none");
-    }
-
-    return;
-  }
+    const description =
+      displayText(
+        league.description,
+        ""
+      );
 
 
-  const label =
-    gameLabel(game);
+    return `
+      <article class="league-card">
 
-
-  if ($("#nextGame")) {
-
-    $("#nextGame").innerHTML = `
-
-      <div class="next-time">
-        ${escapeHtml(
-          fmtTime(game.time)
-        )}
-      </div>
-
-      <div class="next-date">
-        ${escapeHtml(
-          fmtDate(game.time)
-        )}
-        ・
-        ${escapeHtml(label)}
-      </div>
-
-      <div class="matchup">
-
-        <div class="team">
-          ${escapeHtml(
-            displayText(game.home)
+        <div class="league-card-code">
+          ${escapeHTML(
+            league.id
           )}
         </div>
 
-        <div class="vs">
-          VS
-        </div>
 
-        <div class="team">
-          ${escapeHtml(
-            displayText(game.away)
-          )}
-        </div>
-
-      </div>
-
-    `;
-  }
+        <h3>
+          ${escapeHTML(name)}
+        </h3>
 
 
-  if ($("#tickerText")) {
-
-    $("#tickerText").textContent =
-      `${label} — ` +
-      `${displayText(game.home)} vs ` +
-      `${displayText(game.away)} / ` +
-      `${fmtDate(game.time)} ` +
-      `${fmtTime(game.time)}`;
-
-  }
-}
-
-
-/* ==================================================
-   GAMES
-================================================== */
-
-function renderGames() {
-
-  if (!$("#gamesGrid")) {
-    return;
-  }
-
-
-  const status =
-    $("#statusFilter")?.value ||
-    "all";
-
-
-  const league =
-    $("#leagueFilter")?.value ||
-    "all";
-
-
-  const games =
-    [...(D.games || [])]
-      .filter(game => {
-
-        const statusMatch =
-          status === "all" ||
-          game.status === status;
-
-        const leagueMatch =
-          league === "all" ||
-          game.league === league;
-
-        return (
-          statusMatch &&
-          leagueMatch
-        );
-
-      })
-      .sort((a, b) => {
-
-        if (
-          a.status === "finished" &&
-          b.status !== "finished"
-        ) {
-          return 1;
+        ${
+          description
+            ? `
+              <p>
+                ${escapeHTML(
+                  description
+                )}
+              </p>
+            `
+            : ""
         }
 
-        if (
-          a.status !== "finished" &&
-          b.status === "finished"
-        ) {
-          return -1;
-        }
 
-        return (
-          new Date(a.time) -
-          new Date(b.time)
-        );
-
-      });
-
-
-  if (!games.length) {
-
-    $("#gamesGrid").innerHTML =
-      `<p>${t("game.noGames")}</p>`;
-
-    return;
-  }
-
-
-  $("#gamesGrid").innerHTML =
-    games.map(game => {
-
-      const pitching =
-        formatPitcherSummary(game);
-
-
-      const detailLink =
-        hasGameDetail(game)
-          ? `
-            <a
-              class="primary-button game-detail-button"
-              href="${gameDetailUrl(game)}"
-            >
-              ${t("game.detail")}
-            </a>
-          `
-          : "";
-
-
-      return `
-
-        <article class="game">
-
-          <div class="game-top">
-
-            <span class="league-tag">
-
-              ${escapeHtml(
-                gameLabel(game)
-              )}
-
-              ${
-                game.round
-                  ? `・${escapeHtml(
-                      displayText(
-                        game.round
-                      )
-                    )}`
-                  : ""
-              }
-
-            </span>
-
-
-            <span
-              class="game-status ${escapeHtml(
-                game.status || ""
-              )}"
-            >
-
-              ${
-                game.status === "finished"
-                  ? t("game.final")
-                  : t("game.upcoming")
-              }
-
-            </span>
-
-          </div>
-
-
-          <div class="scoreline">
-
-            <div>
-
-              <div class="score-label">
-                ${escapeHtml(
-                  displayText(game.home)
-                )}
-              </div>
-
-              <div class="score">
-                ${game.homeScore ?? "—"}
-              </div>
-
-            </div>
-
-
-            <div class="dash">
-              –
-            </div>
-
-
-            <div>
-
-              <div class="score-label">
-                ${escapeHtml(
-                  displayText(game.away)
-                )}
-              </div>
-
-              <div class="score">
-                ${game.awayScore ?? "—"}
-              </div>
-
-            </div>
-
-          </div>
-
+        <div class="league-card-meta">
 
           ${
-            pitching.length
+            region
               ? `
-                <div class="game-pitching">
+                <div>
+                  <span>
+                    ${escapeHTML(
+                      t("leagues.region")
+                    )}
+                  </span>
 
-                  ${pitching
-                    .map(
-                      x =>
-                        `<div>${x}</div>`
-                    )
-                    .join("")}
-
+                  <strong>
+                    ${escapeHTML(region)}
+                  </strong>
                 </div>
               `
               : ""
           }
 
 
-          <div class="game-foot">
-
+          <div>
             <span>
-
-              ${escapeHtml(
-                fmtDate(game.time)
+              ${escapeHTML(
+                t(
+                  "leagues.matchTime"
+                )
               )}
-
-              ${escapeHtml(
-                fmtTime(game.time)
-              )}
-
             </span>
 
-
-            <span>
-
-              ${
-                game.status === "finished"
-                  ? t("game.finished")
-                  : t("game.scheduled")
-              }
-
-            </span>
-
+            <strong>
+              ${escapeHTML(matchTime)}
+            </strong>
           </div>
 
 
-          ${detailLink}
-
-        </article>
-
-      `;
-
-    }).join("");
-}
-
-
-/* ==================================================
-   STANDINGS
-================================================== */
-
-function buildStandings() {
-
-  const standings =
-    D.standings?.current;
-
-
-  return Array.isArray(standings)
-    ? standings
-    : [];
-}
-
-
-function renderStandings() {
-
-  if (!$("#standingsBody")) {
-    return;
-  }
-
-
-  const rows =
-    buildStandings();
-
-
-  $("#standingsBody").innerHTML =
-    rows.length
-
-      ? rows.map(
-          (row, index) => {
-
-            const pct =
-              row.g
-                ? row.w / row.g
-                : 0;
-
-
-            const diff =
-              (row.rs ?? 0) -
-              (row.ra ?? 0);
-
-
-            return `
-
-              <tr>
-
-                <td>
-                  ${index + 1}
-                </td>
-
-                <td>
-                  ${escapeHtml(
-                    displayText(
-                      row.team
-                    )
-                  )}
-                </td>
-
-                <td>
-                  ${row.g ?? 0}
-                </td>
-
-                <td>
-                  ${row.w ?? 0}
-                </td>
-
-                <td>
-                  ${row.l ?? 0}
-                </td>
-
-                <td>
-
-                  ${
-                    row.g
-                      ? pct
-                          .toFixed(3)
-                          .replace(
-                            "0.",
-                            "."
-                          )
-                      : "—"
-                  }
-
-                </td>
-
-                <td>
-                  ${row.rs ?? 0}
-                </td>
-
-                <td>
-                  ${row.ra ?? 0}
-                </td>
-
-                <td>
-
-                  ${
-                    diff > 0
-                      ? "+"
-                      : ""
-                  }${diff}
-
-                </td>
-
-              </tr>
-
-            `;
-
-          }
-        ).join("")
-
-      : `
-
-          <tr>
-
-            <td colspan="9">
-              ${t("game.noGames")}
-            </td>
-
-          </tr>
-
-        `;
-}
-
-
-/* ==================================================
-   SCHEDULE
-================================================== */
-
-let currentScheduleStatus =
-  "upcoming";
-
-
-function renderSchedule() {
-
-  if (!$("#scheduleList")) {
-    return;
-  }
-
-
-  const allGames =
-    Array.isArray(D.games)
-      ? [...D.games]
-      : [];
-
-
-  /* ------------------------------
-     UPCOMING
-  ------------------------------ */
-
-  const upcomingGames =
-    allGames
-      .filter(
-        game =>
-          game.status !== "finished"
-      )
-      .filter(
-        game =>
-          game.time &&
-          !Number.isNaN(
-            new Date(game.time).getTime()
-          )
-      )
-      .sort(
-        (a, b) =>
-          new Date(a.time) -
-          new Date(b.time)
-      );
-
-
-  /* ------------------------------
-     FINISHED
-  ------------------------------ */
-
-  const finishedGames =
-    allGames
-      .filter(
-        game =>
-          game.status === "finished"
-      )
-      .filter(
-        game =>
-          game.time &&
-          !Number.isNaN(
-            new Date(game.time).getTime()
-          )
-      )
-      .sort(
-        (a, b) =>
-          new Date(b.time) -
-          new Date(a.time)
-      );
-
-
-  /* ------------------------------
-     COUNTS
-  ------------------------------ */
-
-  if ($("#scheduleUpcomingCount")) {
-    $("#scheduleUpcomingCount").textContent =
-      upcomingGames.length;
-  }
-
-
-  if ($("#scheduleFinishedCount")) {
-    $("#scheduleFinishedCount").textContent =
-      finishedGames.length;
-  }
-
-
-  /* ------------------------------
-     ACTIVE LIST
-  ------------------------------ */
-
-  const games =
-    currentScheduleStatus === "finished"
-      ? finishedGames
-      : upcomingGames;
-
-
-  /* ------------------------------
-     EMPTY
-  ------------------------------ */
-
-  if (!games.length) {
-
-    $("#scheduleList").innerHTML = `
-
-      <div class="schedule-empty">
-
-        <div class="schedule-empty-icon">
-
-          ${
-            currentScheduleStatus === "finished"
-              ? "✓"
-              : "○"
-          }
+          <div>
+            <span>
+              ${escapeHTML(
+                t("leagues.teams")
+              )}
+            </span>
+
+            <strong>
+              ${teams}
+            </strong>
+          </div>
 
         </div>
 
-        <p>
-          ${t("game.noGames")}
-        </p>
 
-      </div>
+        <a
+          class="league-card-link"
+          href="league.html?id=${encodeURIComponent(
+            league.id
+          )}"
+        >
+          ${escapeHTML(
+            t("leagues.view")
+          )}
+        </a>
 
+      </article>
     `;
 
   }
 
 
-  /* ------------------------------
-     LIST
-  ------------------------------ */
+  /* ---------------------------------------------------------
+     FILTER EVENTS
+     --------------------------------------------------------- */
 
-  else {
+  function setupFilters() {
 
-    $("#scheduleList").innerHTML =
+    const leagueFilter =
+      $("#leagueFilter");
 
-      games.map(game => `
-
-        <div class="schedule-item">
-
-          <div class="schedule-time">
-
-            <div class="sched-time">
-
-              ${escapeHtml(
-                fmtTime(game.time)
-              )}
-
-            </div>
-
-            <div class="sched-date">
-
-              ${escapeHtml(
-                fmtDate(game.time)
-              )}
-
-            </div>
-
-          </div>
+    const statusFilter =
+      $("#statusFilter");
 
 
-          <div class="schedule-match-info">
+    if (leagueFilter) {
 
-            <div class="sched-league">
+      leagueFilter.addEventListener(
+        "change",
+        renderGames
+      );
 
-              ${escapeHtml(
-                gameLabel(game)
-              )}
-
-            </div>
-
-
-            <div class="sched-match-teams">
-
-              <strong>
-
-                ${escapeHtml(
-                  displayText(
-                    game.home
-                  )
-                )}
-
-              </strong>
+    }
 
 
-              <span class="schedule-vs">
-                VS
-              </span>
+    if (statusFilter) {
+
+      statusFilter.addEventListener(
+        "change",
+        renderGames
+      );
+
+    }
+
+  }
 
 
-              <strong>
+  /* ---------------------------------------------------------
+     LANGUAGE EVENTS
+     --------------------------------------------------------- */
 
-                ${escapeHtml(
-                  displayText(
-                    game.away
-                  )
-                )}
+  function setupLanguageButtons() {
 
-              </strong>
+    $$(
+      ".language-switcher button, " +
+      ".header-language button, " +
+      "[data-lang]"
+    )
+      .forEach(button => {
 
-            </div>
+        if (
+          button.dataset.languageBound ===
+          "true"
+        ) {
+          return;
+        }
 
-          </div>
+
+        button.dataset.languageBound =
+          "true";
 
 
-          <div
-            class="sched-status ${currentScheduleStatus}"
-          >
+        button.addEventListener(
+          "click",
+          () => {
 
-            <span class="status-dot"></span>
+            const lang =
+              button.dataset.lang;
 
-            ${
-              currentScheduleStatus === "finished"
-                ? t("scheduleStatus.finished")
-                : t("scheduleStatus.upcoming")
+
+            if (
+              !translations[lang]
+            ) {
+              return;
             }
 
-          </div>
 
-        </div>
-
-      `).join("");
-
-  }
+            currentLang =
+              lang;
 
 
-  /* ------------------------------
-     TIMEZONE LABEL
-  ------------------------------ */
-
-  if ($("#zoneLabel")) {
-
-    const zone =
-      zoneNames[currentZone];
-
-    $("#zoneLabel").textContent =
-      zone?.[currentLanguage] ||
-      zone?.ja ||
-      currentZone;
-
-  }
-
-}
+            localStorage.setItem(
+              "asiaHCBBLanguage",
+              currentLang
+            );
 
 
-/* ==================================================
-   SCHEDULE STATUS TABS
-================================================== */
+            applyLanguage();
 
-function setupScheduleTabs() {
-
-  $$("[data-schedule-status]")
-    .forEach(button => {
-
-      button.addEventListener(
-        "click",
-        () => {
-
-          const status =
-            button.dataset.scheduleStatus;
-
-
-          if (
-            status !== "upcoming" &&
-            status !== "finished"
-          ) {
-            return;
           }
+        );
 
+      });
 
-          currentScheduleStatus =
-            status;
-
-
-          $$("[data-schedule-status]")
-            .forEach(tab => {
-
-              tab.classList.toggle(
-                "active",
-                tab.dataset.scheduleStatus ===
-                  currentScheduleStatus
-              );
-
-            });
-
-
-          renderSchedule();
-
-        }
-      );
-
-    });
-
-}
-
-
-/* ==================================================
-   LEAGUES
-================================================== */
-
-function renderLeagues() {
-
-  if (!$("#leagueCards")) {
-    return;
   }
 
 
-  const leagues =
-    Array.isArray(D.leagues)
-      ? D.leagues
-      : [];
+  /* ---------------------------------------------------------
+     INIT
+     --------------------------------------------------------- */
+
+  function init() {
+
+    /*
+     * データ確認
+     */
+    if (
+      !Array.isArray(D.leagues)
+    ) {
+      D.leagues = [];
+    }
 
 
-  $("#leagueCards").innerHTML =
-    leagues.map(league => {
-
-      const name =
-        getLocalized(
-          league.name,
-          league.id
-        );
+    if (
+      !Array.isArray(D.games)
+    ) {
+      D.games = [];
+    }
 
 
-      const country =
-        getLocalized(
-          league.country,
-          ""
-        );
+    if (
+      !D.standings ||
+      typeof D.standings !== "object"
+    ) {
+      D.standings = {};
+    }
 
 
-      const description =
-        getLocalized(
-          league.description,
-          ""
-        );
+    /*
+     * 各種セットアップ
+     */
+    setupLanguageButtons();
+
+    setupFilters();
+
+    setupStandingsFilter();
+
+    setupScheduleTabs();
+
+    setupTimezoneTabs();
 
 
-      return `
+    /*
+     * 初回描画
+     */
+    updateFilterTexts();
 
-        <a
-          href="league.html?id=${encodeURIComponent(
-            league.id
-          )}"
-          class="league-card league-link"
-        >
+    renderNextGame();
 
-          <div class="league-code">
+    renderGames();
 
-            ${escapeHtml(
-              league.id
-            )}
+    renderStandings();
 
-          </div>
+    renderSchedule();
 
+    renderLeagues();
 
-          <h3>
-
-            ${escapeHtml(
-              name
-            )}
-
-          </h3>
+    applyLanguage();
 
 
-          <p>
+    /*
+     * 時計
+     */
+    updateClock();
 
-            ${escapeHtml(
-              country
-            )}
-
-            <br>
-
-            ${escapeHtml(
-              description
-            )}
-
-          </p>
-
-
-          <div class="league-view">
-
-            <span>
-              ${t("leagues.view")}
-            </span>
-
-            <span>
-              →
-            </span>
-
-          </div>
-
-        </a>
-
-      `;
-
-    }).join("");
-}
-
-
-/* ==================================================
-   LANGUAGE EVENTS
-================================================== */
-
-function setupLanguageButtons() {
-
-  $(
-    '.language-switcher button, .header-language button'
-  ).forEach(button => {
-
-    button.addEventListener(
-      "click",
-      () => {
-
-        applyLanguage(
-          button.dataset.lang
-        );
-
-      }
+    setInterval(
+      updateClock,
+      1000
     );
 
-  });
+  }
 
-}
 
+  /*
+   * DOM準備完了後に実行
+   */
+  if (
+    document.readyState ===
+    "loading"
+  ) {
 
-/* ==================================================
-   MATCH CENTER EVENTS
-================================================== */
+    document.addEventListener(
+      "DOMContentLoaded",
+      init
+    );
 
-function setupMatchCenterEvents() {
+  } else {
 
-  $("#leagueFilter")?.addEventListener(
-    "change",
-    renderGames
-  );
+    init();
 
+  }
 
-  $("#statusFilter")?.addEventListener(
-    "change",
-    renderGames
-  );
-
-
-  $("#standingsLeague")?.addEventListener(
-    "change",
-    renderStandings
-  );
-
-}
-
-
-/* ==================================================
-   TIMEZONE EVENTS
-================================================== */
-
-function setupTimezoneTabs() {
-
-  $$(".timezone-tabs button")
-    .forEach(button => {
-
-      button.addEventListener(
-        "click",
-        () => {
-
-          const selectedZone =
-            button.dataset.zone;
-
-
-          if (
-            !zoneNames[selectedZone]
-          ) {
-            return;
-          }
-
-
-          currentZone =
-            selectedZone;
-
-
-          $$(".timezone-tabs button")
-            .forEach(btn => {
-
-              btn.classList.toggle(
-                "active",
-                btn.dataset.zone ===
-                  currentZone
-              );
-
-            });
-
-
-          updateClock();
-          renderSchedule();
-          renderNextGame();
-
-        }
-      );
-
-    });
-
-}
-
-
-/* ==================================================
-   INITIALIZE
-================================================== */
-
-function init() {
-
-  /* EVENTS */
-
-  setupLanguageButtons();
-
-  setupMatchCenterEvents();
-
-  setupScheduleTabs();
-
-  setupTimezoneTabs();
-
-
-  /* INITIAL STATE */
-
-  $$("[data-schedule-status]")
-    .forEach(tab => {
-
-      tab.classList.toggle(
-        "active",
-        tab.dataset.scheduleStatus ===
-          currentScheduleStatus
-      );
-
-    });
-
-
-  /* RENDER */
-
-  updateFilterTexts();
-
-  renderGames();
-
-  renderStandings();
-
-  renderSchedule();
-
-  renderNextGame();
-
-  renderLeagues();
-
-
-  /* LANGUAGE */
-
-  applyLanguage(
-    currentLanguage
-  );
-
-
-  /* CLOCK */
-
-  updateClock();
-
-}
-
-
-/* ==================================================
-   DOM READY
-================================================== */
-
-if (
-  document.readyState === "loading"
-) {
-
-  document.addEventListener(
-    "DOMContentLoaded",
-    init
-  );
-
-} else {
-
-  init();
-
-}
-
-
-/* ==================================================
-   CLOCK
-================================================== */
-
-setInterval(
-  updateClock,
-  1000
-);
+})();
