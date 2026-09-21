@@ -518,15 +518,15 @@ const ALLIANCE_DATA = {
         zh: "AHBA INTERNATIONAL CUP 决赛"
       },
 
-      time: "2026-09-20T19:30:00+09:00",
+      time: "2026-09-30T19:30:00+09:00",
 
       home: "Team Japan",
       away: "Team Taiwan",
 
-      homeScore: 6,
-      awayScore: 5,
+      homeScore: -,
+      awayScore: -,
 
-      status: "finished",
+      status: "unfinished",
 
       round: {
         ja: "決勝",
@@ -543,37 +543,37 @@ const ALLIANCE_DATA = {
         },
 
         pitching: {
-          win: "鈴木 颯",
-          loss: "Lin Wei",
-          save: "伊藤 海",
+          win: "",
+          loss: "",
+          save: "",
 
           holds: [
-            "渡辺 翼",
-            "吉田 陽"
+            "",
+            ""
           ]
         },
 
         homeRuns: [
 
           {
-            team: "home",
-            player: "鈴木 颯",
-            inning: 3,
-            runs: 2
+            team: "",
+            player: "",
+            inning: ,
+            runs: 
           },
 
           {
-            team: "home",
-            player: "伊藤 海",
-            inning: 9,
-            runs: 2
+            team: "",
+            player: "",
+            inning: ,
+            runs: 
           },
 
           {
-            team: "away",
-            player: "Chen Hao",
-            inning: 4,
-            runs: 2
+            team: "",
+            player: "",
+            inning: ,
+            runs: 
           }
 
         ],
