@@ -358,8 +358,8 @@
 
 
     zh: {
-      timezone: "Asia/Shanghai",
-      timezoneLabel: "北京时间",
+      timezone: "Asia/Taipei",
+      timezoneLabel: "台北時間",
 
       nav: {
         games: "比赛信息",
@@ -697,7 +697,7 @@
         : currentLang === "ko"
         ? "ko-KR"
         : currentLang === "zh"
-        ? "zh-CN"
+        ? "zh-TW"
         : "en-US";
 
     return new Intl.DateTimeFormat(
@@ -731,7 +731,7 @@
         : currentLang === "ko"
         ? "ko-KR"
         : currentLang === "zh"
-        ? "zh-CN"
+        ? "zh-TW"
         : "en-US";
 
     return new Intl.DateTimeFormat(
@@ -763,7 +763,7 @@
         : currentLang === "ko"
         ? "ko-KR"
         : currentLang === "zh"
-        ? "zh-CN"
+        ? "zh-TW"
         : "en-US",
       {
         timeZone: timezone,
@@ -867,7 +867,7 @@
             : currentLang === "ko"
             ? "ko-KR"
             : currentLang === "zh"
-            ? "zh-CN"
+            ? "zh-TW"
             : "en-US",
           {
             timeZone: timezone,
