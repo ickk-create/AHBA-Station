@@ -2535,3 +2535,548 @@ select:focus-visible {
 
   color: #ffffff;
 }
+
+/* =========================================================
+   MATCH CENTER - NEW CARD DESIGN
+   ========================================================= */
+
+.game-card {
+
+  padding: 20px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  min-height: 250px;
+}
+
+
+.game-date {
+
+  margin-top: -7px;
+
+  color: #a0afc0;
+
+  font-family:
+    "Orbitron",
+    "Noto Sans JP",
+    sans-serif;
+
+  font-size: .68rem;
+
+  font-weight: 600;
+}
+
+
+.game-event {
+
+  margin-top: 5px;
+
+  color: #71849a;
+
+  font-size: .66rem;
+
+  font-weight: 600;
+}
+
+
+.game-match {
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    85px
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 23px;
+
+  text-align: center;
+}
+
+
+.game-team {
+
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+
+.game-team.home {
+
+  text-align: left;
+}
+
+
+.game-team.away {
+
+  text-align: right;
+}
+
+
+.game-team .team-side {
+
+  color: #60738a;
+
+  font-family:
+    "Orbitron",
+    sans-serif;
+
+  font-size: .52rem;
+
+  font-weight: 700;
+
+  letter-spacing: .1em;
+}
+
+
+.game-team strong {
+
+  color: #edf5fb;
+
+  font-size: .86rem;
+
+  font-weight: 800;
+
+  line-height: 1.45;
+
+  word-break: break-word;
+}
+
+
+.game-score {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 7px;
+}
+
+
+.game-score span {
+
+  color: #f5faff;
+
+  font-family:
+    "Orbitron",
+    monospace;
+
+  font-size: 1.25rem;
+
+  font-weight: 800;
+}
+
+
+.game-score small {
+
+  color: #52667b;
+
+  font-family:
+    "Orbitron",
+    sans-serif;
+
+  font-size: .48rem;
+
+  font-weight: 700;
+}
+
+
+.game-foot {
+
+  margin-top: auto;
+
+  padding-top: 17px;
+}
+
+
+.game-detail-link {
+
+  color: var(--accent);
+
+  font-size: .65rem;
+
+  font-weight: 700;
+
+  letter-spacing: .03em;
+
+  transition:
+    color .2s ease;
+}
+
+
+.game-detail-link:hover {
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   NEXT GAME
+   ========================================================= */
+
+.next-game-card {
+
+  padding: 4px 0 0;
+}
+
+
+.next-game-meta {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-bottom: 12px;
+}
+
+
+.next-event {
+
+  color: var(--accent);
+
+  font-size: .62rem;
+
+  font-weight: 700;
+
+  letter-spacing: .08em;
+}
+
+
+.next-status {
+
+  padding: 4px 8px;
+
+  border-radius: 5px;
+
+  background:
+    rgba(104,217,255,.08);
+
+  color: var(--accent);
+
+  font-size: .55rem;
+
+  font-weight: 700;
+}
+
+
+.next-game-time {
+
+  display: flex;
+
+  align-items: baseline;
+
+  gap: 10px;
+
+  margin-bottom: 17px;
+}
+
+
+.next-game-time strong {
+
+  color: #f2f9ff;
+
+  font-family:
+    "Orbitron",
+    monospace;
+
+  font-size: 1.65rem;
+
+  font-weight: 800;
+}
+
+
+.next-game-time span {
+
+  color: #788ca2;
+
+  font-size: .65rem;
+}
+
+
+.next-match {
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    35px
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding:
+    15px 0;
+
+  border-top:
+    1px solid
+    rgba(255,255,255,.06);
+
+  border-bottom:
+    1px solid
+    rgba(255,255,255,.06);
+}
+
+
+.next-team {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+.next-team:last-child {
+
+  text-align: right;
+}
+
+
+.next-team small {
+
+  color: #60738a;
+
+  font-family:
+    "Orbitron",
+    sans-serif;
+
+  font-size: .48rem;
+
+  font-weight: 700;
+
+  letter-spacing: .08em;
+}
+
+
+.next-team strong {
+
+  color: #edf6fc;
+
+  font-size: .82rem;
+
+  font-weight: 800;
+
+  word-break: break-word;
+}
+
+
+.next-vs {
+
+  color: #596d82;
+
+  font-family:
+    "Orbitron",
+    sans-serif;
+
+  font-size: .52rem;
+
+  font-weight: 700;
+
+  text-align: center;
+}
+
+
+.next-detail {
+
+  display: block;
+
+  margin-top: 16px;
+
+  color: var(--accent);
+
+  font-size: .62rem;
+
+  font-weight: 700;
+
+  text-align: right;
+}
+
+
+.next-empty {
+
+  padding: 18px 0;
+}
+
+
+.next-empty-title {
+
+  color: #b4c1cf;
+
+  font-size: .75rem;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   LEAGUE CARDS
+   ========================================================= */
+
+.league-description {
+
+  min-height: 48px;
+
+  margin-bottom: 20px !important;
+}
+
+
+.league-meta {
+
+  display: grid;
+
+  gap: 10px;
+
+  margin-top: 15px;
+
+  padding-top: 15px;
+
+  border-top:
+    1px solid
+    rgba(255,255,255,.06);
+}
+
+
+.league-meta > div {
+
+  display: flex;
+
+  align-items: baseline;
+
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+
+.league-meta-label {
+
+  color: #65788e;
+
+  font-size: .59rem;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+
+.league-meta strong {
+
+  color: #dfeaf3;
+
+  font-size: .69rem;
+
+  font-weight: 700;
+
+  text-align: right;
+}
+
+
+.league-meta > div:nth-child(1) strong {
+
+  color: #68d9ff;
+}
+
+
+.league-meta > div:nth-child(2) strong {
+
+  color: #b5aaff;
+}
+
+
+.league-meta > div:nth-child(3) strong {
+
+  color: #58e6a7;
+}
+
+
+.league-view {
+
+  color: var(--accent);
+
+  transition:
+    color .2s ease;
+}
+
+
+.league-card:hover .league-view {
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   MOBILE MATCH CENTER
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .game-match {
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      60px
+      minmax(0, 1fr);
+
+    gap: 6px;
+  }
+
+
+  .game-team strong {
+
+    font-size: .78rem;
+  }
+
+
+  .game-score span {
+
+    font-size: 1.05rem;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .next-game-time strong {
+
+    font-size: 1.4rem;
+  }
+
+
+  .league-meta > div {
+
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 2px;
+  }
+
+
+  .league-meta strong {
+
+    text-align: left;
+  }
+
+}
