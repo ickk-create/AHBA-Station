@@ -526,7 +526,7 @@ const ALLIANCE_DATA = {
       homeScore: -,
       awayScore: -,
 
-      status: "unfinished",
+      status: "upcoming",
 
       round: {
         ja: "決勝",
