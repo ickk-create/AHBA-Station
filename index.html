@@ -2,616 +2,618 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Asia HCBB Baseball Alliance</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Orbitron:wght@500;700;800&display=swap"
-    rel="stylesheet"
+  <meta
+    name="description"
+    content="Asia HCBB Baseball Alliance — Official Games, Results, Schedule and Standings"
   >
 
   <link rel="stylesheet" href="./style.css">
-
-  <style>
-
-.about-ahba-home {
-  margin-top: 24px;
-}
-
-
-.about-ahba-card {
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  gap: 32px;
-
-  padding: 36px;
-
-  border:
-    1px solid
-    rgba(100, 210, 255, .16);
-
-  border-radius: 18px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(19, 35, 62, .82),
-      rgba(7, 14, 27, .94)
-    );
-
-  box-shadow:
-    0 18px 50px
-    rgba(0, 0, 0, .22);
-}
-
-
-.about-ahba-card h2 {
-
-  margin:
-    8px 0 14px;
-
-}
-
-
-.about-ahba-card h2 span {
-
-  color:
-    #64d6ff;
-
-}
-
-
-.about-ahba-card p {
-
-  max-width:
-    720px;
-
-  line-height:
-    1.9;
-
-  opacity:
-    .72;
-
-}
-
-
-@media (max-width: 760px) {
-
-  .about-ahba-card {
-
-    flex-direction:
-      column;
-
-    align-items:
-      flex-start;
-
-  }
-
-}
-
-</style>
 </head>
 
 <body>
 
-<header class="site-header">
+  <!-- =========================
+       HEADER
+  ========================== -->
+  <header class="site-header">
+    <div class="header-inner">
 
-  <div class="header-inner">
+      <a href="./index.html" class="site-brand">
+        <span class="site-brand-main">AHBA</span>
+        <span class="site-brand-sub">
+          Asia HCBB Baseball Alliance
+        </span>
+      </a>
 
-    <!-- BRAND -->
-    <a href="index.html" class="site-brand">
+      <nav class="main-nav">
+        <a href="#games" data-i18n="nav.games">試合結果</a>
+        <a href="#standings" data-i18n="nav.standings">順位表</a>
+        <a href="#schedule" data-i18n="nav.schedule">試合日程</a>
+        <a href="#leagues" data-i18n="nav.leagues">参加リーグ</a>
+        <a href="#about" data-i18n="nav.about">AHBAについて</a>
+      </nav>
 
-      <img
-        src="E54D2CD1-606D-43CA-8438-216137170723.png"
-        class="site-logo"
-        alt="Asia HCBB Baseball Alliance"
-      >
+      <div class="header-right">
 
-      <div class="site-brand-text">
-        <div class="site-brand-main">
-          ASIA HCBB
+        <div class="header-clock">
+          <div id="clock">--:--:--</div>
+          <div id="tz">Asia/Tokyo</div>
         </div>
 
-        <div class="site-brand-sub">
+        <div class="header-language">
+          <button type="button" data-lang="ja" class="active">JA</button>
+          <button type="button" data-lang="ko">KO</button>
+          <button type="button" data-lang="en">EN</button>
+          <button type="button" data-lang="zh">ZH</button>
+        </div>
+
+      </div>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- =========================
+         HERO
+    ========================== -->
+    <section class="hero-section">
+
+      <div class="hero-content">
+
+        <div class="hero-kicker">
+          ASIA HCBB BASEBALL ALLIANCE
+        </div>
+
+        <h1
+          class="hero-title"
+          data-i18n-html="hero.title"
+        >
+          ASIA HCBB<br>
           BASEBALL ALLIANCE
+        </h1>
+
+        <p
+          class="hero-description"
+          data-i18n="hero.description"
+        >
+          アジアのHCBBコミュニティをつなぐ、
+          野球交流・大会・公式情報のプラットフォーム。
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         NEXT GAME
+    ========================== -->
+    <section class="section next-game-section">
+
+      <div class="section-heading">
+        <span class="section-label">NEXT GAME</span>
+        <h2 data-i18n="nextGame.title">次の試合</h2>
+      </div>
+
+      <div id="nextGame" class="next-game-card">
+        <div class="loading">
+          Loading...
         </div>
       </div>
 
-    </a>
+    </section>
 
 
-    <!-- NAVIGATION -->
-    <nav class="main-nav">
+    <!-- =========================
+         NEWS / TICKER
+    ========================== -->
+    <section class="ticker-section">
 
-      <a href="#games" data-i18n="nav.games">
-        試合
-      </a>
+      <div class="ticker-label">
+        AHBA
+      </div>
 
-      <a href="#standings" data-i18n="nav.standings">
-        順位表
-      </a>
+      <div class="ticker-content">
+        <span id="tickerText">
+          Loading...
+        </span>
+      </div>
 
-      <a href="#schedule" data-i18n="nav.schedule">
-        時間表
-      </a>
+    </section>
 
-      <a href="#leagues" data-i18n="nav.leagues">
-        リーグ
-      </a>
 
-      <a
-        href="ahba.html"
-        data-i18n="nav.about"
+    <!-- =========================
+         MATCH CENTER
+    ========================== -->
+    <section
+      id="games"
+      class="section match-center-section"
+    >
+
+      <div class="section-heading">
+
+        <div>
+          <span class="section-label">MATCH CENTER</span>
+
+          <h2 data-i18n="games.title">
+            試合結果
+          </h2>
+        </div>
+
+      </div>
+
+
+      <!-- Filters -->
+      <div class="filter-bar">
+
+        <div class="filter-group">
+
+          <label
+            for="leagueFilter"
+            data-i18n="games.event"
+          >
+            イベント
+          </label>
+
+          <select id="leagueFilter">
+            <option value="all">All</option>
+          </select>
+
+        </div>
+
+
+        <div class="filter-group">
+
+          <label
+            for="statusFilter"
+            data-i18n="games.status"
+          >
+            状態
+          </label>
+
+          <select id="statusFilter">
+            <option value="all">All</option>
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <!-- Game Cards -->
+      <div
+        id="gamesGrid"
+        class="games-grid"
       >
-        AHBA紹介
-      </a>
+        <div class="loading">
+          Loading...
+        </div>
+      </div>
 
-    </nav>
+    </section>
 
 
-    <!-- RIGHT SIDE -->
-    <div class="header-right">
+    <!-- =========================
+         STANDINGS
+    ========================== -->
+    <section
+      id="standings"
+      class="section standings-section"
+    >
 
-      <!-- CLOCK -->
-      <div class="header-clock">
+      <div class="section-heading">
 
-        <span id="clock">
-          --:--:--
+        <div>
+          <span class="section-label">STANDINGS</span>
+
+          <h2 data-i18n="standings.title">
+            順位表
+          </h2>
+        </div>
+
+      </div>
+
+
+      <!-- Event / Tournament filter -->
+      <div class="filter-bar">
+
+        <div class="filter-group">
+
+          <label
+            for="standingsLeague"
+            data-i18n="standings.event"
+          >
+            イベント
+          </label>
+
+          <select id="standingsLeague">
+            <option value="current">
+              Current
+            </option>
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <div class="table-wrapper">
+
+        <table class="standings-table">
+
+          <thead>
+
+            <tr>
+
+              <th data-i18n="standings.rank">
+                #
+              </th>
+
+              <th data-i18n="standings.team">
+                TEAM
+              </th>
+
+              <th data-i18n="standings.played">
+                P
+              </th>
+
+              <th data-i18n="standings.wins">
+                W
+              </th>
+
+              <th data-i18n="standings.losses">
+                L
+              </th>
+
+              <th data-i18n="standings.draws">
+                D
+              </th>
+
+              <th data-i18n="standings.runsFor">
+                RF
+              </th>
+
+              <th data-i18n="standings.runsAgainst">
+                RA
+              </th>
+
+              <th data-i18n="standings.diff">
+                DIFF
+              </th>
+
+              <th data-i18n="standings.points">
+                PTS
+              </th>
+
+            </tr>
+
+          </thead>
+
+          <tbody id="standingsBody">
+
+            <tr>
+              <td colspan="10" class="loading">
+                Loading...
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         SCHEDULE
+    ========================== -->
+    <section
+      id="schedule"
+      class="section schedule-section"
+    >
+
+      <div class="section-heading">
+
+        <div>
+          <span class="section-label">SCHEDULE</span>
+
+          <h2 data-i18n="schedule.title">
+            試合日程
+          </h2>
+        </div>
+
+      </div>
+
+
+      <!-- Timezone tabs -->
+      <div class="schedule-zone-tabs">
+
+        <button
+          type="button"
+          class="active"
+          data-zone="Asia/Tokyo"
+        >
+          JAPAN
+        </button>
+
+        <button
+          type="button"
+          data-zone="Asia/Seoul"
+        >
+          KOREA
+        </button>
+
+        <button
+          type="button"
+          data-zone="Asia/Taipei"
+        >
+          TAIWAN
+        </button>
+
+        <button
+          type="button"
+          data-zone="America/New_York"
+        >
+          ET
+        </button>
+
+      </div>
+
+
+      <!-- Upcoming / Finished -->
+      <div class="schedule-status-tabs">
+
+        <button
+          id="scheduleUpcomingTab"
+          class="active"
+          data-schedule-status="upcoming"
+          type="button"
+        >
+
+          <span class="status-dot upcoming-dot"></span>
+
+          <span data-i18n="scheduleStatus.upcoming">
+            予定
+          </span>
+
+          <span
+            id="scheduleUpcomingCount"
+            class="schedule-count"
+          >
+            0
+          </span>
+
+        </button>
+
+
+        <button
+          id="scheduleFinishedTab"
+          data-schedule-status="finished"
+          type="button"
+        >
+
+          <span class="status-dot finished-dot"></span>
+
+          <span data-i18n="scheduleStatus.finished">
+            終了
+          </span>
+
+          <span
+            id="scheduleFinishedCount"
+            class="schedule-count"
+          >
+            0
+          </span>
+
+        </button>
+
+      </div>
+
+
+      <!-- Schedule -->
+      <div
+        id="scheduleList"
+        class="schedule-list"
+      >
+
+        <div class="loading">
+          Loading...
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         LEAGUES
+    ========================== -->
+    <section
+      id="leagues"
+      class="section leagues-section"
+    >
+
+      <div class="section-heading">
+
+        <div>
+          <span class="section-label">LEAGUES</span>
+
+          <h2 data-i18n="leagues.title">
+            参加リーグ
+          </h2>
+        </div>
+
+      </div>
+
+
+      <div
+        id="leagueCards"
+        class="league-cards"
+      >
+
+        <div class="loading">
+          Loading...
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT AHBA
+    ========================== -->
+    <section
+      id="about"
+      class="section about-section"
+    >
+
+      <div class="section-heading">
+
+        <div>
+          <span class="section-label">ABOUT</span>
+
+          <h2 data-i18n="about.title">
+            AHBAについて
+          </h2>
+        </div>
+
+      </div>
+
+
+      <div class="about-content">
+
+        <p data-i18n="about.description">
+          Asia HCBB Baseball Alliance は、
+          アジア地域のHCBBコミュニティをつなぎ、
+          国・地域を越えた野球交流を支援する
+          オンラインアライアンスです。
+        </p>
+
+        <div class="about-grid">
+
+          <div class="about-item">
+
+            <span class="about-number">
+              01
+            </span>
+
+            <h3 data-i18n="about.items.games.title">
+              Official Games
+            </h3>
+
+            <p data-i18n="about.items.games.description">
+              AHBAが公式に掲載する試合情報。
+            </p>
+
+          </div>
+
+
+          <div class="about-item">
+
+            <span class="about-number">
+              02
+            </span>
+
+            <h3 data-i18n="about.items.exchange.title">
+              International Exchange
+            </h3>
+
+            <p data-i18n="about.items.exchange.description">
+              国・地域を越えた交流試合やイベント。
+            </p>
+
+          </div>
+
+
+          <div class="about-item">
+
+            <span class="about-number">
+              03
+            </span>
+
+            <h3 data-i18n="about.items.tournament.title">
+              Tournaments
+            </h3>
+
+            <p data-i18n="about.items.tournament.description">
+              AHBAが開催・掲載する大会。
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+  <footer class="site-footer">
+
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+
+        <strong>
+          AHBA
+        </strong>
+
+        <span>
+          Asia HCBB Baseball Alliance
         </span>
 
-        <small id="tz">
-          JST
-        </small>
+      </div>
+
+
+      <div class="footer-links">
+
+        <a href="#games" data-i18n="nav.games">
+          試合結果
+        </a>
+
+        <a href="#standings" data-i18n="nav.standings">
+          順位表
+        </a>
+
+        <a href="#schedule" data-i18n="nav.schedule">
+          試合日程
+        </a>
+
+        <a href="#leagues" data-i18n="nav.leagues">
+          参加リーグ
+        </a>
 
       </div>
 
 
-      <!-- LANGUAGE -->
-      <div class="header-language">
-
-        <button
-          data-lang="ja"
-          title="日本語"
-        >
-          JP
-        </button>
-
-        <button
-          data-lang="ko"
-          title="한국어"
-        >
-          KR
-        </button>
-
-        <button
-          data-lang="zh"
-          title="中文"
-        >
-          中文
-        </button>
-        
-        <button
-          data-lang="en"
-          title="English"
-        >
-          EN
-        </button>
-
+      <div class="footer-copy">
+        © Asia HCBB Baseball Alliance
       </div>
 
     </div>
 
-  </div>
+  </footer>
 
-</header>
 
+  <!-- =========================
+       SCRIPTS
+  ========================== -->
 
-<main>
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
 
-<!-- HERO -->
-
-<section class="hero">
-
-  <div class="eyebrow">
-    ASIA HCBB BASEBALL ALLIANCE
-  </div>
-
-  <h1 data-i18n-html="hero.title">
-    アジアのHCBBを、<br>
-    <span>ひとつのスコアボードへ。</span>
-  </h1>
-
-  <p data-i18n="hero.description">
-    試合結果、順位、各リーグの試合時間をひとつのサイトで確認できる
-    Asia HCBB Baseball Alliance 公式ポータル。
-  </p>
-
-  <div class="hero-actions">
-
-    <a
-      class="btn primary"
-      href="#games"
-      data-i18n="hero.games"
-    >
-      試合を見る
-    </a>
-
-    <a
-      class="btn"
-      href="#schedule"
-      data-i18n="hero.schedule"
-    >
-      時間表
-    </a>
-
-  </div>
-
-</section>
-
-
-<!-- NEXT GAME -->
-
-<section class="next-card">
-
-  <div
-    class="section-mini"
-    data-i18n="next.title"
-  >
-    NEXT GAME
-  </div>
-
-  <div id="nextGame">
-  </div>
-
-</section>
-
-
-<!-- TICKER -->
-
-<div class="ticker">
-
-  <span class="live-dot"></span>
-
-  <b>
-    ALLIANCE LIVE
-  </b>
-
-  <span id="tickerText">
-    データを読み込んでいます…
-  </span>
-
-</div>
-
-
-<!-- MATCH CENTER -->
-
-<section id="games" class="section">
-
-  <div class="section-head">
-
-    <div>
-
-      <div
-        class="eyebrow"
-        data-i18n="games.eyebrow"
-      >
-        MATCH CENTER
-      </div>
-
-      <h2 data-i18n="games.title">
-        試合結果・予定
-      </h2>
-
-    </div>
-
-
-    <div class="filters">
-
-      <select id="leagueFilter">
-      </select>
-
-      <select id="statusFilter">
-
-        <option
-          value="all"
-          data-i18n="filter.all"
-        >
-          全試合
-        </option>
-
-        <option
-          value="upcoming"
-          data-i18n="filter.upcoming"
-        >
-          予定
-        </option>
-
-        <option
-          value="finished"
-          data-i18n="filter.finished"
-        >
-          終了
-        </option>
-
-      </select>
-
-    </div>
-
-  </div>
-
-
-  <div id="gamesGrid" class="games-grid"></div>
-
-</section>
-
-
-<!-- STANDINGS -->
-
-<section id="standings" class="section">
-
-  <div class="section-head">
-
-    <div>
-
-      <div
-        class="eyebrow"
-        data-i18n="standings.eyebrow"
-      >
-        STANDINGS
-      </div>
-
-      <h2 data-i18n="standings.title">
-        順位表
-      </h2>
-
-    </div>
-
-    <select id="standingsLeague"></select>
-
-  </div>
-
-
-  <div class="table-wrap">
-
-    <table>
-
-      <thead>
-　　　　  <tr>
-          <th>#</th>
-　　　　　　 <th data-i18n="standings.team">チーム</th>
-          <th data-i18n="standings.g">G</th>
-          <th data-i18n="standings.w">W</th>
-          <th data-i18n="standings.l">L</th>
-          <th data-i18n="standings.d">D</th>
-          <th data-i18n="standings.pct">PCT</th>
-          <th data-i18n="standings.rs">RS</th>
-          <th data-i18n="standings.ra">RA</th>
-　　　　　　 <th data-i18n="standings.diff">DIFF</th>
-        </tr>
-      </thead>
-
-      <tbody id="standingsBody"></tbody>
-
-    </table>
-
-  </div>
-
-</section>
-
-
-<!-- SCHEDULE -->
-
-<section id="schedule" class="section">
-
-  <div class="section-head">
-
-    <div>
-
-      <div
-        class="eyebrow"
-        data-i18n="schedule.eyebrow"
-      >
-        TIME TABLE
-      </div>
-
-      <h2 data-i18n="schedule.title">
-        リーグ時間表
-      </h2>
-
-    </div>
-
-    <span class="zone-readout">
-
-      <span data-i18n="schedule.timezone">
-        表示タイムゾーン：
-      </span>
-
-      <b id="zoneLabel">
-        Asia/Tokyo
-      </b>
-
-    </span>
-
-  </div>
-
-
-  <div class="timezone-tabs">
-
-    <button
-      class="active"
-      data-zone="Asia/Tokyo"
-    >
-      🇯🇵 <span data-i18n="country.japan">日本</span>
-    </button>
-
-    <button data-zone="Asia/Seoul">
-      🇰🇷 <span data-i18n="country.korea">韓国</span>
-    </button>
-
-    <button data-zone="Asia/Taipei">
-      🇹🇼 <span data-i18n="country.taiwan">台湾</span>
-    </button>
-
-    <button data-zone="America/New_York">
-      🇺🇸 <span data-i18n="country.newYork">アメリカ</span>
-    </button>
-
-  </div>
-
-
-  <div class="schedule-status-tabs">
-
-  <button
-    id="scheduleUpcomingTab"
-    class="active"
-    data-schedule-status="upcoming"
-    type="button"
-  >
-
-    <span class="status-dot upcoming-dot"></span>
-
-    <span data-i18n="scheduleStatus.upcoming">
-      予定
-    </span>
-
-    <span
-      id="scheduleUpcomingCount"
-      class="schedule-count"
-    >
-      0
-    </span>
-
-  </button>
-
-
-  <button
-    id="scheduleFinishedTab"
-    data-schedule-status="finished"
-    type="button"
-  >
-
-    <span class="status-dot finished-dot"></span>
-
-    <span data-i18n="scheduleStatus.finished">
-      終了
-    </span>
-
-    <span
-      id="scheduleFinishedCount"
-      class="schedule-count"
-    >
-      0
-    </span>
-
-  </button>
-
-</div>
-
-      
-  <div id="scheduleList" class="schedule-list"></div>
-
-</section>
-
-
-<!-- LEAGUES -->
-
-<section id="leagues" class="section">
-
-  <div
-    class="eyebrow"
-    data-i18n="leagues.eyebrow"
-  >
-    LEAGUE INTRODUCTION
-  </div>
-
-  <h2 data-i18n="leagues.title">
-    リーグ紹介
-  </h2>
-
-  <div id="leagueCards" class="league-cards"></div>
-
-</section>
-
-<section class="section about-ahba-home">
-
-  <div class="about-ahba-card">
-
-    <div>
-
-      <div
-        class="eyebrow"
-        data-i18n="about.eyebrow"
-      >
-        ABOUT AHBA
-      </div>
-
-      <h2
-        data-i18n-html="about.title"
-      >
-        アジアのHCBBを、<br>
-        <span>ひとつにつなぐ。</span>
-      </h2>
-
-      <p
-        data-i18n="about.description"
-      >
-        Asia HCBB Baseball Alliance（AHBA）は、
-        アジア各地域のHCBBコミュニティをつなぎ、
-        試合・リーグ・大会・交流の情報を共有するためのAllianceです。
-      </p>
-
-    </div>
-
-
-    <a
-      class="btn primary"
-      href="ahba.html"
-      data-i18n="about.button"
-    >
-      AHBAについて詳しく見る →
-    </a>
-
-  </div>
-
-</section>
-
-</main>
-
-
-<footer>
-
-  <div>
-
-    <b>
-      ASIA HCBB BASEBALL ALLIANCE
-    </b>
-
-    <br>
-
-    <span data-i18n="footer.subtitle">
-      Community・Competition・Connection
-    </span>
-
-  </div>
-
-  <div>
-    © 2026 Asia HCBB Baseball Alliance
-  </div>
-
-</footer>
-
-
-<script src="./data.js"></script>
-<script src="./app.js"></script>
-  
 </body>
 </html>
