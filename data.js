@@ -518,7 +518,7 @@ const ALLIANCE_DATA = {
         zh: "AHBA INTERNATIONAL CUP 决赛"
       },
 
-      time: "2026-09-30T19:30:00+09:00",
+      time: "2026-09-20T19:30:00+09:00",
 
       home: "Team Japan",
       away: "Team Taiwan",
@@ -526,7 +526,7 @@ const ALLIANCE_DATA = {
       homeScore: -,
       awayScore: -,
 
-      status: "upcoming",
+      status: "finished",
 
       round: {
         ja: "決勝",
@@ -543,37 +543,37 @@ const ALLIANCE_DATA = {
         },
 
         pitching: {
-          win: "",
-          loss: "",
-          save: "",
+          win: "あ",
+          loss: "あ",
+          save: "あ",
 
           holds: [
-            "",
-            ""
+            "あl",
+            "あ"
           ]
         },
 
         homeRuns: [
 
           {
-            team: "",
-            player: "",
-            inning: ,
-            runs: 
+            team: "home",
+            player: "a",
+            inning: 2,
+            runs: 2
           },
 
           {
-            team: "",
-            player: "",
-            inning: ,
-            runs: 
+            team: "away",
+            player: "a",
+            inning: 5,
+            runs: 2
           },
 
           {
-            team: "",
-            player: "",
-            inning: ,
-            runs: 
+            team: "home",
+            player: "a",
+            inning: 9,
+            runs: 2
           }
 
         ],
