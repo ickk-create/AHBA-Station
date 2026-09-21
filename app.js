@@ -12,13 +12,15 @@
   ======================================================= */
 
   const D =
-    typeof ALLIANCE_DATA !== "undefined"
-      ? ALLIANCE_DATA
-      : {
-          leagues: [],
-          games: [],
-          standings: {}
-        };
+  typeof ALLIANCE_DATA !== "undefined"
+    ? ALLIANCE_DATA
+    : {
+        leagues: [],
+        games: [],
+        standings: {
+          current: []
+        }
+      };
 
   /* =======================================================
      STATE
@@ -1269,138 +1271,101 @@
 
   function renderNextGame() {
 
-    const container =
-      $("#nextGame");
+  const container =
+    document.getElementById("nextGame");
 
-    if (!container) {
-      return;
-    }
+  if (!container) return;
 
-    const upcoming =
-      sortAscending(
-        getGames().filter(
-          game =>
-            getGameStatus(game) !==
-            "finished"
-        )
+  const games =
+    getGames()
+      .filter(
+        game => game.status !== "finished"
+      )
+      .sort(
+        (a, b) =>
+          new Date(a.time) -
+          new Date(b.time)
       );
 
-    const next =
-      upcoming[0];
-
-    if (!next) {
-
-      container.innerHTML = `
-        <div class="next-empty">
-          ${escapeHTML(
-            t("next.noGame")
-          )}
-        </div>
-      `;
-
-      const ticker =
-        $("#tickerText");
-
-      if (ticker) {
-        ticker.textContent =
-          t("next.noGame");
-      }
-
-      return;
-    }
-
-
-    const formatted =
-      formatDateTime(
-        getGameTime(next),
-        currentZone
-      );
-
-    const home =
-      displayText(
-        getHome(next),
-        t("common.unknown")
-      );
-
-    const away =
-      displayText(
-        getAway(next),
-        t("common.unknown")
-      );
-
-    const event =
-      getEventName(next);
-
-    const id =
-      next.id ??
-      next.gameId ??
-      "";
-
+  if (!games.length) {
 
     container.innerHTML = `
-
-      <div class="next-game">
-
-        <div class="next-time">
-          ${escapeHTML(formatted.time)}
+      <div class="next-empty">
+        <div>
+          ${
+            currentLanguage === "ja"
+              ? "現在、予定されている試合はありません"
+              : currentLanguage === "ko"
+              ? "현재 예정된 경기가 없습니다"
+              : currentLanguage === "zh"
+              ? "目前没有安排的比赛"
+              : "There are no upcoming games"
+          }
         </div>
-
-        <div class="next-date">
-          ${escapeHTML(formatted.date)}
-        </div>
-
-        <div class="matchup">
-
-          <div class="team">
-            ${escapeHTML(home)}
-          </div>
-
-          <div class="vs">
-            ${escapeHTML(
-              t("common.vs")
-            )}
-          </div>
-
-          <div class="team">
-            ${escapeHTML(away)}
-          </div>
-
-        </div>
-
-        <div class="next-event">
-          ${escapeHTML(event)}
-        </div>
-
-        ${
-          id
-            ? `
-              <a
-                class="next-detail"
-                href="./game.html?id=${encodeURIComponent(id)}"
-              >
-                ${escapeHTML(
-                  t("next.view")
-                )}
-              </a>
-            `
-            : ""
-        }
-
       </div>
     `;
 
-
-    const ticker =
-      $("#tickerText");
-
-    if (ticker) {
-
-      ticker.textContent =
-        `${home} ${t("common.vs")} ${away} · ${formatted.full}`;
-
-    }
-
+    return;
   }
+
+  const game = games[0];
+
+  const home =
+    getLocalized(game.home, "—");
+
+  const away =
+    getLocalized(game.away, "—");
+
+  const date =
+    new Date(game.time);
+
+  container.innerHTML = `
+
+    <div class="next-game">
+
+      <div class="next-time">
+        ${formatTime(date)}
+      </div>
+
+      <div class="next-date">
+        ${formatDate(date)}
+      </div>
+
+      <div class="matchup">
+
+        <div class="team">
+          ${escapeHtml(home)}
+        </div>
+
+        <div class="vs">
+          VS
+        </div>
+
+        <div class="team">
+          ${escapeHtml(away)}
+        </div>
+
+      </div>
+
+      <a
+        class="btn primary"
+        href="game.html?id=${encodeURIComponent(game.id)}"
+      >
+        ${
+          currentLanguage === "ja"
+            ? "試合詳細 →"
+            : currentLanguage === "ko"
+            ? "경기 상세 →"
+            : currentLanguage === "zh"
+            ? "比赛详情 →"
+            : "GAME DETAILS →"
+        }
+      </a>
+
+    </div>
+
+  `;
+}
 
 
   /* =======================================================
@@ -1408,92 +1373,171 @@
   ======================================================= */
 
   function renderGames() {
+  const container =
+    document.getElementById("gamesGrid");
 
-    const grid =
-      $("#gamesGrid");
+  if (!container) return;
 
-    if (!grid) {
-      return;
-    }
+  const games = getGames();
 
-    const leagueFilter =
-      $("#leagueFilter")?.value ||
-      "all";
+  if (!games.length) {
+    container.innerHTML = `
+      <div class="schedule-empty">
+        <div class="schedule-empty-icon">⚾</div>
+        <div>
+          ${currentLanguage === "ja"
+            ? "試合結果はありません"
+            : currentLanguage === "ko"
+            ? "경기 결과가 없습니다"
+            : currentLanguage === "zh"
+            ? "暂无比赛结果"
+            : "No game results"}
+        </div>
+      </div>
+    `;
 
-    const statusFilter =
-      $("#statusFilter")?.value ||
-      "all";
+    return;
+  }
 
+  container.innerHTML = games.map(game => {
 
-    let games =
-      getGames();
+    const title =
+      getLocalized(game.title, "");
 
+    const home =
+      getLocalized(game.home, "—");
 
-    if (
-      leagueFilter !== "all"
-    ) {
+    const away =
+      getLocalized(game.away, "—");
 
-      games =
-        games.filter((game) => {
+    const round =
+      getLocalized(game.round, "");
 
-          const eventId =
-            String(
-              game?.eventId ??
-              game?.tournamentId ??
-              getGameType(game)
-            );
-
-          return (
-            eventId ===
-            String(leagueFilter)
+    const status =
+      game.status === "finished"
+        ? (
+            currentLanguage === "ja"
+              ? "終了"
+              : currentLanguage === "ko"
+              ? "종료"
+              : currentLanguage === "zh"
+              ? "已结束"
+              : "Finished"
+          )
+        : (
+            currentLanguage === "ja"
+              ? "予定"
+              : currentLanguage === "ko"
+              ? "예정"
+              : currentLanguage === "zh"
+              ? "即将进行"
+              : "Upcoming"
           );
 
-        });
+    const homeScore =
+      Number.isFinite(game.homeScore)
+        ? game.homeScore
+        : "—";
 
-    }
+    const awayScore =
+      Number.isFinite(game.awayScore)
+        ? game.awayScore
+        : "—";
 
+    const date =
+      formatDateTime(game.time);
 
-    if (
-      statusFilter !== "all"
-    ) {
+    return `
+      <article class="game">
 
-      games =
-        games.filter(
-          game =>
-            getGameStatus(game) ===
-            statusFilter
-        );
+        <div class="game-top">
 
-    }
+          <span class="league-tag">
+            ${escapeHtml(
+              game.type || "AHBA"
+            )}
+          </span>
 
+          <span class="game-status ${
+            game.status === "finished"
+              ? "finished"
+              : "upcoming"
+          }">
+            ${status}
+          </span>
 
-    games =
-      sortDescending(games);
-
-
-    if (!games.length) {
-
-      grid.innerHTML = `
-        <div class="schedule-empty">
-          ${escapeHTML(
-            t("games.noGames")
-          )}
         </div>
-      `;
 
-      return;
-    }
+        <div class="game-title">
+          ${escapeHtml(title)}
+        </div>
 
+        <div class="scoreline">
 
-    grid.innerHTML =
-      games
-        .map(
-          game =>
-            createGameCard(game)
-        )
-        .join("");
+          <div>
+            <div class="score-label">
+              ${escapeHtml(home)}
+            </div>
 
-  }
+            <div class="score">
+              ${homeScore}
+            </div>
+          </div>
+
+          <div class="dash">
+            VS
+          </div>
+
+          <div>
+            <div class="score-label">
+              ${escapeHtml(away)}
+            </div>
+
+            <div class="score">
+              ${awayScore}
+            </div>
+          </div>
+
+        </div>
+
+        <div class="game-foot">
+
+          <span>
+            ${escapeHtml(round)}
+          </span>
+
+          <span>
+            ${escapeHtml(date)}
+          </span>
+
+        </div>
+
+        ${
+          game.id
+            ? `
+              <a
+                class="game-detail-link"
+                href="game.html?id=${encodeURIComponent(game.id)}"
+              >
+                ${
+                  currentLanguage === "ja"
+                    ? "試合詳細 →"
+                    : currentLanguage === "ko"
+                    ? "경기 상세 →"
+                    : currentLanguage === "zh"
+                    ? "比赛详情 →"
+                    : "GAME DETAILS →"
+                }
+              </a>
+            `
+            : ""
+        }
+
+      </article>
+    `;
+
+  }).join("");
+}
 
 
   function createGameCard(game) {
@@ -1697,45 +1741,89 @@
 
   function renderStandings() {
 
-    const body =
-      $("#standingsBody");
+  const body =
+    document.getElementById(
+      "standingsBody"
+    );
 
-    if (!body) {
-      return;
-    }
+  if (!body) return;
 
+  const rows =
+    getStandings();
 
-    const rows =
-      getSelectedStandings();
+  if (!rows.length) {
+    body.innerHTML = `
+      <tr>
+        <td colspan="9">
+          ${currentLanguage === "ja"
+            ? "順位表データがありません"
+            : currentLanguage === "ko"
+            ? "순위표 데이터가 없습니다"
+            : currentLanguage === "zh"
+            ? "暂无排名数据"
+            : "No standings data"}
+        </td>
+      </tr>
+    `;
 
+    return;
+  }
 
-    if (!rows.length) {
+  body.innerHTML =
+    rows.map((row, index) => {
 
-      body.innerHTML = `
+      const team =
+        getLocalized(row.team, "—");
+
+      const diff =
+        (Number(row.runsFor) || 0)
+        -
+        (Number(row.runsAgainst) || 0);
+
+      return `
         <tr>
-          <td colspan="8">
-            ${escapeHTML(
-              t("standings.noData")
-            )}
+
+          <td>
+            ${index + 1}
           </td>
+
+          <td>
+            ${escapeHtml(team)}
+          </td>
+
+          <td>
+            ${row.played ?? 0}
+          </td>
+
+          <td>
+            ${row.wins ?? 0}
+          </td>
+
+          <td>
+            ${row.losses ?? 0}
+          </td>
+
+          <td>
+            ${row.draws ?? 0}
+          </td>
+
+          <td>
+            ${row.runsFor ?? 0}
+          </td>
+
+          <td>
+            ${row.runsAgainst ?? 0}
+          </td>
+
+          <td>
+            ${row.points ?? 0}
+          </td>
+
         </tr>
       `;
 
-      return;
-    }
-
-
-    body.innerHTML =
-      rows
-        .map(
-          (row, index) =>
-            createStandingRow(
-              row,
-              index
-            )
-        )
-        .join("");
-  }
+    }).join("");
+}
 
 
   function createStandingRow(
@@ -1873,94 +1961,145 @@
 
   function renderSchedule() {
 
-    const list =
-      $("#scheduleList");
+  const container =
+    document.getElementById("scheduleList");
 
-    if (!list) {
-      return;
-    }
+  if (!container) return;
 
+  const games = getScheduleGames();
 
-    const allGames =
-      getGames();
+  updateScheduleCounts();
 
+  if (!games.length) {
 
-    const upcoming =
-      sortAscending(
-        allGames.filter(
-          game =>
-            getGameStatus(game) !==
-            "finished"
-        )
-      );
+    const message =
+      currentScheduleStatus === "finished"
+        ? {
+            ja: "終了した試合はありません",
+            ko: "종료된 경기가 없습니다",
+            en: "No finished games",
+            zh: "暂无已结束的比赛"
+          }
+        : {
+            ja: "予定されている試合はありません",
+            ko: "예정된 경기가 없습니다",
+            en: "No upcoming games",
+            zh: "暂无即将进行的比赛"
+          };
 
+    container.innerHTML = `
+      <div class="schedule-empty">
+        <div class="schedule-empty-icon">
+          ⚾
+        </div>
 
-    const finished =
-      sortDescending(
-        allGames.filter(
-          game =>
-            getGameStatus(game) ===
-            "finished"
-        )
-      );
+        <div>
+          ${escapeHtml(
+            getLocalized(message)
+          )}
+        </div>
+      </div>
+    `;
 
+    return;
+  }
 
-    const upcomingCount =
-      $("#scheduleUpcomingCount");
+  container.innerHTML =
+    games.map(game => {
 
-    const finishedCount =
-      $("#scheduleFinishedCount");
+      const home =
+        getLocalized(game.home, "—");
 
+      const away =
+        getLocalized(game.away, "—");
 
-    if (upcomingCount) {
-      upcomingCount.textContent =
-        upcoming.length;
-    }
+      const league =
+        getLeagueName(game.league);
 
-    if (finishedCount) {
-      finishedCount.textContent =
-        finished.length;
-    }
+      const dt =
+        new Date(game.time);
 
+      return `
+        <article class="schedule-item">
 
-    const games =
-      currentScheduleStatus ===
-      "finished"
-        ? finished
-        : upcoming;
+          <div class="schedule-time">
 
+            <div class="sched-time">
+              ${formatTime(dt)}
+            </div>
 
-    if (!games.length) {
+            <div class="sched-date">
+              ${formatDate(dt)}
+            </div>
 
-      list.innerHTML = `
-        <div class="schedule-empty">
-
-          <div class="schedule-empty-icon">
-            ${currentScheduleStatus === "finished"
-              ? "✓"
-              : "○"}
           </div>
 
-          ${escapeHTML(
-            t("schedule.noData")
-          )}
+          <div>
 
-        </div>
+            <div class="sched-league">
+              ${escapeHtml(
+                getLocalized(
+                  game.round,
+                  league
+                )
+              )}
+            </div>
+
+            <div class="sched-match-teams">
+
+              <strong>
+                ${escapeHtml(home)}
+              </strong>
+
+              <span class="schedule-vs">
+                VS
+              </span>
+
+              <strong>
+                ${escapeHtml(away)}
+              </strong>
+
+            </div>
+
+          </div>
+
+          <div class="sched-status ${
+            game.status === "finished"
+              ? "finished"
+              : "upcoming"
+          }">
+
+            ${
+              game.status === "finished"
+                ? "✓"
+                : "●"
+            }
+
+            ${
+              game.status === "finished"
+                ? currentLanguage === "ja"
+                  ? "終了"
+                  : currentLanguage === "ko"
+                  ? "종료"
+                  : currentLanguage === "zh"
+                  ? "已结束"
+                  : "Finished"
+                : currentLanguage === "ja"
+                  ? "予定"
+                  : currentLanguage === "ko"
+                  ? "예정"
+                  : currentLanguage === "zh"
+                  ? "即将进行"
+                  : "Upcoming"
+            }
+
+          </div>
+
+        </article>
       `;
 
-      return;
-    }
-
-
-    list.innerHTML =
-      games
-        .map(
-          game =>
-            createScheduleItem(game)
-        )
-        .join("");
-
-  }
+    }).join("");
+}
 
 
   function createScheduleItem(game) {
@@ -2256,35 +2395,103 @@
   ======================================================= */
 
   function renderLeagues() {
+  const container = document.getElementById("leagueCards");
 
-    const container =
-      $("#leagueCards");
+  if (!container) return;
 
-    if (!container) {
-      return;
-    }
+  const leagues = Array.isArray(D.leagues)
+    ? D.leagues
+    : [];
 
+  if (!leagues.length) {
+    container.innerHTML = `
+      <div class="schedule-empty">
+        <div class="schedule-empty-icon">—</div>
+        <div>${escapeHtml(
+          getLocalized(
+            {
+              ja: "リーグ情報はありません",
+              ko: "리그 정보가 없습니다",
+              en: "No league information available",
+              zh: "暂无联赛信息"
+            }
+          )
+        )}</div>
+      </div>
+    `;
 
-    const leagues =
-      getLeagues();
-
-
-    if (!leagues.length) {
-
-      container.innerHTML = "";
-
-      return;
-    }
-
-
-    container.innerHTML =
-      leagues
-        .map(
-          league =>
-            createLeagueCard(league)
-        )
-        .join("");
+    return;
   }
+
+  container.innerHTML = leagues.map(league => {
+
+    const name =
+      getLocalized(league.name, league.id);
+
+    const region =
+      getLocalized(league.region, "—");
+
+    const description =
+      getLocalized(
+        league.description,
+        ""
+      );
+
+    const matchTime =
+      getLocalized(
+        league.matchTime,
+        "—"
+      );
+
+    return `
+      <a
+        class="league-card league-link"
+        href="league.html?id=${encodeURIComponent(league.id)}"
+      >
+
+        <div class="league-code">
+          ${escapeHtml(league.id)}
+        </div>
+
+        <h3>
+          ${escapeHtml(name)}
+        </h3>
+
+        <div class="league-meta">
+
+          <span>
+            ${escapeHtml(region)}
+          </span>
+
+          <span>
+            ${escapeHtml(matchTime)}
+          </span>
+
+        </div>
+
+        <p>
+          ${escapeHtml(description)}
+        </p>
+
+        <div class="league-view">
+          <span>
+            ${currentLanguage === "ja"
+              ? "リーグ詳細"
+              : currentLanguage === "ko"
+              ? "리그 상세"
+              : currentLanguage === "zh"
+              ? "联赛详情"
+              : "LEAGUE DETAILS"}
+          </span>
+
+          <span>→</span>
+        </div>
+
+      </a>
+    `;
+
+  }).join("");
+}
 
 
   function createLeagueCard(league) {
