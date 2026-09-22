@@ -47,14 +47,38 @@
         about: "AHBAについて"
       },
 
-      hero: {
-        eyebrow: "ASIA HCBB BASEBALL ALLIANCE",
-        title: "アジアのHCBBを、<br><span>ひとつにつなぐ。</span>",
-        description:
-          "アジア各地域のHCBBコミュニティをつなぎ、試合・リーグ・大会・交流の情報を共有します。",
-        button: "リーグ・試合情報を見る →"
-      },
+　　　　hero: {
+　　　　  eyebrow: "ASIA HCBB BASEBALL ALLIANCE",
+　　　　  title: "アジアのHCBBを、<br><span>ひとつにつなぐ。</span>",
+　　　　  description:
+　　　　    "アジア各地域のHCBBコミュニティをつなぎ、試合・リーグ・大会・交流の情報を共有します。",
+　　　　  button: "リーグ・試合情報を見る →",
+　　　　  games: "試合を見る",
+　　　　  schedule: "日程を見る"
+　　　　},
 
+      next: {
+　　　　  title: "NEXT GAME"
+　　　　},
+
+　　　　games: {
+　　　　  eyebrow: "MATCH CENTER",
+　　　　  title: "試合結果・予定"
+　　　　},
+
+　　　　filter: {
+　　　　  all: "全試合",
+　　　　  upcoming: "予定",
+　　　　  finished: "終了"
+　　　　},
+
+　　　　country: {
+　　　　  japan: "日本",
+　　　　  korea: "韓国",
+　　　　  taiwan: "台湾",
+　　　　  newYork: "アメリカ"
+　　　　},
+       
       nextGame: {
         eyebrow: "NEXT GAME",
         noGame: "現在予定されている試合はありません",
@@ -72,17 +96,19 @@
       },
 
       standings: {
-        eyebrow: "STANDINGS",
-        title: "順位表",
-        team: "チーム",
-        games: "試合",
-        wins: "勝",
-        losses: "敗",
-        draws: "分",
-        winRate: "勝率",
-        points: "勝点",
-        noData: "順位表のデータがありません"
-      },
+　　　　  eyebrow: "STANDINGS",
+　　　　  title: "順位表",
+　　　　  rank: "#",
+　　　　  team: "チーム",
+　　　　  games: "試合",
+　　　　  wins: "勝",
+　　　　  losses: "敗",
+　　　　  pct: "PCT",
+　　　　  runsScored: "RS",
+　　　　  runsAllowed: "RA",
+　　　　  diff: "DIFF",
+　　　　  noData: "順位表のデータがありません"
+　　　　},
 
       schedule: {
         eyebrow: "TIME TABLE",
@@ -142,13 +168,37 @@
       },
 
       hero: {
-        eyebrow: "ASIA HCBB BASEBALL ALLIANCE",
-        title: "아시아의 HCBB를,<br><span>하나로 연결합니다.</span>",
-        description:
-          "아시아 각 지역의 HCBB 커뮤니티를 연결하고 경기·리그·대회·교류 정보를 공유합니다.",
-        button: "리그 및 경기 정보 보기 →"
-      },
+　　　　  eyebrow: "ASIA HCBB BASEBALL ALLIANCE",
+　　　　  title: "아시아의 HCBB를,<br><span>하나로 연결합니다.</span>",
+　　　　  description:
+　　　　    "아시아 각 지역의 HCBB 커뮤니티를 연결하고 경기·리그·대회·교류 정보를 공유합니다.",
+　　　　  button: "리그 및 경기 정보 보기 →",
+　　　　  games: "경기 보기",
+　　　　  schedule: "일정 보기"
+　　　　},
 
+      next: {
+　　　　  title: "NEXT GAME"
+　　　　},
+
+　　　　games: {
+　　　　  eyebrow: "MATCH CENTER",
+　　　　  title: "경기 결과·예정"
+　　　　},
+
+　　　　filter: {
+　　　　  all: "전체 경기",
+　　　　  upcoming: "예정",
+　　　　  finished: "종료"
+　　　　},
+
+　　　　country: {
+　　　　  japan: "일본",
+　　　　  korea: "한국",
+　　　　  taiwan: "대만",
+　　　　  newYork: "미국"
+　　　　},
+       
       nextGame: {
         eyebrow: "NEXT GAME",
         noGame: "현재 예정된 경기가 없습니다",
@@ -166,17 +216,19 @@
       },
 
       standings: {
-        eyebrow: "STANDINGS",
-        title: "순위표",
-        team: "팀",
-        games: "경기",
-        wins: "승",
-        losses: "패",
-        draws: "무",
-        winRate: "승률",
-        points: "승점",
-        noData: "순위표 데이터가 없습니다"
-      },
+　　　　  eyebrow: "STANDINGS",
+　　　　  title: "순위표",
+　　　　  rank: "순위",
+　　　　  team: "팀",
+　　　　  games: "경기",
+　　　　  wins: "승",
+　　　　  losses: "패",
+　　　　  pct: "승률",
+　　　　  runsScored: "득점",
+　　　　  runsAllowed: "실점",
+　　　　  diff: "득실차",
+　　　　  noData: "순위표 데이터가 없습니다"
+　　　　},
 
       schedule: {
         eyebrow: "TIME TABLE",
@@ -236,13 +288,37 @@
       },
 
       hero: {
-        eyebrow: "ASIA HCBB BASEBALL ALLIANCE",
-        title: "Connecting Asia's HCBB,<br><span>as one community.</span>",
-        description:
-          "Connecting HCBB communities across Asia and sharing information about games, leagues, tournaments and community exchange.",
-        button: "VIEW GAMES & LEAGUES →"
-      },
+　　　　  eyebrow: "ASIA HCBB BASEBALL ALLIANCE",
+　　　　  title: "Connecting Asia's HCBB,<br><span>as one community.</span>",
+　　　　  description:
+　　　　    "Connecting HCBB communities across Asia and sharing information about games, leagues, tournaments and community exchange.",
+　　　　  button: "VIEW GAMES & LEAGUES →",
+　　　　  games: "VIEW GAMES",
+　　　　  schedule: "VIEW SCHEDULE"
+　　　　},
 
+      next: {
+　　　　  title: "NEXT GAME"
+　　　　},
+
+　　　　games: {
+　　　　  eyebrow: "MATCH CENTER",
+　　　　  title: "Games & Results"
+　　　　},
+
+　　　　filter: {
+　　　　  all: "All Games",
+　　　　  upcoming: "Upcoming",
+　　　　  finished: "Finished"
+　　　　},
+
+　　　　country: {
+　　　　  japan: "Japan",
+　　　　  korea: "Korea",
+　　　　  taiwan: "Taiwan",
+　　　　  newYork: "United States"
+　　　　},
+       
       nextGame: {
         eyebrow: "NEXT GAME",
         noGame: "There are currently no scheduled games.",
@@ -260,18 +336,20 @@
       },
 
       standings: {
-        eyebrow: "STANDINGS",
-        title: "Standings",
-        team: "Team",
-        games: "GP",
-        wins: "W",
-        losses: "L",
-        draws: "D",
-        winRate: "PCT",
-        points: "PTS",
-        noData: "No standings data available."
-      },
-
+　　　　  eyebrow: "STANDINGS",
+　　　　  title: "Standings",
+　　　　  rank: "#",
+　　　　  team: "Team",
+　　　　  games: "GP",
+　　　　  wins: "W",
+　　　　  losses: "L",
+　　　　  pct: "PCT",
+　　　　  runsScored: "RS",
+　　　　  runsAllowed: "RA",
+　　　　  diff: "DIFF",
+　　　　  noData: "No standings data available."
+　　　　},
+       
       schedule: {
         eyebrow: "TIME TABLE",
         title: "Schedule",
@@ -331,12 +409,36 @@
 
       hero: {
         eyebrow: "ASIA HCBB BASEBALL ALLIANCE",
-        title: "连接亚洲 HCBB，<br><span>让社区汇聚一处。</span>",
-        description:
-          "连接亚洲各地区的 HCBB 社区，共享比赛、联赛、赛事和交流信息。",
-        button: "查看比赛与联赛 →"
-      },
+　　　　  title: "连接亚洲 HCBB，<br><span>让社区汇聚一处。</span>",
+　　　　  description:
+　　　　    "连接亚洲各地区的 HCBB 社区，共享比赛、联赛、赛事和交流信息。",
+　　　　  button: "查看比赛与联赛 →",
+　　　　  games: "查看比赛",
+　　　　  schedule: "查看赛程"
+　　　　},
 
+      next: {
+　　　　  title: "NEXT GAME"
+　　　　},
+
+　　　　games: {
+　　　　  eyebrow: "MATCH CENTER",
+　　　　  title: "比赛结果与赛程"
+　　　　},
+
+　　　　filter: {
+　　　　  all: "全部比赛",
+　　　　  upcoming: "即将进行",
+　　　　  finished: "已结束"
+　　　　},
+
+　　　　country: {
+　　　　  japan: "日本",
+　　　　  korea: "韩国",
+        taiwan: "台湾",
+　　　　  newYork: "美国"
+　　　　},
+       
       nextGame: {
         eyebrow: "NEXT GAME",
         noGame: "目前没有安排中的比赛",
@@ -355,16 +457,18 @@
 
       standings: {
         eyebrow: "STANDINGS",
-        title: "积分榜",
-        team: "球队",
-        games: "场",
-        wins: "胜",
-        losses: "负",
-        draws: "平",
-        winRate: "胜率",
-        points: "积分",
-        noData: "暂无积分榜数据"
-      },
+　　　　  title: "积分榜",
+　　　　  rank: "排名",
+　　　　  team: "球队",
+　　　　  games: "场",
+　　　　  wins: "胜",
+　　　　  losses: "负",
+        pct: "胜率",
+　　　　  runsScored: "得分",
+　　　　  runsAllowed: "失分",
+　　　　  diff: "净胜分",
+　　　　  noData: "暂无积分榜数据"
+　　　　},
 
       schedule: {
         eyebrow: "TIME TABLE",
@@ -730,6 +834,33 @@
     document.documentElement.lang =
       currentLang;
 
+
+    /*
+     * 言語ごとの標準タイムゾーン
+     */
+    const languageZones = {
+
+      ja: "Asia/Tokyo",
+
+      ko: "Asia/Seoul",
+
+      en: "America/New_York",
+
+      zh: "Asia/Taipei"
+
+    };
+
+
+    if (
+      languageZones[currentLang]
+    ) {
+
+      currentZone =
+        languageZones[currentLang];
+
+    }
+
+
     /*
      * 通常テキスト
      */
@@ -808,6 +939,22 @@
 
     renderLeagues();
 
+
+    /*
+     * タイムゾーンボタン
+     */
+    $$("[data-zone]")
+      .forEach(tab => {
+
+        tab.classList.toggle(
+          "active",
+          tab.dataset.zone === currentZone
+        );
+
+      });
+
+     
+    updateClock();
   }
 
 
@@ -1460,7 +1607,7 @@
 
       body.innerHTML = `
         <tr>
-          <td colspan="8" class="empty-state">
+          <td colspan="9" class="empty-state">
             ${escapeHTML(
               t("standings.noData")
             )}
@@ -1502,9 +1649,9 @@
 
 
     const games =
+      team?.played ??
       team?.games ??
       team?.gp ??
-      team?.played ??
       0;
 
 
@@ -1520,12 +1667,17 @@
       0;
 
 
-    const draws =
-      team?.draws ??
-      team?.d ??
-      team?.ties ??
+    const runScored =
+      team?.runsFor ??
+      team?.runsScored ??
+      team?.rs ??
       0;
 
+    const runAllowed =
+      team?.runsAgainst ??
+      team?.runsAllowed ??
+      team?.ra ??
+      0;
 
     let winRate =
       team?.winRate ??
@@ -1577,11 +1729,9 @@
     }
 
 
-    const points =
-      team?.points ??
-      team?.pts ??
-      team?.point ??
-      "-";
+    const diff =
+      Number(runsScored) -
+      Number(runsAllowed);
 
 
     return `
@@ -1615,19 +1765,25 @@
 
         <td>
           ${escapeHTML(
-            String(draws)
-          )}
-        </td>
-
-        <td>
-          ${escapeHTML(
             String(winRateText)
           )}
         </td>
 
         <td>
           ${escapeHTML(
-            String(points)
+            String(runsScored)
+          )}
+        </td>
+
+        <td>
+          ${escapeHTML(
+            String(runsAllowed)
+          )}
+        </td>
+
+        <td>
+          ${escapeHTML(
+            String(diff)
           )}
         </td>
 
