@@ -339,6 +339,56 @@ const ALLIANCE_DATA = {
 
 ],
 
+
+/* =========================================================
+   AHBA OFFICIAL EVENTS / TOURNAMENTS
+   ========================================================= */
+
+  events: [
+
+    {
+      id: "international-friendly-2026",
+
+      name: {
+        ja: "国際親善試合",
+        ko: "국제 친선 경기",
+        en: "International Friendly",
+        zh: "国际友谊赛"
+      },
+
+      type: "international"
+    },
+
+
+    {
+      id: "ahba-exchange-2026",
+
+      name: {
+        ja: "AHBA交流戦",
+        ko: "AHBA 교류전",
+        en: "AHBA Exchange",
+        zh: "AHBA交流赛"
+      },
+
+      type: "friendly"
+    },
+
+
+    {
+      id: "ahba-international-cup",
+
+      name: {
+        ja: "AHBA INTERNATIONAL CUP",
+        ko: "AHBA INTERNATIONAL CUP",
+        en: "AHBA INTERNATIONAL CUP",
+        zh: "AHBA INTERNATIONAL CUP"
+      },
+
+      type: "tournament"
+    }
+
+  ],
+
    
   /* =========================================================
      OFFICIAL AHBA GAMES
@@ -347,7 +397,9 @@ const ALLIANCE_DATA = {
   games: [
 
     {
-      id: "game-001",
+　　   id: "game-001",
+
+      eventId: "international-friendly-2026",
 
       type: "international",
 
@@ -433,6 +485,8 @@ const ALLIANCE_DATA = {
     {
       id: "game-002",
 
+      eventId: "ahba-exchange-2026",
+
       type: "friendly",
 
       title: {
@@ -509,6 +563,8 @@ const ALLIANCE_DATA = {
     {
       id: "game-003",
 
+      eventId: "ahba-international-cup",
+         
       type: "tournament",
 
       title: {
@@ -598,7 +654,7 @@ const ALLIANCE_DATA = {
 
   standings: {
 
-    current: [
+    "ahba-international-cup": [
 
       {
         team: {
