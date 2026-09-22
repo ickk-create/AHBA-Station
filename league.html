@@ -1,521 +1,389 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
+
   <meta charset="UTF-8">
+
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>League | Asia HCBB Baseball Alliance</title>
+  <title>
+    League | Asia HCBB Baseball Alliance
+  </title>
 
-  <meta
-    name="description"
-    content="Asia HCBB Baseball Alliance Official League Information"
-  >
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="league.css">
 
-  <link rel="stylesheet" href="./style.css">
 </head>
+
 
 <body>
 
-  <!-- =========================
-       HEADER
-  ========================== -->
-  <header class="site-header">
+<header class="site-header">
 
-    <div class="header-inner">
+  <div class="header-inner">
 
-      <!-- Brand -->
-      <a
-        href="./index.html"
-        class="site-brand"
-      >
-        <span class="site-brand-main">
-          AHBA
-        </span>
+    <a href="index.html" class="brand">
 
-        <span class="site-brand-sub">
-          Asia HCBB Baseball Alliance
-        </span>
+      <span class="brand-main">
+        ASIA HCBB
+      </span>
+
+      <span class="brand-sub">
+        BASEBALL ALLIANCE
+      </span>
+
+    </a>
+
+
+    <nav class="main-nav">
+
+      <a href="index.html">
+        ホーム
       </a>
 
+      <a href="index.html#matches">
+        試合情報
+      </a>
 
-      <!-- Navigation -->
-      <nav class="main-nav">
+      <a href="index.html#standings">
+        順位表
+      </a>
 
-        <a
-          href="./index.html#games"
-          data-i18n="nav.games"
-        >
-          試合結果
-        </a>
+      <a href="index.html#schedule">
+        日程
+      </a>
 
-        <a
-          href="./index.html#standings"
-          data-i18n="nav.standings"
-        >
-          順位表
-        </a>
+      <a href="index.html#leagues">
+        リーグ紹介
+      </a>
 
-        <a
-          href="./index.html#schedule"
-          data-i18n="nav.schedule"
-        >
-          試合日程
-        </a>
-
-        <a
-          href="./index.html#leagues"
-          data-i18n="nav.leagues"
-        >
-          参加リーグ
-        </a>
-
-        <a
-          href="./index.html#about"
-          data-i18n="nav.about"
-        >
-          AHBAについて
-        </a>
-
-      </nav>
+    </nav>
 
 
-      <!-- Header Right -->
-      <div class="header-right">
+    <div class="language-switcher">
 
-        <div class="header-clock">
+      <button data-lang="ja">
+        JP
+      </button>
 
-          <div id="clock">
-            --:--:--
-          </div>
+      <button data-lang="ko">
+        KR
+      </button>
 
-          <div id="tz">
-            Asia/Tokyo
-          </div>
-
-        </div>
-
-
-        <div class="header-language">
-
-          <button
-            type="button"
-            data-lang="ja"
-            class="active"
-          >
-            JA
-          </button>
-
-          <button
-            type="button"
-            data-lang="ko"
-          >
-            KO
-          </button>
-
-          <button
-            type="button"
-            data-lang="en"
-          >
-            EN
-          </button>
-
-          <button
-            type="button"
-            data-lang="zh"
-          >
-            ZH
-          </button>
-
-        </div>
-
-      </div>
+      <button data-lang="zh">
+        中文
+      </button>
+      
+      <button data-lang="en">
+        EN
+      </button>
 
     </div>
 
-  </header>
+  </div>
+
+</header>
 
 
-  <!-- =========================
-       MAIN
-  ========================== -->
-  <main class="league-page">
 
-    <!-- Back -->
-    <div class="league-page-top">
+<main>
+
+  <!-- =====================================================
+       LEAGUE HERO
+       ===================================================== -->
+
+  <section class="league-hero">
+
+    <div class="league-hero-inner">
 
       <a
-        href="./index.html#leagues"
+        href="index.html#leagues"
         class="back-link"
-        data-i18n="league.back"
       >
-        ← リーグ一覧へ戻る
+        ← リーグ紹介へ戻る
       </a>
+
+
+      <div
+        class="league-country"
+        id="leagueCountry"
+      >
+        --
+      </div>
+
+
+      <div
+        class="eyebrow"
+      >
+        LEAGUE
+      </div>
+
+
+      <h1 id="leagueName">
+        --
+      </h1>
+
+
+      <p id="leagueDescription">
+        --
+      </p>
 
     </div>
 
+  </section>
 
-    <!-- =========================
-         LEAGUE HEADER
-    ========================== -->
-    <section class="league-header-section">
 
-      <div class="league-header-inner">
 
-        <div
-          id="leagueRegion"
-          class="league-region"
-        >
-          —
+  <!-- =====================================================
+       LEAGUE INFORMATION
+       ===================================================== -->
+
+  <section class="section">
+
+    <div class="section-header">
+
+      <div>
+
+        <div class="eyebrow">
+          INFORMATION
         </div>
 
-
-        <h1
-          id="leagueName"
-          class="league-title"
-        >
-          —
-        </h1>
-
-
-        <div
-          id="leagueCountry"
-          class="league-country"
-        >
-          —
-        </div>
-
-
-        <p
-          id="leagueDescription"
-          class="league-description"
-        >
-          —
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         LEAGUE INFORMATION
-    ========================== -->
-    <section class="league-detail-section">
-
-      <div class="league-section-heading">
-
-        <span class="section-label">
-          LEAGUE
-        </span>
-
-        <h2 data-i18n="league.information">
+        <h2>
           リーグ情報
         </h2>
 
       </div>
 
+    </div>
 
-      <div class="league-info-grid">
 
-        <div class="league-info-card">
+    <div class="league-info-grid">
 
-          <span
-            class="league-info-label"
-            data-i18n="league.country"
-          >
-            国・地域
-          </span>
 
-          <strong id="leagueCountryInfo">
-            —
-          </strong>
+      <!-- 試合時間 -->
 
+      <div class="league-info-card">
+
+        <div class="info-label">
+          試合時間
         </div>
 
-
-        <div class="league-info-card">
-
-          <span
-            class="league-info-label"
-            data-i18n="league.region"
-          >
-            地域
-          </span>
-
-          <strong id="leagueRegionInfo">
-            —
-          </strong>
-
-        </div>
-
-
-        <div class="league-info-card">
-
-          <span
-            class="league-info-label"
-            data-i18n="league.owner"
-          >
-            Owner
-          </span>
-
-          <strong id="leagueOwner">
-            —
-          </strong>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         LEAGUE GAMES
-    ========================== -->
-    <section class="league-detail-section">
-
-      <div class="league-section-heading">
-
-        <span class="section-label">
-          GAMES
-        </span>
-
-        <h2 data-i18n="league.games">
-          試合
-        </h2>
-
-      </div>
-
-
-      <div
-        id="leagueGames"
-        class="league-games"
-      >
-
-        <div class="loading">
-          Loading...
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         LEAGUE STANDINGS
-    ========================== -->
-    <section class="league-detail-section">
-
-      <div class="league-section-heading">
-
-        <span class="section-label">
-          STANDINGS
-        </span>
-
-        <h2 data-i18n="league.standings">
-          順位表
-        </h2>
-
-      </div>
-
-
-      <div class="table-wrapper">
-
-        <table class="standings-table league-standings-table">
-
-          <thead>
-
-            <tr>
-
-              <th data-i18n="standings.rank">
-                #
-              </th>
-
-              <th data-i18n="standings.team">
-                TEAM
-              </th>
-
-              <th data-i18n="standings.played">
-                P
-              </th>
-
-              <th data-i18n="standings.wins">
-                W
-              </th>
-
-              <th data-i18n="standings.losses">
-                L
-              </th>
-
-              <th data-i18n="standings.draws">
-                D
-              </th>
-
-              <th data-i18n="standings.runsFor">
-                RF
-              </th>
-
-              <th data-i18n="standings.runsAgainst">
-                RA
-              </th>
-
-              <th data-i18n="standings.diff">
-                DIFF
-              </th>
-
-              <th data-i18n="standings.points">
-                PTS
-              </th>
-
-            </tr>
-
-          </thead>
-
-
-          <tbody id="leagueStandingsBody">
-
-            <tr>
-
-              <td
-                colspan="10"
-                class="loading"
-              >
-                Loading...
-
-              </td>
-
-            </tr>
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         LEAGUE SCHEDULE
-    ========================== -->
-    <section class="league-detail-section">
-
-      <div class="league-section-heading">
-
-        <span class="section-label">
-          SCHEDULE
-        </span>
-
-        <h2 data-i18n="league.schedule">
-          試合日程
-        </h2>
-
-      </div>
-
-
-      <div
-        id="leagueSchedule"
-        class="league-schedule"
-      >
-
-        <div class="loading">
-          Loading...
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         BACK
-    ========================== -->
-    <section class="league-footer-navigation">
-
-      <a
-        href="./index.html#leagues"
-        class="league-back-button"
-        data-i18n="league.back"
-      >
-        ← リーグ一覧へ戻る
-      </a>
-
-    </section>
-
-  </main>
-
-
-  <!-- =========================
-       FOOTER
-  ========================== -->
-  <footer class="site-footer">
-
-    <div class="footer-inner">
-
-      <div class="footer-brand">
-
-        <strong>
-          AHBA
-        </strong>
-
-        <span>
-          Asia HCBB Baseball Alliance
-        </span>
-
-      </div>
-
-
-      <div class="footer-links">
-
-        <a
-          href="./index.html#games"
-          data-i18n="nav.games"
+        <div
+          class="info-value"
+          id="leagueMatchTime"
         >
-          試合結果
-        </a>
-
-        <a
-          href="./index.html#standings"
-          data-i18n="nav.standings"
-        >
-          順位表
-        </a>
-
-        <a
-          href="./index.html#schedule"
-          data-i18n="nav.schedule"
-        >
-          試合日程
-        </a>
-
-        <a
-          href="./index.html#leagues"
-          data-i18n="nav.leagues"
-        >
-          参加リーグ
-        </a>
+          --
+        </div>
 
       </div>
 
 
-      <div class="footer-copy">
-        © Asia HCBB Baseball Alliance
+
+      <!-- 地域 -->
+
+      <div class="league-info-card">
+
+        <div class="info-label">
+          地域
+        </div>
+
+        <div
+          class="info-value"
+          id="leagueRegion"
+        >
+          --
+        </div>
+
+      </div>
+
+
+
+      <!-- 参加チーム数 -->
+
+      <div class="league-info-card">
+
+        <div class="info-label">
+          参加チーム数
+        </div>
+
+        <div
+          class="info-value"
+          id="leagueTeamCount"
+        >
+          --
+        </div>
+
+      </div>
+
+
+
+      <!-- 運営 -->
+
+      <div class="league-info-card">
+
+        <div class="info-label">
+          運営
+        </div>
+
+        <div
+          class="info-value"
+          id="leagueOwner"
+        >
+          --
+        </div>
+
       </div>
 
     </div>
 
-  </footer>
+  </section>
 
 
-  <!-- =========================
-       SCRIPTS
-  ========================== -->
 
-  <script src="./data.js"></script>
-  <script src="./league.js"></script>
+  <!-- =====================================================
+       TEAMS
+       ===================================================== -->
+
+  <section class="section">
+
+    <div class="section-header">
+
+      <div>
+
+        <div class="eyebrow">
+          PARTICIPATING TEAMS
+        </div>
+
+        <h2>
+          参加チーム
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="teams-grid"
+      id="teamsList"
+    ></div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       DISCORD
+       ===================================================== -->
+
+  <section class="section">
+
+    <div class="discord-section">
+
+      <div class="discord-content">
+
+        <div class="eyebrow">
+          DISCORD
+        </div>
+
+        <h2>
+          公式Discordサーバー
+        </h2>
+
+        <p>
+          このリーグの運営・連絡・交流は
+          Discordサーバーで行われます。
+        </p>
+
+
+        <div class="discord-code-box">
+
+          <span>
+            サーバーコード
+          </span>
+
+          <strong id="discordCode">
+            --
+          </strong>
+
+        </div>
+
+
+        <a
+          id="discordLink"
+          class="discord-button"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Discordサーバーへ
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       ERROR
+       ===================================================== -->
+
+  <section
+    class="section"
+    id="leagueNotFound"
+    hidden
+  >
+
+    <div class="detail-card">
+
+      <h2>
+        リーグが見つかりません
+      </h2>
+
+      <p>
+        指定されたリーグは存在しません。
+      </p>
+
+      <a
+        href="index.html#leagues"
+        class="primary-button"
+      >
+        リーグ紹介へ戻る
+      </a>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+
+<footer class="site-footer">
+
+  <div>
+    <strong>
+      ASIA HCBB BASEBALL ALLIANCE
+    </strong>
+  </div>
+
+  <div>
+    All Rights Reserved.
+  </div>
+
+</footer>
+
+
+<script src="data.js"></script>
+<script src="league.js"></script>
 
 </body>
+
 </html>
