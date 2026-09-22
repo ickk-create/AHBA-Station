@@ -77,26 +77,13 @@
       "nav.leagues": "参加リーグ",
       "nav.about": "AHBAについて",
 
-      "hero.title":
-        "ASIA HCBB BASEBALL<br><span>ALLIANCE</span>",
-
-      "hero.description":
-        "各地域・各リーグを越えて、試合と交流の情報を発信します。",
-
-      "hero.games":
-        "試合を見る",
-
-      "hero.schedule":
-        "試合日程",
-
-      "hero.stat1":
-        "OFFICIAL PORTAL",
-
-      "hero.stat2":
-        "LANGUAGES",
-
-      "hero.stat3":
-        "CONNECTION",
+      hero: {
+　　　　  title: "ASIA HCBB BASEBALL ALLIANCE",
+　　　　  description: "各地域・各リーグを越えて、試合と交流の情報を発信します。",
+　　　　  games: "試合を見る",
+　　　　  schedule: "試合日程",
+　　　　  about: "AHBA詳細"
+　　　　},
 
 
       "nextGame.title":
@@ -266,26 +253,13 @@
       "nav.leagues": "참가 리그",
       "nav.about": "AHBA 소개",
 
-      "hero.title":
-        "ASIA HCBB BASEBALL<br><span>ALLIANCE</span>",
-
-      "hero.description":
-        "지역과 리그를 넘어 경기와 교류 정보를 제공합니다.",
-
-      "hero.games":
-        "경기 보기",
-
-      "hero.schedule":
-        "경기 일정",
-
-      "hero.stat1":
-        "OFFICIAL PORTAL",
-
-      "hero.stat2":
-        "LANGUAGES",
-
-      "hero.stat3":
-        "CONNECTION",
+      hero: {
+　　　　  title: "ASIA HCBB BASEBALL ALLIANCE",
+　　　　  description: "지역과 리그를 넘어 경기와 교류 정보를 제공합니다.",
+　　　　  games: "경기 보기",
+　　　　  schedule: "경기 일정",
+        about: "AHBA 소개"
+　　　　},
 
 
       "nextGame.title":
@@ -455,26 +429,13 @@
       "nav.leagues": "Leagues",
       "nav.about": "About AHBA",
 
-      "hero.title":
-        "ASIA HCBB BASEBALL<br><span>ALLIANCE</span>",
-
-      "hero.description":
-        "Official information on games, exchanges and events across regions and leagues.",
-
-      "hero.games":
-        "View Games",
-
-      "hero.schedule":
-        "Schedule",
-
-      "hero.stat1":
-        "OFFICIAL PORTAL",
-
-      "hero.stat2":
-        "LANGUAGES",
-
-      "hero.stat3":
-        "CONNECTION",
+      hero: {
+        title: "ASIA HCBB BASEBALL ALLIANCE",
+　　　　  description: "Connecting regions and leagues through games and exchange.",
+　　　　  games: "VIEW GAMES",
+　　　　  schedule: "SCHEDULE",
+　　　　  about: "ABOUT AHBA"
+　　　　},
 
 
       "nextGame.title":
@@ -644,26 +605,13 @@
       "nav.leagues": "參賽聯盟",
       "nav.about": "關於 AHBA",
 
-      "hero.title":
-        "ASIA HCBB BASEBALL<br><span>ALLIANCE</span>",
-
-      "hero.description":
-        "跨越地區與聯盟，提供賽事、交流與活動的官方資訊。",
-
-      "hero.games":
-        "查看賽事",
-
-      "hero.schedule":
-        "賽程",
-
-      "hero.stat1":
-        "OFFICIAL PORTAL",
-
-      "hero.stat2":
-        "LANGUAGES",
-
-      "hero.stat3":
-        "CONNECTION",
+      hero: {
+        title: "ASIA HCBB BASEBALL ALLIANCE",
+        description: "跨越各地與各聯盟，發布比賽與交流資訊。",
+　　　　  games: "查看比賽",
+　　　　  schedule: "比賽日程",
+　　　　  about: "AHBA 詳情"
+　　　　},
 
 
       "nextGame.title":
