@@ -289,7 +289,113 @@ const ALLIANCE_DATA = {
   },
 
 
+  /* =====================================================
+     KOREA LEAGUE
+     ===================================================== */
 
+  {
+    id: "KOREA",
+
+    name: {
+      ja: "KOREA LEAGUE",
+      ko: "KOREA LEAGUE",
+      en: "KOREA LEAGUE",
+      zh: "KOREA LEAGUE"
+    },
+
+    country: {
+      ja: "韓国",
+      ko: "대한민국",
+      en: "South Korea",
+      zh: "韩国"
+    },
+
+    region: {
+      ja: "韓国",
+      ko: "대한민국",
+      en: "South Korea",
+      zh: "韩国"
+    },
+
+    matchTime: {
+      ja: "毎週土曜日 21:00",
+      ko: "매주 토요일 21:00",
+      en: "Every Saturday 21:00",
+      zh: "每周六 21:00"
+    },
+
+    timezone: "Asia/Seoul",
+
+    description: {
+      ja: "韓国を中心としたHCBBリーグ。",
+      ko: "대한민국을 중심으로 운영되는 HCBB 리그.",
+      en: "An HCBB league based primarily in South Korea.",
+      zh: "以韩国为中心运营的HCBB联赛。"
+    },
+
+    owner: "AHBA",
+
+    teams: [
+
+      {
+        id: "K1",
+        name: "K1",
+        country: {
+          ja: "韓国",
+          ko: "대한민국",
+          en: "South Korea",
+          zh: "韩国"
+        }
+      },
+
+      {
+        id: "K2",
+        name: "K2",
+        country: {
+          ja: "韓国",
+          ko: "대한민국",
+          en: "South Korea",
+          zh: "韩国"
+        }
+      },
+
+      {
+        id: "K3",
+        name: "K3",
+        country: {
+          ja: "韓国",
+          ko: "대한민국",
+          en: "South Korea",
+          zh: "韩国"
+        }
+      },
+
+      {
+        id: "K4",
+        name: "K4",
+        country: {
+          ja: "韓国",
+          ko: "대한민국",
+          en: "South Korea",
+          zh: "韩国"
+        }
+      }
+
+    ],
+
+    discord: {
+
+      url: "https://discord.gg/REPLACE_KOREA_LEAGUE",
+
+      code: "KOREA-LEAGUE"
+
+    }
+
+  }
+
+],
+     
+     
 /* =========================================================
    AHBA OFFICIAL EVENTS / TOURNAMENTS
    ========================================================= */
