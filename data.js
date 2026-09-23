@@ -710,74 +710,74 @@ const ALLIANCE_DATA = {
 
   standings: {
 
-    "ahba-international-cup": [
+    "-": [
 
       {
         team: {
-          ja: "Team Japan",
-          ko: "Team Japan",
-          en: "Team Japan",
-          zh: "Team Japan"
+          ja: "-",
+          ko: "-",
+          en: "-",
+          zh: "-"
         },
 
-        played: 3,
-        wins: 2,
-        losses: 1,
-        draws: 0,
-        runsFor: 15,
-        runsAgainst: 10,
-        points: 6
+        played: null,
+        wins: null,
+        losses: null,
+        draws: null,
+        runsFor: null,
+        runsAgainst: null,
+        points: null
       },
 
       {
         team: {
-          ja: "Team Korea",
-          ko: "Team Korea",
-          en: "Team Korea",
-          zh: "Team Korea"
+          ja: "-",
+          ko: "-",
+          en: "-",
+          zh: "-"
         },
 
-        played: 3,
-        wins: 2,
-        losses: 1,
-        draws: 0,
-        runsFor: 12,
-        runsAgainst: 9,
-        points: 6
+        played: null,
+        wins: null,
+        losses: null,
+        draws: null,
+        runsFor: null,
+        runsAgainst: null,
+        points: null
       },
 
       {
         team: {
-          ja: "Team Taiwan",
-          ko: "Team Taiwan",
-          en: "Team Taiwan",
-          zh: "Team Taiwan"
+          ja: "-",
+          ko: "-",
+          en: "-",
+          zh: "-"
         },
 
-        played: 3,
-        wins: 1,
-        losses: 2,
-        draws: 0,
-        runsFor: 10,
-        runsAgainst: 13,
-        points: 3
+        played: null,
+        wins: null,
+        losses: null,
+        draws: null,
+        runsFor: null,
+        runsAgainst: null,
+        points: null
       },
 
       {
         team: {
-          ja: "Team China",
-          ko: "Team China",
-          en: "Team China",
-          zh: "Team China"
+          ja: "-",
+          ko: "-",
+          en: "-",
+          zh: "-"
         },
 
-        played: 3,
-        wins: 1,
-        losses: 2,
-        draws: 0,
-        runsFor: 8,
-        runsAgainst: 13,
-        points: 3
+        played: null,
+        wins: null,
+        losses: null,
+        draws: null,
+        runsFor: null,
+        runsAgainst: null,
+        points: null
       }
 
     ]
