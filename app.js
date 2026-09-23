@@ -2575,7 +2575,7 @@ function createNoticeCard(notice) {
 
     const leagues =
       Array.isArray(D.leagues)
-        ? D.leagues
+        ? D.leagues.filter(Boolean)
         : [];
 
 
