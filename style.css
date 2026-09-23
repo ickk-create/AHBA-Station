@@ -2490,3 +2490,148 @@ footer {
 
   text-align: right;
 }
+
+
+
+/* =========================================================
+   AHBA NOTICES
+   ========================================================= */
+
+.ahba-notices {
+  margin-top: 32px;
+}
+
+
+.notices-list {
+  display: grid;
+  gap: 12px;
+}
+
+
+.notice-item {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+
+  gap: 24px;
+
+  padding: 22px 24px;
+
+  border: 1px solid
+    rgba(120, 220, 255, 0.14);
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(18, 30, 48, 0.78),
+      rgba(7, 13, 24, 0.9)
+    );
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.notice-item:hover {
+
+  transform:
+    translateY(-2px);
+
+  border-color:
+    rgba(100, 220, 255, 0.32);
+
+}
+
+
+.notice-meta {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+
+.notice-meta time {
+  font-size: 0.85rem;
+
+  color:
+    rgba(220, 235, 250, 0.58);
+
+  letter-spacing:
+    0.04em;
+}
+
+
+.notice-category {
+  width: fit-content;
+
+  padding:
+    4px 9px;
+
+  border:
+    1px solid
+    rgba(100, 220, 255, 0.25);
+
+  border-radius:
+    999px;
+
+  color:
+    #7ddcff;
+
+  font-size:
+    0.7rem;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    0.08em;
+}
+
+
+.notice-content h3 {
+  margin:
+    0 0 7px;
+
+  font-size:
+    1.05rem;
+
+  line-height:
+    1.5;
+}
+
+
+.notice-content p {
+  margin:
+    0;
+
+  color:
+    rgba(225, 235, 245, 0.68);
+
+  font-size:
+    0.88rem;
+
+  line-height:
+    1.7;
+}
+
+
+@media (max-width: 700px) {
+
+  .notice-item {
+
+    grid-template-columns:
+      1fr;
+
+    gap: 12px;
+
+    padding:
+      18px;
+
+  }
+
+}
