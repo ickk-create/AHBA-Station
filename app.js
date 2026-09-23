@@ -1319,7 +1319,7 @@
 
     const event =
       getEventName(
-        getGameEvendId(game)
+        getGameEventId(game)
       );
 
 
@@ -1913,13 +1913,13 @@
 
         <td>
           ${escapeHTML(
-            String(runsScored)
+            String(runScored)
           )}
         </td>
 
         <td>
           ${escapeHTML(
-            String(runsAllowed)
+            String(runAllowed)
           )}
         </td>
 
@@ -2078,13 +2078,17 @@
 
     if (upcomingEl) {
       upcomingEl.textContent =
-        String(upcomingCount);
+        currentScheduleStatus === "upcoming"
+          ? String(upcomingCount)
+          : "0";
     }
 
 
     if (finishedEl) {
       finishedEl.textContent =
-        String(finishedCount);
+        currentScheduleStatus === "finished"
+          ? String(finishedCount)
+          : "0";
     }
 
 
@@ -2116,7 +2120,7 @@
 
   function createScheduleItem(game) {
 
-    const league =
+    const event =
       getEventName(
         getGameEventId(game)
       );
