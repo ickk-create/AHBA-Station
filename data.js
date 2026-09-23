@@ -162,23 +162,33 @@ const ALLIANCE_DATA = {
     teams: [
 
       {
-        id: "A1",
-        name: "A1",
+        id: "NC",
+        name: "NC",
       },
 
       {
-        id: "A2",
-        name: "A2",
+        id: "Nipponham",
+        name: "Nipponham",
       },
 
       {
-        id: "A3",
-        name: "A3",
+        id: "Doosan",
+        name: "Doosan",
       },
 
       {
-        id: "A4",
-        name: "A4",
+        id: "Yakult",
+        name: "Yakult",
+      },
+       
+      {
+        id: "Chunichi",
+        name: "Chunichi",
+      },
+
+      {
+        id: "Chiba",
+        name: "Chiba",
       }
 
     ],
