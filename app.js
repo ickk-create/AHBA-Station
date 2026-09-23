@@ -1504,8 +1504,8 @@
   function createGameCard(game) {
 
     const event =
-      getEventName(
-        getGameEventId(game)
+　    getEventName(
+       getGameEventId(game)
       );
 
     const home =
@@ -1529,13 +1529,13 @@
         ""
       );
 
+    const gameId =
+      game?.id ?? "";
 
     return `
       <a
         class="game-card"
-        href="game.html?id=${encodeURIComponent(
-          game?.id ?? ""
-        )}"
+        href="game.html?id=${encodeURIComponent(gameId)}"
       >
 
         <div class="game-card-top">
@@ -1618,6 +1618,21 @@
             `
             : ""
         }
+
+
+        <div class="game-card-detail-link">
+
+          ${
+            currentLang === "ja"
+              ? "試合詳細を見る →"
+              : currentLang === "ko"
+              ? "경기 상세 보기 →"
+              : currentLang === "zh"
+              ? "查看赛事详情 →"
+              : "VIEW GAME DETAILS →"
+          }
+
+        </div>
 
       </a>
     `;
