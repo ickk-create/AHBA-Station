@@ -813,14 +813,15 @@
   }
 
 
-  /* =========================================================
+    /* =========================================================
      PITCHING
      ========================================================= */
 
   function renderPitching(game) {
+
     const container =
       document.getElementById(
-        "pitching"
+        "pitchingBody"
       );
 
     if (!container) {
@@ -833,10 +834,13 @@
 
 
     if (!pitching) {
+
       container.innerHTML = `
-        <div class="empty-state">
-          ${escapeHTML(t("game.noPitching"))}
-        </div>
+        <tr>
+          <td colspan="2">
+            ${escapeHTML(t("game.noPitching"))}
+          </td>
+        </tr>
       `;
 
       return;
@@ -846,83 +850,106 @@
     const rows = [];
 
 
+    /* 勝利投手 */
     if (pitching.win) {
+
       rows.push({
-        label: t("pitching.win"),
-        value: getLocalized(
+        result: t("pitching.win"),
+        pitcher: getLocalized(
           pitching.win
         )
       });
+
     }
 
 
+    /* 敗戦投手 */
     if (pitching.loss) {
+
       rows.push({
-        label: t("pitching.loss"),
-        value: getLocalized(
+        result: t("pitching.loss"),
+        pitcher: getLocalized(
           pitching.loss
         )
       });
+
     }
 
 
+    /* セーブ */
     if (pitching.save) {
+
       rows.push({
-        label: t("pitching.save"),
-        value: getLocalized(
+        result: t("pitching.save"),
+        pitcher: getLocalized(
           pitching.save
         )
       });
+
     }
 
 
+    /* ホールド */
     if (pitching.holds) {
-    
+
       const holds =
         Array.isArray(pitching.holds)
-          ? pitching.holds.join(", ")
-          : getLocalized(
-              pitching.holds
-            );
-       
-      rows.push({
-        label: t("pitching.holds"),
-        value: holds
-      });
-       
+          ? pitching.holds
+          : [pitching.holds];
+
+
+      holds.forEach(
+        pitcher => {
+
+          rows.push({
+            result: t("pitching.holds"),
+            pitcher: getLocalized(
+              pitcher
+            )
+          });
+
+        }
+      );
+
     }
 
 
+    /* 投手成績なし */
     if (!rows.length) {
+
       container.innerHTML = `
-        <div class="empty-state">
-          ${escapeHTML(t("game.noPitching"))}
-        </div>
+        <tr>
+          <td colspan="2">
+            ${escapeHTML(t("game.noPitching"))}
+          </td>
+        </tr>
       `;
 
       return;
     }
 
 
-    container.innerHTML = `
-      <div class="pitching-list">
+    /* 投手成績をテーブルに表示 */
 
-        ${rows.map(row => `
-          <div class="pitching-row">
+    container.innerHTML =
+      rows
+        .map(
+          row => `
+            <tr>
 
-            <span class="pitching-label">
-              ${escapeHTML(row.label)}
-            </span>
+              <td>
+                ${escapeHTML(row.result)}
+              </td>
 
-            <strong class="pitching-value">
-              ${escapeHTML(row.value)}
-            </strong>
+              <td>
+                ${escapeHTML(row.pitcher)}
+              </td>
 
-          </div>
-        `).join("")}
+            </tr>
+          `
+        )
+        .join("");
 
-      </div>
-    `;
   }
 
 
