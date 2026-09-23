@@ -2078,17 +2078,13 @@
 
     if (upcomingEl) {
       upcomingEl.textContent =
-        currentScheduleStatus === "upcoming"
-          ? String(upcomingCount)
-          : "0";
+        String(upcomingCount);
     }
 
 
     if (finishedEl) {
       finishedEl.textContent =
-        currentScheduleStatus === "finished"
-          ? String(finishedCount)
-          : "0";
+        String(finishedCount);
     }
 
 
