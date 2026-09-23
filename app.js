@@ -153,7 +153,13 @@
         away: "ビジター",
         vs: "VS",
         at: "@"
-      }
+      },
+
+      notices: {
+        eyebrow: "AHBA NEWS",
+        title: "AHBAからのお知らせ",
+        noNotices: "現在、お知らせはありません"
+      },
 
     },
 
@@ -274,7 +280,13 @@
         away: "원정",
         vs: "VS",
         at: "@"
-      }
+      },
+
+      notices: {
+        eyebrow: "AHBA NEWS",
+        title: "AHBA 공지사항",
+        noNotices: "현재 공지사항이 없습니다"
+      },
 
     },
 
@@ -395,7 +407,13 @@
         away: "Away",
         vs: "VS",
         at: "@"
-      }
+      },
+
+      notices: {
+        eyebrow: "AHBA NEWS",
+        title: "AHBA News",
+        noNotices: "There are currently no notices"
+      },
 
     },
 
@@ -516,7 +534,13 @@
         away: "客队",
         vs: "VS",
         at: "@"
-      }
+      },
+
+      notices: {
+        eyebrow: "AHBA NEWS",
+        title: "AHBA公告",
+        noNotices: "目前没有公告"
+      },
 
     }
 
@@ -1070,6 +1094,8 @@
     renderSchedule();
 
     renderLeagues();
+
+    renderNotices();
 
 
     /*
@@ -2389,6 +2415,133 @@
   }
 
 
+/* ---------------------------------------------------------
+   AHBA NOTICES
+   --------------------------------------------------------- */
+
+function renderNotices() {
+
+  const container =
+    $("#noticesList");
+
+  if (!container) {
+    return;
+  }
+
+
+  const notices =
+    Array.isArray(D.notices)
+      ? [...D.notices]
+      : [];
+
+
+  if (!notices.length) {
+
+    container.innerHTML = `
+      <div class="empty-state">
+        ${escapeHTML(
+          t("notices.noNotices")
+        )}
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  /*
+   * 新しいお知らせを上に表示
+   */
+
+  notices.sort(
+    (a, b) =>
+      String(b.date || "")
+        .localeCompare(
+          String(a.date || "")
+        )
+  );
+
+
+  container.innerHTML =
+    notices
+      .map(
+        notice =>
+          createNoticeCard(
+            notice
+          )
+      )
+      .join("");
+
+}
+
+
+function createNoticeCard(notice) {
+
+  const date =
+    notice.date || "";
+
+
+  const category =
+    displayText(
+      notice.category,
+      "INFO"
+    );
+
+
+  const title =
+    displayText(
+      notice.title,
+      ""
+    );
+
+
+  const body =
+    displayText(
+      notice.body,
+      ""
+    );
+
+
+  return `
+    <article class="notice-item">
+
+      <div class="notice-meta">
+
+        <time>
+          ${escapeHTML(date)}
+        </time>
+
+        <span class="notice-category">
+          ${escapeHTML(category)}
+        </span>
+
+      </div>
+
+
+      <div class="notice-content">
+
+        <h3>
+          ${escapeHTML(title)}
+        </h3>
+
+        ${
+          body
+            ? `
+              <p>
+                ${escapeHTML(body)}
+              </p>
+            `
+            : ""
+        }
+
+      </div>
+
+    </article>
+  `;
+
+}
+   
   /* ---------------------------------------------------------
      LEAGUES
      --------------------------------------------------------- */
@@ -2729,6 +2882,8 @@
     renderSchedule();
 
     renderLeagues();
+
+    renderNotices();
 
 
     /*
