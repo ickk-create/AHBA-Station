@@ -422,7 +422,7 @@
 
       nav: {
         games: "比赛信息",
-        standings: "积分榜",
+        standings: "積分榜",
         schedule: "赛程",
         leagues: "联赛介绍",
         about: "关于 AHBA"
