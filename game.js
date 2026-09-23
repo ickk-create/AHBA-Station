@@ -99,6 +99,12 @@
       "game.noDetails": "詳細情報はありません。",
       "game.noPitching": "投手成績はありません。",
       "game.noInnings": "イニング別得点はありません。"
+
+      "game.back": "← 試合一覧へ戻る",
+      "game.vs": "VS",
+      "game.score": "イニングスコア",
+      "game.pitchingResult": "結果",
+      "game.pitcher": "投手",
     },
 
 
@@ -140,6 +146,12 @@
       "game.noDetails": "상세 정보가 없습니다.",
       "game.noPitching": "투수 기록이 없습니다.",
       "game.noInnings": "이닝별 득점 기록이 없습니다."
+
+      "game.back": "← 경기 목록으로 돌아가기",
+      "game.vs": "VS",
+      "game.score": "이닝별 득점",
+      "game.pitchingResult": "결과",
+      "game.pitcher": "투수",
     },
 
 
@@ -181,6 +193,12 @@
       "game.noDetails": "No additional details are available.",
       "game.noPitching": "No pitching information is available.",
       "game.noInnings": "No inning-by-inning information is available."
+
+      "game.back": "← Back to Games",
+      "game.vs": "VS",
+      "game.score": "Innings",
+      "game.pitchingResult": "Result",
+      "game.pitcher": "Pitcher",
     },
 
 
@@ -226,6 +244,12 @@
       "game.noDetails": "目前沒有詳細資訊。",
       "game.noPitching": "目前沒有投手成績。",
       "game.noInnings": "目前沒有各局得分資料。"
+
+      "game.back": "← 返回賽事列表",
+      "game.vs": "VS",
+      "game.score": "各局得分",
+      "game.pitchingResult": "結果",
+      "game.pitcher": "投手",
     }
   };
 
