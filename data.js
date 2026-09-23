@@ -6,6 +6,100 @@
 const ALLIANCE_DATA = {
 
   /* =========================================================
+     AHBA NOTICES
+     ========================================================= */
+
+  notices: [
+
+    {
+      id: "notice-001",
+
+      date: "2026-09-23",
+
+      category: {
+        ja: "NEWS",
+        ko: "NEWS",
+        en: "NEWS",
+        zh: "NEWS"
+      },
+
+      title: {
+        ja: "AHBA Stationを更新しました",
+        ko: "AHBA Station을 업데이트했습니다",
+        en: "AHBA Station has been updated",
+        zh: "AHBA Station 已更新"
+      },
+
+      body: {
+        ja: "試合情報・日程・リーグ紹介などのページを更新しました。",
+        ko: "경기 정보·일정·리그 소개 등의 페이지를 업데이트했습니다.",
+        en: "Game information, schedules, and league information have been updated.",
+        zh: "比赛信息、日程和联赛介绍等页面已更新。"
+      }
+
+    },
+
+
+    {
+      id: "notice-002",
+
+      date: "2026-09-20",
+
+      category: {
+        ja: "INFO",
+        ko: "INFO",
+        en: "INFO",
+        zh: "INFO"
+      },
+
+      title: {
+        ja: "国際親善試合の試合情報を掲載しました",
+        ko: "국제 친선 경기 정보를 게시했습니다",
+        en: "International Friendly game information is now available",
+        zh: "国际友谊赛比赛信息已发布"
+      },
+
+      body: {
+        ja: "AHBAで開催された国際親善試合の結果を掲載しています。",
+        ko: "AHBA에서 개최된 국제 친선 경기 결과를 확인할 수 있습니다.",
+        en: "Results from the AHBA International Friendly are now available.",
+        zh: "现在可以查看AHBA国际友谊赛的比赛结果。"
+      }
+
+    },
+
+
+    {
+      id: "notice-003",
+
+      date: "2026-09-15",
+
+      category: {
+        ja: "UPDATE",
+        ko: "UPDATE",
+        en: "UPDATE",
+        zh: "UPDATE"
+      },
+
+      title: {
+        ja: "リーグ情報を更新しました",
+        ko: "리그 정보를 업데이트했습니다",
+        en: "League information has been updated",
+        zh: "联赛信息已更新"
+      },
+
+      body: {
+        ja: "A LEAGUE・B LEAGUEなどのリーグ情報を更新しました。",
+        ko: "A LEAGUE·B LEAGUE 등의 리그 정보를 업데이트했습니다.",
+        en: "League information for A LEAGUE, B LEAGUE, and others has been updated.",
+        zh: "A LEAGUE、B LEAGUE 等联赛信息已更新。"
+      }
+
+    }
+
+  ],
+
+  /* =========================================================
      LEAGUES
      ========================================================= */
 
