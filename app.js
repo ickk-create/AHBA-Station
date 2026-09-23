@@ -86,14 +86,15 @@
       },
 
       matchCenter: {
-        eyebrow: "MATCH CENTER",
-        title: "試合情報",
-        allLeagues: "すべてのリーグ",
-        allStatus: "すべて",
-        upcoming: "予定",
+　　　　  eyebrow: "MATCH CENTER",
+　　　　  title: "試合結果・予定",
+　　　　  allLeagues: "すべてのリーグ",
+　　　　  allEvents: "すべての大会・イベント",
+　　　　  allStatus: "すべて",
+　　　　  upcoming: "予定",
         finished: "終了",
-        noGames: "表示できる試合がありません"
-      },
+　　　　  noGames: "表示できる試合がありません"
+　　　　},
 
       standings: {
 　　　　  eyebrow: "STANDINGS",
@@ -209,6 +210,7 @@
         eyebrow: "MATCH CENTER",
         title: "경기 정보",
         allLeagues: "모든 리그",
+        allEvents: "모든 대회·이벤트",
         allStatus: "전체",
         upcoming: "예정",
         finished: "종료",
@@ -329,6 +331,7 @@
         eyebrow: "MATCH CENTER",
         title: "Games",
         allLeagues: "All Leagues",
+        allEvents: "All Events",
         allStatus: "All",
         upcoming: "Upcoming",
         finished: "Finished",
@@ -449,6 +452,7 @@
         eyebrow: "MATCH CENTER",
         title: "比赛信息",
         allLeagues: "所有联赛",
+        allEvents: "所有赛事·活动",
         allStatus: "全部",
         upcoming: "即将进行",
         finished: "已结束",
@@ -1953,7 +1957,7 @@
     select.innerHTML =
       events
         .map(
-          league => `
+          event => `
             <option
               value="${escapeHTML(event.id)}"
             >
@@ -1986,7 +1990,7 @@
     ) {
 
       select.value =
-        event[0].id;
+        events[0].id;
 
     }
 
