@@ -614,6 +614,17 @@
           game.status || "scheduled"
         )}`;
     }
+
+
+    const date =
+      document.getElementById("gameDate");
+
+    if (date) {
+      date.textContent =
+        formatDateTime(
+          game.time
+        );
+    }
   }
 
 
