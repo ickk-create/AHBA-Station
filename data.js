@@ -138,7 +138,7 @@ const ALLIANCE_DATA = {
     matchTime: {
       ja: "毎週火曜日、水曜日、土曜日、日曜日 21:30",
       ko: "매주 화요일, 수요일, 토요일, 일요일 9:30 PM",
-      en: "Every Thursday,Wednesday,Saturday,Sunday 9:30 PM KST",
+      en: "Every Tuesday,Wednesday,Saturday,Sunday 9:30 PM KST",
       zh: "每週二、週三、週六、週日 8:30 PM"
     },
 
@@ -164,25 +164,21 @@ const ALLIANCE_DATA = {
       {
         id: "A1",
         name: "A1",
-        }
       },
 
       {
         id: "A2",
         name: "A2",
-        }
       },
 
       {
         id: "A3",
         name: "A3",
-        }
       },
 
       {
         id: "A4",
         name: "A4",
-        }
       }
 
     ],
