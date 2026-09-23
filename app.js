@@ -2718,6 +2718,8 @@
      */
     updateFilterTexts();
 
+    applyLanguage();
+     
     renderNextGame();
 
     renderGames();
@@ -2727,8 +2729,6 @@
     renderSchedule();
 
     renderLeagues();
-
-    applyLanguage();
 
 
     /*
