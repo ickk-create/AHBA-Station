@@ -750,14 +750,22 @@
 
 　　function getEventById(id) {
 
-　　  return (
-　　    D.events || []
-　　  ).find(
-　　    event =>
-         String(event.id) === String(id)
-　　  );
+     if (!id) {
+       return null;
+     }
 
-　　}
+     const events =
+       Array.isArray(D.events)
+         ? D.events
+         : [];
+
+     return events.find(
+       event =>
+         event &&
+         String(event.id) === String(id)
+     ) || null;
+
+   }
 
 
 　　function getEventName(id) {
@@ -878,11 +886,20 @@
 
   function getLeagueById(id) {
 
-    return (
-      D.leagues || []
-    ).find(
-      league => String(league.id) === String(id)
-    );
+    if (!id) {
+      return null;
+    }
+
+    const leagues =
+      Array.isArray(D.leagues)
+        ? D.leagues
+        : [];
+
+    return leagues.find(
+      league =>
+        league &&
+        String(league.id) === String(id)
+    ) || null;
 
   }
 
@@ -2850,6 +2867,11 @@ function createNoticeCard(notice) {
     ) {
       D.standings = {};
     }
+
+
+   if (!Array.isArray(D.events)) {
+　　  D.events = [];
+　　}
 
 
     /*
