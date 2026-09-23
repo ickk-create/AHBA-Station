@@ -2014,14 +2014,11 @@ footer {
 }
 
 
-.schedule-status-tabs button.active
-.schedule-count {
-
+.schedule-status-tabs button.active .schedule-count {
   background:
     rgba(111, 220, 255, .18);
 
   color: #8de4ff;
-
 }
 
 
