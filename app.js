@@ -700,6 +700,130 @@
   }
 
 
+  function getGameEventId(game) {
+
+    return (
+      game?.eventId ??
+      game?.event_id ??
+      game?.tournamentId ??
+      game?.tournament_id ??
+      game?.event?.id ??
+      game?.tournament?.id ??
+      game?.type ??
+      ""
+　　  );
+
+　　}
+
+
+　　function getEventById(id) {
+
+　　  return (
+　　    D.events || []
+　　  ).find(
+　　    event =>
+         String(event.id) === String(id)
+　　  );
+
+　　}
+
+
+　　function getEventName(id) {
+
+　　  const event =
+　　    getEventById(id);
+
+　　  if (!event) {
+　　    return id || "-";
+　　  }
+
+　　  return displayText(
+　　    event.name,
+       event.id
+　　  );
+
+　　}
+
+
+　　function getEvents() {
+
+　　  if (
+　　    Array.isArray(D.events) &&
+       D.events.length
+　　  ) {
+　　    return D.events;
+　　  }
+
+
+　　  /* 旧データ用 */
+　　  const map = new Map();
+
+　　  (D.games || []).forEach(game => {
+
+　　    const id =
+　　      getGameEventId(game);
+
+　　    if (!id || map.has(id)) {
+　　      return;
+       }
+
+　　    const fallbackNames = {
+
+　　      international: {
+           ja: "国際試合",
+           ko: "국제 경기",
+           en: "International",
+           zh: "国际比赛"
+　　      },
+
+　　      friendly: {
+           ja: "AHBA交流戦",
+　　        ko: "AHBA 교류전",
+　　        en: "AHBA Exchange",
+　　        zh: "AHBA交流赛"
+　　      },
+
+　　      tournament: {
+　　        ja: "大会",
+　　        ko: "대회",
+           en: "Tournament",
+           zh: "赛事"
+　　      },
+
+　　      other: {
+　　        ja: "その他",
+           ko: "기타",
+　　        en: "Other",
+　　        zh: "其他"
+　　      }
+
+　　    };
+
+
+　　    map.set(id, {
+
+　　      id,
+
+　　      name:
+           game?.eventName ||
+           game?.tournamentName ||
+　　        fallbackNames[
+　　          game?.type
+           ] ||
+           fallbackNames.other
+
+　　    });
+
+　　  });
+
+
+　　  return Array.from(
+　　    map.values()
+　　  );
+
+　　}
+
+   
   function getGameStatus(game) {
 
     return String(
@@ -977,22 +1101,22 @@
 
       const options = [
         `<option value="">${escapeHTML(
-          t("matchCenter.allLeagues")
+          t("matchCenter.allEvents")
         )}</option>`
       ];
 
 
-      (D.leagues || [])
-        .forEach(league => {
+      getEvents()
+        .forEach(event => {
 
           options.push(`
             <option value="${escapeHTML(
-              league.id
+              event.id
             )}">
               ${escapeHTML(
                 displayText(
-                  league.name,
-                  league.id
+                  event.name,
+                  event.id
                 )
               )}
             </option>
@@ -1284,7 +1408,7 @@
       $("#statusFilter");
 
 
-    const selectedLeague =
+    const selectedEvent =
       leagueFilter?.value || "";
 
     const selectedStatus =
@@ -1300,15 +1424,15 @@
     /*
      * リーグ
      */
-    if (selectedLeague) {
+    if (selectedEvent) {
 
       games =
         games.filter(
           game =>
             String(
-              getGameLeague(game)
+              getGameEventId(game)
             ) === String(
-              selectedLeague
+              selectedEvent
             )
         );
 
@@ -1379,9 +1503,9 @@
 
   function createGameCard(game) {
 
-    const league =
-      getLeagueName(
-        getGameLeague(game)
+    const event =
+      getEventName(
+        getGameEventId(game)
       );
 
     const home =
@@ -1407,12 +1531,17 @@
 
 
     return `
-      <article class="game-card">
+      <a
+        class="game-card"
+        href="game.html?id=${encodeURIComponent(
+          game?.id ?? ""
+        )}"
+      >
 
         <div class="game-card-top">
 
           <span class="game-league">
-            ${escapeHTML(league)}
+            ${escapeHTML(event)}
           </span>
 
           <span class="game-status ${
@@ -1490,7 +1619,7 @@
             : ""
         }
 
-      </article>
+      </a>
     `;
 
   }
@@ -1500,21 +1629,12 @@
      STANDINGS
      --------------------------------------------------------- */
 
-  function getStandingsForLeague(id) {
+  function getStandingsForEvent(id) {
 
     const standings =
       D.standings || {};
 
 
-    /*
-     * 現在の形式:
-     *
-     * standings: {
-     *   A: [...],
-     *   B: [...],
-     *   KOREA: [...]
-     * }
-     */
     if (
       Array.isArray(
         standings[id]
@@ -1526,14 +1646,8 @@
     }
 
 
-    /*
-     * 新しい形式にも対応
-     *
-     * standings: {
-     *   current: [...]
-     * }
-     */
     if (
+      id === "current" &&
       Array.isArray(
         standings.current
       )
@@ -1544,13 +1658,8 @@
     }
 
 
-    /*
-     * standings が配列そのものの場合
-     */
     if (
-      Array.isArray(
-        standings
-      )
+      Array.isArray(standings)
     ) {
 
       return standings;
@@ -1577,29 +1686,36 @@
       $("#standingsLeague");
 
 
-    const selectedLeague =
+    const events =
+      getEvents().filter(
+        event =>
+          Array.isArray(
+            D.standings?.[event.id]
+          )
+      );
+
+     
+    const selectedEvent =
       select?.value ||
-      (D.leagues?.[0]?.id || "");
+      events[0]?.id ||
+      "";
 
-
-    /*
-     * セレクトが空なら、存在する最初のリーグ
-     */
+     
     if (
       select &&
       !select.value &&
-      D.leagues?.length
+      events.length
     ) {
 
       select.value =
-        D.leagues[0].id;
+        events[0].id;
 
     }
 
 
     const rows =
-      getStandingsForLeague(
-        selectedLeague
+      getStandingsForEvent(
+        selectedEvent
       );
 
 
@@ -1607,7 +1723,10 @@
 
       body.innerHTML = `
         <tr>
-          <td colspan="9" class="empty-state">
+          <td
+            colspan="9" 
+            class="empty-state"
+          >
             ${escapeHTML(
               t("standings.noData")
             )}
@@ -1806,18 +1925,27 @@
     const previous =
       select.value;
 
+     
+    const events =
+      getEvents().filter(
+        event =>
+          Array.isArray(
+            D.standings?.[event.id]
+          )
+      );
 
+     
     select.innerHTML =
-      (D.leagues || [])
+      events
         .map(
           league => `
-            <option value="${escapeHTML(
-              league.id
-            )}">
+            <option
+              value="${escapeHTML(event.id)}"
+            >
               ${escapeHTML(
                 displayText(
-                  league.name,
-                  league.id
+                  event.name,
+                  event.id
                 )
               )}
             </option>
@@ -1839,11 +1967,11 @@
         previous;
 
     } else if (
-      D.leagues?.length
+      events.length
     ) {
 
       select.value =
-        D.leagues[0].id;
+        event[0].id;
 
     }
 
