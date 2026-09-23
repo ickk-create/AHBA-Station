@@ -55,134 +55,6 @@ a {
 
 
 /* =========================
-   HEADER
-========================= */
-
-.topbar {
-
-  height: 76px;
-
-  border-bottom:
-    1px solid var(--line);
-
-  background:
-    rgba(7,11,18,.88);
-
-  backdrop-filter:
-    blur(14px);
-
-  display: flex;
-
-  align-items: center;
-
-  padding:
-    0 5vw;
-
-  gap: 36px;
-
-  position: sticky;
-
-  top: 0;
-
-  z-index: 20;
-}
-
-
-.brand {
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 11px;
-
-  margin-right: auto;
-}
-
-
-.brand-mark {
-
-  width: 38px;
-  height: 38px;
-
-  border:
-    1px solid var(--accent);
-
-  display: grid;
-
-  place-items: center;
-
-  font:
-    800 22px Orbitron;
-
-  border-radius: 9px;
-
-  box-shadow:
-    0 0 22px #64d7ff22;
-}
-
-
-.brand-title {
-
-  font:
-    800 16px Orbitron;
-
-  letter-spacing: 1px;
-}
-
-
-.brand-sub {
-
-  font-size: 9px;
-
-  color: var(--muted);
-
-  letter-spacing: 2px;
-}
-
-
-.topbar nav {
-
-  display: flex;
-
-  gap: 25px;
-
-  color: #b9c4d3;
-
-  font-size: 13px;
-}
-
-
-.topbar nav a:hover {
-
-  color: var(--accent);
-
-}
-
-
-.clock {
-
-  font:
-    700 15px Orbitron;
-
-  display: flex;
-
-  gap: 8px;
-
-  align-items: center;
-}
-
-
-.clock small {
-
-  font-size: 10px;
-
-  color: var(--accent);
-}
-
-
-
-/* =========================
    MAIN
 ========================= */
 
@@ -981,12 +853,7 @@ footer {
       1fr 1fr;
   }
 
-
-  .topbar nav {
-
-    display: none;
-  }
-
+  
 }
 
 
@@ -1031,19 +898,6 @@ footer {
   .sched-status {
 
     text-align: left;
-  }
-
-
-  .topbar {
-
-    padding:
-      0 18px;
-  }
-
-
-  .clock {
-
-    display: none;
   }
 
 }
