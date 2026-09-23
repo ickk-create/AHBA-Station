@@ -11,10 +11,15 @@
      DATA
      ========================================================= */
 
-  const D = window.ALLIANCE_DATA || {
-    games: [],
-    leagues: []
-  };
+  const D =
+    typeof ALLIANCE_DATA !== "undefined"
+      ? ALLIANCE_DATA
+      : {
+          leagues: [],
+          events: [],
+          games: [],
+          standings: {}
+        };
 
 
   /* =========================================================
