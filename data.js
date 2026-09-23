@@ -356,21 +356,21 @@ const ALLIANCE_DATA = {
       type: "international",
 
       title: {
-        ja: "日本代表 vs 韓国代表",
-        ko: "일본 대표 vs 대한민국 대표",
-        en: "Japan vs South Korea",
-        zh: "日本队 vs 韩国队"
+        ja: "AHBA vs BTBL",
+        ko: "AHBA vs BTBL",
+        en: "AHBA vs BTBL",
+        zh: "AHBA vs BTBL"
       },
 
-      time: "2026-09-10T19:00:00+09:00",
+      time: "2026-09-??T??:00:00+09:00",
 
-      home: "Japan",
-      away: "Korea",
+      home: "AHBA",
+      away: "BTBL",
 
-      homeScore: 5,
-      awayScore: 3,
+      homeScore: null,
+      awayScore: null,
 
-      status: "finished",
+      status: "upcoming",
 
       round: {
         ja: "国際親善試合",
@@ -382,44 +382,20 @@ const ALLIANCE_DATA = {
       detail: {
 
         innings: {
-          home: [0, 1, 0, 2, 0, 0, 1, 0, 1],
-          away: [0, 0, 1, 0, 0, 2, 0, 0, 0]
+          home: [],
+          away: []
         },
 
         pitching: {
-          win: "山田 太郎",
-          loss: "Kim Min-su",
-          save: "佐藤 一郎",
+          win: null,
+          loss: null,
+          save: null,
 
           holds: [
-            "佐々木 翔",
-            "高橋 健"
           ]
         },
 
         homeRuns: [
-
-          {
-            team: "home",
-            player: "山田 太郎",
-            inning: 4,
-            runs: 2
-          },
-
-          {
-            team: "home",
-            player: "佐藤 一郎",
-            inning: 7,
-            runs: 1
-          },
-
-          {
-            team: "away",
-            player: "Lee Junho",
-            inning: 6,
-            runs: 2
-          }
-
         ],
 
         notes: {
