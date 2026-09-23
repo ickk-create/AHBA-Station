@@ -698,6 +698,10 @@
       game?.league ??
       game?.leagueId ??
       game?.league_id ??
+      game?.eventId ??
+      game?.event_id ??
+      game?.tournamentId ??
+      game?.tournament_id ??
       ""
     );
 
@@ -1313,9 +1317,9 @@
     const game =
       upcoming[0];
 
-    const league =
-      getLeagueName(
-        getGameLeague(game)
+    const event =
+      getEventName(
+        getGameEvendId(game)
       );
 
 
@@ -1330,7 +1334,7 @@
       <div class="next-game-card">
 
         <div class="next-game-league">
-          ${escapeHTML(league)}
+          ${escapeHTML(event)}
         </div>
 
         <div class="next-game-teams">
@@ -1868,8 +1872,8 @@
 
 
     const diff =
-      Number(runsScored) -
-      Number(runsAllowed);
+      Number(runScored) -
+      Number(runAllowed);
 
 
     return `
@@ -2113,8 +2117,8 @@
   function createScheduleItem(game) {
 
     const league =
-      getLeagueName(
-        getGameLeague(game)
+      getEventName(
+        getGameEventId(game)
       );
 
 
@@ -2159,7 +2163,7 @@
         <div class="schedule-main">
 
           <div class="schedule-league">
-            ${escapeHTML(league)}
+            ${escapeHTML(event)}
           </div>
 
 
