@@ -110,49 +110,49 @@ const ALLIANCE_DATA = {
      ===================================================== */
 
   {
-    id: "A",
+    id: "KBO",
 
     name: {
-      ja: "A LEAGUE",
-      ko: "A LEAGUE",
-      en: "A LEAGUE",
-      zh: "A LEAGUE"
+      ja: "KBO",
+      ko: "KBO",
+      en: "KBO",
+      zh: "KBO"
     },
 
     country: {
-      ja: "日本",
-      ko: "일본",
-      en: "Japan",
-      zh: "日本"
+      ja: "韓国",
+      ko: "한국",
+      en: "Korea",
+      zh: "韓國"
     },
 
     /* 地域 */
     region: {
-      ja: "日本",
-      ko: "일본",
-      en: "Japan",
-      zh: "日本"
+      ja: "韓国",
+      ko: "한국",
+      en: "Korea",
+      zh: "韓國"
     },
 
     /* 試合時間 */
     matchTime: {
-      ja: "毎週土曜日 20:00",
-      ko: "매주 토요일 20:00",
-      en: "Every Saturday 20:00",
-      zh: "每周六 20:00"
+      ja: "毎週火曜日、水曜日、土曜日、日曜日 21:30",
+      ko: "매주 화요일, 수요일, 토요일, 일요일 9:30 PM",
+      en: "Every Thursday,Wednesday,Saturday,Sunday 9:30 PM KST",
+      zh: "每週二、週三、週六、週日 8:30 PM"
     },
 
     /* タイムゾーン */
-    timezone: "Asia/Tokyo",
+    timezone: "Asia/Seoul",
 
     description: {
-      ja: "日本を中心としたHCBBリーグ。",
-      ko: "일본을 중심으로 운영되는 HCBB 리그.",
-      en: "An HCBB league based primarily in Japan.",
-      zh: "以日本为中心运营的HCBB联赛。"
+      ja: "The KBO League is Korea’s largest and premier league.",
+      ko: "The KBO League is Korea’s largest and premier league.",
+      en: "The KBO League is Korea’s largest and premier league.",
+      zh: "The KBO League is Korea’s largest and premier league."
     },
 
-    owner: "AHBA",
+    owner: "nicemanman_1",
 
     /* ===================================================
        参加チーム
@@ -164,44 +164,24 @@ const ALLIANCE_DATA = {
       {
         id: "A1",
         name: "A1",
-        country: {
-          ja: "日本",
-          ko: "일본",
-          en: "Japan",
-          zh: "日本"
         }
       },
 
       {
         id: "A2",
         name: "A2",
-        country: {
-          ja: "日本",
-          ko: "일본",
-          en: "Japan",
-          zh: "日本"
         }
       },
 
       {
         id: "A3",
         name: "A3",
-        country: {
-          ja: "日本",
-          ko: "일본",
-          en: "Japan",
-          zh: "日本"
         }
       },
 
       {
         id: "A4",
         name: "A4",
-        country: {
-          ja: "日本",
-          ko: "일본",
-          en: "Japan",
-          zh: "日本"
         }
       }
 
@@ -213,9 +193,9 @@ const ALLIANCE_DATA = {
 
     discord: {
 
-      url: "https://discord.gg/REPLACE_A_LEAGUE",
+      url: "https://discord.gg/3kdYSu6grn",
 
-      code: "A-LEAGUE"
+      code: "383E4C"
 
     }
 
