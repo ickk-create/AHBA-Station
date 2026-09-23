@@ -2457,7 +2457,7 @@
     return `
       <article class="league-card">
 
-        <div class="league-card-code">
+        <div class="league-code">
           ${escapeHTML(
             league.id
           )}
