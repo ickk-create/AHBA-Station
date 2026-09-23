@@ -335,8 +335,29 @@
 
 
   function getEventName(game) {
+    
+    const eventId =
+      game?.eventId ??
+      game?.event_id ??
+      game?.tournamentId ??
+      game?.tournament_id;
+
+    const event =
+      (D.events || []).find(
+        item =>
+          String(item.id) ===
+          String(eventId)
+      );
+    if (event) {
+      return getLocalized(
+        event.name
+      );
+    }
+     
     if (game?.eventName) {
-      return getLocalized(game.eventName);
+      return getLocalized(
+        game.eventName
+      );
     }
 
     const type =
@@ -355,6 +376,7 @@
       map[type] ||
       "game.other"
     );
+     
   }
 
 
@@ -576,15 +598,18 @@
      ========================================================= */
 
   function renderScoreboard(game) {
-    const container =
-      document.getElementById(
-        "gameScoreboard"
-      );
 
-    if (!container) {
-      return;
-    }
+    const homeTeam =
+　    document.getElementById("homeTeam");
 
+    const awayTeam =
+      document.getElementById("awayTeam");
+
+    const homeScore =
+      document.getElementById("homeScore");
+
+    const awayScore =
+      document.getElementById("awayScore");
 
     const home =
       getHome(game);
@@ -592,91 +617,36 @@
     const away =
       getAway(game);
 
-    const homeScore =
+    const hScore =
       getHomeScore(game);
 
-    const awayScore =
+    const aScore =
       getAwayScore(game);
 
+    if (homeTeam) {
+      homeTeam.textContent =
+        home || "—";
+    }
 
-    const hasScore =
-      homeScore !== null &&
-      awayScore !== null;
+    if (awayTeam) {
+      awayTeam.textContent =
+        away || "—";
+    }
 
+    if (homeScore) {
+      homeScore.textContent =
+        hScore === null
+          ? "—"
+          : String(hScore);
+    }
 
-    container.innerHTML = `
-      <div class="game-scoreboard">
+    if (awayScore) {
+      awayScore.textContent =
+        aScore === null
+          ? "—"
+          : String(aScore);
+    }
 
-        <div class="score-team score-away">
-
-          <span class="score-team-label">
-            ${escapeHTML(t("common.away"))}
-          </span>
-
-          <strong class="score-team-name">
-            ${escapeHTML(away)}
-          </strong>
-
-          <span class="score-number">
-            ${
-              hasScore
-                ? escapeHTML(awayScore)
-                : "-"
-            }
-          </span>
-
-        </div>
-
-
-        <div class="score-middle">
-
-          <span class="score-vs">
-            ${escapeHTML(t("common.vs"))}
-          </span>
-
-          <span class="score-date">
-            ${escapeHTML(
-              formatDateTime(
-                game.datetime ??
-                game.dateTime ??
-                game.startTime ??
-                game.date
-              )
-            )}
-          </span>
-
-          <span class="score-zone">
-            ${escapeHTML(
-              LANGUAGE_CONFIG[currentLang]
-                ?.timezoneLabel || ""
-            )}
-          </span>
-
-        </div>
-
-
-        <div class="score-team score-home">
-
-          <span class="score-team-label">
-            ${escapeHTML(t("common.home"))}
-          </span>
-
-          <strong class="score-team-name">
-            ${escapeHTML(home)}
-          </strong>
-
-          <span class="score-number">
-            ${
-              hasScore
-                ? escapeHTML(homeScore)
-                : "-"
-            }
-          </span>
-
-        </div>
-
-      </div>
-    `;
   }
 
 
@@ -713,169 +683,98 @@
 
 
   function renderInnings(game) {
-    const container =
+
+    const header =
       document.getElementById(
-        "inningsTable"
+        "inningHeader"
       );
 
-    if (!container) {
-      return;
-    }
+    const awayRow =
+      document.getElementById(
+        "awayInnings"
+      );
 
+    const homeRow =
+      document.getElementById(
+        "homeInnings"
+      );
 
     const innings =
       getInnings(game);
 
+    if (
+      !header ||
+      !awayRow ||
+      !homeRow
+    ) {
+      return;
+    }
 
     if (!innings) {
-      container.innerHTML = `
-        <div class="empty-state">
-          ${escapeHTML(t("game.noInnings"))}
-        </div>
+
+      header.innerHTML = `
+        <th>TEAM</th>
+      `;
+
+      awayRow.innerHTML = `
+        <th>—</th>
+      `;
+
+      homeRow.innerHTML = `
+        <th>—</th>
       `;
 
       return;
     }
 
-
     const away =
-      getAway(game);
-
-    const home =
-      getHome(game);
-
-
-    const awayRows =
       Array.isArray(innings.away)
         ? innings.away
         : [];
 
-    const homeRows =
+    const home =
       Array.isArray(innings.home)
         ? innings.home
         : [];
 
-
     const count =
       Math.max(
-        awayRows.length,
-        homeRows.length
+        away.length,
+        home.length
       );
 
+    let headerHTML =
+      "<th>TEAM</th>";
 
-    if (!count) {
-      container.innerHTML = `
-        <div class="empty-state">
-          ${escapeHTML(t("game.noInnings"))}
-        </div>
+    for (let i = 0; i < count; i++) {
+
+      headerHTML += `
+        <th>${i + 1}</th>
       `;
 
-      return;
     }
 
+    header.innerHTML =
+      headerHTML;
 
-    let header = "";
+    awayRow.innerHTML =
+      `<th>${escapeHTML(getAway(game))}</th>` +
+      away
+        .map(
+          score =>
+            `<td>${score}</td>`
+        )
+        .join("");
 
-    for (
-      let i = 0;
-      i < count;
-      i++
-    ) {
-      header += `
-        <th>
-          ${i + 1}
-        </th>
-      `;
-    }
+    homeRow.innerHTML =
+      `<th>${escapeHTML(getHome(game))}</th>` +
+      home
+        .map(
+          score =>
+            `<td>${score}</td>`
+        )
+        .join("");
 
-
-    const awayTotal =
-      awayRows.reduce(
-        (sum, value) =>
-          sum + Number(value || 0),
-        0
-      );
-
-    const homeTotal =
-      homeRows.reduce(
-        (sum, value) =>
-          sum + Number(value || 0),
-        0
-      );
-
-
-    container.innerHTML = `
-      <div class="innings-table-wrapper">
-
-        <table class="innings-table">
-
-          <thead>
-            <tr>
-              <th></th>
-              ${header}
-              <th>${escapeHTML(t("innings.total"))}</th>
-            </tr>
-          </thead>
-
-          <tbody>
-
-            <tr>
-              <th>
-                ${escapeHTML(away)}
-              </th>
-
-              ${
-                Array.from(
-                  { length: count },
-                  (_, i) => `
-                    <td>
-                      ${escapeHTML(
-                        awayRows[i] ?? 0
-                      )}
-                    </td>
-                  `
-                ).join("")
-              }
-
-              <td>
-                <strong>
-                  ${awayTotal}
-                </strong>
-              </td>
-            </tr>
-
-
-            <tr>
-              <th>
-                ${escapeHTML(home)}
-              </th>
-
-              ${
-                Array.from(
-                  { length: count },
-                  (_, i) => `
-                    <td>
-                      ${escapeHTML(
-                        homeRows[i] ?? 0
-                      )}
-                    </td>
-                  `
-                ).join("")
-              }
-
-              <td>
-                <strong>
-                  ${homeTotal}
-                </strong>
-              </td>
-            </tr>
-
-          </tbody>
-
-        </table>
-
-      </div>
-    `;
   }
 
 
@@ -943,12 +842,19 @@
 
 
     if (pitching.holds) {
+    
+      const holds =
+        Array.isArray(pitching.holds)
+          ? pitching.holds.join(", ")
+          : getLocalized(
+              pitching.holds
+            );
+       
       rows.push({
         label: t("pitching.holds"),
-        value: getLocalized(
-          pitching.holds
-        )
+        value: holds
       });
+       
     }
 
 
