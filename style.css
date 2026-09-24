@@ -1448,27 +1448,28 @@ footer {
 ================================================== */
 
 .header-right {
+
   display: flex;
+
   align-items: center;
-  justify-content: flex-end;
+
   gap: 12px;
 
-  width: fit-content;
-  max-width: max-content;
+  flex-shrink: 0;
 
-  flex: 0 0 auto;
 }
 
 
 .header-clock {
+
   display: flex;
+
   flex-direction: column;
+
   align-items: flex-end;
 
   min-width: 86px;
-  width: auto;
 
-  flex: 0 0 auto;
 }
 
 
@@ -1507,52 +1508,69 @@ footer {
 ================================================== */
 
 .header-language {
-  display: flex;
-  align-items: center;
-  gap: 3px;
 
-  width: fit-content;
-  max-width: max-content;
-  flex: 0 0 auto;
+  display: flex;
+
+  align-items: center;
+
+  gap: 3px;
 
   padding: 3px;
 
-  border: 1px solid rgba(255, 255, 255, .09);
+  border:
+    1px solid
+    rgba(255, 255, 255, .09);
+
   border-radius: 9px;
 
-  background: rgba(255, 255, 255, .025);
+  background:
+    rgba(255, 255, 255, .025);
+
 }
 
+
 .header-language button {
-  width: auto;
-  min-width: 0;
-  flex: 0 0 auto;
 
   border: 0;
+
   background: transparent;
 
   color: #7f90a6;
 
-  padding: 6px 7px;
+  padding:
+    6px 7px;
+
   border-radius: 6px;
 
   font-size: .65rem;
+
   font-weight: 700;
 
   cursor: pointer;
-  white-space: nowrap;
 
-  transition: .2s ease;
+  transition:
+    .2s ease;
+
 }
+
 
 .header-language button:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, .06);
+
+  color: #ffffff;
+
+  background:
+    rgba(255, 255, 255, .06);
+
 }
 
+
 .header-language button.active {
+
   color: #06111a;
-  background: #6fdcff;
+
+  background:
+    #6fdcff;
+
 }
 
 
@@ -1584,9 +1602,9 @@ footer {
 
 
   .header-right {
+
     margin-left: auto;
-    width: fit-content;
-    max-width: 100%;
+
   }
 
 
@@ -2385,114 +2403,6 @@ footer {
     padding:
       18px;
 
-  }
-
-}
-
-
-
-/* ==================================================
-   HEADER LANGUAGE FIX
-   言語切替が横いっぱいに広がる問題を強制修正
-================================================== */
-
-.site-header .header-inner {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  max-width: 1280px;
-  box-sizing: border-box;
-}
-
-.site-header .header-right {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-end !important;
-
-  width: auto !important;
-  max-width: none !important;
-
-  flex: 0 0 auto !important;
-
-  margin-left: auto !important;
-}
-
-.site-header .header-clock {
-  display: flex !important;
-  flex: 0 0 auto !important;
-
-  width: auto !important;
-  min-width: 86px !important;
-  max-width: 86px !important;
-}
-
-.site-header .header-language {
-  display: inline-flex !important;
-  align-items: center !important;
-
-  width: max-content !important;
-  min-width: 0 !important;
-  max-width: max-content !important;
-
-  flex: 0 0 auto !important;
-
-  box-sizing: border-box;
-}
-
-.site-header .header-language button {
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
-
-  width: auto !important;
-  min-width: 0 !important;
-  max-width: none !important;
-
-  flex: 0 0 auto !important;
-
-  white-space: nowrap;
-}
-
-
-/* ==================================================
-   TABLET / MOBILE
-================================================== */
-
-@media (max-width: 900px) {
-
-  .site-header .header-inner {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  .site-header .header-right {
-    width: auto !important;
-    max-width: max-content !important;
-
-    margin-left: auto !important;
-  }
-
-  .site-header .header-language {
-    width: max-content !important;
-    max-width: max-content !important;
-  }
-
-}
-
-
-@media (max-width: 520px) {
-
-  .site-header .header-clock {
-    display: none !important;
-  }
-
-  .site-header .header-right {
-    width: auto !important;
-    max-width: max-content !important;
   }
 
 }
