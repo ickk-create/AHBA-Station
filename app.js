@@ -1294,7 +1294,7 @@
       const labels = {
         "Asia/Tokyo": "JST",
         "Asia/Seoul": "KST",
-        "Asia/Taipei": "CST",
+        "Asia/Taipei": "TST",
         "Asia/Shanghai": "CST",
         "America/New_York": "ET"
       };
