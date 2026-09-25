@@ -1266,6 +1266,32 @@ footer {
 
 
 /* ==================================================
+   HEADER FONT
+================================================== */
+
+.site-header,
+.site-header a,
+.site-header button {
+
+  font-family:
+    "Noto Sans JP",
+    sans-serif;
+
+}
+
+
+.site-header .site-brand-main,
+.site-header .site-brand-sub,
+.site-header .header-clock span {
+
+  font-family:
+    Orbitron,
+    sans-serif;
+
+}
+
+
+/* ==================================================
    BRAND
 ================================================== */
 
