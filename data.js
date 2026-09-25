@@ -34,7 +34,7 @@ const ALLIANCE_DATA = {
         ja: "試合情報・日程・リーグ紹介などのページを更新しました。",
         ko: "경기 정보·일정·리그 소개 등의 페이지를 업데이트했습니다.",
         en: "Game information, schedules, and league information have been updated.",
-        zh: "比赛信息、日程和联赛介绍等页面已更新。"
+        zh: "比賽信息、日程和聯賽介紹等頁面已更新。"
       }
 
     },
@@ -56,14 +56,14 @@ const ALLIANCE_DATA = {
         ja: "国際親善試合の試合情報を掲載しました",
         ko: "국제 친선 경기 정보를 게시했습니다",
         en: "International Friendly game information is now available",
-        zh: "国际友谊赛比赛信息已发布"
+        zh: "國際友誼賽比賽信息已發佈"
       },
 
       body: {
         ja: "AHBAで開催された国際親善試合の結果を掲載しています。",
         ko: "AHBA에서 개최된 국제 친선 경기 결과를 확인할 수 있습니다.",
         en: "Results from the AHBA International Friendly are now available.",
-        zh: "现在可以查看AHBA国际友谊赛的比赛结果。"
+        zh: "現在可以查看AHBA國際友誼賽的比賽結果。"
       }
 
     },
@@ -85,14 +85,14 @@ const ALLIANCE_DATA = {
         ja: "リーグ情報を更新しました",
         ko: "리그 정보를 업데이트했습니다",
         en: "League information has been updated",
-        zh: "联赛信息已更新"
+        zh: "聯賽信息已更新"
       },
 
       body: {
         ja: "KBO LEAGUE・KFB LEAGUEなどのリーグ情報を更新しました。",
         ko: "KBO LEAGUE·KFB LEAGUE 등의 리그 정보를 업데이트했습니다.",
         en: "League information for KBO LEAGUE, KFB LEAGUE, and others has been updated.",
-        zh: "KBO LEAGUE、KFB LEAGUE 等联赛信息已更新。"
+        zh: "KBO LEAGUE、KFB LEAGUE 等聯賽信息已更新。"
       }
 
     }
@@ -305,7 +305,7 @@ const ALLIANCE_DATA = {
         ja: "国際親善試合",
         ko: "국제 친선 경기",
         en: "International Friendly",
-        zh: "国际友谊赛"
+        zh: "國際友誼賽"
       },
 
       type: "international"
@@ -319,7 +319,7 @@ const ALLIANCE_DATA = {
         ja: "AHBA交流戦",
         ko: "AHBA 교류전",
         en: "AHBA Exchange",
-        zh: "AHBA交流赛"
+        zh: "AHBA交流賽"
       },
 
       type: "friendly"
@@ -376,7 +376,7 @@ const ALLIANCE_DATA = {
         ja: "国際親善試合",
         ko: "국제 친선 경기",
         en: "International Friendly",
-        zh: "国际友谊赛"
+        zh: "國際友誼賽"
       },
 
       detail: {
@@ -402,7 +402,7 @@ const ALLIANCE_DATA = {
           ja: "AHBA公式掲載の国際親善試合。",
           ko: "AHBA 공식 국제 친선 경기.",
           en: "An AHBA officially published international friendly.",
-          zh: "AHBA官方发布的国际友谊赛。"
+          zh: "AHBA官方發佈的國際友誼賽。"
         }
 
       }
