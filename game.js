@@ -185,49 +185,49 @@
     zh: {
 
       nav: {
-        games: "比赛结果",
-        standings: "积分榜",
-        schedule: "比赛日程",
-        leagues: "联赛介绍",
-        about: "关于AHBA"
+        games: "比賽結果",
+        standings: "積分榜",
+        schedule: "比賽日程",
+        leagues: "聯賽介紹",
+        about: "關於AHBA"
       },
 
       game: {
-        back: "← 返回比赛列表",
+        back: "← 返回比賽列表",
 
         eyebrow: "GAME DETAILS",
 
         scoreboardEyebrow: "SCOREBOARD",
-        scoreboard: "记分板",
+        scoreboard: "記分板",
 
         pitchingEyebrow: "PITCHING",
-        pitching: "投手记录",
+        pitching: "投手記錄",
 
         homeRunsEyebrow: "HOME RUNS",
-        homeRuns: "本垒打",
+        homeRuns: "本壘打",
 
         notesEyebrow: "GAME NOTES",
-        notes: "比赛备注",
+        notes: "比賽備註",
 
-        win: "胜投",
-        loss: "败投",
+        win: "勝投",
+        loss: "敗投",
         save: "救援成功",
-        holds: "中继成功",
+        holds: "中繼成功",
 
         inning: "局",
 
-        noData: "暂无记录",
+        noData: "暫無記錄",
 
-        notFound: "找不到比赛",
+        notFound: "找不到比賽",
         notFoundDescription:
-          "指定的比赛不存在。",
+          "指定的比賽不存在。",
 
-        return: "返回比赛列表",
+        return: "返回比賽列表",
 
-        international: "国际比赛",
-        friendly: "友谊赛",
-        tournament: "赛事",
-        ahba: "AHBA官方比赛"
+        international: "國際比賽",
+        friendly: "友誼賽",
+        tournament: "賽事",
+        ahba: "AHBA官方比賽"
       },
 
       footer: {
