@@ -382,12 +382,12 @@ const translations = {
   zh: {
 
     nav: {
-      home: "首页",
-      games: "比赛",
+      home: "首頁",
+      games: "比賽",
       standings: "排名",
-      schedule: "赛程",
-      leagues: "联赛",
-      about: "关于 AHBA"
+      schedule: "賽程",
+      leagues: "聯賽",
+      about: "關於 AHBA"
     },
 
     hero: {
@@ -396,10 +396,10 @@ const translations = {
         "ASIA HCBB BASEBALL ALLIANCE",
 
       title:
-        "连接亚洲 HCBB，<br><span>让社区汇聚一处。</span>",
+        "連結亞洲 HCBB，<br><span>讓社群匯聚一處。</span>",
 
       lead:
-        "Asia HCBB Baseball Alliance（AHBA）连接亚洲各地区的 HCBB 社区，为比赛、联赛、赛事和交流提供统一的信息平台。"
+        "Asia HCBB Baseball Alliance（AHBA）連結亞洲各地區的 HCBB 社群，為比賽、聯賽、賽事與交流提供統一的資訊平台。"
     },
 
     about: {
@@ -408,13 +408,13 @@ const translations = {
         "WHAT IS AHBA?",
 
       title:
-        "关于 AHBA",
+        "關於 AHBA",
 
       p1:
-        "AHBA 不仅服务于某一个联赛，而是希望连接国际比赛、AHBA 主办的友谊赛与赛事，以及亚洲各地区联赛的信息。",
+        "AHBA 不僅服務於單一聯賽，而是希望連結國際比賽、AHBA 主辦的友誼賽與賽事，以及亞洲各地區聯賽的相關資訊。",
 
       p2:
-        "在这个门户中，可以集中查看官方发布的比赛结果、排名、赛程时间和联赛信息。"
+        "在這個入口網站中，可以集中查看官方發布的比賽結果、排名、賽程時間與聯賽資訊。"
     },
 
     activities: {
@@ -423,14 +423,14 @@ const translations = {
         "ACTIVITIES",
 
       title:
-        "主要活动",
+        "主要活動",
 
       a1: {
         title:
           "International Matches",
 
         text:
-          "发布跨地区国际比赛和交流比赛的信息。"
+          "發布跨地區國際比賽與交流賽事的相關資訊。"
       },
 
       a2: {
@@ -438,7 +438,7 @@ const translations = {
           "League Support",
 
         text:
-          "介绍参与联赛并提供进入各联赛信息的入口。"
+          "介紹參與的聯賽，並提供進入各聯賽資訊的入口。"
       },
 
       a3: {
@@ -446,7 +446,7 @@ const translations = {
           "Tournaments & Events",
 
         text:
-          "发布由 AHBA 主办或官方收录的赛事与活动。"
+          "發布由 AHBA 主辦或官方收錄的賽事與活動。"
       },
 
       a4: {
@@ -454,7 +454,7 @@ const translations = {
           "Community",
 
         text:
-          "连接日本、韩国、台湾以及亚洲其他地区的 HCBB 社区。"
+          "連結日本、韓國、臺灣以及亞洲其他地區的 HCBB 社群。"
       }
     },
 
@@ -467,7 +467,7 @@ const translations = {
         "AHBA Discord",
 
       text:
-        "用于比赛协调、联赛信息、社区交流和运营联系的官方社区。",
+        "用於比賽協調、聯賽資訊、社群交流與營運聯繫的官方社群。",
 
       button:
         "加入 Discord →"
@@ -479,20 +479,20 @@ const translations = {
         "OUR PRINCIPLES",
 
       title:
-        "三项理念",
+        "三項理念",
 
       connect:
-        "连接亚洲 HCBB 社区。",
+        "連結亞洲 HCBB 社群。",
 
       respect:
-        "尊重地区、联赛与玩家。",
+        "尊重各地區、聯賽與玩家。",
 
       create:
-        "创造新的 HCBB 竞技与交流空间。"
+        "創造全新的 HCBB 競技與交流空間。"
     },
 
     back:
-      "← 返回首页",
+      "← 返回首頁",
 
     footer:
       "Community • Competition • Connection"
