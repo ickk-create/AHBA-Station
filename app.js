@@ -421,107 +421,107 @@
     zh: {
 
       nav: {
-        games: "比赛信息",
+        games: "比賽資訊",
         standings: "積分榜",
-        schedule: "赛程",
-        leagues: "联赛介绍",
-        about: "关于 AHBA"
+        schedule: "賽程",
+        leagues: "聯賽介紹",
+        about: "關於 AHBA"
       },
 
       hero: {
         eyebrow: "ASIA HCBB BASEBALL ALLIANCE",
-　　　　  title: "连接亚洲 HCBB，<br><span>让社区汇聚一处。</span>",
-　　　　  description:
-　　　　    "连接亚洲各地区的 HCBB 社区，共享比赛、联赛、赛事和交流信息。",
-　　　　  button: "查看比赛与联赛 →",
-　　　　  games: "查看比赛",
-　　　　  schedule: "查看赛程"
-　　　　},
+        title: "連結亞洲 HCBB，<br><span>讓社群匯聚一處。</span>",
+        description:
+          "連結亞洲各地區的 HCBB 社群，共享比賽、聯賽、賽事與交流資訊。",
+        button: "查看比賽與聯賽 →",
+        games: "查看比賽",
+        schedule: "查看賽程"
+      },
 
       next: {
-　　　　  title: "NEXT GAME"
-　　　　},
+        title: "NEXT GAME"
+      },
 
-　　　　games: {
-　　　　  eyebrow: "MATCH CENTER",
-　　　　  title: "比赛结果与赛程"
-　　　　},
+      games: {
+        eyebrow: "MATCH CENTER",
+        title: "比賽結果與賽程"
+      },
 
-　　　　filter: {
-　　　　  all: "全部比赛",
-　　　　  upcoming: "即将进行",
-　　　　  finished: "已结束"
-　　　　},
+      filter: {
+        all: "全部比賽",
+        upcoming: "即將進行",
+        finished: "已結束"
+      },
 
-　　　　country: {
-　　　　  japan: "日本",
-　　　　  korea: "韩国",
-        taiwan: "台湾",
-　　　　  newYork: "美国"
-　　　　},
-       
+      country: {
+        japan: "日本",
+        korea: "韓國",
+        taiwan: "臺灣",
+        newYork: "美國"
+      },
+
       nextGame: {
         eyebrow: "NEXT GAME",
-        noGame: "目前没有安排中的比赛",
+        noGame: "目前沒有安排中的比賽",
         tbd: "待定"
       },
 
       matchCenter: {
         eyebrow: "MATCH CENTER",
-        title: "比赛信息",
-        allLeagues: "所有联赛",
-        allEvents: "所有赛事·活动",
+        title: "比賽資訊",
+        allLeagues: "所有聯賽",
+        allEvents: "所有賽事・活動",
         allStatus: "全部",
-        upcoming: "即将进行",
-        finished: "已结束",
-        noGames: "没有可显示的比赛"
+        upcoming: "即將進行",
+        finished: "已結束",
+        noGames: "沒有可顯示的比賽"
       },
 
       standings: {
         eyebrow: "STANDINGS",
-　　　　  title: "积分榜",
-　　　　  rank: "排名",
-　　　　  team: "球队",
-　　　　  games: "场",
-　　　　  wins: "胜",
-　　　　  losses: "负",
-        pct: "胜率",
-　　　　  runsScored: "得分",
-　　　　  runsAllowed: "失分",
-　　　　  diff: "净胜分",
-　　　　  noData: "暂无积分榜数据"
-　　　　},
+        title: "積分榜",
+        rank: "排名",
+        team: "球隊",
+        games: "場",
+        wins: "勝",
+        losses: "負",
+        pct: "勝率",
+        runsScored: "得分",
+        runsAllowed: "失分",
+        diff: "淨勝分",
+        noData: "暫無積分榜資料"
+      },
 
       schedule: {
         eyebrow: "TIME TABLE",
-        title: "赛程",
-        upcoming: "即将进行",
-        finished: "已结束",
-        noGames: "没有可显示的赛程",
-        timezone: "显示时区"
+        title: "賽程",
+        upcoming: "即將進行",
+        finished: "已結束",
+        noGames: "沒有可顯示的賽程",
+        timezone: "顯示時區"
       },
 
       scheduleStatus: {
-        upcoming: "即将进行",
-        finished: "已结束"
+        upcoming: "即將進行",
+        finished: "已結束"
       },
 
       leagues: {
         eyebrow: "LEAGUES",
-        title: "联赛介绍",
-        region: "地区",
-        matchTime: "常规比赛时间",
-        teams: "参赛球队",
-        view: "查看联赛详情 →",
-        noLeagues: "暂无联赛信息"
+        title: "聯賽介紹",
+        region: "地區",
+        matchTime: "例行比賽時間",
+        teams: "參賽球隊",
+        view: "查看聯賽詳情 →",
+        noLeagues: "暫無聯賽資訊"
       },
 
       about: {
         eyebrow: "ABOUT AHBA",
-        title: "连接亚洲 HCBB，<br><span>让社区汇聚一处。</span>",
+        title: "連結亞洲 HCBB，<br><span>讓社群匯聚一處。</span>",
         description:
-          "Asia HCBB Baseball Alliance（AHBA）连接亚洲各地区的 HCBB 社区，为比赛、联赛、赛事和交流提供统一的信息平台。",
-        button: "了解更多关于 AHBA →"
+          "Asia HCBB Baseball Alliance（AHBA）連結亞洲各地區的 HCBB 社群，為比賽、聯賽、賽事與交流提供統一的資訊平台。",
+        button: "了解更多關於 AHBA →"
       },
 
       footer: {
@@ -530,16 +530,16 @@
       },
 
       common: {
-        home: "主队",
-        away: "客队",
+        home: "主隊",
+        away: "客隊",
         vs: "VS",
         at: "@"
       },
 
       notices: {
         eyebrow: "AHBA NEWS",
-        title: "AHBA公告",
-        noNotices: "目前没有公告"
+        title: "AHBA 公告",
+        noNotices: "目前沒有公告"
       },
 
     }
@@ -813,21 +813,21 @@
            ja: "国際試合",
            ko: "국제 경기",
            en: "International",
-           zh: "国际比赛"
+           zh: "國際比賽"
 　　      },
 
 　　      friendly: {
            ja: "AHBA交流戦",
 　　        ko: "AHBA 교류전",
 　　        en: "AHBA Exchange",
-　　        zh: "AHBA交流赛"
+　　        zh: "AHBA交流賽"
 　　      },
 
 　　      tournament: {
 　　        ja: "大会",
 　　        ko: "대회",
            en: "Tournament",
-           zh: "赛事"
+           zh: "賽事"
 　　      },
 
 　　      other: {
@@ -1679,7 +1679,7 @@
               : currentLang === "ko"
               ? "경기 상세 보기 →"
               : currentLang === "zh"
-              ? "查看赛事详情 →"
+              ? "查看賽事詳情 →"
               : "VIEW GAME DETAILS →"
           }
 
