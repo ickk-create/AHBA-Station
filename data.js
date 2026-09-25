@@ -89,10 +89,10 @@ const ALLIANCE_DATA = {
       },
 
       body: {
-        ja: "A LEAGUE・B LEAGUEなどのリーグ情報を更新しました。",
-        ko: "A LEAGUE·B LEAGUE 등의 리그 정보를 업데이트했습니다.",
-        en: "League information for A LEAGUE, B LEAGUE, and others has been updated.",
-        zh: "A LEAGUE、B LEAGUE 等联赛信息已更新。"
+        ja: "KBO LEAGUE・KFB LEAGUEなどのリーグ情報を更新しました。",
+        ko: "KBO LEAGUE·KFB LEAGUE 등의 리그 정보를 업데이트했습니다.",
+        en: "League information for KBO LEAGUE, KFB LEAGUE, and others has been updated.",
+        zh: "KBO LEAGUE、KFB LEAGUE 等联赛信息已更新。"
       }
 
     }
