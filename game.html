@@ -19,6 +19,21 @@
     content="Asia HCBB Baseball Alliance Official Game Detail"
   >
 
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Orbitron:wght@500;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="game.css">
 
@@ -31,129 +46,132 @@
        HEADER
        ===================================================== -->
 
-  <header class="site-header">
+<header class="site-header">
 
-    <div class="header-inner">
+  <div class="header-inner">
 
-      <!-- Brand -->
+    <!-- BRAND -->
+    <a href="./index.html" class="site-brand">
 
-      <a
-        href="./index.html"
-        class="site-brand"
+      <img
+        src="./E54D2CD1-606D-43CA-8438-216137170723.png"
+        class="site-logo"
+        alt="Asia HCBB Baseball Alliance"
       >
 
-        <span class="site-brand-main">
-          AHBA
-        </span>
+      <div class="site-brand-text">
 
-        <span class="site-brand-sub">
-          Asia HCBB Baseball Alliance
-        </span>
+        <div class="site-brand-main">
+          ASIA HCBB
+        </div>
 
+        <div class="site-brand-sub">
+          BASEBALL ALLIANCE
+        </div>
+
+      </div>
+
+    </a>
+
+
+    <!-- NAVIGATION -->
+    <nav class="main-nav">
+
+      <a
+        href="./index.html#games"
+        data-i18n="nav.games"
+      >
+        試合
       </a>
 
+      <a
+        href="./index.html#standings"
+        data-i18n="nav.standings"
+      >
+        順位表
+      </a>
 
-      <!-- Navigation -->
+      <a
+        href="./index.html#schedule"
+        data-i18n="nav.schedule"
+      >
+        時間表
+      </a>
 
-      <nav class="main-nav">
+      <a
+        href="./index.html#leagues"
+        data-i18n="nav.leagues"
+      >
+        リーグ
+      </a>
 
-        <a
-          href="./index.html#games"
-          data-i18n="nav.games"
+      <a
+        href="./ahba.html"
+        data-i18n="nav.about"
+      >
+        AHBA紹介
+      </a>
+
+    </nav>
+
+
+    <!-- RIGHT SIDE -->
+    <div class="header-right">
+
+      <div class="header-clock">
+
+        <span id="clock">
+          --:--:--
+        </span>
+
+        <small id="tz">
+          JST
+        </small>
+
+      </div>
+
+
+      <div class="header-language">
+
+        <button
+          type="button"
+          data-lang="ja"
+          title="日本語"
         >
-          試合結果
-        </a>
+          JP
+        </button>
 
-        <a
-          href="./index.html#standings"
-          data-i18n="nav.standings"
+        <button
+          type="button"
+          data-lang="ko"
+          title="한국어"
         >
-          順位表
-        </a>
+          KR
+        </button>
 
-        <a
-          href="./index.html#schedule"
-          data-i18n="nav.schedule"
+        <button
+          type="button"
+          data-lang="zh"
+          title="中文"
         >
-          試合日程
-        </a>
+          中文
+        </button>
 
-        <a
-          href="./index.html#leagues"
-          data-i18n="nav.leagues"
+        <button
+          type="button"
+          data-lang="en"
+          title="English"
         >
-          参加リーグ
-        </a>
-
-        <a
-          href="./index.html#about"
-          data-i18n="nav.about"
-        >
-          AHBAについて
-        </a>
-
-      </nav>
-
-
-      <!-- Header Right -->
-
-      <div class="header-right">
-
-        <!-- Clock -->
-
-        <div class="header-clock">
-
-          <div id="clock">
-            --:--:--
-          </div>
-
-          <div id="tz">
-            Asia/Tokyo
-          </div>
-
-        </div>
-
-
-        <!-- Language -->
-
-        <div class="header-language">
-
-          <button
-            type="button"
-            data-lang="ja"
-            class="active"
-          >
-            JA
-          </button>
-
-          <button
-            type="button"
-            data-lang="ko"
-          >
-            KO
-          </button>
-
-          <button
-            type="button"
-            data-lang="en"
-          >
-            EN
-          </button>
-
-          <button
-            type="button"
-            data-lang="zh"
-          >
-            ZH
-          </button>
-
-        </div>
+          EN
+        </button>
 
       </div>
 
     </div>
 
-  </header>
+  </div>
+
+</header>
 
 
   <!-- =====================================================
