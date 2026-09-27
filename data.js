@@ -146,10 +146,10 @@ const ALLIANCE_DATA = {
     timezone: "Asia/Seoul",
 
     description: {
-      ja: "The KBO League is Korea’s largest and premier league.",
-      ko: "The KBO League is Korea’s largest and premier league.",
+      ja: "KBOリーグは、韓国最大かつ最高峰のリーグです。",
+      ko: "KBO 리그는 한국에서 가장 규모가 크고 권위 있는 리그입니다.",
       en: "The KBO League is Korea’s largest and premier league.",
-      zh: "The KBO League is Korea’s largest and premier league."
+      zh: "KBO聯盟是韓國規模最大、最頂尖的聯盟。"
     },
 
     owner: "nicemanman_1",
@@ -246,10 +246,10 @@ const ALLIANCE_DATA = {
     timezone: "Asia/Seoul",
 
     description: {
-      ja: "The KFB League is a rookie league created to develop and give opportunities to rookie players who don’t get many chances to play in larger leagues.",
-      ko: "The KFB League is a rookie league created to develop and give opportunities to rookie players who don’t get many chances to play in larger leagues.",
+      ja: "KFBリーグは、より大規模なリーグでは出場機会があまり得られない新人選手を育成し、活躍の場を提供するために設立された新人リーグです。",
+      ko: "KFB 리그는 대형 리그에서 출전 기회를 많이 얻지 못하는 신인 선수들을 육성하고 그들에게 기회를 제공하기 위해 창설된 신인 리그입니다.",
       en: "The KFB League is a rookie league created to develop and give opportunities to rookie players who don’t get many chances to play in larger leagues.",
-      zh: "The KFB League is a rookie league created to develop and give opportunities to rookie players who don’t get many chances to play in larger leagues."
+      zh: "KFB 聯賽是一項新秀聯賽，旨在培育那些在大型聯賽中難以獲得上場機會的新秀球員，並為他們提供發展機會。"
     },
 
     owner: "nicemanman_1",
