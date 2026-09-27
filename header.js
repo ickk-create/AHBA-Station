@@ -37,7 +37,7 @@
        * Keep the AHBA reference time as Japan time.
        */
       timeZone: "America/New_York",
-      label: "EST",
+      label: "ET",
       locale: "en-US"
     }
 
