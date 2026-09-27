@@ -32,6 +32,10 @@
     },
 
     en: {
+      /*
+       * English is the global language.
+       * Keep the AHBA reference time as Japan time.
+       */
       timeZone: "Asia/Tokyo",
       label: "JST",
       locale: "en-US"
@@ -46,10 +50,15 @@
 
   function getCurrentLanguage() {
 
-    return (
+    const saved =
       localStorage.getItem(
         "asiaHCBBLanguage"
-      ) || "ja"
+      );
+
+    return (
+      languageSettings[saved]
+        ? saved
+        : "ja"
     );
 
   }
@@ -76,10 +85,8 @@
     const language =
       getCurrentLanguage();
 
-
     const settings =
-      languageSettings[language]
-      || languageSettings.ja;
+      languageSettings[language];
 
 
     const now =
@@ -135,7 +142,7 @@
         button.classList.toggle(
           "active",
           button.dataset.lang ===
-          currentLanguage
+            currentLanguage
         );
 
       });
@@ -144,7 +151,7 @@
 
 
   /* ==================================================
-     LANGUAGE CHANGE EVENT
+     REFRESH HEADER
   ================================================== */
 
   function refreshHeader() {
@@ -153,6 +160,13 @@
     updateLanguageButton();
 
   }
+
+
+  /*
+   * 他のJSからも明示的に更新できるようにする
+   */
+  window.refreshAHBAHeader =
+    refreshHeader;
 
 
   /* ==================================================
@@ -165,12 +179,8 @@
 
 
     /*
-      時計は1秒ごとに更新。
-
-      さらに毎秒 localStorage の言語を確認するため、
-      各ページの言語切替処理と同期できます。
-    */
-
+     * 時計を毎秒更新
+     */
     setInterval(
       refreshHeader,
       1000
@@ -178,10 +188,8 @@
 
 
     /*
-      同じページ内でカスタムイベントが発生した場合も
-      即座にヘッダーを更新。
-    */
-
+     * 言語変更イベント
+     */
     window.addEventListener(
       "ahba-language-change",
       refreshHeader
