@@ -286,6 +286,168 @@ const ALLIANCE_DATA = {
 
     }
 
+  },
+
+
+  /* =====================================================
+     WBL LEAGUE
+     ===================================================== */
+
+  {
+    id: "WBL",
+
+    name: {
+      ja: "World Baseball League™",
+      ko: "World Baseball League™",
+      en: "World Baseball League™",
+      zh: "World Baseball League™"
+    },
+
+    country: {
+      ja: "韓国",
+      ko: "한국",
+      en: "Korea",
+      zh: "韓國"
+    },
+
+    region: {
+      ja: "アジア",
+      ko: "아시아",
+      en: "Asia",
+      zh: "亞洲"
+    },
+
+    matchTime: {
+      ja: "毎週月曜日、木曜日 20:00、毎週金曜日 22:00、毎週土曜日、日曜日 17:30",
+      ko: "매주 월요일, 목요일 8:00 PM, 매주 금요일 10:00 PM, 매주 토요일, 일요일 5:30 PM",
+      en: "Every Monday and Thursday at 8:00 PM(KST), every Friday at 10:00 PM(KST), and every Saturday and Sunday at 5:30 PM(KST)",
+      zh: "每週一、四 7:00 PM，每週五 9:00 PM，每週六、日 4:30 PM"
+    },
+
+    timezone: "Asia/Seoul",
+
+    description: {
+      ja: "𝐖𝐨𝐫𝐥𝐝 𝐁𝐚𝐬𝐞𝐛𝐚𝐥𝐥 𝐋𝐞𝐚𝐠𝐮𝐞™ (𝐖𝐁𝐋™)は、2025年9月23日にihywzz_XとNav3rForY0u (retent1on)によって設立された、HCBB 9v9における新人選手の育成と発展を目的とした非公式のサイドリーグです。現在、WBLの第3代コミッショナーである「Y0un9ju」がリーグを運営しています。また、WBLは（元コミッショナーを含む）プロフェッショナルで著名な理事会によって運営されています。さらに、WBLはHCBB 9v9において、特に韓国（大韓民国）で最大かつ最も人気のあるサイドリーグの一つです。私たちは、国際的にもHCBB 9v9の非公式サイドリーグを代表する存在となることを目指しています。",
+      ko: "𝐖𝐨𝐫𝐥𝐝 𝐁𝐚𝐬𝐞𝐛𝐚𝐥𝐥 𝐋𝐞𝐚𝐠𝐮𝐞™ (𝐖𝐁𝐋™)은 2025년 9월 23일 ihywzz_X와 Nav3rForY0u (retent1on)이 설립한, HCBB 9v9의 신인 선수들을 육성하고 발전시키는 비공식 서브 리그입니다. 현재 WBL의 제3대 커미셔너인 'Y0un9ju'가 리그를 운영하고 있습니다. 또한, WBL은 (전직 커미셔너들을 포함한) 전문적이고 저명한 이사회에 의해 관리되고 있습니다. 아울러, WBL은 HCBB 9v9, 특히 대한민국에서 가장 규모가 크고 인기 있는 서브 리그 중 하나입니다. 또한, 우리는 국제적으로 HCBB 9v9의 비공식 서브 리그를 대표하는 존재가 되는 것을 목표로 하고 있습니다.",
+      en: "𝐖𝐨𝐫𝐥𝐝 𝐁𝐚𝐬𝐞𝐛𝐚𝐥𝐥 𝐋𝐞𝐚𝐠𝐮𝐞™ (𝐖𝐁𝐋™) is an unofficial side league that promoting and developing rookie players in HCBB 9v9 founded by ihywzz_X and Nav3rForY0u (retent1on) on September 23, 2025. The 3rd Commissioner of the WBL, 'Y0un9ju' is now managing the league. Plus, WBL has been managed by professional and renowned Board of Directors (including the former Commissioners). Furthermore, WBL is one of the biggest and most popular side league in HCBB 9v9 especially in South Korea (Republic of Korea). We are also aiming to be representative for unofficial side league of the HCBB 9v9 internationally.",
+      zh: "𝐖𝐨𝐫𝐥𝐝 𝐁𝐚𝐬𝐞𝐛𝐚𝐥𝐥 𝐋𝐞𝐚𝐠𝐮𝐞™ (𝐖𝐁𝐋™) 是一個由 ihywzz_X 與 Nav3rForY0u (retent1on) 於 2025 年 9 月 23 日創立的非官方副聯盟，旨在推廣與培育 HCBB 9v9 的新秀選手。WBL 的第三任總監「Y0un9ju」目前正負責管理該聯盟。此外，WBL 由專業且聲譽卓著的董事會（包括前任總監）所管理。更進一步地，WBL 是 HCBB 9v9 中規模最大、最受歡迎的副聯盟之一，特別是在南韓（大韓民國）。我們亦致力於成為國際 HCBB 9v9 非官方副聯盟的代表。"
+    },
+
+    owner: "Y0un9ju",
+
+    teams: [
+
+      {
+        id: "coming soon...",
+        name: "coming soon...",
+      },
+
+      {
+        id: "coming soon...",
+        name: "coming soon...",
+      },
+
+      {
+        id: "coming soon...",
+        name: "coming soon...",
+      },
+
+      {
+        id: "coming soon...",
+        name: "coming soon...",
+      },
+
+      {
+        id: "coming soon...",
+        name: "coming soon...",
+      },
+      
+      {
+        id: "coming soon...",
+        name: "coming soon...",
+      }
+
+    ],
+
+    discord: {
+
+      url: "https://discord.gg/aQzmkZ9wsv",
+
+      code: "EA054A"
+
+    }
+
+  },
+
+
+  /* =====================================================
+     KNL LEAGUE
+     ===================================================== */
+
+  {
+    id: "KNL",
+
+    name: {
+      ja: "KNL",
+      ko: "KNL",
+      en: "KNL",
+      zh: "KNL"
+    },
+
+    country: {
+      ja: "韓国",
+      ko: "한국",
+      en: "Korea",
+      zh: "韓國"
+    },
+
+    region: {
+      ja: "韓国",
+      ko: "한국",
+      en: "Korea",
+      zh: "韓國"
+    },
+
+    matchTime: {
+      ja: "毎週火曜日、水曜日、木曜日 20:00、毎週土曜日、日曜日 16:00",
+      ko: "매주 화요일,수요일,목요일 8:00 PM、매주 토요일,일요일 4:00 PM",
+      en: "Every Tuesday,Wednesday,Thursday 8:00 PM KST, Every Saturday,Sunday 4:00 PM KST",
+      zh: "每週二、三、四 7:00 PM、每週六、日 3:00 PM"
+    },
+
+    timezone: "Asia/Seoul",
+
+    description: {
+      ja: "",
+      ko: "",
+      en: "",
+      zh: ""
+    },
+
+    owner: "gorsky7",
+
+    teams: [
+
+      {
+        id: "KT WIZ",
+        name: "KT WIZ",
+      },
+
+      {
+        id: "Samsung Lions",
+        name: "Samsung Lions",
+      }
+
+    ],
+
+    discord: {
+
+      url: "https://discord.gg/",
+
+      code: "67C81A"
+
+    }
+
   }
 
 ],
