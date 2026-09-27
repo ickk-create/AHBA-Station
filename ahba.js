@@ -583,6 +583,10 @@ function applyLanguage(lang) {
     lang
   );
 
+  window.dispatchEvent(
+    new Event("ahba-language-change")
+  );
+
 
   /* TITLE */
 
