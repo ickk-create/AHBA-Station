@@ -695,6 +695,9 @@
         currentLanguage
       );
 
+      window.dispatchEvent(
+        new Event("ahba-language-change")
+      );
 
       updateStaticTranslations();
 
