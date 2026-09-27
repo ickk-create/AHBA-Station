@@ -28,7 +28,8 @@
         about: "AHBAについて"
       },
 
-      back: "← リーグ紹介へ戻る",
+      back:
+        "← リーグ紹介へ戻る",
 
       league: {
         label: "LEAGUE"
@@ -47,7 +48,8 @@
         eyebrow: "PARTICIPATING TEAMS",
         title: "参加チーム",
         count: "チーム",
-        empty: "参加チーム情報はありません。"
+        empty:
+          "参加チーム情報はありません。"
       },
 
       discord: {
@@ -61,7 +63,8 @@
 
       error: {
         title: "リーグが見つかりません",
-        description: "指定されたリーグは存在しません。"
+        description:
+          "指定されたリーグは存在しません。"
       },
 
       footer: {
@@ -81,7 +84,8 @@
         about: "AHBA 소개"
       },
 
-      back: "← 리그 소개로 돌아가기",
+      back:
+        "← 리그 소개로 돌아가기",
 
       league: {
         label: "LEAGUE"
@@ -100,21 +104,23 @@
         eyebrow: "PARTICIPATING TEAMS",
         title: "참가 팀",
         count: "팀",
-        empty: "참가 팀 정보가 없습니다."
+        empty:
+          "참가 팀 정보가 없습니다."
       },
 
       discord: {
         eyebrow: "DISCORD",
         title: "공식 Discord 서버",
         description:
-          "이 리그의 운영·연락·교류는 Discord 서버에서 진행됩니다.",
+          "이 리그의 운영·연락·교류는 Discord 서버를 통해 진행됩니다.",
         code: "서버 코드",
         button: "Discord 서버로 이동"
       },
 
       error: {
         title: "리그를 찾을 수 없습니다",
-        description: "지정된 리그가 존재하지 않습니다."
+        description:
+          "지정된 리그가 존재하지 않습니다."
       },
 
       footer: {
@@ -128,13 +134,14 @@
 
       nav: {
         games: "比賽資訊",
-        standings: "排名",
-        schedule: "日程",
+        standings: "積分榜",
+        schedule: "賽程",
         leagues: "聯賽介紹",
         about: "關於 AHBA"
       },
 
-      back: "← 返回聯賽介紹",
+      back:
+        "← 返回聯賽介紹",
 
       league: {
         label: "LEAGUE"
@@ -153,7 +160,8 @@
         eyebrow: "PARTICIPATING TEAMS",
         title: "參賽隊伍",
         count: "隊",
-        empty: "目前沒有參賽隊伍資訊。"
+        empty:
+          "目前沒有參賽隊伍資訊。"
       },
 
       discord: {
@@ -167,7 +175,8 @@
 
       error: {
         title: "找不到聯賽",
-        description: "指定的聯賽不存在。"
+        description:
+          "指定的聯賽不存在。"
       },
 
       footer: {
@@ -187,7 +196,8 @@
         about: "About AHBA"
       },
 
-      back: "← Back to League Introduction",
+      back:
+        "← Back to League Introduction",
 
       league: {
         label: "LEAGUE"
@@ -199,14 +209,15 @@
         matchTime: "Match Time",
         region: "Region",
         teams: "Participating Teams",
-        owner: "Owner
+        owner: "Owner"
       },
 
       teams: {
         eyebrow: "PARTICIPATING TEAMS",
         title: "Participating Teams",
         count: "teams",
-        empty: "No participating team information is available."
+        empty:
+          "No participating team information is available."
       },
 
       discord: {
@@ -220,7 +231,8 @@
 
       error: {
         title: "League Not Found",
-        description: "The specified league does not exist."
+        description:
+          "The specified league does not exist."
       },
 
       footer: {
@@ -235,12 +247,16 @@
   const supportedLanguages = [
     "ja",
     "ko",
-    "en",
-    "zh"
+    "zh",
+    "en"
   ];
 
 
-  if (!supportedLanguages.includes(currentLanguage)) {
+  if (
+    !supportedLanguages.includes(
+      currentLanguage
+    )
+  ) {
     currentLanguage = "ja";
   }
 
@@ -277,58 +293,77 @@
         value[currentLanguage] ??
         value.ja ??
         value.en ??
+        value.ko ??
+        value.zh ??
         Object.values(value)[0] ??
         ""
       );
 
     }
 
-
-    function updateStaticTranslations() {
-
-      document
-        .querySelectorAll("[data-league-i18n]")
-        .forEach(element => {
-
-          const key =
-            element.dataset.leagueI18n;
-
-          const parts =
-            key.split(".");
-
-          let value =
-            leagueTranslations[currentLanguage];
-
-          for (const part of parts) {
-
-            if (
-              value &&
-              typeof value === "object"
-            ) {
-              value = value[part];
-            } else {
-              value = null;
-              break;
-            }
-
-          }
-
-          if (value != null) {
-            element.textContent = value;
-          }
-
-        });
-
-    }
-
-     
     return value ?? "";
 
   }
 
 
   /* =======================================================
-     GET LEAGUE ID
+     STATIC TRANSLATIONS
+     ======================================================= */
+
+  function updateStaticTranslations() {
+
+    document
+      .querySelectorAll(
+        "[data-league-i18n]"
+      )
+      .forEach(element => {
+
+        const key =
+          element.dataset.leagueI18n;
+
+        const parts =
+          key.split(".");
+
+        let value =
+          leagueTranslations[
+            currentLanguage
+          ];
+
+        for (
+          const part of parts
+        ) {
+
+          if (
+            value &&
+            typeof value === "object"
+          ) {
+
+            value =
+              value[part];
+
+          } else {
+
+            value = null;
+            break;
+
+          }
+
+        }
+
+        if (value != null) {
+
+          element.textContent =
+            value;
+
+        }
+
+      });
+
+  }
+
+
+  /* =======================================================
+     GET LEAGUE
      ======================================================= */
 
   function getLeagueId() {
@@ -343,15 +378,14 @@
   }
 
 
-  /* =======================================================
-     GET LEAGUE
-     ======================================================= */
-
   function getLeague() {
 
     if (
-      typeof ALLIANCE_DATA === "undefined" ||
-      !Array.isArray(ALLIANCE_DATA.leagues)
+      typeof ALLIANCE_DATA ===
+        "undefined" ||
+      !Array.isArray(
+        ALLIANCE_DATA.leagues
+      )
     ) {
 
       return null;
@@ -359,24 +393,27 @@
     }
 
 
-    const id = getLeagueId();
+    const id =
+      getLeagueId();
 
 
     return ALLIANCE_DATA.leagues.find(
       league =>
-        String(league.id) === String(id)
+        String(league.id) ===
+        String(id)
     ) || null;
 
   }
 
 
   /* =======================================================
-     RENDER
+     RENDER LEAGUE
      ======================================================= */
 
   function renderLeague() {
 
     updateStaticTranslations();
+
 
     const league =
       getLeague();
@@ -392,9 +429,6 @@
         notFound.hidden = false;
       }
 
-      document.title =
-        "League Not Found | Asia HCBB Baseball Alliance";
-
       return;
 
     }
@@ -406,37 +440,35 @@
 
 
     /* -----------------------------------------------
-       Basic
+       BASIC
        ----------------------------------------------- */
 
     const name =
       localized(league.name);
 
-
     const country =
       localized(league.country);
 
-
     const region =
       localized(
-        league.region || league.country
+        league.region ||
+        league.country
       );
 
-
     const description =
-      localized(league.description);
+      localized(
+        league.description
+      );
 
 
     $("#leagueName").textContent =
       name || "--";
 
-
     $("#leagueCountry").textContent =
       country || "--";
 
-
     $("#leagueDescription").textContent =
-      description || "";
+      description || "--";
 
 
     document.title =
@@ -444,7 +476,7 @@
 
 
     /* -----------------------------------------------
-       Match time
+       MATCH TIME
        ----------------------------------------------- */
 
     $("#leagueMatchTime").textContent =
@@ -454,7 +486,7 @@
 
 
     /* -----------------------------------------------
-       Region
+       REGION
        ----------------------------------------------- */
 
     $("#leagueRegion").textContent =
@@ -462,15 +494,17 @@
 
 
     /* -----------------------------------------------
-       Owner
+       OWNER
        ----------------------------------------------- */
 
     $("#leagueOwner").textContent =
-      league.owner || "--";
+      localized(
+        league.owner
+      ) || "--";
 
 
     /* -----------------------------------------------
-       Teams
+       TEAMS
        ----------------------------------------------- */
 
     const teams =
@@ -480,13 +514,14 @@
 
 
     const teamCountLabel =
-      leagueTranslations[currentLanguage]
-        .team.count;
-     
-     $("#leagueTeamCount").textContent =
-      `${teams.length}{teamCountLabel}`;
+      leagueTranslations[
+        currentLanguage
+      ].teams.count;
 
-    if (currentLanguage === "en") {
+
+    if (
+      currentLanguage === "en"
+    ) {
 
       $("#leagueTeamCount").textContent =
         `${teams.length} ${teamCountLabel}`;
@@ -506,61 +541,75 @@
     teamsList.innerHTML = "";
 
 
-    if (teams.length === 0) {
+    if (
+      teams.length === 0
+    ) {
 
       teamsList.innerHTML = `
         <div class="empty-result">
           ${escapeHTML(
-            leagueTranslations[currentLanguage]
-              .teams.empty
+            leagueTranslations[
+              currentLanguage
+            ].teams.empty
           )}
         </div>
       `;
 
     } else {
 
-      teams.forEach((team, index) => {
+      teams.forEach(
+        (team, index) => {
 
-        const teamName =
-          localized(team.name);
+          const teamName =
+            localized(
+              team.name
+            );
+
+          const teamCountry =
+            localized(
+              team.country
+            );
 
 
-        const teamCountry =
-          localized(team.country);
+          teamsList.insertAdjacentHTML(
+            "beforeend",
+            `
+              <div class="team-card">
 
-
-        teamsList.insertAdjacentHTML(
-          "beforeend",
-          `
-            <div class="team-card">
-
-              <div class="team-number">
-                ${String(index + 1).padStart(2, "0")}
-              </div>
-
-              <div class="team-main">
-
-                <div class="team-name">
-                  ${escapeHTML(teamName)}
+                <div class="team-number">
+                  ${String(
+                    index + 1
+                  ).padStart(2, "0")}
                 </div>
 
-                <div class="team-country">
-                  ${escapeHTML(teamCountry)}
+                <div class="team-main">
+
+                  <div class="team-name">
+                    ${escapeHTML(
+                      teamName
+                    )}
+                  </div>
+
+                  <div class="team-country">
+                    ${escapeHTML(
+                      teamCountry
+                    )}
+                  </div>
+
                 </div>
 
               </div>
+            `
+          );
 
-            </div>
-          `
-        );
-
-      });
+        }
+      );
 
     }
 
 
     /* -----------------------------------------------
-       Discord
+       DISCORD
        ----------------------------------------------- */
 
     const discord =
@@ -569,7 +618,6 @@
 
     const discordLink =
       $("#discordLink");
-
 
     const discordCode =
       $("#discordCode");
@@ -594,7 +642,9 @@
       discordLink.style.display =
         "inline-flex";
 
-    } else if (discordLink) {
+    } else if (
+      discordLink
+    ) {
 
       discordLink.style.display =
         "none";
@@ -632,9 +682,7 @@
           language
         )
       ) {
-
         return;
-
       }
 
 
@@ -648,7 +696,26 @@
       );
 
 
+      updateStaticTranslations();
+
       renderLeague();
+
+
+      document
+        .querySelectorAll(
+          "[data-lang]"
+        )
+        .forEach(
+          button => {
+
+            button.classList.toggle(
+              "active",
+              button.dataset.lang ===
+              currentLanguage
+            );
+
+          }
+        );
 
     }
   );
@@ -662,7 +729,25 @@
     "DOMContentLoaded",
     function () {
 
+      updateStaticTranslations();
+
       renderLeague();
+
+      document
+        .querySelectorAll(
+          "[data-lang]"
+        )
+        .forEach(
+          button => {
+
+            button.classList.toggle(
+              "active",
+              button.dataset.lang ===
+              currentLanguage
+            );
+
+          }
+        );
 
     }
   );
