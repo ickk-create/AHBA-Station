@@ -304,10 +304,10 @@ const ALLIANCE_DATA = {
     },
 
     country: {
-      ja: "韓国",
-      ko: "한국",
-      en: "Korea",
-      zh: "韓國"
+      ja: "アジア",
+      ko: "아시아",
+      en: "Asia",
+      zh: "亞洲"
     },
 
     region: {
