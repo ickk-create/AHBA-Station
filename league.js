@@ -699,6 +699,10 @@
         new Event("ahba-language-change")
       );
 
+      if (window.refreshAHBAHeader) {
+        window.refreshAHBAHeader();
+      }
+
       updateStaticTranslations();
 
       renderLeague();
