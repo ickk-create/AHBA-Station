@@ -72,7 +72,7 @@ const ALLIANCE_DATA = {
     {
       id: "notice-003",
 
-      date: "2026-09-15",
+      date: "2026-09-28",
 
       category: {
         ja: "UPDATE",
@@ -89,10 +89,10 @@ const ALLIANCE_DATA = {
       },
 
       body: {
-        ja: "KBO LEAGUE・KFB LEAGUEなどのリーグ情報を更新しました。",
-        ko: "KBO LEAGUE·KFB LEAGUE 등의 리그 정보를 업데이트했습니다.",
-        en: "League information for KBO LEAGUE, KFB LEAGUE, and others has been updated.",
-        zh: "KBO LEAGUE、KFB LEAGUE 等聯賽信息已更新。"
+        ja: "リーグ情報を更新しました。",
+        ko: "리그 정보를 업데이트했습니다.",
+        en: "League information has been updated.",
+        zh: "聯賽信息已更新。"
       }
 
     }
