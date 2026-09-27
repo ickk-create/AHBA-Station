@@ -587,6 +587,10 @@ function applyLanguage(lang) {
     new Event("ahba-language-change")
   );
 
+  if (window.refreshAHBAHeader) {
+    window.refreshAHBAHeader();
+  }
+
 
   /* TITLE */
 
