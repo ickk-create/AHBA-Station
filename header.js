@@ -36,7 +36,7 @@
        * English is the global language.
        * Keep the AHBA reference time as Japan time.
        */
-      timeZone: "EST",
+      timeZone: "America/New_York",
       label: "EST",
       locale: "en-US"
     }
