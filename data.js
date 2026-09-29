@@ -481,9 +481,9 @@ const ALLIANCE_DATA = {
 
     matchTime: {
       ja: "毎週月曜日、火曜日、木曜日 18:30、毎週土曜日、日曜日 13:00",
-      ko: "매주 화요일,수요일,목요일 8:00 PM、매주 토요일,일요일 4:00 PM",
-      en: "Every Tuesday,Wednesday,Thursday 8:00 PM KST, Every Saturday,Sunday 4:00 PM KST",
-      zh: ""
+      ko: "매주 월요일, 화요일, 목요일 18:30, 매주 토요일, 일요일 13:00",
+      en: "Every Monday, Tuesday, and Thursday at 6:30 p.m.JST; every Saturday and Sunday at 1:00 p.m.JST",
+      zh: "每週一、二、四 17:30，每週六、日 12:00"
     },
 
     timezone: "Asia/Tokyo",
@@ -504,6 +504,16 @@ const ALLIANCE_DATA = {
         name: "-",
       },
 
+      {
+        id: "-",
+        name: "-",
+      },
+
+　　　　{
+        id: "-",
+        name: "-",
+      },
+      
       {
         id: "-",
         name: "-",
