@@ -448,6 +448,77 @@ const ALLIANCE_DATA = {
 
     }
 
+  },
+
+
+  /* =====================================================
+     KNL LEAGUE
+     ===================================================== */
+
+  {
+    id: "JCL",
+
+    name: {
+      ja: "Japan Champions League",
+      ko: "Japan Champions League",
+      en: "Japan Champions League",
+      zh: "Japan Champions League"
+    },
+
+    country: {
+      ja: "日本",
+      ko: "일본",
+      en: "Japan",
+      zh: "日本"
+    },
+
+    region: {
+      ja: "日本",
+      ko: "일본",
+      en: "Japan",
+      zh: "日本"
+    },
+
+    matchTime: {
+      ja: "毎週月曜日、火曜日、木曜日 18:30、毎週土曜日、日曜日 13:00",
+      ko: "매주 화요일,수요일,목요일 8:00 PM、매주 토요일,일요일 4:00 PM",
+      en: "Every Tuesday,Wednesday,Thursday 8:00 PM KST, Every Saturday,Sunday 4:00 PM KST",
+      zh: ""
+    },
+
+    timezone: "Asia/Tokyo",
+
+    description: {
+      ja: "共産破壊ことAiuwo0611が1人で作ったリーグです。運営やルール面など至らないところもありますが、日本人はもちろん、海外の人にも楽しんでいただけるリーグにしたいです！",
+      ko: "공산파괴라는 닉네임의 Aiuwo0611이 혼자 만든 리그입니다. 운영이나 규칙 면에서 미흡한 점도 있겠지만, 일본인은 물론 해외 분들도 즐기실 수 있는 리그로 만들고 싶습니다!",
+      en: "This is a league created single-handedly by Aiuwo0611, also known as “Communist Destroyer.” While there may be some shortcomings in terms of management and rules, I want to make this a league that everyone—not just Japanese players, but people from overseas as well—can enjoy!",
+      zh: "這是由「共產破壞」Aiuwo0611獨力創辦的聯賽。雖然在營運和規則等方面尚有不足之處，但希望能打造一個不僅讓日本人，連海外玩家也能樂在其中的聯賽！"
+    },
+
+    owner: "potatotips.a.k.k.oimo",
+
+    teams: [
+
+      {
+        id: "-",
+        name: "-",
+      },
+
+      {
+        id: "-",
+        name: "-",
+      }
+
+    ],
+
+    discord: {
+
+      url: "https://discord.gg/3mGz6sjXc",
+
+      code: "7E2C68"
+
+    }
+
   }
 
 ],
