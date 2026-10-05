@@ -570,6 +570,20 @@ const ALLIANCE_DATA = {
 
 
     {
+      id: "KFB S1 Play-off",
+
+      name: {
+        ja: "KFB S1 Play-off",
+        ko: "KFB S1 Play-off",
+        en: "KFB S1 Play-off",
+        zh: "KFB S1 Play-off"
+      },
+
+      type: "Play-off"
+    },
+
+
+    {
       id: "ahba-international-cup",
 
       name: {
@@ -646,6 +660,83 @@ const ALLIANCE_DATA = {
           ko: "AHBA 공식 국제 친선 경기.",
           en: "An AHBA officially published international friendly.",
           zh: "AHBA官方發佈的國際友誼賽。"
+        }
+
+      }
+
+    },
+
+
+    {
+　　   id: "game-002",
+
+      eventId: "KFB S1 Play-off",
+
+      type: "Play-off",
+
+      title: {
+        ja: "KT WIZ vs Samsung Lions",
+        ko: "KT WIZ vs Samsung Lions",
+        en: "KT WIZ vs Samsung Lions",
+        zh: "KT WIZ vs Samsung Lions"
+      },
+
+      time: "2026-10-05T21:30:00+09:00",
+
+      home: "KT WIZ",
+      away: "Samsung Lions",
+
+      homeScore: 4,
+      awayScore: 0,
+
+      status: "finished",
+
+      round: {
+        ja: "Play-off",
+        ko: "Play-off",
+        en: "Play-off",
+        zh: "Play-off"
+      },
+
+      detail: {
+
+        innings: {
+          home: [3, 0, 1, 0, 0, 0, 0, 0, ×],
+          away: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+        },
+
+        pitching: {
+          win: "Rozu_1x",
+          loss: "s_vcx1n",
+          save: null,
+
+          holds: [
+          ]
+        },
+
+        homeRuns: [
+
+          {
+           team: "home",
+           player: "Insanetrick",
+           inning: 1,
+           runs: 3
+          },
+
+          {
+           team: "home",
+           player: "triplepark",
+           inning: 3,
+           runs: 1
+          }
+           
+        ],
+
+        notes: {
+          ja: "KFB S1 Play-off game-1",
+          ko: "KFB S1 Play-off game-1",
+          en: "KFB S1 Play-off game-1",
+          zh: "KFB S1 Play-off game-1"
         }
 
       }
