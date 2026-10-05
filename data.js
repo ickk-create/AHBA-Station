@@ -701,7 +701,7 @@ const ALLIANCE_DATA = {
       detail: {
 
         innings: {
-          home: [3, 0, 1, 0, 0, 0, 0, 0, ×],
+          home: [3, 0, 1, 0, 0, 0, 0, 0, 0],
           away: [0, 0, 0, 0, 0, 0, 0, 0, 0]
         },
 
