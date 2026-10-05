@@ -702,7 +702,7 @@ const ALLIANCE_DATA = {
 
         innings: {
           home: [3, 0, 1, 0, 0, 0, 0, 0, 0],
-          away: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+          away: [0, 0, 0, 0, 0, 0, 0, 0, 1]
         },
 
         pitching: {
@@ -727,6 +727,13 @@ const ALLIANCE_DATA = {
            team: "home",
            player: "triplepark",
            inning: 3,
+           runs: 1
+          },
+
+          {
+           team: "away",
+           player: "pistol0172",
+           inning: 9,
            runs: 1
           }
            
