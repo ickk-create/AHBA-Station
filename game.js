@@ -710,6 +710,8 @@
     headerHTML += `
         <th class="total">
           R
+          H
+          E
         </th>
       </tr>
     `;
