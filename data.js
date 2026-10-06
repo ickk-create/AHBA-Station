@@ -570,16 +570,16 @@ const ALLIANCE_DATA = {
 
 
     {
-      id: "KFB S1 Play-off",
+      id: "Season",
 
       name: {
-        ja: "KFB S1 Play-off",
-        ko: "KFB S1 Play-off",
-        en: "KFB S1 Play-off",
-        zh: "KFB S1 Play-off"
+        ja: "Season",
+        ko: "Season",
+        en: "Season",
+        zh: "Season"
       },
 
-      type: "Play-off"
+      type: "Season"
     },
 
 
@@ -670,9 +670,9 @@ const ALLIANCE_DATA = {
     {
 　　   id: "game-002",
 
-      eventId: "KFB S1 Play-off",
+      eventId: "Season",
 
-      type: "Play-off",
+      type: "Season",
 
       title: {
         ja: "KT WIZ vs Samsung Lions",
@@ -701,14 +701,14 @@ const ALLIANCE_DATA = {
       detail: {
 
         innings: {
-          home: [3, 0, 1, 0, 0, 0, 0, 0, 0],
+          home: [0, 0, 1, 0, 1, 0, 0, 0, 0],
           away: [0, 0, 0, 0, 0, 0, 0, 0, 1]
         },
 
         pitching: {
-          win: "Rozu_1x",
-          loss: "s_vcx1n",
-          save: null,
+          win: "工藤　賢澄",
+          loss: "k",
+          save: "K.サミュエル",
 
           holds: [
           ]
@@ -718,21 +718,21 @@ const ALLIANCE_DATA = {
 
           {
            team: "home",
-           player: "Insanetrick",
-           inning: 1,
-           runs: 3
-          },
-
-          {
-           team: "home",
-           player: "triplepark",
+           player: "磐城　豊",
            inning: 3,
            runs: 1
           },
 
           {
+           team: "home",
+           player: "栗本　世那",
+           inning: 5,
+           runs: 1
+          },
+
+          {
            team: "away",
-           player: "pistol0172",
+           player: "あ",
            inning: 9,
            runs: 1
           }
@@ -740,10 +740,10 @@ const ALLIANCE_DATA = {
         ],
 
         notes: {
-          ja: "KFB S1 Play-off game-1",
-          ko: "KFB S1 Play-off game-1",
-          en: "KFB S1 Play-off game-1",
-          zh: "KFB S1 Play-off game-1"
+          ja: "Season",
+          ko: "Season",
+          en: "Season",
+          zh: "Season"
         }
 
       }
