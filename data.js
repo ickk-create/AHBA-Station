@@ -528,7 +528,7 @@ const ALLIANCE_DATA = {
         zh: "AHBA vs BTBL"
       },
 
-      time: "2026-3-9T21:00:00+09:00",
+      time: "2026-03-09T21:00:00+09:00",
 
       home: "AHBA",
       away: "BTBL",
