@@ -479,10 +479,7 @@
        MATCH TIME
        ----------------------------------------------- */
 
-    $("#leagueMatchTime").textContent =
-      localized(
-        league.matchTime
-      ) || "--";
+    renderMatchSchedule(league);
 
 
     /* -----------------------------------------------
