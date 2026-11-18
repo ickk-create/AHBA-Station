@@ -1230,6 +1230,8 @@
 
     renderScoreboard(game);
 
+    renderLineups(game);
+
     renderPitching(game);
 
     renderHomeRuns(game);
