@@ -306,6 +306,119 @@
   }
 
 
+    /* =======================================================
+     MATCH SCHEDULE
+     ======================================================= */
+
+  const weekdayTranslations = {
+
+    ja: {
+      Monday: "月曜日",
+      Tuesday: "火曜日",
+      Wednesday: "水曜日",
+      Thursday: "木曜日",
+      Friday: "金曜日",
+      Saturday: "土曜日",
+      Sunday: "日曜日"
+    },
+
+    ko: {
+      Monday: "월요일",
+      Tuesday: "화요일",
+      Wednesday: "수요일",
+      Thursday: "목요일",
+      Friday: "금요일",
+      Saturday: "토요일",
+      Sunday: "일요일"
+    },
+
+    zh: {
+      Monday: "星期一",
+      Tuesday: "星期二",
+      Wednesday: "星期三",
+      Thursday: "星期四",
+      Friday: "星期五",
+      Saturday: "星期六",
+      Sunday: "星期日"
+    },
+
+    en: {
+      Monday: "Monday",
+      Tuesday: "Tuesday",
+      Wednesday: "Wednesday",
+      Thursday: "Thursday",
+      Friday: "Friday",
+      Saturday: "Saturday",
+      Sunday: "Sunday"
+    }
+
+  };
+
+
+  function renderMatchSchedule(league) {
+
+    const container = $("#leagueMatchSchedule");
+
+    if (!container) {
+      return;
+    }
+
+    const schedule = Array.isArray(league.matchSchedule)
+      ? league.matchSchedule
+      : [];
+
+    const validSchedule = schedule.filter(item =>
+      item &&
+      weekdayTranslations.en[item.day] &&
+      item.time
+    );
+
+    if (!validSchedule.length) {
+
+      container.innerHTML = `
+        <div class="match-schedule-empty">
+          --
+        </div>
+      `;
+
+      return;
+    }
+
+    const days = weekdayTranslations[currentLanguage]
+      || weekdayTranslations.ja;
+
+    const scheduleHTML = validSchedule.map(item => {
+
+      return `
+        <div class="match-schedule-item">
+
+          <span class="match-schedule-day">
+            ${escapeHTML(days[item.day] || item.day)}
+          </span>
+
+          <span class="match-schedule-time">
+            ${escapeHTML(item.time)}
+          </span>
+
+        </div>
+      `;
+
+    }).join("");
+
+    const timezone = league.timezone
+      ? `
+        <div class="match-schedule-timezone">
+          ${escapeHTML(league.timezone)}
+        </div>
+      `
+      : "";
+
+    container.innerHTML =
+      scheduleHTML + timezone;
+
+  }
+
+   
   /* =======================================================
      STATIC TRANSLATIONS
      ======================================================= */
