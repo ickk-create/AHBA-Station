@@ -135,12 +135,29 @@ const ALLIANCE_DATA = {
     },
 
     /* 試合時間 */
-    matchTime: {
-      ja: "毎週火曜日、水曜日、土曜日、日曜日 21:30",
-      ko: "매주 화요일, 수요일, 토요일, 일요일 9:30 PM",
-      en: "Every Tuesday,Wednesday,Saturday,Sunday 9:30 PM KST",
-      zh: "每週二、三、六、日 8:30 PM"
-    },
+    matchSchedule: [
+
+      {
+        day: "Monday",
+        time: "21:30"
+      },
+
+      {
+        day: "Thursday",
+        time: "21:30"
+      },
+
+      {
+        day: "Saturday",
+        time: "19:30"
+      },
+
+      {
+        day: "Sunday",
+        time: "19:30"
+      }
+
+    ],
 
     /* タイムゾーン */
     timezone: "Asia/Seoul",
@@ -236,12 +253,29 @@ const ALLIANCE_DATA = {
       zh: "韓國"
     },
 
-    matchTime: {
-      ja: "毎週月曜日、木曜日 21:30、毎週土曜日、日曜日 19:30",
-      ko: "매주 월요일,목요일 9:30 PM、매주 토요일,일요일 7:30 PM",
-      en: "Every Monday,Thursday 9:30 PM KST, Every Saturday,Sunday 7:30 PM KST",
-      zh: "每週一、四 8:30 PM、每週六、日 6:30 PM"
-    },
+    matchSchedule: [
+
+      {
+        day: "Monday",
+        time: "21:30"
+      },
+
+      {
+        day: "Thursday",
+        time: "21:30"
+      },
+
+      {
+        day: "Saturday",
+        time: "19:30"
+      },
+
+      {
+        day: "Sunday",
+        time: "19:30"
+      }
+
+    ],
 
     timezone: "Asia/Seoul",
 
@@ -317,12 +351,29 @@ const ALLIANCE_DATA = {
       zh: "韓國"
     },
 
-    matchTime: {
-      ja: "毎週火曜日、水曜日、木曜日 20:00、毎週土曜日、日曜日 16:00",
-      ko: "매주 화요일,수요일,목요일 8:00 PM、매주 토요일,일요일 4:00 PM",
-      en: "Every Tuesday,Wednesday,Thursday 8:00 PM KST, Every Saturday,Sunday 4:00 PM KST",
-      zh: "每週二、三、四 7:00 PM、每週六、日 3:00 PM"
-    },
+    matchSchedule: [
+
+      {
+        day: "Monday",
+        time: "21:30"
+      },
+
+      {
+        day: "Thursday",
+        time: "21:30"
+      },
+
+      {
+        day: "Saturday",
+        time: "19:30"
+      },
+
+      {
+        day: "Sunday",
+        time: "19:30"
+      }
+
+    ],
 
     timezone: "Asia/Seoul",
 
@@ -388,12 +439,29 @@ const ALLIANCE_DATA = {
       zh: "日本"
     },
 
-    matchTime: {
-      ja: "毎週月曜日、火曜日、木曜日 18:30、毎週土曜日、日曜日 13:00",
-      ko: "매주 월요일, 화요일, 목요일 18:30, 매주 토요일, 일요일 13:00",
-      en: "Every Monday, Tuesday, and Thursday at 6:30 p.m.JST; every Saturday and Sunday at 1:00 p.m.JST",
-      zh: "每週一、二、四 17:30，每週六、日 12:00"
-    },
+    matchSchedule: [
+
+      {
+        day: "Monday",
+        time: "21:30"
+      },
+
+      {
+        day: "Thursday",
+        time: "21:30"
+      },
+
+      {
+        day: "Saturday",
+        time: "19:30"
+      },
+
+      {
+        day: "Sunday",
+        time: "19:30"
+      }
+
+    ],
 
     timezone: "Asia/Tokyo",
 
