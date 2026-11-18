@@ -138,23 +138,23 @@ const ALLIANCE_DATA = {
     matchSchedule: [
 
       {
-        day: "Monday",
+        day: "Tuesday",
         time: "21:30"
       },
 
       {
-        day: "Thursday",
+        day: "Wednesday",
         time: "21:30"
       },
 
       {
         day: "Saturday",
-        time: "19:30"
+        time: "21:30"
       },
 
       {
         day: "Sunday",
-        time: "19:30"
+        time: "21:30"
       }
 
     ],
@@ -296,13 +296,13 @@ const ALLIANCE_DATA = {
       },
 
       {
-        id: "KT WIZ",
-        name: "KT WIZ",
+        id: "Lotte Giants",
+        name: "Lotte Giants",
       },
 
       {
-        id: "SSG Landers",
-        name: "SSG Landers",
+        id: "Nipponham Fighters",
+        name: "Nipponham Fighters",
       },
 
       {
@@ -354,23 +354,23 @@ const ALLIANCE_DATA = {
     matchSchedule: [
 
       {
-        day: "Monday",
-        time: "21:30"
+        day: "Wednesday",
+        time: "20:00"
       },
 
       {
-        day: "Thursday",
-        time: "21:30"
+        day: "Friday",
+        time: "20:00"
       },
 
       {
         day: "Saturday",
-        time: "19:30"
+        time: "17:00"
       },
 
       {
         day: "Sunday",
-        time: "19:30"
+        time: "17:00"
       }
 
     ],
@@ -443,22 +443,27 @@ const ALLIANCE_DATA = {
 
       {
         day: "Monday",
-        time: "21:30"
+        time: "18:00"
       },
 
       {
-        day: "Thursday",
-        time: "21:30"
+        day: "Wednesday",
+        time: "18:00"
       },
 
+      {
+        day: "Friday",
+        time: "18:00"
+      },
+       
       {
         day: "Saturday",
-        time: "19:30"
+        time: "13:00"
       },
 
       {
         day: "Sunday",
-        time: "19:30"
+        time: "13:00"
       }
 
     ],
