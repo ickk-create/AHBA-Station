@@ -46,6 +46,16 @@
         save: "セーブ",
         holds: "ホールド",
 
+        lineup: "打順・ベンチ入り",
+        home: "ホーム",
+        away: "ビジター",
+        starters: "STARTING LINEUP",
+        bench: "BENCH",
+        dh: "DH制",
+        noDh: "DHなし",
+        showPositions: "守備位置を表示",
+        hidePositions: "守備位置を非表示",
+
         inning: "回",
 
         noData: "記録なし",
@@ -101,6 +111,16 @@
         loss: "패전 투수",
         save: "세이브",
         holds: "홀드",
+
+        lineup: "타순 및 벤치 명단",
+        home: "홈",
+        away: "원정",
+        starters: "선발 라인업",
+        bench: "벤치",
+        dh: "지명타자제",
+        noDh: "지명타자제 없음",
+        showPositions: "수비 위치 표시",
+        hidePositions: "수비 위치 숨기기",
 
         inning: "회",
 
@@ -158,6 +178,16 @@
         save: "Save",
         holds: "Holds",
 
+        lineup: "Batting Lineup & Bench",
+        home: "Home",
+        away: "Away",
+        starters: "STARTING LINEUP",
+        bench: "BENCH",
+        dh: "DH",
+        noDh: "No DH",
+        showPositions: "Show Positions",
+        hidePositions: "Hide Positions",
+         
         inning: "th",
 
         noData: "No record",
@@ -214,6 +244,16 @@
         save: "救援成功",
         holds: "中繼成功",
 
+        lineup: "打序與板凳名單",
+        home: "主場",
+        away: "客場",
+        starters: "先發打線",
+        bench: "板凳名單",
+        dh: "指定打擊制",
+        noDh: "無指定打擊制",
+        showPositions: "顯示守備位置",
+        hidePositions: "隱藏守備位置",
+         
         inning: "局",
 
         noData: "暫無記錄",
@@ -816,6 +856,193 @@
   }
 
 
+    /* =======================================================
+     BATTING LINEUP
+     ======================================================= */
+
+  function renderLineups(game) {
+
+    const section = $("#lineupSection");
+    const container = $("#lineupResults");
+    const toggleButton = $("#togglePositions");
+
+    if (!section || !container) {
+      return;
+    }
+
+    const lineups = game?.detail?.lineups;
+
+    const home = lineups?.home || {};
+    const away = lineups?.away || {};
+
+    const teams = [
+      {
+        side: "home",
+        name: game.home,
+        data: home
+      },
+      {
+        side: "away",
+        name: game.away,
+        data: away
+      }
+    ];
+
+    const hasPlayers = teams.some(team =>
+      [...(Array.isArray(team.data.starters) ? team.data.starters : []),
+       ...(Array.isArray(team.data.bench) ? team.data.bench : [])]
+        .some(player => player?.player)
+    );
+
+    if (!hasPlayers) {
+      section.hidden = true;
+      container.innerHTML = "";
+      return;
+    }
+
+    section.hidden = false;
+
+    const hasPositions = teams.some(team =>
+      [...(Array.isArray(team.data.starters) ? team.data.starters : []),
+       ...(Array.isArray(team.data.bench) ? team.data.bench : [])]
+        .some(player => player?.player && player.position)
+    );
+
+    const renderPlayerList = (players, isBench = false) => {
+
+      if (!Array.isArray(players) || !players.length) {
+        return "";
+      }
+
+      return players
+        .filter(player => player?.player)
+        .map((player, index) => `
+          <div class="lineup-player ${isBench ? "lineup-bench" : ""}">
+
+            <span class="lineup-order">
+              ${isBench ? "—" : index + 1}
+            </span>
+
+            <span class="lineup-player-name">
+              ${escapeHTML(player.player)}
+            </span>
+
+            ${
+              player.position
+                ? `<span class="lineup-position">
+                    ${escapeHTML(player.position)}
+                  </span>`
+                : ""
+            }
+
+          </div>
+        `)
+        .join("");
+    };
+
+    container.classList.toggle(
+      "positions-hidden",
+      !hasPositions
+    );
+
+    container.innerHTML = teams.map(team => {
+
+      const starters = Array.isArray(team.data.starters)
+        ? team.data.starters
+        : [];
+
+      const bench = Array.isArray(team.data.bench)
+        ? team.data.bench
+        : [];
+
+      const dhLabel = team.data.dh === true
+        ? t("game.dh")
+        : t("game.noDh");
+
+      return `
+        <article class="lineup-card">
+
+          <div class="lineup-card-header">
+
+            <div class="lineup-team-name">
+              ${escapeHTML(team.name || "--")}
+            </div>
+
+            <span class="lineup-dh">
+              ${escapeHTML(dhLabel)}
+            </span>
+
+          </div>
+
+          <h3 class="lineup-subheading">
+            ${escapeHTML(t("game.starters"))}
+          </h3>
+
+          <div class="lineup-list">
+            ${
+              starters.length
+                ? renderPlayerList(starters)
+                : `<div class="empty-result">${escapeHTML(t("game.noData"))}</div>`
+            }
+          </div>
+
+          <h3 class="lineup-subheading">
+            ${escapeHTML(t("game.bench"))}
+          </h3>
+
+          <div class="lineup-list">
+            ${
+              bench.length
+                ? renderPlayerList(bench, true)
+                : `<div class="empty-result">${escapeHTML(t("game.noData"))}</div>`
+            }
+          </div>
+
+        </article>
+      `;
+
+    }).join("");
+
+    if (toggleButton) {
+      toggleButton.hidden = !hasPositions;
+      toggleButton.classList.add("lineup-toggle");
+
+      toggleButton.textContent = hasPositions
+        ? t("game.hidePositions")
+        : t("game.showPositions");
+    }
+  }
+
+
+  /* =======================================================
+     LINEUP POSITION TOGGLE
+     ======================================================= */
+
+  document.addEventListener("click", event => {
+
+    const button = event.target.closest("#togglePositions");
+
+    if (!button) {
+      return;
+    }
+
+    const container = $("#lineupResults");
+
+    if (!container) {
+      return;
+    }
+
+    const isHidden = container.classList.toggle(
+      "positions-hidden"
+    );
+
+    button.textContent = isHidden
+      ? t("game.showPositions")
+      : t("game.hidePositions");
+
+  });
+
+   
   /* =======================================================
      PITCHING
      ======================================================= */
