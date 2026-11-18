@@ -372,3 +372,142 @@
   }
 
 }
+
+
+
+/* =========================================================
+   BATTING LINEUP
+   ========================================================= */
+
+.lineup-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.lineup-card {
+  min-width: 0;
+  padding: 26px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 18px;
+  background: rgba(255,255,255,.025);
+}
+
+.lineup-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.lineup-team-name {
+  color: #fff;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.lineup-dh {
+  padding: 6px 11px;
+  border: 1px solid rgba(85,216,255,.3);
+  border-radius: 999px;
+  color: #55d8ff;
+  background: rgba(85,216,255,.07);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.lineup-subheading {
+  margin: 22px 0 12px;
+  color: rgba(255,255,255,.45);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+}
+
+.lineup-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lineup-player {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 54px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 11px;
+  background: rgba(0,0,0,.16);
+}
+
+.lineup-order {
+  color: #55d8ff;
+  font-family: "Orbitron", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.lineup-player-name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.lineup-position {
+  padding: 5px 8px;
+  border-radius: 6px;
+  color: rgba(255,255,255,.65);
+  background: rgba(255,255,255,.07);
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.lineup-bench .lineup-order {
+  color: rgba(255,255,255,.35);
+}
+
+.lineup-toggle {
+  padding: 9px 13px;
+  border: 1px solid rgba(85,216,255,.25);
+  border-radius: 9px;
+  color: #55d8ff;
+  background: rgba(85,216,255,.06);
+  font-size: 12px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.lineup-toggle:hover {
+  background: rgba(85,216,255,.14);
+}
+
+.lineup-grid.positions-hidden .lineup-position {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .lineup-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lineup-card {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 600px) {
+  .lineup-player {
+    grid-template-columns: 28px minmax(0, 1fr) auto;
+    gap: 9px;
+    padding: 10px;
+  }
+}
+
