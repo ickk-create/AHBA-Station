@@ -564,6 +564,36 @@ const ALLIANCE_DATA = {
         homeRuns: [
         ],
 
+        lineups: {
+
+          home: {
+            dh: true,
+
+            starters: [
+              { player: "Player A", position: "CF" },
+              { player: "Player B", position: "SS" },
+              { player: "Player C", position: "2B" }
+            ],
+
+            bench: [
+              { player: "Player D", position: "PH" },
+              { player: "Player E", position: "PR" }
+            ]
+          },
+
+          away: {
+            dh: false,
+
+            starters: [
+              { player: "Player F", position: "CF" },
+              { player: "Player G", position: "SS" }
+            ],
+
+            bench: []
+          }
+
+        },
+
         notes: {
           ja: "AHBA公式掲載の国際親善試合。",
           ko: "AHBA 공식 국제 친선 경기.",
