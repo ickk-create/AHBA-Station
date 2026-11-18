@@ -638,14 +638,36 @@ const ALLIANCE_DATA = {
             dh: true,
 
             starters: [
-              { player: "Player A", position: "CF" },
-              { player: "Player B", position: "SS" },
-              { player: "Player C", position: "2B" }
+              { player: "NARUSE", position: "2B" },
+              { player: "HATTORI", position: "SS" },
+              { player: "HIRYU", position: "LF" },
+              { player: "OHKA", position: "CF" },
+              { player: "KAKUMA", position: "RF" },
+              { player: "GODA", position: "C" },
+              { player: "NAGUMO", position: "DH" },
+              { player: "ITAYA", position: "1B" },
+              { player: "MURASE", position: "3B" },
+              { player: "KATSUKI", position: "P" }
             ],
 
             bench: [
-              { player: "Player D", position: "PH" },
-              { player: "Player E", position: "PR" }
+              { player: "KAMIYA" },
+              { player: "TAKAMIYA" },
+              { player: "JINGUJI" },
+              { player: "K.HATTORI" },
+              { player: "NISHIMAKI" },
+              { player: "SHIMABARA" },
+              { player: "HINASE" },
+              { player: "RAMOS" },
+              { player: "OHTSUKI" },
+              { player: "INADA" },
+              { player: "TSUNODA" },
+              { player: "TABEI" },
+              { player: "KOSEMURA" },
+              { player: "ISHIMORI" },
+              { player: "MARINO" },
+              { player: "KIRYU" },
+              { player: "AMADA" },
             ]
           },
 
