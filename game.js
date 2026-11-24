@@ -908,14 +908,33 @@
         .some(player => player?.player && player.position)
     );
 
-    const renderPlayerList = (players, isBench = false) => {
+    const renderPlayerList = (
+      players,
+      isBench = false,
+      dh = false
+    ) => {
 
       if (!Array.isArray(players) || !players.length) {
         return "";
       }
 
       return players
-        .filter(player => player?.player)
+        .filter(player => {
+          if (!player?.player) {
+            return false;
+          }
+
+          // DH制ありの場合、投手は打順から除外
+          if (
+            !isBench &&
+            dh &&
+            String(player.position || "").toUpperCase() === "P"
+          ) {
+            return false;
+          }
+
+          return true;
+        })
         .map((player, index) => `
           <div class="lineup-player ${isBench ? "lineup-bench" : ""}">
 
@@ -947,6 +966,8 @@
 
     container.innerHTML = teams.map(team => {
 
+      const dhEnabled = team.data.dh === true;
+
       const starters = Array.isArray(team.data.starters)
         ? team.data.starters
         : [];
@@ -955,9 +976,25 @@
         ? team.data.bench
         : [];
 
-      const dhLabel = team.data.dh === true
+      const dhLabel = dhEnabled
         ? t("game.dh")
         : t("game.noDh");
+
+      // DH制ありなら投手を除外した打順を作成
+      const battingOrder = starters.filter(player => {
+        if (!player?.player) {
+          return false;
+        }
+
+        if (
+          dhEnabled &&
+          String(player.position || "").toUpperCase() === "P"
+        ) {
+          return false;
+        }
+
+        return true;
+      });
 
       return `
         <article class="lineup-card">
@@ -980,8 +1017,8 @@
 
           <div class="lineup-list">
             ${
-              starters.length
-                ? renderPlayerList(starters)
+              battingOrder.length
+                ? renderPlayerList(battingOrder)
                 : `<div class="empty-result">${escapeHTML(t("game.noData"))}</div>`
             }
           </div>
