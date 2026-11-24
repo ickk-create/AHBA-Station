@@ -310,8 +310,8 @@
      MATCH SCHEDULE
      ======================================================= */
 
+  
   const weekdayTranslations = {
-
     ja: {
       Monday: "月曜日",
       Tuesday: "火曜日",
@@ -321,7 +321,6 @@
       Saturday: "土曜日",
       Sunday: "日曜日"
     },
-
     ko: {
       Monday: "월요일",
       Tuesday: "화요일",
@@ -331,7 +330,6 @@
       Saturday: "토요일",
       Sunday: "일요일"
     },
-
     zh: {
       Monday: "星期一",
       Tuesday: "星期二",
@@ -341,7 +339,6 @@
       Saturday: "星期六",
       Sunday: "星期日"
     },
-
     en: {
       Monday: "Monday",
       Tuesday: "Tuesday",
@@ -351,12 +348,79 @@
       Saturday: "Saturday",
       Sunday: "Sunday"
     }
-
   };
 
+  const languageTimeZones = {
+    ja: {
+      zone: "Asia/Tokyo",
+      locale: "ja-JP"
+    },
+    ko: {
+      zone: "Asia/Seoul",
+      locale: "ko-KR"
+    },
+    en: {
+      zone: "America/New_York",
+      locale: "en-US"
+    },
+    zh: {
+      zone: "Asia/Taipei",
+      locale: "zh-TW"
+    }
+  };
+
+  // 指定タイムゾーンでの日時の各要素を取得
+  function getZonedParts(date, timeZone) {
+    const parts = new Intl.DateTimeFormat("en-US", {
+      timeZone,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      hourCycle: "h23"
+    }).formatToParts(date);
+
+    const result = {};
+
+    parts.forEach(part => {
+      if (part.type !== "literal") {
+        result[part.type] = Number(part.value);
+      }
+    });
+
+    return result;
+  }
+
+  // 元のタイムゾーンの現地日時をUTCの日時に変換
+  function localTimeToUTC(year, month, day, hour, minute, timeZone) {
+    const target = Date.UTC(
+      year, month - 1, day, hour, minute
+    );
+
+    let result = target;
+
+    for (let i = 0; i < 3; i++) {
+      const parts = getZonedParts(
+        new Date(result),
+        timeZone
+      );
+
+      const represented = Date.UTC(
+        parts.year,
+        parts.month - 1,
+        parts.day,
+        parts.hour,
+        parts.minute
+      );
+
+      result += target - represented;
+    }
+
+    return new Date(result);
+  }
 
   function renderMatchSchedule(league) {
-
     const container = $("#leagueMatchSchedule");
 
     if (!container) {
@@ -370,53 +434,110 @@
     const validSchedule = schedule.filter(item =>
       item &&
       weekdayTranslations.en[item.day] &&
-      item.time
+      /^\d{2}:\d{2}$/.test(item.time || "")
     );
 
     if (!validSchedule.length) {
-
       container.innerHTML = `
-        <div class="match-schedule-empty">
-          --
-        </div>
+        <div class="match-schedule-empty">--</div>
       `;
-
       return;
     }
+
+    const languageSettings =
+      languageTimeZones[currentLanguage] ||
+      languageTimeZones.ja;
+
+    const sourceTimeZone =
+      league.timezone || "Asia/Tokyo";
+
+    const targetTimeZone =
+      languageSettings.zone;
+
+    // 月曜日を基準にした1週間を作成
+    const weekdays = [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ];
+
+    const baseMonday = new Date(Date.UTC(2024, 0, 1));
 
     const days = weekdayTranslations[currentLanguage]
       || weekdayTranslations.ja;
 
     const scheduleHTML = validSchedule.map(item => {
+      const dayIndex = weekdays.indexOf(item.day);
+      const [hour, minute] = item.time.split(":").map(Number);
+
+      const sourceDate = new Date(baseMonday);
+      sourceDate.setUTCDate(
+        sourceDate.getUTCDate() + dayIndex
+      );
+
+      const utcDate = localTimeToUTC(
+        sourceDate.getUTCFullYear(),
+        sourceDate.getUTCMonth() + 1,
+        sourceDate.getUTCDate(),
+        hour,
+        minute,
+        sourceTimeZone
+      );
+
+      const targetParts = getZonedParts(
+        utcDate,
+        targetTimeZone
+      );
+
+      const targetDate = new Date(Date.UTC(
+        targetParts.year,
+        targetParts.month - 1,
+        targetParts.day
+      ));
+
+      const targetDayIndex =
+        (targetDate.getUTCDay() + 6) % 7;
+
+      const targetDay = weekdays[targetDayIndex];
+
+      const targetTime =
+        new Intl.DateTimeFormat(
+          languageSettings.locale,
+          {
+            timeZone: targetTimeZone,
+            hour: "2-digit",
+            minute: "2-digit",
+            hourCycle: "h23"
+          }
+        ).format(utcDate);
 
       return `
         <div class="match-schedule-item">
-
           <span class="match-schedule-day">
-            ${escapeHTML(days[item.day] || item.day)}
+            ${escapeHTML(days[targetDay])}
           </span>
 
           <span class="match-schedule-time">
-            ${escapeHTML(item.time)}
+            ${escapeHTML(targetTime)}
           </span>
-
         </div>
       `;
-
     }).join("");
 
-    const timezone = league.timezone
-      ? `
-        <div class="match-schedule-timezone">
-          ${escapeHTML(league.timezone)}
-        </div>
-      `
-      : "";
+    const timezone = `
+      <div class="match-schedule-timezone">
+        ${escapeHTML(targetTimeZone)}
+      </div>
+    `;
 
     container.innerHTML =
       scheduleHTML + timezone;
-
   }
+
 
    
   /* =======================================================
